@@ -3,362 +3,50 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ana Isabel Assia — Líder de Transformación | Consultora & Mentora</title>
+<title>Ana Isabel Assia — Líder de Transformación | Consultora &amp; Mentora</title>
 <meta name="description" content="Impulso a líderes de negocios y sus equipos a crecer rentable, productivo y eficiente, desde una visión sistémica que integra estrategia, procesos, personas, tecnología y resultados." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --red:#E10600;
-  --red-deep:#B00400;
-  --ink:#0B0B0B;
-  --paper:#FFFFFF;
-  --smoke:#F5F4F2;
-  --ash:#6E6E6E;
-  --line:rgba(11,11,11,.12);
-  --line-light:rgba(255,255,255,.16);
-  --maxw:1240px;
-  --ease:cubic-bezier(.22,1,.36,1);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Inter',system-ui,sans-serif;
-  color:var(--ink);
-  background:var(--paper);
-  font-size:17px;line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
-.serif{font-family:'Fraunces',Georgia,serif}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
-.eyebrow{
-  font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
-  color:var(--red);display:inline-flex;align-items:center;gap:12px;
-}
-.eyebrow::before{content:"";width:34px;height:1px;background:var(--red);display:inline-block}
-.eyebrow.light{color:#fff}
-.eyebrow.light::before{background:var(--red)}
-
-/* ============ NAV ============ */
-header{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  transition:all .4s var(--ease);
-  border-bottom:1px solid transparent;
-}
-header.scrolled{
-  background:rgba(255,255,255,.86);
-  backdrop-filter:saturate(180%) blur(18px);
-  border-bottom:1px solid var(--line);
-}
-.nav{display:flex;align-items:center;justify-content:space-between;height:84px;transition:height .4s var(--ease)}
-header.scrolled .nav{height:68px}
-.brand{display:flex;align-items:center}
-.brand .logo{height:56px;width:auto;display:block;transition:height .4s var(--ease)}
-header.scrolled .brand .logo{height:46px}
-.brand .logo-color{display:none}
-header.scrolled .brand .logo-white{display:none}
-header.scrolled .brand .logo-color{display:block}
-.menu{display:flex;gap:38px;align-items:center}
-.menu a{
-  font-size:13.5px;font-weight:500;letter-spacing:.02em;color:rgba(255,255,255,.85);
-  position:relative;transition:color .3s;
-}
-header.scrolled .menu a{color:var(--ink)}
-.menu a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1.5px;background:var(--red);transition:width .35s var(--ease)}
-.menu a:hover{color:var(--red)}
-.menu a:hover::after{width:100%}
-.nav-cta{
-  border:1px solid rgba(255,255,255,.4);color:#fff;padding:11px 22px;border-radius:50px;
-  font-size:13px;font-weight:600;transition:all .35s var(--ease);
-}
-header.scrolled .nav-cta{border-color:var(--ink)}
-.nav-cta:hover{background:var(--red);border-color:var(--red);color:#fff;transform:translateY(-1px)}
-.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:120}
-.burger span{width:26px;height:2px;background:#fff;transition:.3s}
-header.scrolled .burger span{background:var(--ink)}
-
-/* ============ HERO ============ */
-.hero{
-  position:relative;min-height:100vh;display:flex;align-items:center;
-  background:var(--ink);color:#fff;overflow:hidden;
-}
-.hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.55}
-.hero-bg::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(11,11,11,.95) 0%,rgba(11,11,11,.7) 45%,rgba(11,11,11,.25) 100%);}
-.hero .wrap{position:relative;z-index:2;width:100%;padding-top:120px;padding-bottom:80px}
-.hero h1{
-  font-weight:400;font-size:clamp(40px,6vw,82px);line-height:1.04;letter-spacing:-.02em;
-  max-width:16ch;margin:26px 0 28px;
-}
-.hero h1 em{font-style:italic;color:var(--red)}
-.hero p.lead{font-size:clamp(17px,1.6vw,20px);max-width:56ch;color:rgba(255,255,255,.82);font-weight:300}
-.hero-actions{display:flex;gap:18px;margin-top:42px;flex-wrap:wrap}
-.btn{
-  display:inline-flex;align-items:center;gap:12px;padding:17px 32px;border-radius:50px;
-  font-size:14.5px;font-weight:600;letter-spacing:.01em;transition:all .35s var(--ease);cursor:pointer;border:none;
-}
-.btn-red{background:var(--red);color:#fff}
-.btn-red:hover{background:#fff;color:var(--ink);transform:translateY(-2px)}
-.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
-.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
-.btn .arrow{transition:transform .35s var(--ease)}
-.btn:hover .arrow{transform:translateX(5px)}
-.hero-tag{
-  position:absolute;right:32px;bottom:46px;z-index:2;text-align:right;
-  font-size:13px;color:rgba(255,255,255,.6);letter-spacing:.04em;max-width:300px;
-}
-.hero-tag b{color:#fff;font-weight:500}
-
-/* ============ STATS BAR ============ */
-.stats{background:var(--red);color:#fff}
-.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-.stat{padding:40px 24px;border-right:1px solid rgba(255,255,255,.18)}
-.stat:last-child{border-right:none}
-.stat b{font-family:'Fraunces',serif;font-size:clamp(34px,4vw,52px);font-weight:500;line-height:1;display:block}
-.stat span{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-top:10px;display:block}
-
-/* ============ SECTION SCAFFOLD ============ */
-section{position:relative}
-.pad{padding:120px 0}
-.section-head{max-width:760px;margin-bottom:64px}
-.section-head h2{
-  font-weight:400;font-size:clamp(32px,4.4vw,58px);line-height:1.08;letter-spacing:-.015em;margin-top:22px;
-}
-.section-head h2 em{font-style:italic;color:var(--red)}
-.section-head p{color:var(--ash);font-size:18px;margin-top:22px;font-weight:300;max-width:60ch}
-
-/* ============ SOBRE MI ============ */
-#sobre-mi{background:var(--smoke)}
-.about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:72px;align-items:center}
-.about-photo{position:relative}
-.about-photo .frame{
-  aspect-ratio:4/5;background:var(--ink);border-radius:4px;overflow:hidden;position:relative;
-  display:flex;align-items:flex-end;
-}
-.about-photo .frame img{width:100%;height:100%;object-fit:cover}
-.about-photo .ph{color:rgba(255,255,255,.5);font-size:13px;text-align:center;width:100%;padding:40px;line-height:1.7}
-.about-photo .badge{
-  position:absolute;left:-22px;bottom:38px;background:var(--red);color:#fff;
-  padding:22px 26px;border-radius:4px;max-width:230px;box-shadow:0 24px 60px rgba(225,6,0,.3);
-}
-.about-photo .badge b{font-family:'Fraunces',serif;font-size:15px;font-weight:500;display:block;line-height:1.4}
-.about-photo .badge span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.85;display:block;margin-top:6px}
-.about-text h3{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.2;margin-bottom:24px}
-.about-text p{color:#333;margin-bottom:20px;font-weight:300;font-size:17px}
-.about-text p strong{font-weight:600;color:var(--ink)}
-.purpose{
-  border-left:3px solid var(--red);padding:18px 0 18px 26px;margin:34px 0;
-  font-family:'Fraunces',serif;font-style:italic;font-size:21px;line-height:1.5;color:var(--ink);
-}
-.creds{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-.chip{
-  font-size:12.5px;font-weight:500;padding:9px 16px;border:1px solid var(--line);border-radius:50px;
-  background:#fff;color:#333;transition:.3s;
-}
-.chip:hover{border-color:var(--red);color:var(--red)}
-
-/* partners marquee */
-.partners{border-top:1px solid var(--line);margin-top:84px;padding-top:40px}
-.partners small{display:block;text-align:center;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ash);margin-bottom:24px}
-.partners .row{display:flex;justify-content:center;flex-wrap:wrap;gap:46px;align-items:center}
-.partners .row span{font-family:'Fraunces',serif;font-size:21px;color:#999;font-weight:500;transition:.3s}
-.partners .row span:hover{color:var(--ink)}
-
-/* ============ SERVICIOS ============ */
-#servicios{background:var(--ink);color:#fff}
-#servicios .section-head h2{color:#fff}
-#servicios .section-head p{color:rgba(255,255,255,.6)}
-.serv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:6px;overflow:hidden}
-.serv{background:var(--ink);padding:46px 42px;transition:background .4s var(--ease);position:relative}
-.serv:hover{background:#151515}
-.serv-num{font-family:'Fraunces',serif;font-size:14px;color:var(--red);letter-spacing:.1em}
-.serv h3{font-family:'Fraunces',serif;font-weight:400;font-size:30px;margin:14px 0 22px;display:flex;align-items:center;gap:14px}
-.serv ul{list-style:none}
-.serv li{
-  padding:13px 0;border-top:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.74);
-  font-size:15px;font-weight:300;display:flex;gap:12px;align-items:flex-start;
-}
-.serv li::before{content:"";width:6px;height:6px;background:var(--red);border-radius:50%;margin-top:8px;flex-shrink:0}
-.serv:hover h3{color:var(--red)}
-.problem-band{
-  text-align:center;margin-top:70px;padding:54px 20px;border:1px dashed rgba(255,255,255,.22);border-radius:6px;
-}
-.problem-band p{font-family:'Fraunces',serif;font-size:clamp(24px,3vw,38px);font-weight:300;line-height:1.3}
-.problem-band p b{color:var(--red);font-weight:500}
-
-/* ============ RUTA ============ */
-#ruta{background:var(--paper)}
-.ruta-intro{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:70px}
-.ruta-intro .quote{font-family:'Fraunces',serif;font-style:italic;font-size:20px;line-height:1.5;color:#333;border-left:3px solid var(--red);padding-left:24px}
-.dever{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
-.step{
-  position:relative;padding:34px 24px 30px;border:1px solid var(--line);border-radius:6px;
-  transition:all .4s var(--ease);background:#fff;overflow:hidden;
-}
-.step::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
-.step:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(11,11,11,.1);border-color:transparent}
-.step:hover::before{transform:scaleX(1)}
-.step .letter{font-family:'Fraunces',serif;font-size:60px;font-weight:300;color:var(--red);line-height:.9}
-.step h4{font-size:17px;font-weight:600;margin:18px 0 8px;letter-spacing:.02em}
-.step .obj{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ash)}
-.crear-medir{display:flex;justify-content:center;gap:30px;margin:48px 0 0;flex-wrap:wrap}
-.crear-medir span{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash);display:flex;align-items:center;gap:30px}
-.crear-medir span::after{content:"›";color:var(--red);font-size:18px}
-.crear-medir span:last-child::after{display:none}
-
-/* pillars + alquimia */
-.alquimia{margin-top:96px;background:var(--ink);color:#fff;border-radius:8px;padding:64px 56px;position:relative;overflow:hidden}
-.alquimia-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;position:relative;z-index:2}
-.alquimia h3{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(28px,3.4vw,44px);line-height:1.12;margin:18px 0 22px}
-.alquimia h3 em{font-style:italic;color:var(--red)}
-.alquimia p{color:rgba(255,255,255,.72);font-weight:300;margin-bottom:18px}
-.pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.pillar{border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:20px;transition:.35s}
-.pillar:hover{background:var(--red);border-color:var(--red)}
-.pillar b{font-family:'Fraunces',serif;font-size:19px;font-weight:500;display:block}
-.pillar span{font-size:12px;color:rgba(255,255,255,.6);letter-spacing:.06em}
-.pillar:hover span{color:rgba(255,255,255,.9)}
-.programs{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
-.program{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);padding:11px 20px;border-radius:50px;font-size:13.5px;font-weight:500}
-
-/* tools band */
-.tools-band{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:34px}
-.tool{display:flex;gap:18px;align-items:center;background:rgba(255,255,255,.05);padding:18px 22px;border-radius:6px;border:1px solid rgba(255,255,255,.12)}
-.tool .n{font-family:'Fraunces',serif;color:var(--red);font-size:26px}
-.tool b{font-weight:600;font-size:15px;display:block}
-.tool span{font-size:12.5px;color:rgba(255,255,255,.6)}
-
-/* ============ BLOG ============ */
-#blog{background:var(--smoke)}
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.post{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:all .4s var(--ease);cursor:pointer;display:flex;flex-direction:column}
-.post:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(11,11,11,.1)}
-.post .img{aspect-ratio:16/10;background:var(--ink);position:relative;overflow:hidden}
-.post .img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-.post:hover .img img{transform:scale(1.06)}
-.post .img .cat{position:absolute;top:14px;left:14px;background:var(--red);color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:50px}
-.post .body{padding:26px;flex:1;display:flex;flex-direction:column}
-.post .body small{font-size:12px;color:var(--ash);letter-spacing:.04em}
-.post h4{font-family:'Fraunces',serif;font-weight:500;font-size:21px;line-height:1.25;margin:12px 0 12px}
-.post p{font-size:14.5px;color:var(--ash);font-weight:300;margin-bottom:18px;flex:1}
-.post .more{font-size:13px;font-weight:600;color:var(--red);display:flex;align-items:center;gap:8px}
-.post .more .arrow{transition:transform .3s}
-.post:hover .more .arrow{transform:translateX(5px)}
-.blog-note{text-align:center;margin-top:40px;font-size:13px;color:var(--ash)}
-
-/* ============ CONTACTO ============ */
-#contacto{background:var(--ink);color:#fff}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px}
-.contact-left h2{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(32px,4.4vw,56px);line-height:1.08;margin:22px 0 26px}
-.contact-left h2 em{font-style:italic;color:var(--red)}
-.contact-challenge{
-  font-family:'Fraunces',serif;font-style:italic;font-size:19px;line-height:1.5;color:rgba(255,255,255,.8);
-  border-left:3px solid var(--red);padding-left:24px;margin:34px 0;
-}
-.contact-info{display:flex;flex-direction:column;gap:4px;margin-top:36px}
-.cinfo{display:flex;align-items:center;gap:18px;padding:18px 0;border-top:1px solid rgba(255,255,255,.12)}
-.cinfo .ico{width:42px;height:42px;border:1px solid rgba(255,255,255,.22);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--red);flex-shrink:0}
-.cinfo small{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block}
-.cinfo b{font-weight:500;font-size:16px}
-form{display:flex;flex-direction:column;gap:18px}
-.field{display:flex;flex-direction:column;gap:8px}
-.field label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55)}
-.field input,.field textarea,.field select{
-  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);border-radius:6px;
-  padding:15px 18px;color:#fff;font-family:inherit;font-size:15px;transition:.3s;
-}
-.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--red);background:rgba(255,255,255,.08)}
-.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.35)}
-.field textarea{resize:vertical;min-height:110px}
-form .btn-red{justify-content:center;margin-top:8px}
-.form-note{font-size:12px;color:rgba(255,255,255,.4);text-align:center}
-
-/* ============ FOOTER ============ */
-footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
-.foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.1)}
-.foot-logo{height:74px;width:auto;display:block}
-.foot-brand p{font-size:13px;max-width:32ch;margin-top:16px}
-.foot-links{display:flex;gap:60px;flex-wrap:wrap}
-.foot-col b{display:block;color:#fff;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
-.foot-col a{display:block;font-size:14px;padding:6px 0;transition:.3s}
-.foot-col a:hover{color:var(--red);padding-left:6px}
-.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:28px;font-size:12.5px}
-.foot-bottom .socials{display:flex;gap:18px}
-.foot-bottom .socials a:hover{color:#fff}
-
-/* ============ REVEAL ============ */
-.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.reveal.in{opacity:1;transform:none}
-
-/* ============ RESPONSIVE ============ */
-@media(max-width:980px){
-  .about-grid,.contact-grid,.ruta-intro,.alquimia-grid{grid-template-columns:1fr;gap:42px}
-  .serv-grid{grid-template-columns:1fr}
-  .dever{grid-template-columns:repeat(2,1fr)}
-  .blog-grid{grid-template-columns:1fr 1fr}
-  .stats .wrap{grid-template-columns:1fr 1fr}
-  .stat:nth-child(2){border-right:none}
-  .tools-band{grid-template-columns:1fr}
-}
-@media(max-width:900px){
-  .menu,.nav-cta{display:none}
-  .burger{display:flex}
-  .menu.open{display:flex;position:fixed;inset:0;background:var(--ink);flex-direction:column;justify-content:center;align-items:center;gap:30px;z-index:110}
-  .menu.open a{color:#fff;font-size:22px}
-}
-@media(max-width:680px){
-  .wrap{padding:0 22px}
-  .pad{padding:84px 0}
-  .dever,.blog-grid,.stats .wrap,.pillars{grid-template-columns:1fr}
-  .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.18)}
-  .hero-tag{display:none}
-  .alquimia{padding:42px 28px}
-}
-</style>
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
 <header id="header">
   <div class="wrap nav">
-    <a href="#inicio" class="brand">
+    <a href="index.html" class="brand">
       <img src="assets/logo-blanco.png" alt="Ana Isabel Assia — Líder de Transformación" class="logo logo-white">
       <img src="assets/logo-negro.png" alt="Ana Isabel Assia — Líder de Transformación" class="logo logo-color">
     </a>
     <nav class="menu" id="menu">
-      <a href="#inicio">Inicio</a>
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#ruta">Ruta de Innovación</a>
-      <a href="#blog">Blog</a>
-      <a href="#contacto">Contáctame</a>
+      <a href="index.html" class="active">Inicio</a>
+      <a href="sobre-mi.html">Sobre mí</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="ruta-de-innovacion.html">Ruta de Innovación</a>
+      <a href="blog.html">Blog</a>
+      <a href="contacto.html">Contáctame</a>
     </nav>
-    <a href="#contacto" class="nav-cta">Agenda una conversación</a>
+    <a href="contacto.html" class="nav-cta">Agenda una conversación</a>
     <div class="burger" id="burger"><span></span><span></span><span></span></div>
   </div>
 </header>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section class="hero" id="inicio">
-  <div class="hero-bg"><img src="assets/hero.jpg" alt="" id="heroImg"></div>
+  <div class="hero-bg"><img src="assets/hero.jpg" alt="" data-fallback></div>
   <div class="wrap">
     <span class="eyebrow light">IBC Group · Consultora &amp; Mentora</span>
     <h1 class="serif">Te desafío a <em>reconfigurar</em> tu liderazgo y resultados comerciales.</h1>
     <p class="lead">Impulso a líderes de negocios y a sus equipos a crecer de forma rentable, productiva y eficiente — desde una visión sistémica que integra estrategia, procesos, personas, tecnología y resultados.</p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn btn-red">Agenda una conversación <span class="arrow">→</span></a>
-      <a href="#ruta" class="btn btn-ghost">Conoce la Ruta de Innovación</a>
+      <a href="contacto.html" class="btn btn-red">Agenda una conversación <span class="arrow">→</span></a>
+      <a href="ruta-de-innovacion.html" class="btn btn-ghost">Conoce la Ruta de Innovación</a>
     </div>
   </div>
   <div class="hero-tag"><b>«Es un problema del liderazgo comercial.</b><br>Si hay liderazgo, creces.»</div>
 </section>
 
-<!-- ===== STATS ===== -->
+<!-- STATS -->
 <section class="stats">
   <div class="wrap">
     <div class="stat reveal"><b>+30</b><span>Años de experiencia</span></div>
@@ -368,8 +56,8 @@ footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
   </div>
 </section>
 
-<!-- ===== SOBRE MI ===== -->
-<section id="sobre-mi" class="pad">
+<!-- SOBRE MI (teaser) -->
+<section class="pad bg-smoke">
   <div class="wrap">
     <div class="about-grid">
       <div class="about-photo reveal">
@@ -377,46 +65,21 @@ footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
           <img src="assets/ana.jpg" alt="Ana Isabel Assia" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
           <div class="ph" style="display:none">Espacio para tu fotografía profesional<br><small>(reemplaza assets/ana.jpg)</small></div>
         </div>
-        <div class="badge">
-          <b>Eneatipo 8 · La Desafiadora</b>
-          <span>Determinante</span>
-        </div>
+        <div class="badge"><b>Eneatipo 8 · La Desafiadora</b><span>Determinante</span></div>
       </div>
       <div class="about-text">
         <span class="eyebrow">Sobre mí</span>
         <h3>Soy Ana Isabel Assia. Apasionada por la innovación y los negocios.</h3>
-        <p>Desde que decidí emprender en 2008, nada me detiene en el deseo de compartir conocimientos, experiencias y aprendizajes, descubriendo junto a mis clientes y mi equipo. Soy <strong>consultora empresarial, estratega y mentora de liderazgo comercial</strong>.</p>
-        <p>Mi pasión es desafiar y motivar a los líderes de negocios a desarrollar mentalidad emprendedora y elevar sus competencias, para que se conviertan en <strong>líderes catalizadores de transformación</strong> de sus negocios y equipos.</p>
+        <p>Soy <strong>consultora empresarial, estratega y mentora de liderazgo comercial</strong>. Mi pasión es desafiar y motivar a los líderes de negocios a desarrollar mentalidad emprendedora y elevar sus competencias, para que se conviertan en <strong>líderes catalizadores de transformación</strong> de sus negocios y equipos.</p>
         <div class="purpose">«Mi propósito superior es inspirar y movilizar a las personas y organizaciones a desarrollar capacidades que potencien el crecimiento y la evolución de sus negocios y equipos.»</div>
-        <p>CEO y fundadora de <strong>Innovation and Business Consulting (IBC Group)</strong>. Administradora de Empresas, especializada en Marketing Estratégico y certificada en metodologías ágiles. Más de 13 años de carrera comercial corporativa como gerente de marca antes de emprender.</p>
-        <div class="creds">
-          <span class="chip">Design Thinking</span>
-          <span class="chip">Scrum Master</span>
-          <span class="chip">Product Owner</span>
-          <span class="chip">Agile Coach</span>
-          <span class="chip">OKRs</span>
-          <span class="chip">Kanban</span>
-          <span class="chip">Consultora Máster · CCC</span>
-          <span class="chip">Marketing Estratégico</span>
-        </div>
-      </div>
-    </div>
-    <div class="partners reveal">
-      <small>Business Partner de</small>
-      <div class="row">
-        <span>Eficacia</span>
-        <span>360 Pathfinder</span>
-        <span>Linka</span>
-        <span>Odoo</span>
-        <span>Grow.ai</span>
-        <span>Cámara de Comercio de Cali</span>
+        <a href="sobre-mi.html" class="text-link">Conoce mi historia completa <span class="arrow">→</span></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== SERVICIOS ===== -->
-<section id="servicios" class="pad">
+<!-- SERVICIOS (teaser) -->
+<section class="pad bg-ink">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow light">Servicios</span>
@@ -424,65 +87,25 @@ footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
       <p>Consultoría, mentoring, coaching y formación que integran estrategia, talento, liderazgo e innovación en la gestión comercial phygital.</p>
     </div>
     <div class="serv-grid">
-      <div class="serv reveal">
-        <div class="serv-num">01</div>
-        <h3 class="serif">Estrategia</h3>
-        <ul>
-          <li>Auditorías y diagnósticos estratégicos y operativos</li>
-          <li>Direccionamiento estratégico y operativo comercial phygital</li>
-          <li>Diseño y reingeniería del modelo de negocio phygital</li>
-          <li>Diseño y reingeniería del modelo comercial phygital</li>
-        </ul>
-      </div>
-      <div class="serv reveal">
-        <div class="serv-num">02</div>
-        <h3 class="serif">Talento</h3>
-        <ul>
-          <li>Evaluación de perfiles y desempeño de los equipos</li>
-          <li>Productividad y gestión del desempeño comercial</li>
-          <li>Clima y cultura centrada en propósito y bienestar</li>
-          <li>Formación, entrenamiento, mentoring y coaching</li>
-        </ul>
-      </div>
-      <div class="serv reveal">
-        <div class="serv-num">03</div>
-        <h3 class="serif">Liderazgo</h3>
-        <ul>
-          <li>Formación y entrenamiento en liderazgo comercial</li>
-          <li>Desarrollo de competencias y capacidades de liderazgo</li>
-          <li>Programas y eventos para el desarrollo del liderazgo</li>
-          <li>Red de Mentores — Tumentorcomercial.com <em>(próximamente)</em></li>
-        </ul>
-      </div>
-      <div class="serv reveal">
-        <div class="serv-num">04</div>
-        <h3 class="serif">Innovación</h3>
-        <ul>
-          <li>Innovación estratégica y operativa en la gestión comercial</li>
-          <li>Innovación en procesos y ejecución operativa comercial</li>
-          <li>Innovación en el portafolio de productos y servicios</li>
-          <li>Gestión de proyectos de intra-emprendimiento corporativo</li>
-        </ul>
-      </div>
+      <div class="serv reveal"><div class="serv-num">01</div><h3 class="serif">Estrategia</h3><ul><li>Auditorías y diagnósticos estratégicos</li><li>Direccionamiento estratégico y operativo phygital</li><li>Diseño y reingeniería del modelo de negocio</li></ul></div>
+      <div class="serv reveal"><div class="serv-num">02</div><h3 class="serif">Talento</h3><ul><li>Evaluación de perfiles y desempeño</li><li>Productividad y gestión del desempeño comercial</li><li>Formación, mentoring y coaching</li></ul></div>
+      <div class="serv reveal"><div class="serv-num">03</div><h3 class="serif">Liderazgo</h3><ul><li>Formación y entrenamiento en liderazgo comercial</li><li>Desarrollo de competencias y capacidades</li><li>Programas y eventos de liderazgo</li></ul></div>
+      <div class="serv reveal"><div class="serv-num">04</div><h3 class="serif">Innovación</h3><ul><li>Innovación estratégica y operativa</li><li>Innovación en procesos y portafolio</li><li>Intra-emprendimiento corporativo</li></ul></div>
     </div>
-    <div class="problem-band reveal">
-      <p class="serif">«Es un problema del <b>liderazgo comercial</b>.<br>Si hay liderazgo, creces.»</p>
+    <div style="text-align:center;margin-top:48px" class="reveal">
+      <a href="servicios.html" class="btn btn-red">Ver todos los servicios <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
 
-<!-- ===== RUTA DE INNOVACION ===== -->
-<section id="ruta" class="pad">
+<!-- RUTA (teaser) -->
+<section class="pad">
   <div class="wrap">
-    <div class="section-head reveal">
+    <div class="section-head center reveal">
       <span class="eyebrow">Ruta de Innovación · Método D.E.V.E.R.</span>
       <h2 class="serif">De las ideas a la acción y los <em>resultados</em>.</h2>
+      <p>Una ruta en cinco etapas bajo el ciclo Crear · Medir · Aprender para potenciar el crecimiento rentable, productivo y eficiente.</p>
     </div>
-    <div class="ruta-intro reveal">
-      <p style="color:var(--ash);font-size:18px;font-weight:300">Tu <strong style="color:var(--ink)">D.E.V.E.R.</strong> es potenciar el crecimiento rentable, productivo y eficiente. Esta es la ruta a la que te desafío para avanzar bajo el ciclo <strong style="color:var(--ink)">Crear · Medir · Aprender</strong>.</p>
-      <p class="quote">«Asumo este reto únicamente con quienes están dispuestos a invertir tiempo, dinero y energía en sus resultados.»</p>
-    </div>
-
     <div class="dever">
       <div class="step reveal"><div class="letter">D</div><h4>Descubrir</h4><div class="obj">Oportunidades</div></div>
       <div class="step reveal"><div class="letter">E</div><h4>Estructurar</h4><div class="obj">Soluciones</div></div>
@@ -490,141 +113,63 @@ footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
       <div class="step reveal"><div class="letter">E</div><h4>Escalar</h4><div class="obj">Resultados</div></div>
       <div class="step reveal"><div class="letter">R</div><h4>Rentabilizar</h4><div class="obj">Inversión</div></div>
     </div>
-    <div class="crear-medir reveal">
-      <span>Crear</span><span>Medir</span><span>Aprender</span>
-    </div>
-
-    <!-- ALQUIMIA -->
-    <div class="alquimia reveal">
-      <div class="alquimia-grid">
-        <div>
-          <span class="eyebrow light">Programas · Alquimia Comercial</span>
-          <h3 class="serif">El poder de la <em>transformación</em>.</h3>
-          <p>Programas de generación de impacto en la mentalidad, competencias y capacidades de liderazgo comercial, para potenciar el crecimiento rentable, productivo y eficiente con una visión sistémica que integra cinco pilares imperativos.</p>
-          <p>Se desarrollan de manera personalizada y estandarizada a través de consultoría, mentoring, coaching y procesos formativos prácticos en eventos presenciales y plataformas educativas.</p>
-          <div class="programs">
-            <span class="program">Liderazgo Comercial</span>
-            <span class="program">Productividad Comercial</span>
-            <span class="program">Ventas Rentables</span>
-          </div>
-          <div class="tools-band">
-            <div class="tool"><span class="n">①</span><div><b>Perfil Emprendedor</b><span>Test online de mentalidad</span></div></div>
-            <div class="tool"><span class="n">②</span><div><b>Perfil de Competencias</b><span>22 competencias clave</span></div></div>
-          </div>
-        </div>
-        <div class="pillars">
-          <div class="pillar"><b>Estrategia</b><span>El rumbo</span></div>
-          <div class="pillar"><b>Procesos</b><span>La ejecución</span></div>
-          <div class="pillar"><b>Personas</b><span>El talento</span></div>
-          <div class="pillar"><b>Tecnología</b><span>La palanca</span></div>
-          <div class="pillar" style="grid-column:span 2"><b>Resultados</b><span>Crecimiento rentable, productivo y eficiente</span></div>
-        </div>
-      </div>
+    <div style="text-align:center;margin-top:48px" class="reveal">
+      <a href="ruta-de-innovacion.html" class="btn btn-dark">Explora la ruta completa <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
 
-<!-- ===== BLOG ===== -->
-<section id="blog" class="pad">
+<!-- BLOG (previews) -->
+<section class="pad bg-smoke">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Blog · Ideas que movilizan</span>
       <h2 class="serif">Perspectivas sobre liderazgo, innovación y <em>crecimiento</em>.</h2>
     </div>
     <div class="blog-grid">
-      <article class="post reveal">
+      <a class="post reveal" href="blog-lideres-catalizadores.html">
         <div class="img"><img src="assets/blog1.jpg" alt=""><span class="cat">Liderazgo</span></div>
         <div class="body">
-          <small>Lectura · 5 min</small>
+          <small>Lectura · 6 min</small>
           <h4>Líderes catalizadores: cómo reconfigurar tu mentalidad comercial</h4>
           <p>El crecimiento no empieza en las ventas, empieza en el liderazgo. Tres cambios de mentalidad para transformar tus resultados.</p>
           <span class="more">Leer artículo <span class="arrow">→</span></span>
         </div>
-      </article>
-      <article class="post reveal">
+      </a>
+      <a class="post reveal" href="blog-metodo-dever.html">
         <div class="img"><img src="assets/blog2.jpg" alt=""><span class="cat">Innovación</span></div>
         <div class="body">
-          <small>Lectura · 6 min</small>
+          <small>Lectura · 7 min</small>
           <h4>Crear, medir, aprender: el método D.E.V.E.R. en la práctica</h4>
           <p>De las ideas a los resultados. Cómo aplicar las cinco etapas para escalar y rentabilizar tus oportunidades comerciales.</p>
           <span class="more">Leer artículo <span class="arrow">→</span></span>
         </div>
-      </article>
-      <article class="post reveal">
+      </a>
+      <a class="post reveal" href="blog-vision-sistemica.html">
         <div class="img"><img src="assets/blog3.jpg" alt=""><span class="cat">Estrategia</span></div>
         <div class="body">
-          <small>Lectura · 4 min</small>
+          <small>Lectura · 5 min</small>
           <h4>Visión sistémica: integrar estrategia, procesos, personas y tecnología</h4>
           <p>Por qué los negocios que crecen de forma sostenible no optimizan partes aisladas, sino el sistema completo.</p>
           <span class="more">Leer artículo <span class="arrow">→</span></span>
         </div>
-      </article>
+      </a>
     </div>
-    <p class="blog-note">Estos son temas de ejemplo para tu sección de contenidos. Sustitúyelos por tus artículos reales cuando publiques.</p>
-  </div>
-</section>
-
-<!-- ===== CONTACTO ===== -->
-<section id="contacto" class="pad">
-  <div class="wrap">
-    <div class="contact-grid">
-      <div class="contact-left reveal">
-        <span class="eyebrow light">Contáctame</span>
-        <h2 class="serif">Hablemos de tu <em>transformación</em>.</h2>
-        <p style="color:rgba(255,255,255,.72);font-weight:300">Si estás listo para reconfigurar tu liderazgo y tus resultados comerciales, demos el primer paso.</p>
-        <div class="contact-challenge">«Asumo este reto únicamente con quienes están dispuestos a invertir tiempo, dinero y energía en sus resultados.»</div>
-        <div class="contact-info">
-          <a class="cinfo" href="tel:+573116279068">
-            <span class="ico">✆</span>
-            <span><small>Teléfono</small><b>+57 311 627 9068</b></span>
-          </a>
-          <a class="cinfo" href="mailto:gerencia@anaisabelassia.com">
-            <span class="ico">✉</span>
-            <span><small>Email</small><b>gerencia@anaisabelassia.com</b></span>
-          </a>
-          <a class="cinfo" href="https://instagram.com/anaisabelassia" target="_blank" rel="noopener">
-            <span class="ico">◎</span>
-            <span><small>Instagram</small><b>@anaisabelassia</b></span>
-          </a>
-        </div>
-      </div>
-      <div class="reveal">
-        <form onsubmit="return handleSubmit(event)">
-          <div class="field">
-            <label>Nombre completo</label>
-            <input type="text" placeholder="Tu nombre" required>
-          </div>
-          <div class="field">
-            <label>Email corporativo</label>
-            <input type="email" placeholder="nombre@empresa.com" required>
-          </div>
-          <div class="field">
-            <label>Empresa / Cargo</label>
-            <input type="text" placeholder="Empresa y tu rol">
-          </div>
-          <div class="field">
-            <label>¿En qué quieres transformarte?</label>
-            <select>
-              <option>Estrategia y modelo de negocio</option>
-              <option>Liderazgo y talento comercial</option>
-              <option>Productividad y ventas rentables</option>
-              <option>Innovación y transformación digital</option>
-              <option>Programa Alquimia Comercial</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Cuéntame tu reto</label>
-            <textarea placeholder="Describe brevemente tu situación y objetivos..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-red">Enviar mensaje <span class="arrow">→</span></button>
-          <p class="form-note">Te responderé personalmente en menos de 48 horas.</p>
-        </form>
-      </div>
+    <div style="text-align:center;margin-top:48px" class="reveal">
+      <a href="blog.html" class="text-link" style="justify-content:center">Ver todos los artículos <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- CTA BAND -->
+<section class="pad cta-band">
+  <div class="wrap reveal">
+    <h2 class="serif">Hablemos de tu <em>transformación</em>.</h2>
+    <p>Si estás listo para reconfigurar tu liderazgo y tus resultados comerciales, demos el primer paso.</p>
+    <a href="contacto.html" class="btn btn-red">Agenda una conversación <span class="arrow">→</span></a>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="foot-top">
@@ -635,12 +180,12 @@ footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
       <div class="foot-links">
         <div class="foot-col">
           <b>Navegación</b>
-          <a href="#inicio">Inicio</a>
-          <a href="#sobre-mi">Sobre mí</a>
-          <a href="#servicios">Servicios</a>
-          <a href="#ruta">Ruta de Innovación</a>
-          <a href="#blog">Blog</a>
-          <a href="#contacto">Contáctame</a>
+          <a href="index.html">Inicio</a>
+          <a href="sobre-mi.html">Sobre mí</a>
+          <a href="servicios.html">Servicios</a>
+          <a href="ruta-de-innovacion.html">Ruta de Innovación</a>
+          <a href="blog.html">Blog</a>
+          <a href="contacto.html">Contáctame</a>
         </div>
         <div class="foot-col">
           <b>Contacto</b>
@@ -661,23 +206,6 @@ footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
     </div>
   </div>
 </footer>
-
-<script>
-// nav scroll
-const header=document.getElementById('header');
-window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>40));
-// burger
-const burger=document.getElementById('burger'),menu=document.getElementById('menu');
-burger.addEventListener('click',()=>menu.classList.toggle('open'));
-menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
-// reveal on scroll
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-// hero image graceful fallback
-const heroImg=document.getElementById('heroImg');
-heroImg.addEventListener('error',()=>{heroImg.style.display='none'});
-// form
-function handleSubmit(e){e.preventDefault();alert('¡Gracias! Tu mensaje ha sido registrado. (Demo — conecta este formulario a tu email o CRM para recibir los datos.)');e.target.reset();return false;}
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
