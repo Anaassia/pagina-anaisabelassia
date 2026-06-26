@@ -20,7 +20,8 @@
       "Bash(cd \"/c/Users/aassi/Documents/PAGINA ANA ASSIA/assets\" && cp steps.png blog2.jpg && echo \"=== assets finales ===\" && ls -la *.jpg *.png 2>/dev/null)",
       "mcp__Claude_Preview__preview_start",
       "Bash(git --version)",
-      "PowerShell(try { $r = Invoke-WebRequest -Uri 'http://localhost:8090/' -UseBasicParsing -TimeoutSec 6; Write-Host \"ROOT ok: $\\($r.StatusCode\\) len=$\\($r.Content.Length\\)\" } catch { Write-Host \"ROOT err: $\\($_.Exception.Message\\)\" }; try { $i = Invoke-WebRequest -Uri 'http://localhost:8090/assets/logo-negro.png' -UseBasicParsing -TimeoutSec 6; Write-Host \"LOGO ok: $\\($i.StatusCode\\) len=$\\($i.RawContentLength\\)\" } catch { Write-Host \"LOGO err: $\\($_.Exception.Message\\)\" })"
+      "PowerShell(try { $r = Invoke-WebRequest -Uri 'http://localhost:8090/' -UseBasicParsing -TimeoutSec 6; Write-Host \"ROOT ok: $\\($r.StatusCode\\) len=$\\($r.Content.Length\\)\" } catch { Write-Host \"ROOT err: $\\($_.Exception.Message\\)\" }; try { $i = Invoke-WebRequest -Uri 'http://localhost:8090/assets/logo-negro.png' -UseBasicParsing -TimeoutSec 6; Write-Host \"LOGO ok: $\\($i.StatusCode\\) len=$\\($i.RawContentLength\\)\" } catch { Write-Host \"LOGO err: $\\($_.Exception.Message\\)\" })",
+      "mcp__dc98a50d-d6c0-4d45-b100-426055d993ce__balance"
     ]
   }
 }
