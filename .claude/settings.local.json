@@ -21,7 +21,10 @@
       "mcp__Claude_Preview__preview_start",
       "Bash(git --version)",
       "PowerShell(try { $r = Invoke-WebRequest -Uri 'http://localhost:8090/' -UseBasicParsing -TimeoutSec 6; Write-Host \"ROOT ok: $\\($r.StatusCode\\) len=$\\($r.Content.Length\\)\" } catch { Write-Host \"ROOT err: $\\($_.Exception.Message\\)\" }; try { $i = Invoke-WebRequest -Uri 'http://localhost:8090/assets/logo-negro.png' -UseBasicParsing -TimeoutSec 6; Write-Host \"LOGO ok: $\\($i.StatusCode\\) len=$\\($i.RawContentLength\\)\" } catch { Write-Host \"LOGO err: $\\($_.Exception.Message\\)\" })",
-      "mcp__dc98a50d-d6c0-4d45-b100-426055d993ce__balance"
+      "mcp__dc98a50d-d6c0-4d45-b100-426055d993ce__balance",
+      "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__creation_status",
+      "Bash(curl -s -o bg-sobre-mi.jpg \"https://pikaso.cdnpk.net/private/production/4718030291/render.jpg?token=exp=1782777600~hmac=bbffa6eb8049d41a924d9c66a838c49f60aa24e24fed0eb14617561c6c4bd2d7\")",
+      "Bash(awk '{print $5, $9}')"
     ]
   }
 }
