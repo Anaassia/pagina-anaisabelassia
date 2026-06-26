@@ -56,11 +56,12 @@ header.scrolled{
 }
 .nav{display:flex;align-items:center;justify-content:space-between;height:84px;transition:height .4s var(--ease)}
 header.scrolled .nav{height:68px}
-.brand{display:flex;flex-direction:column;line-height:1;color:#fff;transition:color .4s var(--ease)}
-header.scrolled .brand{color:var(--ink)}
-.brand b{font-weight:600;font-size:18px;letter-spacing:.02em}
-.brand span{font-size:10px;letter-spacing:.32em;text-transform:uppercase;margin-top:5px;opacity:.7}
-.brand b i{color:var(--red);font-style:normal}
+.brand{display:flex;align-items:center}
+.brand .logo{height:56px;width:auto;display:block;transition:height .4s var(--ease)}
+header.scrolled .brand .logo{height:46px}
+.brand .logo-color{display:none}
+header.scrolled .brand .logo-white{display:none}
+header.scrolled .brand .logo-color{display:block}
 .menu{display:flex;gap:38px;align-items:center}
 .menu a{
   font-size:13.5px;font-weight:500;letter-spacing:.02em;color:rgba(255,255,255,.85);
@@ -280,9 +281,8 @@ form .btn-red{justify-content:center;margin-top:8px}
 /* ============ FOOTER ============ */
 footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
 .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.1)}
-.foot-brand b{font-family:'Fraunces',serif;color:#fff;font-size:24px;font-weight:500}
-.foot-brand b i{color:var(--red);font-style:normal}
-.foot-brand p{font-size:13px;max-width:30ch;margin-top:12px}
+.foot-logo{height:74px;width:auto;display:block}
+.foot-brand p{font-size:13px;max-width:32ch;margin-top:16px}
 .foot-links{display:flex;gap:60px;flex-wrap:wrap}
 .foot-col b{display:block;color:#fff;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
 .foot-col a{display:block;font-size:14px;padding:6px 0;transition:.3s}
@@ -327,8 +327,8 @@ footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
 <header id="header">
   <div class="wrap nav">
     <a href="#inicio" class="brand">
-      <b>Ana Isabel <i>Assia</i></b>
-      <span>Líder de Transformación</span>
+      <img src="assets/logo-blanco.png" alt="Ana Isabel Assia — Líder de Transformación" class="logo logo-white">
+      <img src="assets/logo-negro.png" alt="Ana Isabel Assia — Líder de Transformación" class="logo logo-color">
     </a>
     <nav class="menu" id="menu">
       <a href="#inicio">Inicio</a>
@@ -629,8 +629,8 @@ footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <b>Ana Isabel <i>Assia</i></b>
-        <p>Líder de Transformación · CEO &amp; Fundadora de IBC Group. Consultora, estratega y mentora de liderazgo comercial.</p>
+        <img src="assets/logo-blanco.png" alt="Ana Isabel Assia — Líder de Transformación" class="foot-logo">
+        <p>CEO &amp; Fundadora de IBC Group. Consultora, estratega y mentora de liderazgo comercial.</p>
       </div>
       <div class="foot-links">
         <div class="foot-col">

@@ -19,7 +19,8 @@
       "Bash(curl -s -o blog1.jpg \"https://d8j0ntlcm91z4.cloudfront.net/user_3FgiVVA0UAitZUSLTqlmN8VZ2tF/hf_20260626_202340_1b205c6e-bd22-49fe-9acb-74a838390d05.png\")",
       "Bash(cd \"/c/Users/aassi/Documents/PAGINA ANA ASSIA/assets\" && cp steps.png blog2.jpg && echo \"=== assets finales ===\" && ls -la *.jpg *.png 2>/dev/null)",
       "mcp__Claude_Preview__preview_start",
-      "Bash(git --version)"
+      "Bash(git --version)",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri 'http://localhost:8090/' -UseBasicParsing -TimeoutSec 6; Write-Host \"ROOT ok: $\\($r.StatusCode\\) len=$\\($r.Content.Length\\)\" } catch { Write-Host \"ROOT err: $\\($_.Exception.Message\\)\" }; try { $i = Invoke-WebRequest -Uri 'http://localhost:8090/assets/logo-negro.png' -UseBasicParsing -TimeoutSec 6; Write-Host \"LOGO ok: $\\($i.StatusCode\\) len=$\\($i.RawContentLength\\)\" } catch { Write-Host \"LOGO err: $\\($_.Exception.Message\\)\" })"
     ]
   }
 }
