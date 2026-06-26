@@ -24,7 +24,8 @@
       "mcp__dc98a50d-d6c0-4d45-b100-426055d993ce__balance",
       "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__creation_status",
       "Bash(curl -s -o bg-sobre-mi.jpg \"https://pikaso.cdnpk.net/private/production/4718030291/render.jpg?token=exp=1782777600~hmac=bbffa6eb8049d41a924d9c66a838c49f60aa24e24fed0eb14617561c6c4bd2d7\")",
-      "Bash(awk '{print $5, $9}')"
+      "Bash(awk '{print $5, $9}')",
+      "Bash(cd \"/c/Users/aassi/Documents/PAGINA ANA ASSIA\" && rm -f contacto.html && echo \"contacto.html eliminado\" && ls *.html)"
     ]
   }
 }
