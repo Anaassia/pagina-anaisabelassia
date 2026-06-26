@@ -1,0 +1,5 @@
+# Respaldos comprimidos (se generan aparte)
+*.zip
+
+# Configuración local de previsualización (rutas de esta máquina)
+.claude/launch.json

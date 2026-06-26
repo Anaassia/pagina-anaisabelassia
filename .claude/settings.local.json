@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:anaisabelassia.com)",
+      "Read(//c/Program Files/**)",
+      "Bash(python -c \"import fitz; print\\('pymupdf ok'\\)\")",
+      "Bash(py --version)",
+      "Bash(pdftotext -layout \"PERFIL ANA ISABEL ASSIA - LÍDER DE TRANSFORMACIÓN.pdf\" \"/c/Users/aassi/AppData/Local/Temp/claude/C--Users-aassi-Documents-PAGINA-ANA-ASSIA/f16815ef-009e-4cae-838c-39b6f78d05fc/scratchpad/perfil.txt\")",
+      "Read(//c/Users/aassi/AppData/Local/Temp/claude/C--Users-aassi-Documents-PAGINA-ANA-ASSIA/f16815ef-009e-4cae-838c-39b6f78d05fc/scratchpad/**)",
+      "WebSearch",
+      "mcp__dc98a50d-d6c0-4d45-b100-426055d993ce__generate_image",
+      "Bash(mkdir -p assets)",
+      "Read(//c/c/Users/aassi/Documents/**)",
+      "mcp__dc98a50d-d6c0-4d45-b100-426055d993ce__show_generations",
+      "Bash(curl -s -o hero.jpg \"https://d8j0ntlcm91z4.cloudfront.net/user_3FgiVVA0UAitZUSLTqlmN8VZ2tF/hf_20260626_201815_afe840ae-a6ff-430f-8ffa-39d4239bedd0.png\")",
+      "mcp__dc98a50d-d6c0-4d45-b100-426055d993ce__job_display",
+      "Bash(curl -s -o steps.png \"https://d8j0ntlcm91z4.cloudfront.net/user_3FgiVVA0UAitZUSLTqlmN8VZ2tF/hf_20260626_201816_2dc80eaf-fc0c-45f4-8147-784b43ff96df.png\")",
+      "Bash(curl -s -o blog3.jpg \"https://d8j0ntlcm91z4.cloudfront.net/user_3FgiVVA0UAitZUSLTqlmN8VZ2tF/hf_20260626_201818_596762ab-8bd8-4742-98bb-2bfcb54a1305.png\")",
+      "Bash(curl -s -o blog1.jpg \"https://d8j0ntlcm91z4.cloudfront.net/user_3FgiVVA0UAitZUSLTqlmN8VZ2tF/hf_20260626_202340_1b205c6e-bd22-49fe-9acb-74a838390d05.png\")",
+      "Bash(cd \"/c/Users/aassi/Documents/PAGINA ANA ASSIA/assets\" && cp steps.png blog2.jpg && echo \"=== assets finales ===\" && ls -la *.jpg *.png 2>/dev/null)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(git --version)"
+    ]
+  }
+}
