@@ -44,7 +44,11 @@
       "Bash(curl -s -o ruta-w-b.jpg \"https://pikaso.cdnpk.net/private/production/4718768648/render.jpg?token=exp=1782777600~hmac=6b0c57298c0b4fe98e0f4be4c64a4d444f72d7b0e47d7710c2978640b76e9c77\")",
       "Bash(curl -s -X PUT -H \"Content-Type: image/png\" --data-binary @ruta1.png \"https://ak-data.magnific.com/app/api/mcp/uploads/proxy/d016b0d5-9aac-47cc-8cdf-de43592046f2.png?path=temp-files%2Fd016b0d5-9aac-47cc-8cdf-de43592046f2.png&mime=image%2Fpng&user_id=143271921&expires=1782529776&v=1&sig=KpDwAj9fnnLv5iBHJOmOX3LfytPQTJG-oYBk3lFuNMg\" -w \"HTTP:%{http_code}\\\\n\" -o /dev/null)",
       "Bash(curl -s -o ruta-d-a.jpg \"https://pikaso.cdnpk.net/private/production/4718790316/render.jpg?token=exp=1782777600~hmac=f222352a36f9aecd13eb8344e5e5a128197e58087b9d8a89112ab26ac82c134c\")",
-      "Bash(curl -s -o ruta-d-b.jpg \"https://pikaso.cdnpk.net/private/production/4718790286/render.jpg?token=exp=1782777600~hmac=f80950b12cde65142a3497857540ce7b0dd9539e172c427ec69d7a7496dcb652\")"
+      "Bash(curl -s -o ruta-d-b.jpg \"https://pikaso.cdnpk.net/private/production/4718790286/render.jpg?token=exp=1782777600~hmac=f80950b12cde65142a3497857540ce7b0dd9539e172c427ec69d7a7496dcb652\")",
+      "Bash(curl -s -o ruta-ia-a.jpg \"https://pikaso.cdnpk.net/private/production/4718882413/render.jpg?token=exp=1782777600~hmac=210afaf2143eafd56728e2be0aa2a82f4cec0e7df4d7b5e54d5cde9a6c5ba619\")",
+      "Bash(curl -s -o ruta-ia-b.jpg \"https://pikaso.cdnpk.net/private/production/4718882672/render.jpg?token=exp=1782777600~hmac=cd2d12ba38c9c0854fe64242f44d38518ebf0fd9c16ad407a376a83bf00a8cac\")",
+      "Bash(curl -s -o ruta-l-a.jpg \"https://pikaso.cdnpk.net/private/production/4718892411/render.jpg?token=exp=1782777600~hmac=3af659ea9322bce276ca742878ca1a277b9f9993a9fe63a96bc9a96884cc5404\")",
+      "Bash(curl -s -o ruta-l-b.jpg \"https://pikaso.cdnpk.net/private/production/4718892480/render.jpg?token=exp=1782777600~hmac=8afcca9ad3ed01584d297c4389be847664f7d185bc674d9037f0e47d16400d2d\")"
     ]
   }
 }
