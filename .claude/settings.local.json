@@ -50,7 +50,11 @@
       "Bash(curl -s -o ruta-l-a.jpg \"https://pikaso.cdnpk.net/private/production/4718892411/render.jpg?token=exp=1782777600~hmac=3af659ea9322bce276ca742878ca1a277b9f9993a9fe63a96bc9a96884cc5404\")",
       "Bash(curl -s -o ruta-l-b.jpg \"https://pikaso.cdnpk.net/private/production/4718892480/render.jpg?token=exp=1782777600~hmac=8afcca9ad3ed01584d297c4389be847664f7d185bc674d9037f0e47d16400d2d\")",
       "Bash(curl -s -o ruta-p-a.jpg \"https://pikaso.cdnpk.net/private/production/4718911257/render.jpg?token=exp=1782777600~hmac=198c6306d5c4e09ddc1975c52486ae7fa7b88cd22096b0975d023f58209a8001\")",
-      "Bash(curl -s -o ruta-p-b.jpg \"https://pikaso.cdnpk.net/private/production/4718911679/render.jpg?token=exp=1782777600~hmac=e069795177e0ccf6a4f8bad5e3ed033e87e0cfbd469c7e741dcadd54332038d4\")"
+      "Bash(curl -s -o ruta-p-b.jpg \"https://pikaso.cdnpk.net/private/production/4718911679/render.jpg?token=exp=1782777600~hmac=e069795177e0ccf6a4f8bad5e3ed033e87e0cfbd469c7e741dcadd54332038d4\")",
+      "Bash(curl -s -o ic-estrategia.jpg \"https://pikaso.cdnpk.net/private/production/4722312061/render.jpg?token=exp=1782777600~hmac=543260460f731e09e71de9be34d0f4733e5b8c4490d2b1903db89b53e89c9f9e\")",
+      "Bash(curl -s -o ic-talento.jpg \"https://pikaso.cdnpk.net/private/production/4722312540/render.jpg?token=exp=1782777600~hmac=f916b844530c08f603f3debffdc3af9fe264e7685d512d4eae85a1ed77a27d19\")",
+      "Bash(curl -s -o ic-liderazgo.jpg \"https://pikaso.cdnpk.net/private/production/4722313350/render.jpg?token=exp=1782777600~hmac=6322e12d44f1ad3700674236fc92eb086b8db9a5467ffaebaba0571279fb4d46\")",
+      "Bash(curl -s -o ic-innovacion.jpg \"https://pikaso.cdnpk.net/private/production/4722313876/render.jpg?token=exp=1782777600~hmac=6a7357807878622dd701273e73e47d6a429080f0081bdfb698f7cda9680eb604\")"
     ]
   }
 }
