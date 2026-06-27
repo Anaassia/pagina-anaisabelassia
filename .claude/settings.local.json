@@ -33,7 +33,12 @@
       "Bash(curl -s -o conf-b.jpg \"https://pikaso.cdnpk.net/private/production/4718691207/render.jpg?token=exp=1782777600~hmac=e4b6f3e107d8fb6afa76e652a6ed2e4219ab17e786a43428febc2674b0e94314\")",
       "Bash(curl -s -o cli-a.jpg \"https://pikaso.cdnpk.net/private/production/4718691937/render.jpg?token=exp=1782777600~hmac=87939dbe1611af6c52a9ec60e3aeb71d83a884c68f9709216eb2634257b6b107\")",
       "Bash(curl -s -o cli-b.jpg \"https://pikaso.cdnpk.net/private/production/4718691360/render.jpg?token=exp=1782777600~hmac=0aafadfa3215a01c67d166f066ed6b6c5fa7b5baadaf62cd4e0bc34ff904108b\")",
-      "Bash(awk '{print $5}')"
+      "Bash(awk '{print $5}')",
+      "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__creations_request_upload",
+      "Bash(curl -s -X PUT -H \"Content-Type: image/png\" --data-binary @ana11.png \"https://ak-data.magnific.com/app/api/mcp/uploads/proxy/dd2b0d94-1519-44d5-8d6d-46bb1dd198c4.png?path=temp-files%2Fdd2b0d94-1519-44d5-8d6d-46bb1dd198c4.png&mime=image%2Fpng&user_id=143271921&expires=1782528743&v=1&sig=rKPQMbcLTJtiyrcDp0RH3zeG5qs98GNYvbpl56i_P4w\" -w \"HTTP:%{http_code}\\\\n\" -o /dev/null)",
+      "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__creations_finalize_upload",
+      "Bash(curl -s -o serv-w-a.jpg \"https://pikaso.cdnpk.net/private/production/4718754079/render.jpg?token=exp=1782777600~hmac=92be2883d43e418066fba5e2a3edd3843ae3a4d915967c7d93ff375e8fee15e1\")",
+      "Bash(curl -s -o serv-w-b.jpg \"https://pikaso.cdnpk.net/private/production/4718754183/render.jpg?token=exp=1782777600~hmac=b4e476dbb640e37e9ee7ca796a7b967ad505f077b490ee8f4e876ab8757e0f4e\")"
     ]
   }
 }
