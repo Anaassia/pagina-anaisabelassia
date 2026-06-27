@@ -214,20 +214,21 @@ section{position:relative}
 .tl-item p{color:var(--ash);font-weight:300;font-size:15.5px}
 
 /* ============ SERVICIOS ============ */
-.serv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:6px;overflow:hidden}
-.serv{background:var(--ink);padding:46px 42px;transition:background .4s var(--ease);position:relative}
-.serv:hover{background:#151515}
+.serv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.serv{background:#fff;padding:46px 42px;transition:background .4s var(--ease);position:relative}
+.serv:hover{background:#fafafa}
+.serv .serv-ic{margin-bottom:18px}
 .serv-num{font-family:'Jost',sans-serif;font-size:14px;color:var(--red);letter-spacing:.1em}
-.serv h3{font-family:'Jost',sans-serif;font-weight:400;font-size:30px;margin:14px 0 22px;display:flex;align-items:center;gap:14px}
+.serv h3{font-family:'Jost',sans-serif;font-weight:400;font-size:30px;margin:14px 0 22px;display:flex;align-items:center;gap:14px;color:var(--ink)}
 .serv ul{list-style:none}
 .serv li{
-  padding:13px 0;border-top:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.74);
+  padding:13px 0;border-top:1px solid var(--line);color:var(--ash);
   font-size:15px;font-weight:300;display:flex;gap:12px;align-items:flex-start;
 }
 .serv li::before{content:"";width:6px;height:6px;background:var(--red);border-radius:50%;margin-top:8px;flex-shrink:0}
 .serv:hover h3{color:var(--red)}
 .problem-band{
-  text-align:center;margin-top:70px;padding:54px 20px;border:1px dashed rgba(255,255,255,.22);border-radius:6px;
+  text-align:center;margin-top:70px;padding:54px 20px;border:1px dashed var(--line);border-radius:6px;
 }
 .problem-band p{font-family:'Jost',sans-serif;font-size:clamp(24px,3vw,38px);font-weight:300;line-height:1.3}
 .problem-band p b{color:var(--red);font-weight:500}
