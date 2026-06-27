@@ -262,6 +262,8 @@ section{position:relative}
 /* ============ RUTA ============ */
 .ruta-intro{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:70px}
 .ruta-intro .quote{font-family:'Jost',sans-serif;font-style:italic;font-size:20px;line-height:1.5;color:#333;border-left:3px solid var(--red);padding-left:24px}
+.ruta-visual{text-align:center;margin:40px auto 48px;max-width:680px}
+.ruta-visual img{width:100%;height:auto;display:block}
 .dever{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
 .step{
   position:relative;padding:34px 24px 30px;border:1px solid var(--line);border-radius:6px;
