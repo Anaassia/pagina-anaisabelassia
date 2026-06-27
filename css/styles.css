@@ -133,6 +133,16 @@ header.scrolled .burger span{background:var(--ink)}
 .page-hero p{color:rgba(255,255,255,.78);font-weight:300;font-size:19px;max-width:60ch;margin-top:24px}
 .page-hero.tall{min-height:100vh;display:flex;align-items:center;padding:0}
 .page-hero.tall .wrap{width:100%;padding-top:120px;padding-bottom:80px}
+.hero-tags-label{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5);margin:34px 0 14px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:10px;max-width:600px}
+.hero-tags span{
+  font-size:13px;font-weight:500;letter-spacing:.01em;
+  padding:9px 16px 9px 14px;border:1px solid rgba(255,255,255,.22);border-radius:50px;
+  color:rgba(255,255,255,.92);background:rgba(255,255,255,.05);
+  display:inline-flex;align-items:center;gap:8px;transition:.3s;
+}
+.hero-tags span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--red);flex-shrink:0}
+.hero-tags span:hover{background:rgba(225,6,0,.18);border-color:var(--red);transform:translateY(-2px)}
 
 /* ============ STATS BAR ============ */
 .stats{background:var(--red);color:#fff}
@@ -457,6 +467,14 @@ footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
   .wrap{padding:0 22px}
   .pad{padding:84px 0}
   .page-hero{padding:140px 0 64px}
+  /* Estrategia móvil para el hero alto: imagen arriba, contenido abajo */
+  .page-hero.tall{display:block}
+  .page-hero.tall .wrap{padding-top:38vh;padding-bottom:44px}
+  .page-hero.tall .page-hero-bg::after{background:linear-gradient(180deg,rgba(11,11,11,.1) 0%,rgba(11,11,11,.4) 28%,rgba(11,11,11,.9) 48%,rgba(11,11,11,.97) 100%)}
+  .page-hero.tall .breadcrumb{display:none}
+  .hero-tags-label{margin-top:22px;margin-bottom:12px}
+  .hero-tags{gap:8px}
+  .hero-tags span{font-size:12px;padding:7px 13px 7px 12px}
   .dever,.blog-grid,.stats .wrap,.pillars,.approach{grid-template-columns:1fr}
   .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.18)}
   .hero-tag{display:none}
