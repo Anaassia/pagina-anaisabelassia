@@ -45,15 +45,14 @@ header{
   border-bottom:1px solid transparent;
 }
 header.scrolled{
-  background:rgba(255,255,255,.86);
-  backdrop-filter:saturate(180%) blur(18px);
+  background:#fff;
   border-bottom:1px solid var(--line);
 }
-.nav{display:flex;align-items:center;justify-content:space-between;height:84px;transition:height .4s var(--ease)}
-header.scrolled .nav{height:68px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:100px;transition:height .4s var(--ease)}
+header.scrolled .nav{height:84px}
 .brand{display:flex;align-items:center}
-.brand .logo{height:56px;width:auto;display:block;transition:height .4s var(--ease)}
-header.scrolled .brand .logo{height:46px}
+.brand .logo{height:70px;width:auto;display:block;transition:height .4s var(--ease)}
+header.scrolled .brand .logo{height:60px}
 .brand .logo-color{display:none}
 header.scrolled .brand .logo-white{display:none}
 header.scrolled .brand .logo-color{display:block}
