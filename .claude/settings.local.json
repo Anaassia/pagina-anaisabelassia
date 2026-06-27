@@ -25,7 +25,15 @@
       "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__creation_status",
       "Bash(curl -s -o bg-sobre-mi.jpg \"https://pikaso.cdnpk.net/private/production/4718030291/render.jpg?token=exp=1782777600~hmac=bbffa6eb8049d41a924d9c66a838c49f60aa24e24fed0eb14617561c6c4bd2d7\")",
       "Bash(awk '{print $5, $9}')",
-      "Bash(cd \"/c/Users/aassi/Documents/PAGINA ANA ASSIA\" && rm -f contacto.html && echo \"contacto.html eliminado\" && ls *.html)"
+      "Bash(cd \"/c/Users/aassi/Documents/PAGINA ANA ASSIA\" && rm -f contacto.html && echo \"contacto.html eliminado\" && ls *.html)",
+      "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__creations_search",
+      "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__images_generate",
+      "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__creations_wait",
+      "Bash(curl -s -o conf-a.jpg \"https://pikaso.cdnpk.net/private/production/4718691239/render.jpg?token=exp=1782777600~hmac=cd3d513f721d7ccf47fd6980265421a8c5cfcebe965cdd83595875037adbaa8a\")",
+      "Bash(curl -s -o conf-b.jpg \"https://pikaso.cdnpk.net/private/production/4718691207/render.jpg?token=exp=1782777600~hmac=e4b6f3e107d8fb6afa76e652a6ed2e4219ab17e786a43428febc2674b0e94314\")",
+      "Bash(curl -s -o cli-a.jpg \"https://pikaso.cdnpk.net/private/production/4718691937/render.jpg?token=exp=1782777600~hmac=87939dbe1611af6c52a9ec60e3aeb71d83a884c68f9709216eb2634257b6b107\")",
+      "Bash(curl -s -o cli-b.jpg \"https://pikaso.cdnpk.net/private/production/4718691360/render.jpg?token=exp=1782777600~hmac=0aafadfa3215a01c67d166f066ed6b6c5fa7b5baadaf62cd4e0bc34ff904108b\")",
+      "Bash(awk '{print $5}')"
     ]
   }
 }
