@@ -236,14 +236,15 @@ section{position:relative}
 .problem-band p b{color:var(--red);font-weight:500}
 
 /* CTA Band */
-.cta-band{background:var(--ink);padding:48px 0}
+.cta-band{background:var(--red);padding:48px 0}
 .cta-band .wrap{display:flex;align-items:center;gap:48px}
-.cta-band-text{color:rgba(255,255,255,.85);font-size:16px;font-weight:300;line-height:1.7;flex:1}
-.cta-band-text b{color:#fff;font-weight:500}
+.cta-band-text{color:rgba(255,255,255,.9);font-size:16px;font-weight:300;line-height:1.7;flex:1}
+.cta-band-text b{color:#fff;font-weight:600}
 .cta-band-btns{display:flex;gap:14px;flex-shrink:0}
-.btn-agenda{display:inline-flex;align-items:center;gap:10px}
-.btn-wa-dark{display:inline-flex;align-items:center;gap:10px;background:#0B0B0B;color:#fff;border:1px solid rgba(255,255,255,.2);padding:14px 28px;border-radius:6px;font-family:'Jost',sans-serif;font-size:15px;font-weight:500;letter-spacing:.02em;transition:all .3s var(--ease);text-decoration:none}
-.btn-wa-dark:hover{background:#25D366;border-color:#25D366;color:#fff}
+.btn-agenda{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--red);border:2px solid #fff;padding:14px 28px;border-radius:6px;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;letter-spacing:.02em;transition:all .3s var(--ease);text-decoration:none}
+.btn-agenda:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-wa-dark{display:inline-flex;align-items:center;gap:10px;background:transparent;color:#fff;border:2px solid #fff;padding:14px 28px;border-radius:6px;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;letter-spacing:.02em;transition:all .3s var(--ease);text-decoration:none}
+.btn-wa-dark:hover{background:#fff;color:var(--red);border-color:#fff}
 @media(max-width:768px){
   .cta-band .wrap{flex-direction:column;text-align:center}
   .cta-band-btns{flex-direction:column;width:100%}
