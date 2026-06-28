@@ -72,7 +72,9 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" -X PUT -H \"Content-Type: image/png\" --data-binary \"@C:/Users/aassi/Documents/PAGINA ANA ASSIA/assets/logoalquimianegro.png\" \"https://ak-data.magnific.com/app/api/mcp/uploads/proxy/cb29759e-7855-4c13-a478-1628f8e0159e.png?path=temp-files%2Fcb29759e-7855-4c13-a478-1628f8e0159e.png&mime=image%2Fpng&user_id=143271921&expires=1782687474&v=1&sig=XzmkzG1JRqDBe4j8D5vZnntIXXrMZwrLnsd6ODuy42Q\")",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" -X PUT -H \"Content-Type: image/png\" --data-binary \"@C:/Users/aassi/Documents/PAGINA ANA ASSIA/assets/logoalquimia.png\" \"https://ak-data.magnific.com/app/api/mcp/uploads/proxy/929ee871-0d92-42ee-b1e2-d264da9be0ed.png?path=temp-files%2F929ee871-0d92-42ee-b1e2-d264da9be0ed.png&mime=image%2Fpng&user_id=143271921&expires=1782687474&v=1&sig=gjBiQ-3SOfSBAbL05xf0BRsKM6gAe7xYSjxc_j5JnnY\")",
       "Bash(curl -s -o \"C:/Users/aassi/Documents/PAGINA ANA ASSIA/assets/ana-alquimia.png\" -L \"https://pikaso.cdnpk.net/private/production/4727817830/render.jpg?token=exp=1783036800~hmac=16d34db4bfc9fcdec0211c2c20d1d8f3c108b4062ca0f2bba7f7b630b5b88441\")",
-      "Bash(curl -s -o \"C:/Users/aassi/Documents/PAGINA ANA ASSIA/assets/ana-alquimia.png\" -L \"https://pikaso.cdnpk.net/private/production/4727883927/render.jpg?token=exp=1783036800~hmac=80c7242110cd08ba77385a7233bfd1d16530935e7016f1c0bd310170791ed62f\")"
+      "Bash(curl -s -o \"C:/Users/aassi/Documents/PAGINA ANA ASSIA/assets/ana-alquimia.png\" -L \"https://pikaso.cdnpk.net/private/production/4727883927/render.jpg?token=exp=1783036800~hmac=80c7242110cd08ba77385a7233bfd1d16530935e7016f1c0bd310170791ed62f\")",
+      "Bash(python -c \"from PIL import Image; print\\('PIL OK'\\)\")",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; Write-Output \"System.Drawing OK\")"
     ]
   }
 }
