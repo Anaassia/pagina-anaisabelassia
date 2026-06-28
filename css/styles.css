@@ -156,8 +156,8 @@ header.scrolled .burger span{background:var(--ink)}
 
 /* ============ SECTION SCAFFOLD ============ */
 section{position:relative}
-.pad{padding:120px 0}
-.pad-sm{padding:88px 0}
+.pad{padding:72px 0}
+.pad-sm{padding:56px 0}
 .section-head{max-width:760px;margin-bottom:64px}
 .section-head.center{margin-left:auto;margin-right:auto;text-align:center}
 .section-head.center .eyebrow{justify-content:center}
@@ -508,7 +508,7 @@ footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
 }
 @media(max-width:680px){
   .wrap{padding:0 22px}
-  .pad{padding:84px 0}
+  .pad{padding:56px 0}
   .page-hero{padding:140px 0 64px}
   /* Estrategia móvil para el hero alto: imagen arriba, contenido abajo */
   .page-hero.tall{display:block}
