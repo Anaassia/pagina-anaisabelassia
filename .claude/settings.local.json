@@ -62,7 +62,8 @@
       "Bash(git commit -m ' *)",
       "Bash(curl -X PUT -H \"Content-Type: image/png\" --data-binary \"@C:/Users/aassi/Documents/PAGINA ANA ASSIA/assets/ana10.png\" \"https://ak-data.magnific.com/app/api/mcp/uploads/proxy/af4045e8-db1a-4fff-820c-d8169e51d175.png?path=temp-files%2Faf4045e8-db1a-4fff-820c-d8169e51d175.png&mime=image%2Fpng&user_id=143271921&expires=1782618130&v=1&sig=aNGDclv1qtqysHZkIgcfI4u3rzV95M-gaUubQaBiOCo\")",
       "Bash(curl -L -o \"C:/Users/aassi/Documents/PAGINA ANA ASSIA/assets/ana10-avatar.jpg\" \"https://pikaso.cdnpk.net/private/production/4723677794/enhanced-optimized.jpg?token=exp=1783036800~hmac=ff5c6951dc0bc434c1ec76e47e10c86f4d167f51fa83b96fcba4f1c7a4db4052\")",
-      "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__creations_show"
+      "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__creations_show",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\"C:\\\\Users\\\\aassi\\\\Documents\\\\PAGINA ANA ASSIA\\\\assets\\\\ana2.png\"\\); \"$\\($img.Width\\) x $\\($img.Height\\)\"; $img.Dispose\\(\\))"
     ]
   }
 }
