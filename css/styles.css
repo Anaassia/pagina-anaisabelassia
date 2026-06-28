@@ -176,7 +176,7 @@ section{position:relative}
 .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:72px;align-items:center}
 .about-photo{position:relative}
 .about-photo .frame{
-  aspect-ratio:4/5;border-radius:4px;overflow:hidden;position:relative;
+  aspect-ratio:3/4;border-radius:4px;overflow:hidden;position:relative;
   display:flex;align-items:flex-end;
   background:radial-gradient(95% 75% at 50% 16%, #1d1d1d 0%, #101010 55%, #0a0a0a 100%);
 }
