@@ -164,7 +164,8 @@ function handleSubmit(e) {
         '<a class="follow-ic" href="https://www.linkedin.com/in/anaisabelassia/" target="_blank" rel="noopener" aria-label="Sígueme en LinkedIn"><span class="ic">' + LI + '</span><span class="lbl">LinkedIn</span></a>' +
       '</div>' +
     '</div>';
-  var ctaBand = document.querySelector('.cta-band');
+  var allCtaBands = document.querySelectorAll('.cta-band');
+  var ctaBand = allCtaBands.length ? allCtaBands[allCtaBands.length - 1] : null;
   var insertBefore = ctaBand || footer;
   insertBefore.parentNode.insertBefore(sec, insertBefore);
 })();
