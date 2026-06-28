@@ -237,6 +237,7 @@ section{position:relative}
 }
 .problem-band p{font-family:'Jost',sans-serif;font-size:clamp(24px,3vw,38px);font-weight:300;line-height:1.3}
 .problem-band p b{color:var(--red);font-weight:500}
+.problem-band .hero-tag-sign{color:#fff}
 
 /* CTA Band */
 .cta-band{background:var(--red);padding:52px 0}
