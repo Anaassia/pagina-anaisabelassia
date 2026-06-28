@@ -54,7 +54,12 @@
       "Bash(curl -s -o ic-estrategia.jpg \"https://pikaso.cdnpk.net/private/production/4722312061/render.jpg?token=exp=1782777600~hmac=543260460f731e09e71de9be34d0f4733e5b8c4490d2b1903db89b53e89c9f9e\")",
       "Bash(curl -s -o ic-talento.jpg \"https://pikaso.cdnpk.net/private/production/4722312540/render.jpg?token=exp=1782777600~hmac=f916b844530c08f603f3debffdc3af9fe264e7685d512d4eae85a1ed77a27d19\")",
       "Bash(curl -s -o ic-liderazgo.jpg \"https://pikaso.cdnpk.net/private/production/4722313350/render.jpg?token=exp=1782777600~hmac=6322e12d44f1ad3700674236fc92eb086b8db9a5467ffaebaba0571279fb4d46\")",
-      "Bash(curl -s -o ic-innovacion.jpg \"https://pikaso.cdnpk.net/private/production/4722313876/render.jpg?token=exp=1782777600~hmac=6a7357807878622dd701273e73e47d6a429080f0081bdfb698f7cda9680eb604\")"
+      "Bash(curl -s -o ic-innovacion.jpg \"https://pikaso.cdnpk.net/private/production/4722313876/render.jpg?token=exp=1782777600~hmac=6a7357807878622dd701273e73e47d6a429080f0081bdfb698f7cda9680eb604\")",
+      "Bash(curl -X PUT -H \"Content-Type: image/png\" --data-binary \"@C:/Users/aassi/Documents/PAGINA ANA ASSIA/assets/ruta1.png\" \"https://ak-data.magnific.com/app/api/mcp/uploads/proxy/8b60cf3f-493b-4430-acde-50b8c20af6bd.png?path=temp-files%2F8b60cf3f-493b-4430-acde-50b8c20af6bd.png&mime=image%2Fpng&user_id=143271921&expires=1782604024&v=1&sig=KeULIRJjOaaeV94YpusqzE2lW_BeNiAw1v6QHIfS1yU\")",
+      "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__images_upscale",
+      "Bash(curl -L -o \"C:/Users/aassi/Documents/PAGINA ANA ASSIA/assets/ruta1.png\" \"https://pikaso.cdnpk.net/private/production/4723205441/enhanced-optimized.jpg?token=exp=1782777600~hmac=70d725c0ee7eeaf34687681dd5dfa0bdbbbc22cfeb2b8a530905b8c358338a43\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
