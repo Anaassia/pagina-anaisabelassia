@@ -309,6 +309,8 @@ section{position:relative}
 .alquimia-content{position:relative;z-index:2;text-align:center;max-width:1000px;margin:0 auto}
 .alquimia-logo{max-width:480px;width:100%;margin:0 auto 28px;display:block}
 .alquimia p{color:rgba(255,255,255,.72);font-weight:300;margin-bottom:18px;max-width:720px;margin-left:auto;margin-right:auto}
+.alquimia-desc{font-size:clamp(17px,2vw,20px);line-height:1.6}
+.alquimia-desc b{color:#fff;font-weight:600}
 .programs{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;justify-content:center}
 .program{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);padding:11px 20px;border-radius:50px;font-size:13.5px;font-weight:500}
 .pillars{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-top:48px}
