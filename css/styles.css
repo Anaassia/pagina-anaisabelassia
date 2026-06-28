@@ -238,8 +238,10 @@ section{position:relative}
 /* CTA Band */
 .cta-band{background:var(--red);padding:48px 0}
 .cta-band .wrap{display:flex;align-items:center;gap:48px}
-.cta-band-text{color:rgba(255,255,255,.9);font-size:16px;font-weight:300;line-height:1.7;flex:1}
-.cta-band-text b{color:#fff;font-weight:600}
+.cta-band-text{flex:1}
+.cta-band-headline{font-family:'Jost',sans-serif;font-size:clamp(22px,2.5vw,30px);font-weight:300;line-height:1.4;color:rgba(255,255,255,.9)}
+.cta-band-headline b{color:#fff;font-weight:600}
+.cta-band-sub{font-family:'Jost',sans-serif;font-size:17px;font-weight:400;color:#fff;margin-top:10px;letter-spacing:.01em}
 .cta-band-btns{display:flex;gap:14px;flex-shrink:0}
 .btn-agenda{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--red);border:2px solid #fff;padding:14px 28px;border-radius:6px;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;letter-spacing:.02em;transition:all .3s var(--ease);text-decoration:none}
 .btn-agenda:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
