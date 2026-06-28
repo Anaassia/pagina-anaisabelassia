@@ -73,6 +73,17 @@ header.scrolled .menu a{color:var(--ink)}
 }
 header.scrolled .nav-cta{border-color:var(--ink);color:var(--ink)}
 .nav-cta:hover{background:var(--red);border-color:var(--red);color:#fff;transform:translateY(-1px)}
+.dropdown{position:relative}
+.dropdown>a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1.5px;background:var(--red);transition:width .35s var(--ease)}
+.dropdown>a{display:inline-flex;align-items:center;gap:4px}
+.dropdown .chevron{width:10px;height:10px;stroke:currentColor;stroke-width:2.2;fill:none;transition:transform .3s}
+.dropdown:hover .chevron{transform:rotate(180deg)}
+.dropdown-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:210px;background:#fff;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.12);padding:8px 0;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s;margin-top:18px;z-index:200}
+.dropdown-menu::before{content:"";position:absolute;top:-18px;left:0;right:0;height:18px}
+.dropdown:hover .dropdown-menu{opacity:1;visibility:visible}
+.dropdown-menu a{display:block;padding:10px 20px;font-size:13px;font-weight:500;color:var(--ink)!important;white-space:nowrap;transition:background .2s,color .2s}
+.dropdown-menu a::after{display:none}
+.dropdown-menu a:hover{background:rgba(225,6,0,.06);color:var(--red)!important}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:120}
 .burger span{width:26px;height:2px;background:#fff;transition:.3s}
 header.scrolled .burger span{background:var(--ink)}
@@ -505,6 +516,11 @@ footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
   .burger{display:flex}
   .menu.open{display:flex;position:fixed;inset:0;background:var(--ink);flex-direction:column;justify-content:center;align-items:center;gap:30px;z-index:110}
   .menu.open a{color:#fff;font-size:22px}
+  .menu.open .dropdown{display:flex;flex-direction:column;align-items:center;gap:0}
+  .menu.open .dropdown-menu{position:static;transform:none;opacity:1;visibility:visible;background:transparent;box-shadow:none;margin-top:8px;padding:0}
+  .menu.open .dropdown-menu::before{display:none}
+  .menu.open .dropdown-menu a{color:rgba(255,255,255,.7)!important;font-size:16px;text-align:center;padding:6px 0}
+  .menu.open .dropdown-menu a:hover{color:var(--red)!important;background:transparent}
 }
 @media(max-width:680px){
   .wrap{padding:0 22px}
