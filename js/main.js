@@ -63,11 +63,10 @@ function handleSubmit(e) {
           '<input id="waEmail" type="email" placeholder="nombre@empresa.com" autocomplete="email"></div>' +
         '<div class="wa-field"><label for="waTopic">¿En qué quieres transformarte?</label>' +
           '<select id="waTopic">' +
-            '<option>Estrategia y modelo de negocio</option>' +
-            '<option>Liderazgo y talento comercial</option>' +
-            '<option>Productividad y ventas rentables</option>' +
-            '<option>Innovación y transformación digital</option>' +
-            '<option>Programa Alquimia Comercial</option>' +
+            '<option>Consultoría Comercial</option>' +
+            '<option>Mentoring y Coaching</option>' +
+            '<option>Formación y Entrenamiento</option>' +
+            '<option>Gestión de Proyectos</option>' +
           '</select></div>' +
         '<div class="wa-field"><label for="waReason">¿Por qué me contactas?</label>' +
           '<textarea id="waReason" placeholder="Cuéntame brevemente tu situación y objetivos"></textarea></div>' +
@@ -92,11 +91,29 @@ function handleSubmit(e) {
   overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
 
-  // any element with [data-wa] opens the modal; prepend the icon for pill buttons
+  // any element with [data-wa] or .btn-wa-cta opens the modal
   document.querySelectorAll('[data-wa]').forEach(function (b) {
     if (b.classList.contains('btn-wa')) b.insertAdjacentHTML('afterbegin', ICON);
     b.addEventListener('click', function (e) { e.preventDefault(); open(); });
   });
+  document.querySelectorAll('.btn-wa-cta').forEach(function (b) {
+    b.addEventListener('click', function (e) { e.preventDefault(); open(); });
+  });
+
+  // Google Sheets endpoint (Google Apps Script Web App URL)
+  var SHEETS_URL = 'GOOGLE_APPS_SCRIPT_URL';
+
+  function saveToSheets(data) {
+    if (SHEETS_URL === 'GOOGLE_APPS_SCRIPT_URL') return;
+    try {
+      fetch(SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    } catch (_) {}
+  }
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -106,6 +123,16 @@ function handleSubmit(e) {
     var reason = reasonI.value.trim();
     var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     if (!name || !emailOk || !reason) { err.style.display = 'block'; return; }
+
+    saveToSheets({
+      fecha: new Date().toISOString(),
+      nombre: name,
+      email: email,
+      tema: topic,
+      motivo: reason,
+      pagina: pageName()
+    });
+
     var msg = '¡Hola Ana Isabel! Soy ' + name + '. Mi correo es ' + email +
               '. Me interesa: ' + topic + '. Te contacto porque: ' + reason +
               '. (Escribo desde la página "' + pageName() + '" de tu sitio web.)';

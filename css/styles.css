@@ -236,21 +236,20 @@ section{position:relative}
 .problem-band p b{color:var(--red);font-weight:500}
 
 /* CTA Band */
-.cta-band{background:var(--red);padding:48px 0}
+.cta-band{background:var(--red);padding:52px 0}
 .cta-band .wrap{display:flex;align-items:center;gap:48px}
 .cta-band-text{flex:1}
-.cta-band-headline{font-family:'Jost',sans-serif;font-size:clamp(22px,2.5vw,30px);font-weight:300;line-height:1.4;color:rgba(255,255,255,.9)}
+.cta-band-headline{font-family:'Jost',sans-serif;font-size:clamp(22px,2.5vw,30px);font-weight:300;line-height:1.4;color:rgba(255,255,255,.92)}
 .cta-band-headline b{color:#fff;font-weight:600}
-.cta-band-sub{font-family:'Jost',sans-serif;font-size:17px;font-weight:400;color:#fff;margin-top:10px;letter-spacing:.01em}
 .cta-band-btns{display:flex;gap:14px;flex-shrink:0}
 .btn-agenda{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--red);border:2px solid #fff;padding:14px 28px;border-radius:6px;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;letter-spacing:.02em;transition:all .3s var(--ease);text-decoration:none}
 .btn-agenda:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-.btn-wa-dark{display:inline-flex;align-items:center;gap:10px;background:transparent;color:#fff;border:2px solid #fff;padding:14px 28px;border-radius:6px;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;letter-spacing:.02em;transition:all .3s var(--ease);text-decoration:none}
-.btn-wa-dark:hover{background:#fff;color:var(--red);border-color:#fff}
+.btn-wa-cta{display:inline-flex;align-items:center;gap:10px;background:transparent;color:#fff;border:2px solid #fff;padding:14px 28px;border-radius:6px;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;letter-spacing:.02em;transition:all .3s var(--ease);text-decoration:none}
+.btn-wa-cta:hover{background:#fff;color:var(--red);border-color:#fff}
 @media(max-width:768px){
   .cta-band .wrap{flex-direction:column;text-align:center}
   .cta-band-btns{flex-direction:column;width:100%}
-  .cta-band-btns .btn,.cta-band-btns .btn-wa-dark{width:100%;justify-content:center}
+  .cta-band-btns .btn-agenda,.cta-band-btns .btn-wa-cta{width:100%;justify-content:center}
 }
 
 /* Servicios — zona clara del inicio */
@@ -358,10 +357,6 @@ section{position:relative}
 .article-cta h3{font-family:'Jost',sans-serif;font-weight:400;font-size:26px;margin-bottom:10px}
 .article-cta h3 em{font-style:italic;color:var(--red)}
 .article-cta p{color:rgba(255,255,255,.7);font-weight:300;margin-bottom:24px}
-
-/* ============ CTA BAND ============ */
-.cta-band h2{font-family:'Jost',sans-serif;font-weight:400;font-size:clamp(30px,4vw,52px);line-height:1.1}
-.cta-band h2 em{font-style:italic;color:#fff}
 
 /* ============ CONTACTO ============ */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px}
