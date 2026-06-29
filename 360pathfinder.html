@@ -62,30 +62,75 @@
 <section class="pad" style="background:var(--smoke)">
   <div class="wrap" style="text-align:center;margin-bottom:48px">
     <span class="eyebrow">El desafío organizacional</span>
-    <h2 class="serif" style="font-weight:400;font-size:clamp(26px,3.5vw,38px);line-height:1.12;margin-top:18px"><strong>Deja de contratar héroes y mejor contrata equipos poderosos y vibrantes.</strong></h2>
+    <h2 class="serif" style="font-weight:400;font-size:clamp(26px,3.5vw,42px);line-height:1.12;margin-top:18px">Deja de contratar héroes y mejor contrata<br><em style="font-style:normal;color:var(--red)">equipos poderosos y vibrantes.</em></h2>
     <p style="font-size:16px;color:rgba(11,11,11,.65);max-width:60ch;margin:18px auto 0">La decisión más estratégica que puedes tomar es contratar personas que vibran con tu propósito y cultura. Esta decisión no se toma con métodos tradicionales, se toma con tecnologías que apoyan el descubrimiento del mejor talento para tu equipo.</p>
   </div>
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px">
+    <!-- 4 cards superiores — layout horizontal stat + texto -->
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:20px">
+      <div class="reveal" style="background:#fff;border-radius:14px;padding:28px 32px;border:1px solid rgba(0,0,0,.06);display:flex;gap:24px;align-items:flex-start">
+        <div style="font-family:'Jost',sans-serif;font-size:36px;font-weight:800;color:var(--red);line-height:1;flex-shrink:0">r=0.18</div>
+        <div>
+          <h4 style="margin:0 0 6px;font-size:16px">El currículum predice el pasado</h4>
+          <p style="font-size:14px;color:rgba(11,11,11,.6);margin:0 0 8px">Documenta lo realizado, no lo que se puede aportar en un nuevo contexto.</p>
+          <small style="color:rgba(11,11,11,.4);font-style:italic">Schmidt & Hunter (1998)</small>
+        </div>
+      </div>
+      <div class="reveal" style="background:#fff;border-radius:14px;padding:28px 32px;border:1px solid rgba(0,0,0,.06);display:flex;gap:24px;align-items:flex-start">
+        <div style="font-family:'Jost',sans-serif;font-size:36px;font-weight:800;color:var(--red);line-height:1;flex-shrink:0">r=0.20</div>
+        <div>
+          <h4 style="margin:0 0 6px;font-size:16px">La entrevista no estructurada sesga</h4>
+          <p style="font-size:14px;color:rgba(11,11,11,.6);margin:0 0 8px">Las decisiones intuitivas introducen sesgo sistemático y menor consistencia.</p>
+          <small style="color:rgba(11,11,11,.4);font-style:italic">Schmidt & Oh (2016)</small>
+        </div>
+      </div>
+      <div class="reveal" style="background:#fff;border-radius:14px;padding:28px 32px;border:1px solid rgba(0,0,0,.06);display:flex;gap:24px;align-items:flex-start">
+        <div style="font-family:'Jost',sans-serif;font-size:28px;font-weight:800;color:var(--red);line-height:1.1;flex-shrink:0">1 sola<br><span style="font-size:14px;font-weight:500;color:rgba(11,11,11,.45)">dimensión</span></div>
+        <div>
+          <h4 style="margin:0 0 6px;font-size:16px">Un único instrumento es parcial</h4>
+          <p style="font-size:14px;color:rgba(11,11,11,.6);margin:0">Un DISC o un MBTI aislado captura solo una faceta de una persona multidimensional.</p>
+        </div>
+      </div>
+      <div class="reveal" style="background:#fff;border-radius:14px;padding:28px 32px;border:1px solid rgba(0,0,0,.06);display:flex;gap:24px;align-items:flex-start">
+        <div style="font-family:'Jost',sans-serif;font-size:28px;font-weight:800;color:var(--red);line-height:1.1;flex-shrink:0">50–200%<br><span style="font-size:14px;font-weight:500;color:rgba(11,11,11,.45)">del salario</span></div>
+        <div>
+          <h4 style="margin:0 0 6px;font-size:16px">La rotación es costosa</h4>
+          <p style="font-size:14px;color:rgba(11,11,11,.6);margin:0 0 8px">Reemplazar a un colaborador implica un costo estimado de 50% a 200% de su salario anual.</p>
+          <small style="color:rgba(11,11,11,.4);font-style:italic">SHRM (2022)</small>
+        </div>
+      </div>
+    </div>
+    <!-- 2 cards inferiores — evidencia a favor -->
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px">
       <div class="reveal" style="background:#fff;border-radius:14px;padding:32px;border:1px solid rgba(0,0,0,.06)">
-        <div style="font-family:'Jost',sans-serif;font-size:32px;font-weight:700;color:var(--red)">r=0.18</div>
-        <h4 style="margin:8px 0 6px">El currículum predice el pasado</h4>
-        <p style="font-size:14px;color:rgba(11,11,11,.6)">Documenta lo realizado, no lo que se puede aportar en un nuevo contexto.</p>
+        <h4 style="margin:0 0 10px;font-size:17px;line-height:1.35">La evaluación multidimensional <span style="color:var(--red)">triplica la precisión</span></h4>
+        <p style="font-size:14px;color:rgba(11,11,11,.6);margin:0 0 20px">Combinar personalidad, aptitudes y entrevista estructurada supera con claridad a cualquier método único de selección.</p>
+        <div style="display:flex;gap:32px;margin-bottom:12px">
+          <div>
+            <div style="font-family:'Jost',sans-serif;font-size:36px;font-weight:800;color:var(--red);line-height:1">r=0.18</div>
+            <small style="color:rgba(11,11,11,.45)">Solo currículum</small>
+          </div>
+          <div>
+            <div style="font-family:'Jost',sans-serif;font-size:36px;font-weight:800;color:var(--red);line-height:1">r=0.65</div>
+            <small style="color:rgba(11,11,11,.45)">Multidimensional</small>
+          </div>
+        </div>
+        <small style="color:rgba(11,11,11,.4);font-style:italic">Schmidt & Hunter (1998), Psychological Bulletin, 124(2); Schmidt & Oh (2016)</small>
       </div>
       <div class="reveal" style="background:#fff;border-radius:14px;padding:32px;border:1px solid rgba(0,0,0,.06)">
-        <div style="font-family:'Jost',sans-serif;font-size:32px;font-weight:700;color:var(--red)">r=0.20</div>
-        <h4 style="margin:8px 0 6px">La entrevista no estructurada sesga</h4>
-        <p style="font-size:14px;color:rgba(11,11,11,.6)">Las decisiones intuitivas introducen sesgo sistemático y menor consistencia.</p>
-      </div>
-      <div class="reveal" style="background:#fff;border-radius:14px;padding:32px;border:1px solid rgba(0,0,0,.06)">
-        <div style="font-family:'Jost',sans-serif;font-size:32px;font-weight:700;color:var(--red)">1 sola</div>
-        <h4 style="margin:8px 0 6px">Un único instrumento es parcial</h4>
-        <p style="font-size:14px;color:rgba(11,11,11,.6)">Un DISC o un MBTI aislado captura solo una faceta de una persona multidimensional.</p>
-      </div>
-      <div class="reveal" style="background:#fff;border-radius:14px;padding:32px;border:1px solid rgba(0,0,0,.06)">
-        <div style="font-family:'Jost',sans-serif;font-size:32px;font-weight:700;color:var(--red)">50–200%</div>
-        <h4 style="margin:8px 0 6px">La rotación es costosa</h4>
-        <p style="font-size:14px;color:rgba(11,11,11,.6)">Reemplazar a un colaborador implica un costo estimado de 50% a 200% de su salario anual.</p>
+        <h4 style="margin:0 0 10px;font-size:17px;line-height:1.35">El propósito se asocia a <span style="color:var(--red)">mayor desempeño y permanencia</span></h4>
+        <p style="font-size:14px;color:rgba(11,11,11,.6);margin:0 0 20px">Los colaboradores que reportan vivir su propósito en el trabajo muestran mayor productividad y bienestar autorreportado.</p>
+        <div style="display:flex;gap:32px;margin-bottom:12px">
+          <div>
+            <div style="font-family:'Jost',sans-serif;font-size:36px;font-weight:800;color:var(--red);line-height:1">+33%</div>
+            <small style="color:rgba(11,11,11,.45)">Productividad</small>
+          </div>
+          <div>
+            <div style="font-family:'Jost',sans-serif;font-size:36px;font-weight:800;color:var(--red);line-height:1">5×</div>
+            <small style="color:rgba(11,11,11,.45)">Bienestar autorreportado</small>
+          </div>
+        </div>
+        <small style="color:rgba(11,11,11,.4);font-style:italic">McKinsey & Company (2021), «Help your employees find purpose—or watch them leave»</small>
       </div>
     </div>
   </div>
