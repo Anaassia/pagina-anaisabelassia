@@ -85,7 +85,8 @@
       "Bash(pdftotext -f 30 -l 60 \"C:/Users/aassi/Desktop/MENTORÍA DE LIDERAZGO COMERCIAL GENERATIVO - ALQUIMIA COMERCIAL.pdf\" -)",
       "Bash(pdftotext -f 31 -l 80 \"C:/Users/aassi/Desktop/MENTORÍA DE LIDERAZGO COMERCIAL GENERATIVO - ALQUIMIA COMERCIAL.pdf\" -)",
       "mcp__Claude_in_Chrome__tabs_close_mcp",
-      "Bash(git status *)"
+      "Bash(git status *)",
+      "Bash(pdftotext \"C:\\\\Users\\\\aassi\\\\Downloads\\\\01_360PathFinderBrochure_Mayo.pdf\" -)"
     ]
   }
 }
