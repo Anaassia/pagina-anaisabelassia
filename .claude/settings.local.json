@@ -74,7 +74,17 @@
       "Bash(curl -s -o \"C:/Users/aassi/Documents/PAGINA ANA ASSIA/assets/ana-alquimia.png\" -L \"https://pikaso.cdnpk.net/private/production/4727817830/render.jpg?token=exp=1783036800~hmac=16d34db4bfc9fcdec0211c2c20d1d8f3c108b4062ca0f2bba7f7b630b5b88441\")",
       "Bash(curl -s -o \"C:/Users/aassi/Documents/PAGINA ANA ASSIA/assets/ana-alquimia.png\" -L \"https://pikaso.cdnpk.net/private/production/4727883927/render.jpg?token=exp=1783036800~hmac=80c7242110cd08ba77385a7233bfd1d16530935e7016f1c0bd310170791ed62f\")",
       "Bash(python -c \"from PIL import Image; print\\('PIL OK'\\)\")",
-      "PowerShell(Add-Type -AssemblyName System.Drawing; Write-Output \"System.Drawing OK\")"
+      "PowerShell(Add-Type -AssemblyName System.Drawing; Write-Output \"System.Drawing OK\")",
+      "PowerShell(Get-Command pdftoppm -ErrorAction SilentlyContinue)",
+      "PowerShell(Add-Type -Path \"C:\\\\Windows\\\\Microsoft.NET\\\\Framework64\\\\v4.0.30319\\\\System.IO.Compression.FileSystem.dll\" 2>$null; try { $bytes = [System.IO.File]::ReadAllBytes\\(\"C:\\\\Users\\\\aassi\\\\Desktop\\\\MENTORÍA DE LIDERAZGO COMERCIAL GENERATIVO - ALQUIMIA COMERCIAL.pdf\"\\); \"File size: $\\($bytes.Length\\) bytes, First 200 bytes \\(hex\\): $\\([BitConverter]::ToString\\($bytes[0..199]\\)\\)\" } catch { $_.Exception.Message })",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__computer",
+      "PowerShell(Get-Command pdftotext -ErrorAction SilentlyContinue 2>$null)",
+      "PowerShell(docker --version 2>$null)",
+      "Bash(pdftotext -f 30 -l 60 \"C:/Users/aassi/Desktop/MENTORÍA DE LIDERAZGO COMERCIAL GENERATIVO - ALQUIMIA COMERCIAL.pdf\" -)",
+      "Bash(pdftotext -f 31 -l 80 \"C:/Users/aassi/Desktop/MENTORÍA DE LIDERAZGO COMERCIAL GENERATIVO - ALQUIMIA COMERCIAL.pdf\" -)",
+      "mcp__Claude_in_Chrome__tabs_close_mcp"
     ]
   }
 }
