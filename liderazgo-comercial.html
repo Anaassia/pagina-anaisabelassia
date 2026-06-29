@@ -134,9 +134,9 @@
       <div class="lc-topic">
         <div class="lc-topic-num">01</div>
         <div>
-          <h4>Desafíos del Nuevo Liderazgo Comercial en la Era de la Inteligencia Artificial</h4>
+          <h4>Desafíos del Nuevo Liderazgo Comercial: Nuevos Paradigmas y Competencias</h4>
           <p>La IA está redefiniendo las reglas del juego comercial. En este conversatorio tipo mastermind, líderes de negocios comparten sus desafíos reales, cuestionan sus paradigmas y co-crean soluciones para integrar inteligencia humana e inteligencia artificial en su gestión comercial. No se trata de reemplazar al líder — se trata de potenciarlo.</p>
-          <span class="lc-tag">Conversatorio Virtual · Todos los miércoles · 7:00 PM · 1:30 h</span>
+          <span class="lc-tag"><svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg> Live Privado por Google Meet · Todos los miércoles · 7:00 PM · 1:30 h</span>
         </div>
       </div>
     </div>
@@ -147,17 +147,18 @@
 <section id="talleres" class="pad" style="background:var(--smoke)">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:48px">
-      <span class="eyebrow">Conferencias Personalizadas</span>
-      <h2 class="serif" style="font-weight:400;font-size:clamp(26px,3.5vw,38px);line-height:1.12;margin-top:18px">Experiencias que <em>activan</em>.</h2>
-      <p style="font-size:16px;color:rgba(11,11,11,.65);max-width:60ch;margin:18px auto 0">Talleres prácticos donde los participantes trabajan con herramientas reales sobre sus propios desafíos comerciales.</p>
+      <span class="eyebrow">Eventos Prácticos y Experienciales</span>
+      <h2 class="serif" style="font-weight:400;font-size:clamp(26px,3.5vw,38px);line-height:1.12;margin-top:18px">Conferencias y Talleres <em>Empresariales</em>.</h2>
+      <p style="font-size:16px;color:rgba(11,11,11,.65);max-width:60ch;margin:18px auto 0">Conferencias empresariales y talleres personalizados para equipos de líderes comerciales, que buscan desarrollar y potenciar sus competencias y capacidades para liderar negocios y equipos.</p>
     </div>
     <div class="lc-topics reveal">
       <div class="lc-topic" style="background:var(--paper)">
         <div class="lc-topic-num">01</div>
         <div>
-          <h4>Arquitectura de modelo de negocio 4.0</h4>
-          <p>Diseña o reconfigura tu modelo de negocio aplicando el método D.E.V.E.R. para pasar de las ideas a la acción y de la acción a los resultados.</p>
-          <span class="lc-tag">Taller · 4 horas</span>
+          <h4>Desprograma el liderazgo obsoleto</h4>
+          <p>Conoce por qué los viejos modelos jerárquicos sofocan la innovación y conviértete en un líder de transformación y crecimiento.</p>
+          <span class="lc-tag">Conferencia Taller Experiencial · 2:00 Horas</span>
+          <a href="#registro" class="btn btn-red" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:8px 22px;font-size:13px">Contáctanos <span class="arrow">→</span></a>
         </div>
       </div>
       <div class="lc-topic" style="background:var(--paper)">
@@ -340,6 +341,20 @@
 </footer>
 <script src="js/main.js"></script>
 <script>
+var SHEETS_EVENT_URL = 'GOOGLE_APPS_SCRIPT_URL';
+
+function saveEventToSheets(data) {
+  if (SHEETS_EVENT_URL === 'GOOGLE_APPS_SCRIPT_URL') return;
+  try {
+    fetch(SHEETS_EVENT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  } catch (_) {}
+}
+
 function handleEventSubmit(e){
   e.preventDefault();
   var f=e.target,n=f.querySelector('#reg-name').value.trim(),
@@ -349,9 +364,20 @@ function handleEventSubmit(e){
       exp=f.querySelector('#reg-expectation').value.trim();
   if(!n||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)||!ph){
     alert('Por favor completa tu nombre, un email válido y tu teléfono.');return;}
+
+  saveEventToSheets({
+    fecha: new Date().toISOString(),
+    nombre: n,
+    email: em,
+    telefono: ph,
+    evento: int,
+    expectativa: exp || 'Sin especificar',
+    pagina: 'Alquimia Comercial'
+  });
+
   var msg='¡Hola Ana Isabel! Soy '+n+'. Mi correo es '+em+' y mi teléfono '+ph+
     '. Me interesa: '+int+'. Mi expectativa: '+(exp||'Sin especificar')+
-    '. (Registro desde Liderazgo Comercial.)';
+    '. (Registro desde Alquimia Comercial.)';
   window.open('https://wa.me/573116279068?text='+encodeURIComponent(msg),'_blank');
   alert('¡Gracias por tu registro! Te hemos redirigido a WhatsApp para confirmar tu interés.');
   f.reset();
