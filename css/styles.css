@@ -354,6 +354,47 @@ section{position:relative}
 .alq-prog:nth-child(4){animation:alq-fade-in .6s .4s both}
 @keyframes alq-fade-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
+/* ============ LIDERAZGO COMERCIAL ============ */
+.lc-audience{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.lc-audience-card{background:#fff;border-radius:12px;padding:32px 28px;border:1px solid rgba(0,0,0,.06);text-align:center;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.lc-audience-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.07)}
+.lc-audience-card svg{width:36px;height:36px;stroke:var(--red);margin:0 auto 16px}
+.lc-audience-card b{display:block;font-family:'Jost',sans-serif;font-size:18px;margin-bottom:8px}
+.lc-audience-card span{font-size:14px;color:rgba(11,11,11,.6);line-height:1.6}
+.lc-topics{display:flex;flex-direction:column;gap:20px}
+.lc-topic{display:flex;align-items:flex-start;gap:24px;background:var(--smoke);border-radius:12px;padding:32px;border:1px solid rgba(0,0,0,.05);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.lc-topic:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,0,0,.06)}
+.lc-topic-num{font-family:'Jost',sans-serif;font-size:28px;font-weight:700;color:var(--red);line-height:1;flex-shrink:0;width:40px}
+.lc-topic h4{font-family:'Jost',sans-serif;font-size:20px;font-weight:600;margin-bottom:8px}
+.lc-topic p{font-size:15px;line-height:1.65;color:rgba(11,11,11,.68);margin-bottom:10px}
+.lc-tag{display:inline-block;font-size:12px;font-weight:500;letter-spacing:.02em;padding:4px 14px;border-radius:50px;background:rgba(225,6,0,.06);color:var(--red);border:1px solid rgba(225,6,0,.1)}
+.lc-mentoring-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.lc-mentoring-card{background:var(--smoke);border-radius:14px;padding:40px 32px;border:1px solid rgba(0,0,0,.06);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.lc-mentoring-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,.08)}
+.lc-mentoring-icon{width:52px;height:52px;background:linear-gradient(135deg,var(--red),#c00);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.lc-mentoring-icon svg{width:26px;height:26px;stroke:#fff}
+.lc-mentoring-card h4{font-family:'Jost',sans-serif;font-size:22px;font-weight:600;margin-bottom:12px}
+.lc-mentoring-card p{font-size:15px;line-height:1.65;color:rgba(11,11,11,.68);margin-bottom:18px}
+.lc-checklist{list-style:none;display:flex;flex-direction:column;gap:10px}
+.lc-checklist li{font-size:14px;color:rgba(11,11,11,.72);padding-left:24px;position:relative;line-height:1.5}
+.lc-checklist li::before{content:"✓";position:absolute;left:0;color:var(--red);font-weight:700;font-size:13px}
+.lc-pillars{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.lc-pillar{display:flex;flex-direction:column;align-items:center;gap:8px;padding:24px 12px;background:rgba(255,255,255,.06);border-radius:12px;border:1px solid rgba(255,255,255,.1)}
+.lc-pillar-num{width:32px;height:32px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-weight:700;font-size:14px;color:#fff}
+.lc-pillar b{font-family:'Jost',sans-serif;font-size:16px;font-weight:600;color:#fff}
+.lc-pillar span{font-size:12px;color:rgba(255,255,255,.55);text-align:center;line-height:1.4}
+@media(max-width:900px){
+  .lc-audience{grid-template-columns:1fr}
+  .lc-mentoring-grid{grid-template-columns:1fr}
+  .lc-pillars{grid-template-columns:repeat(2,1fr)}
+  .lc-pillar:last-child{grid-column:span 2}
+}
+@media(max-width:680px){
+  .lc-topic{flex-direction:column;gap:12px}
+  .lc-pillars{grid-template-columns:1fr}
+  .lc-pillar:last-child{grid-column:span 1}
+}
+
 /* ============ PROGRAMAS ============ */
 .programas-section{background:var(--smoke)}
 .prog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
