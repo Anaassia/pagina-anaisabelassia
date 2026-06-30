@@ -61,7 +61,7 @@ function handleSubmit(e) {
           '<input id="waName" type="text" placeholder="Nombre y apellido" autocomplete="name"></div>' +
         '<div class="wa-field"><label for="waEmail">Email</label>' +
           '<input id="waEmail" type="email" placeholder="nombre@empresa.com" autocomplete="email"></div>' +
-        '<div class="wa-field"><label for="waTopic">¿En qué quieres transformarte?</label>' +
+        '<div class="wa-field"><label for="waTopic">¿Qué servicio te interesa?</label>' +
           '<select id="waTopic">' +
             '<option>Consultoría Comercial</option>' +
             '<option>Mentoring y Coaching</option>' +
