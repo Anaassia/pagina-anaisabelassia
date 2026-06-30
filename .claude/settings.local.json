@@ -88,7 +88,11 @@
       "Bash(git status *)",
       "Bash(pdftotext \"C:\\\\Users\\\\aassi\\\\Downloads\\\\01_360PathFinderBrochure_Mayo.pdf\" -)",
       "PowerShell(Add-Type -AssemblyName System.Drawing; @\\('estrategiaverde.png','procesoazul.png','personas-azul.png','tecnologianaranja.png','resultadoslila.png'\\) | ForEach-Object { $img = [System.Drawing.Image]::FromFile\\(\"$PWD\\\\assets\\\\$_\"\\); \"$_ : $\\($img.Width\\)x$\\($img.Height\\)\"; $img.Dispose\\(\\) })",
-      "PowerShell(@\\('estrategiaverde.png','procesoazul.png','personas-azul.png','tecnologianaranja.png','resultadoslila.png'\\) | ForEach-Object { $f = Get-Item \"$PWD\\\\assets\\\\$_\"; \"$\\($f.Name\\): $\\([math]::Round\\($f.Length/1KB\\)\\) KB\" })"
+      "PowerShell(@\\('estrategiaverde.png','procesoazul.png','personas-azul.png','tecnologianaranja.png','resultadoslila.png'\\) | ForEach-Object { $f = Get-Item \"$PWD\\\\assets\\\\$_\"; \"$\\($f.Name\\): $\\([math]::Round\\($f.Length/1KB\\)\\) KB\" })",
+      "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__images_resize",
+      "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__creations_get",
+      "mcp__dc98a50d-d6c0-4d45-b100-426055d993ce__media_import_url",
+      "mcp__dc98a50d-d6c0-4d45-b100-426055d993ce__outpaint_image"
     ]
   }
 }
