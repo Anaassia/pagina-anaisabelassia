@@ -92,7 +92,8 @@
       "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__images_resize",
       "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__creations_get",
       "mcp__dc98a50d-d6c0-4d45-b100-426055d993ce__media_import_url",
-      "mcp__dc98a50d-d6c0-4d45-b100-426055d993ce__outpaint_image"
+      "mcp__dc98a50d-d6c0-4d45-b100-426055d993ce__outpaint_image",
+      "PowerShell(Invoke-WebRequest -Uri \"https://pikaso.cdnpk.net/private/production/4739325922/render.jpg?token=exp=1783036800~hmac=790ee4c33dffb254ea168a903a22e8e4de8f17fd12161107016d7a84bb48f1d5\" -OutFile \"$PWD\\\\assets\\\\elem-base-purpura.jpg\" -UseBasicParsing; $f = Get-Item \"$PWD\\\\assets\\\\elem-base-purpura.jpg\"; \"Downloaded: $\\([math]::Round\\($f.Length/1KB\\)\\) KB\")"
     ]
   }
 }
