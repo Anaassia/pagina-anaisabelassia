@@ -55,38 +55,71 @@
   </div>
 </section>
 
-<!-- 5 ELEMENTOS -->
-<section class="pad" style="background:var(--ink);color:#fff">
-  <div class="wrap" style="max-width:960px;text-align:center">
-    <span class="eyebrow" style="color:var(--red)">Los 5 Elementos</span>
-    <h2 class="serif" style="font-weight:400;font-size:clamp(26px,3.5vw,38px);line-height:1.12;margin-top:18px;color:#fff">Los pilares de la <em>transformación</em>.</h2>
-    <p style="font-size:16px;color:rgba(255,255,255,.65);max-width:60ch;margin:18px auto 0">Todo el programa se estructura sobre los cinco elementos que definen un negocio que crece de forma sostenible.</p>
-    <div class="lc-pillars reveal" style="margin-top:48px">
-      <div class="lc-pillar">
+<!-- 5 ELEMENTOS · BANNER -->
+<style>
+.elem-banner{position:relative;overflow:hidden;padding:80px 0 60px}
+.elem-banner::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,var(--ink) 0%,rgba(20,20,20,.85) 50%,var(--ink) 100%);z-index:1}
+.elem-banner .wrap{position:relative;z-index:2}
+.elem-icons{display:flex;justify-content:center;gap:0;margin:0 auto;max-width:900px}
+.elem-icon-item{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:24px 12px;position:relative;transition:transform .4s}
+.elem-icon-item:hover{transform:translateY(-8px)}
+.elem-icon-item::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;transition:width .4s}
+.elem-icon-item:hover::after{width:60%}
+.elem-icon-item:nth-child(1)::after{background:#4CAF50}
+.elem-icon-item:nth-child(2)::after{background:#092784}
+.elem-icon-item:nth-child(3)::after{background:#346889}
+.elem-icon-item:nth-child(4)::after{background:#E63D17}
+.elem-icon-item:nth-child(5)::after{background:#9C27B0}
+.elem-icon-item img{width:64px;height:64px;filter:drop-shadow(0 0 12px rgba(255,255,255,.15));margin-bottom:14px;transition:filter .4s}
+.elem-icon-item:hover img{filter:drop-shadow(0 0 20px rgba(255,255,255,.35))}
+.elem-icon-item b{font-family:'Jost',sans-serif;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:4px}
+.elem-icon-item span{font-size:12px;color:rgba(255,255,255,.45);font-style:italic}
+.elem-connector{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:32px}
+.elem-connector .line{flex:1;max-width:120px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent)}
+.elem-connector .dot{width:6px;height:6px;border-radius:50%;background:var(--red)}
+@media(max-width:768px){
+  .elem-icons{flex-wrap:wrap;gap:8px}
+  .elem-icon-item{flex:0 0 calc(33.33% - 8px);padding:16px 8px}
+  .elem-icon-item img{width:48px;height:48px}
+  .elem-icon-item b{font-size:11px}
+  .elem-banner{padding:48px 0 36px}
+}
+</style>
+<section class="elem-banner" style="background:var(--ink);color:#fff">
+  <div class="wrap" style="text-align:center">
+    <div class="elem-icons reveal">
+      <div class="elem-icon-item">
         <img src="assets/estrategia.png?v=2" alt="Estrategia">
         <b>Estrategia</b>
         <span>El rumbo</span>
       </div>
-      <div class="lc-pillar">
+      <div class="elem-icon-item">
         <img src="assets/procesos.png?v=2" alt="Procesos">
         <b>Procesos</b>
         <span>La ejecución</span>
       </div>
-      <div class="lc-pillar">
+      <div class="elem-icon-item">
         <img src="assets/personas.png?v=2" alt="Personas">
         <b>Personas</b>
         <span>El talento</span>
       </div>
-      <div class="lc-pillar">
+      <div class="elem-icon-item">
         <img src="assets/tecnologia.png?v=2" alt="Tecnología">
         <b>Tecnología</b>
         <span>La palanca</span>
       </div>
-      <div class="lc-pillar">
+      <div class="elem-icon-item">
         <img src="assets/resultados.png?v=2" alt="Resultados">
         <b>Resultados</b>
         <span>El crecimiento</span>
       </div>
+    </div>
+    <div class="elem-connector reveal">
+      <span class="line"></span>
+      <span class="dot"></span>
+      <span style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4)">Alquimia Comercial</span>
+      <span class="dot"></span>
+      <span class="line"></span>
     </div>
   </div>
 </section>
