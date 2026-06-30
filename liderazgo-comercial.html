@@ -129,6 +129,22 @@
 </section>
 
 <!-- ALQUIMIA COMERCIAL · LOS 5 ELEMENTOS EN PROFUNDIDAD -->
+<style>
+.ac-card{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08);margin-bottom:24px}
+.ac-card:last-child{margin-bottom:0}
+.ac-card-img{position:relative;overflow:hidden;height:340px}
+.ac-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.ac-card:hover .ac-card-img img{transform:scale(1.05)}
+.ac-card-body{background:rgba(255,255,255,.04);padding:40px 36px;display:flex;flex-direction:column;justify-content:center}
+.ac-card:nth-child(even){direction:rtl}
+.ac-card:nth-child(even)>*{direction:ltr}
+@media(max-width:768px){
+  .ac-card,.ac-card:nth-child(even){grid-template-columns:1fr;direction:ltr}
+  .ac-card:nth-child(even)>*{direction:ltr}
+  .ac-card-img{height:240px}
+  .ac-card-body{padding:28px 24px}
+}
+</style>
 <section class="pad" style="background:#1a1a1a;--red:#E10600">
   <div class="wrap" style="text-align:center;margin-bottom:56px">
     <span class="eyebrow" style="color:var(--red)">Alquimia Comercial · Los 5 Elementos</span>
@@ -138,71 +154,96 @@
   <div class="wrap">
 
     <!-- Estrategia -->
-    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:24px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
-      <div style="position:relative;overflow:hidden;min-height:320px">
-        <img src="assets/estrategiaverde.png" alt="Estrategia" style="width:100%;height:100%;object-fit:cover">
+    <div class="ac-card reveal">
+      <div class="ac-card-img">
+        <img src="assets/estrategiaverde.png" alt="Estrategia">
       </div>
-      <div style="background:rgba(255,255,255,.04);padding:48px 40px;display:flex;flex-direction:column;justify-content:center">
-        <span style="font-family:'Jost',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#4CAF50">01 · Elemento</span>
-        <h3 style="font-family:'Jost',sans-serif;font-size:28px;font-weight:700;color:#fff;margin-top:8px">Estrategia</h3>
-        <p style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px;font-style:italic">El rumbo</p>
-        <p style="font-size:15px;color:rgba(255,255,255,.8);line-height:1.65;margin-top:16px">Sin dirección clara, el esfuerzo se dispersa. La estrategia comercial define el rumbo, alinea al equipo con la visión del negocio y convierte cada acción en un paso hacia el crecimiento rentable y sostenible.</p>
+      <div class="ac-card-body">
+        <div style="display:flex;align-items:center;gap:12px">
+          <img src="assets/estrategia.png?v=2" alt="" style="width:44px;height:44px">
+          <div>
+            <span style="font-family:'Jost',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#4CAF50">01 · Elemento</span>
+            <h3 style="font-family:'Jost',sans-serif;font-size:26px;font-weight:700;color:#fff;margin:0">Estrategia</h3>
+          </div>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,.45);margin-top:4px;font-style:italic">El rumbo</p>
+        <p style="font-size:15px;color:rgba(255,255,255,.8);line-height:1.65;margin-top:14px">Sin dirección clara, el esfuerzo se dispersa. La estrategia comercial define el rumbo, alinea al equipo con la visión del negocio y convierte cada acción en un paso hacia el crecimiento rentable y sostenible.</p>
         <a href="#registro" class="btn btn-red" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:10px 24px;font-size:13px;width:fit-content">Transformar mi estrategia <span class="arrow">→</span></a>
       </div>
     </div>
 
     <!-- Procesos -->
-    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:24px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
-      <div style="background:rgba(255,255,255,.04);padding:48px 40px;display:flex;flex-direction:column;justify-content:center">
-        <span style="font-family:'Jost',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#2196F3">02 · Elemento</span>
-        <h3 style="font-family:'Jost',sans-serif;font-size:28px;font-weight:700;color:#fff;margin-top:8px">Procesos</h3>
-        <p style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px;font-style:italic">La ejecución</p>
-        <p style="font-size:15px;color:rgba(255,255,255,.8);line-height:1.65;margin-top:16px">Un gran líder sin procesos claros genera caos productivo. Optimizar la ejecución comercial es la base para escalar sin perder calidad, velocidad ni el control de los resultados.</p>
-        <a href="#registro" class="btn btn-red" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:10px 24px;font-size:13px;width:fit-content">Optimizar mis procesos <span class="arrow">→</span></a>
+    <div class="ac-card reveal">
+      <div class="ac-card-img">
+        <img src="assets/procesoazul.png" alt="Procesos">
       </div>
-      <div style="position:relative;overflow:hidden;min-height:320px">
-        <img src="assets/procesoazul.png" alt="Procesos" style="width:100%;height:100%;object-fit:cover">
+      <div class="ac-card-body">
+        <div style="display:flex;align-items:center;gap:12px">
+          <img src="assets/procesos.png?v=2" alt="" style="width:44px;height:44px">
+          <div>
+            <span style="font-family:'Jost',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#2196F3">02 · Elemento</span>
+            <h3 style="font-family:'Jost',sans-serif;font-size:26px;font-weight:700;color:#fff;margin:0">Procesos</h3>
+          </div>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,.45);margin-top:4px;font-style:italic">La ejecución</p>
+        <p style="font-size:15px;color:rgba(255,255,255,.8);line-height:1.65;margin-top:14px">Un gran líder sin procesos claros genera caos productivo. Optimizar la ejecución comercial es la base para escalar sin perder calidad, velocidad ni el control de los resultados.</p>
+        <a href="#registro" class="btn btn-red" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:10px 24px;font-size:13px;width:fit-content">Optimizar mis procesos <span class="arrow">→</span></a>
       </div>
     </div>
 
     <!-- Personas -->
-    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:24px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
-      <div style="position:relative;overflow:hidden;min-height:320px">
-        <img src="assets/personas-azul.png" alt="Personas" style="width:100%;height:100%;object-fit:cover">
+    <div class="ac-card reveal">
+      <div class="ac-card-img">
+        <img src="assets/personas-azul.png" alt="Personas">
       </div>
-      <div style="background:rgba(255,255,255,.04);padding:48px 40px;display:flex;flex-direction:column;justify-content:center">
-        <span style="font-family:'Jost',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#03A9F4">03 · Elemento</span>
-        <h3 style="font-family:'Jost',sans-serif;font-size:28px;font-weight:700;color:#fff;margin-top:8px">Personas</h3>
-        <p style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px;font-style:italic">El talento</p>
-        <p style="font-size:15px;color:rgba(255,255,255,.8);line-height:1.65;margin-top:16px">Los negocios no crecen solos — crecen con personas que vibran con el propósito. Desarrollar el talento de tu equipo es la inversión más rentable que puedes hacer como líder comercial.</p>
+      <div class="ac-card-body">
+        <div style="display:flex;align-items:center;gap:12px">
+          <img src="assets/personas.png?v=2" alt="" style="width:44px;height:44px">
+          <div>
+            <span style="font-family:'Jost',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#03A9F4">03 · Elemento</span>
+            <h3 style="font-family:'Jost',sans-serif;font-size:26px;font-weight:700;color:#fff;margin:0">Personas</h3>
+          </div>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,.45);margin-top:4px;font-style:italic">El talento</p>
+        <p style="font-size:15px;color:rgba(255,255,255,.8);line-height:1.65;margin-top:14px">Los negocios no crecen solos — crecen con personas que vibran con el propósito. Desarrollar el talento de tu equipo es la inversión más rentable que puedes hacer como líder comercial.</p>
         <a href="#registro" class="btn btn-red" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:10px 24px;font-size:13px;width:fit-content">Potenciar mi equipo <span class="arrow">→</span></a>
       </div>
     </div>
 
     <!-- Tecnología -->
-    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:24px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
-      <div style="background:rgba(255,255,255,.04);padding:48px 40px;display:flex;flex-direction:column;justify-content:center">
-        <span style="font-family:'Jost',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#FF9800">04 · Elemento</span>
-        <h3 style="font-family:'Jost',sans-serif;font-size:28px;font-weight:700;color:#fff;margin-top:8px">Tecnología</h3>
-        <p style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px;font-style:italic">La palanca</p>
-        <p style="font-size:15px;color:rgba(255,255,255,.8);line-height:1.65;margin-top:16px">La IA y las herramientas digitales no reemplazan al líder — lo potencian. Integrar tecnología en la gestión comercial es multiplicar la capacidad de tu equipo sin multiplicar el esfuerzo.</p>
-        <a href="#registro" class="btn btn-red" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:10px 24px;font-size:13px;width:fit-content">Integrar tecnología <span class="arrow">→</span></a>
+    <div class="ac-card reveal">
+      <div class="ac-card-img">
+        <img src="assets/tecnologianaranja.png" alt="Tecnología">
       </div>
-      <div style="position:relative;overflow:hidden;min-height:320px">
-        <img src="assets/tecnologianaranja.png" alt="Tecnología" style="width:100%;height:100%;object-fit:cover">
+      <div class="ac-card-body">
+        <div style="display:flex;align-items:center;gap:12px">
+          <img src="assets/tecnologia.png?v=2" alt="" style="width:44px;height:44px">
+          <div>
+            <span style="font-family:'Jost',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#FF9800">04 · Elemento</span>
+            <h3 style="font-family:'Jost',sans-serif;font-size:26px;font-weight:700;color:#fff;margin:0">Tecnología</h3>
+          </div>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,.45);margin-top:4px;font-style:italic">La palanca</p>
+        <p style="font-size:15px;color:rgba(255,255,255,.8);line-height:1.65;margin-top:14px">La IA y las herramientas digitales no reemplazan al líder — lo potencian. Integrar tecnología en la gestión comercial es multiplicar la capacidad de tu equipo sin multiplicar el esfuerzo.</p>
+        <a href="#registro" class="btn btn-red" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:10px 24px;font-size:13px;width:fit-content">Integrar tecnología <span class="arrow">→</span></a>
       </div>
     </div>
 
     <!-- Resultados -->
-    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
-      <div style="position:relative;overflow:hidden;min-height:320px">
-        <img src="assets/resultadoslila.png" alt="Resultados" style="width:100%;height:100%;object-fit:cover">
+    <div class="ac-card reveal">
+      <div class="ac-card-img">
+        <img src="assets/resultadoslila.png" alt="Resultados">
       </div>
-      <div style="background:rgba(255,255,255,.04);padding:48px 40px;display:flex;flex-direction:column;justify-content:center">
-        <span style="font-family:'Jost',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9C27B0">05 · Elemento</span>
-        <h3 style="font-family:'Jost',sans-serif;font-size:28px;font-weight:700;color:#fff;margin-top:8px">Resultados</h3>
-        <p style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px;font-style:italic">El crecimiento</p>
-        <p style="font-size:15px;color:rgba(255,255,255,.8);line-height:1.65;margin-top:16px">Todo converge aquí. Cuando estrategia, procesos, personas y tecnología se alinean, los resultados dejan de ser casualidad y se convierten en consecuencia de un liderazgo comercial transformador.</p>
+      <div class="ac-card-body">
+        <div style="display:flex;align-items:center;gap:12px">
+          <img src="assets/resultados.png?v=2" alt="" style="width:44px;height:44px">
+          <div>
+            <span style="font-family:'Jost',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9C27B0">05 · Elemento</span>
+            <h3 style="font-family:'Jost',sans-serif;font-size:26px;font-weight:700;color:#fff;margin:0">Resultados</h3>
+          </div>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,.45);margin-top:4px;font-style:italic">El crecimiento</p>
+        <p style="font-size:15px;color:rgba(255,255,255,.8);line-height:1.65;margin-top:14px">Todo converge aquí. Cuando estrategia, procesos, personas y tecnología se alinean, los resultados dejan de ser casualidad y se convierten en consecuencia de un liderazgo comercial transformador.</p>
         <a href="#registro" class="btn btn-red" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:10px 24px;font-size:13px;width:fit-content">Acelerar mis resultados <span class="arrow">→</span></a>
       </div>
     </div>
