@@ -12,18 +12,21 @@
 <style>
 @keyframes profileFloat{0%,100%{transform:translateY(0);box-shadow:0 8px 30px rgba(0,0,0,.12)}50%{transform:translateY(-8px);box-shadow:0 16px 40px rgba(0,0,0,.18)}}
 .plc-form{max-width:960px;margin:0 auto}
-.plc-section{background:#fff;border-radius:16px;padding:32px 28px;margin-bottom:28px;border:1px solid rgba(0,0,0,.06)}
-.plc-section h3{font-family:'Jost',sans-serif;font-size:22px;font-weight:700;margin:0 0 6px;display:flex;align-items:center;gap:10px}
+.plc-section{background:#fff;border-radius:14px;padding:24px 22px;margin-bottom:16px;border:1px solid rgba(0,0,0,.06);box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.plc-section h3{font-family:'Jost',sans-serif;font-size:19px;font-weight:700;margin:0 0 4px;display:flex;align-items:center;gap:10px}
 .plc-section h3 img{flex-shrink:0}
-.plc-section p.plc-desc{font-size:14px;color:rgba(11,11,11,.55);margin:0 0 20px;padding-left:46px}
-.plc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:640px){.plc-grid{grid-template-columns:1fr}}
-textarea.plc-textarea{width:100%;min-height:140px;border:1px solid rgba(0,0,0,.12);border-radius:10px;padding:14px;font-family:'Inter',sans-serif;font-size:14px;resize:vertical;background:#fff}
-textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
-.plc-form .field label{color:rgba(11,11,11,.6)}
-.plc-form .field input,.plc-form .field select{background:#fff;border:1px solid rgba(0,0,0,.15);color:var(--ink);padding:14px 16px;font-size:15px}
-.plc-form .field input::placeholder{color:rgba(11,11,11,.35)}
+.plc-section p.plc-desc{font-size:13px;color:rgba(11,11,11,.5);margin:0 0 16px;padding-left:46px}
+.plc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.plc-grid{grid-template-columns:1fr}.plc-section{padding:20px 16px}.plc-section p.plc-desc{padding-left:0}}
+textarea.plc-textarea{width:100%;min-height:100px;border:1px solid rgba(0,0,0,.12);border-radius:10px;padding:12px;font-family:'Inter',sans-serif;font-size:14px;resize:vertical;background:#fafafa}
+textarea.plc-textarea:focus{outline:none;border-color:var(--red);background:#fff}
+.plc-form .field label{color:rgba(11,11,11,.6);font-size:11px}
+.plc-form .field input,.plc-form .field select{background:#fafafa;border:1px solid rgba(0,0,0,.12);color:var(--ink);padding:11px 14px;font-size:14px;border-radius:10px}
+.plc-form .field input::placeholder{color:rgba(11,11,11,.3);font-size:13px}
 .plc-form .field input:focus,.plc-form .field select:focus{border-color:var(--red);background:#fff;box-shadow:0 0 0 3px rgba(165,25,22,.08)}
+.plc-badge{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;flex-shrink:0}
+.plc-grid .field label{display:block;margin-bottom:5px}
+.plc-grid .field textarea{margin:0}
 
 /* MATRIX TABLE */
 .mx-wrap{overflow-x:auto;margin-top:8px}
@@ -198,10 +201,10 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
 
 <!-- ASSESSMENT -->
 <section id="evaluacion" class="pad" style="background:#fff">
-  <div class="wrap" style="text-align:center;margin-bottom:40px">
+  <div class="wrap" style="text-align:center;margin-bottom:28px">
     <span class="eyebrow">Diagnóstico</span>
-    <h2 class="serif" style="font-weight:400;font-size:clamp(26px,3.5vw,38px);line-height:1.12;margin-top:18px">Perfil de Liderazgo Comercial <em style="color:var(--red)">Generativo</em></h2>
-    <p style="font-size:clamp(16px,1.6vw,18px);color:rgba(11,11,11,.6);max-width:62ch;margin:14px auto 0;line-height:1.65">Evalúa tu perfil en 5 ejes clave, identifica fortalezas y debilidades, y recibe un plan de acción personalizado en menos de 10 minutos.</p>
+    <h2 class="serif" style="font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.12;margin-top:14px">Perfil de Liderazgo Comercial <em style="color:var(--red)">Generativo</em></h2>
+    <p style="font-size:clamp(14px,1.4vw,16px);color:rgba(11,11,11,.55);max-width:56ch;margin:10px auto 0;line-height:1.55">Evalúa tu perfil en 5 ejes clave, identifica fortalezas y debilidades, y recibe un plan de acción personalizado.</p>
   </div>
 
   <form id="plcForm" class="plc-form" onsubmit="return calcPLC(event)">
@@ -220,18 +223,14 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
       </div>
     </div>
 
-    <!-- CONTEXTO -->
+    <!-- CONTEXTO Y DESAFÍOS -->
     <div class="plc-section">
-      <h3><span class="plc-badge" style="background:#555"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span> Contexto actual del negocio</h3>
-      <p class="plc-desc">Describe brevemente la situación actual de tu negocio y tu operación comercial.</p>
-      <textarea id="plc-context" class="plc-textarea" rows="6" placeholder="Situación del mercado, tamaño de equipo, modelo comercial, canales de venta, facturación aproximada, principales productos/servicios..."></textarea>
-    </div>
-
-    <!-- DESAFÍOS -->
-    <div class="plc-section">
-      <h3><span class="plc-badge" style="background:var(--red)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span> Principales desafíos como líder comercial</h3>
-      <p class="plc-desc">¿Cuáles son los retos más importantes que enfrentas hoy?</p>
-      <textarea id="plc-challenges" class="plc-textarea" rows="6" placeholder="Rotación de equipo, cumplimiento de metas, transformación digital, competencia, márgenes, productividad, adopción de herramientas..."></textarea>
+      <h3><span class="plc-badge" style="background:#555"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span> Tu contexto y desafíos</h3>
+      <p class="plc-desc">Ayúdanos a personalizar tu diagnóstico con información clave.</p>
+      <div class="plc-grid">
+        <div class="field" style="grid-column:span 1"><label for="plc-context">Contexto del negocio</label><textarea id="plc-context" class="plc-textarea" rows="4" placeholder="Mercado, equipo, modelo comercial, canales, facturación..."></textarea></div>
+        <div class="field" style="grid-column:span 1"><label for="plc-challenges">Principales desafíos</label><textarea id="plc-challenges" class="plc-textarea" rows="4" placeholder="Metas, rotación, transformación digital, competencia, márgenes..."></textarea></div>
+      </div>
     </div>
 
     <!-- EJE 1: ESTRATEGIA -->
