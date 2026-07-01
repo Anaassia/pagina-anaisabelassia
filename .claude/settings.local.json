@@ -122,7 +122,9 @@
       "PowerShell($code = Get-Content \"C:\\\\Users\\\\aassi\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-aassi-Documents-PAGINA-ANA-ASSIA\\\\3cfa1de4-7d43-40c6-825e-4f9e631e0857\\\\scratchpad\\\\node4-informe-v3.js\" -Raw -Encoding utf8; $payload = @{jsCode=$code} | ConvertTo-Json -Depth 3 -Compress; Set-Content -Path \"C:\\\\Users\\\\aassi\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-aassi-Documents-PAGINA-ANA-ASSIA\\\\3cfa1de4-7d43-40c6-825e-4f9e631e0857\\\\scratchpad\\\\node4-payload.json\" -Value $payload -Encoding utf8; Write-Output \"Payload length: $\\($payload.Length\\)\")",
       "mcp__odoo-mcp__search_crm_stages",
       "mcp__odoo-mcp__create_lead",
-      "mcp__odoo-mcp__delete_lead"
+      "mcp__odoo-mcp__delete_lead",
+      "Bash(python -c ' *)",
+      "PowerShell($raw = Get-Content \"C:\\\\Users\\\\aassi\\\\.claude\\\\projects\\\\C--Users-aassi-Documents-PAGINA-ANA-ASSIA\\\\3cfa1de4-7d43-40c6-825e-4f9e631e0857\\\\tool-results\\\\toolu_01JcSzgCRAcFPdrdsTR4Ldv9.json\" -Raw -Encoding utf8; $data = $raw | ConvertFrom-Json; $wf = $data[0].text | ConvertFrom-Json; $node = $wf.data.nodes | Where-Object { $_.id -eq 'code-html' }; $node.parameters.jsCode)"
     ]
   }
 }
