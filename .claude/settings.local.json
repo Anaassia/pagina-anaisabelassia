@@ -145,7 +145,13 @@
       "mcp__claude-in-chrome__browser_batch",
       "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); nodes=d[0]['text']; wd=json.loads\\(nodes\\); [print\\(json.dumps\\({'name':n.get\\('name'\\),'type':n.get\\('type'\\),'credentials':n.get\\('credentials',{}\\)},indent=2\\)\\) for n in wd['data']['nodes'] if n.get\\('credentials'\\)]\")",
       "Bash(node -e \"const d=require\\('C:\\\\\\\\\\\\\\\\Users\\\\\\\\\\\\\\\\aassi\\\\\\\\\\\\\\\\.claude\\\\\\\\\\\\\\\\projects\\\\\\\\\\\\\\\\C--Users-aassi-Documents-PAGINA-ANA-ASSIA\\\\\\\\\\\\\\\\3cfa1de4-7d43-40c6-825e-4f9e631e0857\\\\\\\\\\\\\\\\tool-results\\\\\\\\\\\\\\\\toolu_01AtZBAZYdzVZBdsYDDV9HAF.json'\\); const wd=JSON.parse\\(d[0].text\\); wd.data.nodes.filter\\(n=>n.credentials\\).forEach\\(n=>console.log\\(JSON.stringify\\({name:n.name,type:n.type,credentials:n.credentials}\\)\\)\\)\")",
-      "PowerShell($raw = Get-Content \"C:\\\\Users\\\\aassi\\\\.claude\\\\projects\\\\C--Users-aassi-Documents-PAGINA-ANA-ASSIA\\\\3cfa1de4-7d43-40c6-825e-4f9e631e0857\\\\tool-results\\\\toolu_01AtZBAZYdzVZBdsYDDV9HAF.json\" -Raw -Encoding utf8; $d = $raw | ConvertFrom-Json; $wd = $d[0].text | ConvertFrom-Json; foreach\\($n in $wd.data.nodes\\) { if\\($n.credentials\\) { Write-Output \"NODE: $\\($n.name\\) | TYPE: $\\($n.type\\)\"; Write-Output \"  CREDENTIALS: $\\($n.credentials | ConvertTo-Json -Compress\\)\"; Write-Output \"\" } })"
+      "PowerShell($raw = Get-Content \"C:\\\\Users\\\\aassi\\\\.claude\\\\projects\\\\C--Users-aassi-Documents-PAGINA-ANA-ASSIA\\\\3cfa1de4-7d43-40c6-825e-4f9e631e0857\\\\tool-results\\\\toolu_01AtZBAZYdzVZBdsYDDV9HAF.json\" -Raw -Encoding utf8; $d = $raw | ConvertFrom-Json; $wd = $d[0].text | ConvertFrom-Json; foreach\\($n in $wd.data.nodes\\) { if\\($n.credentials\\) { Write-Output \"NODE: $\\($n.name\\) | TYPE: $\\($n.type\\)\"; Write-Output \"  CREDENTIALS: $\\($n.credentials | ConvertTo-Json -Compress\\)\"; Write-Output \"\" } })",
+      "mcp__n8n-mcp__search_nodes",
+      "mcp__n8n-mcp__get_node",
+      "mcp__odoo-mcp__search_leads",
+      "mcp__claude-in-chrome__read_page",
+      "mcp__claude-in-chrome__javascript_tool",
+      "mcp__claude-in-chrome__find"
     ]
   }
 }
