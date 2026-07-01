@@ -524,23 +524,26 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red);background:#fff
             <polygon points="0,-105 99.8,-32.5 61.6,85 -61.6,85 -99.8,-32.5" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
             <polygon points="0,-70 66.5,-21.6 41.1,56.6 -41.1,56.6 -66.5,-21.6" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
             <polygon points="0,-35 33.3,-10.8 20.6,28.3 -20.6,28.3 -33.3,-10.8" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
-            <text x="0" y="-152" text-anchor="middle" fill="#fff" font-size="12" font-family="Jost,sans-serif" font-weight="600">ESTRATEGIA</text>
-            <text x="148" y="-36" text-anchor="start" fill="#fff" font-size="12" font-family="Jost,sans-serif" font-weight="600">PROCESOS</text>
-            <text x="96" y="130" text-anchor="start" fill="#fff" font-size="12" font-family="Jost,sans-serif" font-weight="600">PERSONAS</text>
-            <text x="-96" y="130" text-anchor="end" fill="#fff" font-size="12" font-family="Jost,sans-serif" font-weight="600">TECNOLOGÍA</text>
-            <text x="-138" y="-36" text-anchor="end" fill="#fff" font-size="12" font-family="Jost,sans-serif" font-weight="600">RESULTADOS</text>
+            <text x="0" y="-152" text-anchor="middle" fill="#4CAF50" font-size="12" font-family="Jost,sans-serif" font-weight="600">ESTRATEGIA</text>
+            <text x="148" y="-36" text-anchor="start" fill="#2196F3" font-size="12" font-family="Jost,sans-serif" font-weight="600">PROCESOS</text>
+            <text x="96" y="130" text-anchor="start" fill="#03A9F4" font-size="12" font-family="Jost,sans-serif" font-weight="600">PERSONAS</text>
+            <text x="-96" y="130" text-anchor="end" fill="#FF9800" font-size="12" font-family="Jost,sans-serif" font-weight="600">TECNOLOGÍA</text>
+            <text x="-138" y="-36" text-anchor="end" fill="#9C27B0" font-size="12" font-family="Jost,sans-serif" font-weight="600">RESULTADOS</text>
             <polygon id="radarPoly" points="0,0 0,0 0,0 0,0 0,0" fill="url(#radarFill)" stroke="#A51916" stroke-width="2.5"/>
-            <circle class="rDot" cx="0" cy="0" r="5" fill="#A51916"/>
-            <circle class="rDot" cx="0" cy="0" r="5" fill="#A51916"/>
-            <circle class="rDot" cx="0" cy="0" r="5" fill="#A51916"/>
-            <circle class="rDot" cx="0" cy="0" r="5" fill="#A51916"/>
-            <circle class="rDot" cx="0" cy="0" r="5" fill="#A51916"/>
+            <circle class="rDot" cx="0" cy="0" r="6" fill="#4CAF50" stroke="#fff" stroke-width="1.5"/>
+            <circle class="rDot" cx="0" cy="0" r="6" fill="#2196F3" stroke="#fff" stroke-width="1.5"/>
+            <circle class="rDot" cx="0" cy="0" r="6" fill="#03A9F4" stroke="#fff" stroke-width="1.5"/>
+            <circle class="rDot" cx="0" cy="0" r="6" fill="#FF9800" stroke="#fff" stroke-width="1.5"/>
+            <circle class="rDot" cx="0" cy="0" r="6" fill="#9C27B0" stroke="#fff" stroke-width="1.5"/>
           </g>
         </svg>
       </div>
 
-      <!-- BARRAS -->
+      <!-- BARRAS HORIZONTALES -->
       <div id="plcBars"></div>
+
+      <!-- BARRAS VERTICALES SVG -->
+      <div id="plcVertBars" style="text-align:center;margin-top:24px"></div>
 
       <!-- TOTAL -->
       <div id="plcTotal" class="plc-total-row" style="display:none">
@@ -824,6 +827,28 @@ function calcPLC(e){
       '<span style="font-size:12px;font-weight:700;color:'+ax.sem.color+';text-align:center;display:flex;align-items:center;gap:4px;justify-content:center"><span style="width:12px;height:12px;border-radius:50%;background:'+ax.sem.color+';display:inline-block"></span>'+ax.sem.label+'</span>';
     barsEl.appendChild(row);
   });
+
+  // Vertical bar chart
+  var vbW=380,vbH=220,bW=48,gap=24,ox=40,oy=10,ch=170;
+  var vbSvg='<svg viewBox="0 0 '+vbW+' '+vbH+'" style="width:100%;max-width:400px" xmlns="http://www.w3.org/2000/svg">';
+  for(var g=1;g<=4;g++){
+    var gy=oy+ch-(g/4)*ch;
+    vbSvg+='<line x1="'+ox+'" y1="'+gy+'" x2="'+(vbW-10)+'" y2="'+gy+'" stroke="rgba(255,255,255,.08)" stroke-width="1"/>';
+    vbSvg+='<text x="'+(ox-6)+'" y="'+(gy+4)+'" text-anchor="end" fill="rgba(255,255,255,.4)" font-size="11" font-family="Jost,sans-serif">'+g+'</text>';
+  }
+  var axColors=['#4CAF50','#2196F3','#03A9F4','#FF9800','#9C27B0'];
+  var axShort=['EST','PRO','PER','TEC','RES'];
+  axisScores.forEach(function(ax,i){
+    var bx=ox+i*(bW+gap)+(gap/2);
+    var bh=(ax.avg/4)*ch;
+    var by=oy+ch-bh;
+    vbSvg+='<rect x="'+bx+'" y="'+by+'" width="'+bW+'" height="'+bh+'" rx="4" fill="'+axColors[i]+'" opacity=".85"/>';
+    vbSvg+='<text x="'+(bx+bW/2)+'" y="'+(by-8)+'" text-anchor="middle" fill="#fff" font-size="14" font-weight="800" font-family="Jost,sans-serif">'+ax.avg.toFixed(1)+'</text>';
+    vbSvg+='<circle cx="'+(bx+bW/2)+'" cy="'+(by-22)+'" r="5" fill="'+ax.sem.color+'"/>';
+    vbSvg+='<text x="'+(bx+bW/2)+'" y="'+(oy+ch+16)+'" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="11" font-weight="600" font-family="Jost,sans-serif">'+axShort[i]+'</text>';
+  });
+  vbSvg+='</svg>';
+  document.getElementById('plcVertBars').innerHTML=vbSvg;
 
   document.getElementById('plcTotal').style.display='grid';
   document.getElementById('plcTotalBar').style.width=((grandAvg/4)*100)+'%';
