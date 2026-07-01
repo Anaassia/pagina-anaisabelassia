@@ -614,7 +614,7 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red);background:#fff
       <p id="plcEmailMsg" style="font-size:15px;color:rgba(11,11,11,.55);max-width:52ch;margin:0 auto 20px">Procesando tu informe...</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
         <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn btn-red" style="justify-content:center">Agenda una mentoría personalizada por $250.000 COP C/h <span class="arrow">→</span></a>
-        <button type="button" class="btn btn-outline" onclick="solicitarPerfilMentoring()" style="justify-content:center;border-color:var(--red);color:var(--red)">Desea un perfil personalizado + Mentoring <span class="arrow">→</span></button>
+        <button type="button" class="btn btn-outline" onclick="solicitarPerfilMentoring()" style="justify-content:center;border-color:var(--red);color:var(--red)">Deseas un Diagnóstico Personalizado + Mentoring <span class="arrow">→</span></button>
         <button type="button" class="btn btn-outline" onclick="descargarPDF()" style="justify-content:center">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;margin-right:6px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Descargar diagnóstico en PDF
@@ -1073,6 +1073,222 @@ function descargarPDF(){
   }).from(el).save().then(function(){
     btns.forEach(function(b){b.style.display=''});
   });
+}
+
+function demoMode(){
+  var axColors=['#4CAF50','#2196F3','#03A9F4','#FF9800','#9C27B0'];
+  var axIcons=['estrategia','procesos','personas','tecnologia','resultados'];
+  var axSubs=['El rumbo','La ejecución','El talento','La palanca','El crecimiento'];
+  var axisScores=[
+    {key:'estrategia',label:'Estrategia',avg:3.2,valor:3.2,sem:semLabel(3.2),details:[]},
+    {key:'procesos',label:'Procesos',avg:2.2,valor:2.2,sem:semLabel(2.2),details:[]},
+    {key:'personas',label:'Personas',avg:3.0,valor:3.0,sem:semLabel(3.0),details:[]},
+    {key:'tecnologia',label:'Tecnología',avg:2.0,valor:2.0,sem:semLabel(2.0),details:[]},
+    {key:'resultados',label:'Resultados',avg:3.2,valor:3.2,sem:semLabel(3.2),details:[]}
+  ];
+  var grandAvg=axisScores.reduce(function(a,b){return a+b.avg},0)/5;
+  var gs=semLabel(grandAvg);
+
+  // Axis cards
+  var barsEl=document.getElementById('plcBars');
+  barsEl.innerHTML='';
+  axisScores.forEach(function(ax,i){
+    var pct=(ax.avg/4)*100;
+    var semBg=ax.avg>=3.5?'#E8F5E9':ax.avg>=2.5?'#F1F8E9':ax.avg>=1.5?'#FFF3E0':'#FFEBEE';
+    var card=document.createElement('div');
+    card.style.cssText='margin-bottom:14px;padding:16px 18px;background:#FAFAFA;border-radius:10px;border-left:4px solid '+axColors[i];
+    card.innerHTML='<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">'+
+      '<img src="assets/'+axIcons[i]+'.png" alt="" style="width:36px;height:36px;border-radius:50%">'+
+      '<div style="flex:1"><div style="font-family:Jost,sans-serif;font-size:15px;font-weight:700;color:'+axColors[i]+'">'+ax.label+' <span style="font-weight:400;font-size:12px;color:#888;font-style:italic">— '+axSubs[i]+'</span></div>'+
+      '<div style="margin-top:4px;background:#E0E0E0;border-radius:6px;height:8px;max-width:200px"><div style="background:'+axColors[i]+';border-radius:6px;height:8px;width:'+pct+'%"></div></div></div>'+
+      '<div style="text-align:right"><div style="font-family:Jost,sans-serif;font-size:22px;font-weight:800;color:'+axColors[i]+'">'+ax.avg.toFixed(1)+'</div>'+
+      '<span style="display:inline-block;padding:2px 8px;border-radius:12px;font-size:10px;font-weight:700;color:'+ax.sem.color+';background:'+semBg+'">'+ax.sem.label+'</span></div></div>';
+    barsEl.appendChild(card);
+  });
+
+  // Vertical bars
+  var vbW=380,vbH=220,bW=48,gap=24,ox=40,oy=10,ch=170;
+  var vbSvg='<svg viewBox="0 0 '+vbW+' '+vbH+'" style="width:100%;max-width:400px" xmlns="http://www.w3.org/2000/svg">';
+  for(var g=1;g<=4;g++){
+    var gy=oy+ch-(g/4)*ch;
+    vbSvg+='<line x1="'+ox+'" y1="'+gy+'" x2="'+(vbW-10)+'" y2="'+gy+'" stroke="#E0E0E0" stroke-width="0.8"/>';
+    vbSvg+='<text x="'+(ox-6)+'" y="'+(gy+4)+'" text-anchor="end" fill="#999" font-size="11" font-family="Jost,sans-serif">'+g+'</text>';
+  }
+  vbSvg+='<line x1="'+ox+'" y1="'+(oy+ch)+'" x2="'+(vbW-10)+'" y2="'+(oy+ch)+'" stroke="#CCC" stroke-width="1"/>';
+  var axShort=['EST','PRO','PER','TEC','RES'];
+  axisScores.forEach(function(ax,i){
+    var bx=ox+i*(bW+gap)+(gap/2);
+    var bh=(ax.avg/4)*ch;
+    var by=oy+ch-bh;
+    vbSvg+='<rect x="'+bx+'" y="'+by+'" width="'+bW+'" height="'+bh+'" rx="4" fill="'+axColors[i]+'" opacity=".85"/>';
+    vbSvg+='<text x="'+(bx+bW/2)+'" y="'+(by-8)+'" text-anchor="middle" fill="#333" font-size="14" font-weight="800" font-family="Jost,sans-serif">'+ax.avg.toFixed(1)+'</text>';
+    vbSvg+='<circle cx="'+(bx+bW/2)+'" cy="'+(by-22)+'" r="5" fill="'+ax.sem.color+'"/>';
+    vbSvg+='<text x="'+(bx+bW/2)+'" y="'+(oy+ch+16)+'" text-anchor="middle" fill="#666" font-size="11" font-weight="600" font-family="Jost,sans-serif">'+axShort[i]+'</text>';
+  });
+  vbSvg+='</svg>';
+  document.getElementById('plcVertBars').innerHTML=vbSvg;
+
+  // Score general
+  document.getElementById('plcTotalScore').style.color=gs.color;
+  document.getElementById('plcTotalScore').textContent=grandAvg.toFixed(1)+'/4.0';
+  document.getElementById('plcTotalLabel').style.cssText='display:inline-block;padding:3px 14px;border-radius:20px;font-size:12px;font-weight:700;color:'+gs.color+';background:'+(grandAvg>=3.5?'#E8F5E9':grandAvg>=2.5?'#F1F8E9':grandAvg>=1.5?'#FFF3E0':'#FFEBEE');
+  document.getElementById('plcTotalLabel').textContent=gs.label;
+
+  // Radar
+  var angles=[Math.PI*1.5,Math.PI*1.5+Math.PI*2/5,Math.PI*1.5+Math.PI*4/5,Math.PI*1.5+Math.PI*6/5,Math.PI*1.5+Math.PI*8/5];
+  var R=140;
+  var pts=[],dots=document.querySelectorAll('.rDot');
+  axisScores.forEach(function(ax,i){
+    var r=(ax.avg/4)*R;
+    var x=Math.cos(angles[i])*r;
+    var y=Math.sin(angles[i])*r;
+    pts.push(x.toFixed(1)+','+y.toFixed(1));
+    dots[i].setAttribute('cx',x.toFixed(1));
+    dots[i].setAttribute('cy',y.toFixed(1));
+  });
+  document.getElementById('radarPoly').setAttribute('points',pts.join(' '));
+
+  document.getElementById('plcResultName').textContent='Demo Usuario — Empresa Demo';
+  document.getElementById('plcResults').classList.add('show');
+  document.querySelector('.plc-form').style.display='none';
+  document.getElementById('plcResults').scrollIntoView({behavior:'smooth',block:'start'});
+
+  // Simular respuesta IA
+  var demoAI={
+    bienvenida:'Bienvenido/a al diagnóstico de tu perfil de liderazgo comercial. Tu decisión de evaluar tus capacidades demuestra un compromiso genuino con el crecimiento. Los hallazgos revelan oportunidades concretas de transformación.',
+    ejeResumenes:[
+      {key:'estrategia',fortalezas:['Visión comercial clara y comunicada al equipo','Capacidad de anticipar cambios del mercado'],debilidades:['Falta de indicadores para medir la ejecución estratégica','Plan estratégico sin revisión periódica'],recomendacion:'Implementar revisiones trimestrales del plan con KPIs medibles'},
+      {key:'procesos',fortalezas:['Procesos de venta definidos','Equipo conoce el flujo comercial'],debilidades:['Procesos manuales sin automatización','Sin estandarización de propuestas'],recomendacion:'Automatizar el pipeline y estandarizar plantillas de propuesta'},
+      {key:'personas',fortalezas:['Equipo comprometido con la visión','Buena comunicación interna'],debilidades:['Sin programa de capacitación continua','Roles comerciales sin métricas individuales'],recomendacion:'Diseñar un plan de desarrollo con metas individuales medibles'},
+      {key:'tecnologia',fortalezas:['Disposición del equipo a adoptar herramientas','Infraestructura básica funcional'],debilidades:['Sin CRM implementado','Gestión de datos en hojas de cálculo'],recomendacion:'Implementar CRM como prioridad inmediata'},
+      {key:'resultados',fortalezas:['Crecimiento sostenido en ventas','Base de clientes leal'],debilidades:['Sin análisis de rentabilidad por cliente','Métricas de conversión no rastreadas'],recomendacion:'Crear dashboard de indicadores comerciales clave'}
+    ],
+    hallazgosClave:{
+      fortalezas:[
+        {titulo:'Visión estratégica clara',descripcion:'Tu equipo tiene una dirección definida con capacidad de anticipar cambios del mercado'},
+        {titulo:'Base de clientes sólida',descripcion:'El crecimiento sostenido y la lealtad de clientes demuestran valor entregado consistentemente'}
+      ],
+      debilidades:[
+        {titulo:'Tecnología como cuello de botella',descripcion:'La ausencia de CRM y la gestión manual de datos limitan la escalabilidad del negocio'},
+        {titulo:'Procesos sin automatización',descripcion:'Los procesos manuales generan ineficiencias que frenan el potencial de crecimiento'}
+      ]
+    },
+    resumenEjecutivo:'Tu perfil revela un sistema comercial con buena base estratégica y resultados, pero frenado por brechas críticas en tecnología y procesos. La visión está clara pero la ejecución carece de herramientas. El cuello de botella principal es la ausencia de CRM y automatización, que impide escalar lo que ya funciona. La palanca de mayor impacto: implementar tecnología que conecte estrategia con ejecución.',
+    contrasteContexto:'Tu contexto de negocio muestra un equipo con potencial que opera por debajo de su capacidad real. Los desafíos que mencionas se alinean directamente con las brechas en tecnología y procesos. Resolver primero la infraestructura tecnológica desbloqueará mejoras en cascada en los demás ejes.',
+    planAccion:[
+      {accion:'Implementar CRM para centralizar gestión comercial',eje:'Tecnología',prioridad:'critica',plazo:'inmediato (1-2 semanas)',victoriaTemprana:'Migrar los 20 clientes más activos al CRM en la primera semana'},
+      {accion:'Automatizar pipeline de ventas y propuestas',eje:'Procesos',prioridad:'alta',plazo:'corto (30 días)',victoriaTemprana:'Crear 3 plantillas de propuesta estandarizadas'},
+      {accion:'Definir KPIs por eje y revisar trimestralmente',eje:'Estrategia',prioridad:'alta',plazo:'corto (30 días)'},
+      {accion:'Diseñar programa de capacitación comercial',eje:'Personas',prioridad:'media',plazo:'medio (60-90 días)'},
+      {accion:'Crear dashboard de métricas comerciales',eje:'Resultados',prioridad:'media',plazo:'medio (60-90 días)',victoriaTemprana:'Dashboard básico con 5 indicadores clave en la primera semana'},
+      {accion:'Establecer análisis de rentabilidad por cliente',eje:'Resultados',prioridad:'baja',plazo:'medio (60-90 días)'}
+    ],
+    siguientesPasos:[
+      'Paso 1: Esta semana selecciona e instala un CRM (HubSpot gratuito o Pipedrive) y migra tus 20 clientes más importantes',
+      'Paso 2: En las próximas 2-4 semanas, estandariza tus 3 propuestas comerciales más frecuentes como plantillas reutilizables',
+      'Paso 3: Agenda una sesión estratégica con Ana Isabel Assia para diseñar tu ruta de transformación comercial personalizada'
+    ]
+  };
+
+  // Render AI sections
+  document.getElementById('plcAiLoading').style.display='none';
+  document.getElementById('plcAiResults').style.display='block';
+
+  if(demoAI.bienvenida){
+    document.getElementById('plcAiBienvenida').textContent=demoAI.bienvenida;
+    document.getElementById('plcAiBienvenidaWrap').style.display='block';
+  }
+
+  var axClrs=['#4CAF50','#2196F3','#03A9F4','#FF9800','#9C27B0'];
+  if(demoAI.ejeResumenes){
+    var cards=document.querySelectorAll('#plcBars > div');
+    demoAI.ejeResumenes.forEach(function(er,idx){
+      if(!cards[idx])return;
+      var aiBlock=document.createElement('div');
+      aiBlock.style.cssText='margin-top:10px;padding-top:10px;border-top:1px solid #E0E0E0;font-size:13px;line-height:1.6;color:rgba(11,11,11,.7)';
+      var html='';
+      if(er.fortalezas){
+        var fArr=Array.isArray(er.fortalezas)?er.fortalezas:[er.fortalezas];
+        html+='<div style="margin-bottom:6px"><span style="font-weight:700;color:'+axClrs[idx]+'">✦ Fortalezas:</span></div>';
+        fArr.forEach(function(f){html+='<div style="margin-bottom:4px;padding-left:16px;font-size:13px">• '+f+'</div>';});
+      }
+      if(er.debilidades){
+        var dArr=Array.isArray(er.debilidades)?er.debilidades:[er.debilidades];
+        html+='<div style="margin-bottom:6px;margin-top:8px"><span style="font-weight:700;color:#F44336">⚠ Debilidades:</span></div>';
+        dArr.forEach(function(d){html+='<div style="margin-bottom:4px;padding-left:16px;font-size:13px">• '+d+'</div>';});
+      }
+      if(er.recomendacion)html+='<div style="margin-top:8px"><span style="font-weight:700;color:var(--red)">→ Recomendación:</span> '+er.recomendacion+'</div>';
+      aiBlock.innerHTML=html;
+      cards[idx].appendChild(aiBlock);
+    });
+  }
+
+  if(demoAI.hallazgosClave){
+    var hk=demoAI.hallazgosClave;
+    var hhtml='';
+    if(hk.fortalezas){
+      hhtml+='<div><h4 style="font-size:13px;font-weight:700;color:#4CAF50;margin:0 0 10px;text-transform:uppercase;letter-spacing:.5px">Top Fortalezas</h4>';
+      hk.fortalezas.forEach(function(f){
+        hhtml+='<div style="margin-bottom:10px;padding:10px 14px;background:#E8F5E9;border-radius:8px;border-left:3px solid #4CAF50"><div style="font-weight:700;font-size:13px;color:#2E7D32;margin-bottom:3px">'+f.titulo+'</div><div style="font-size:12px;color:rgba(11,11,11,.65)">'+f.descripcion+'</div></div>';
+      });
+      hhtml+='</div>';
+    }
+    if(hk.debilidades){
+      hhtml+='<div><h4 style="font-size:13px;font-weight:700;color:#F44336;margin:0 0 10px;text-transform:uppercase;letter-spacing:.5px">Debilidades Críticas</h4>';
+      hk.debilidades.forEach(function(d){
+        hhtml+='<div style="margin-bottom:10px;padding:10px 14px;background:#FFEBEE;border-radius:8px;border-left:3px solid #F44336"><div style="font-weight:700;font-size:13px;color:#C62828;margin-bottom:3px">'+d.titulo+'</div><div style="font-size:12px;color:rgba(11,11,11,.65)">'+d.descripcion+'</div></div>';
+      });
+      hhtml+='</div>';
+    }
+    document.getElementById('plcHallazgos').innerHTML=hhtml;
+    document.getElementById('plcHallazgosWrap').style.display='block';
+  }
+
+  if(demoAI.resumenEjecutivo){
+    document.getElementById('plcAiResumen').innerHTML=demoAI.resumenEjecutivo;
+    document.getElementById('plcAiResumenWrap').style.display='block';
+  }
+  if(demoAI.contrasteContexto){
+    document.getElementById('plcAiContextoText').textContent=demoAI.contrasteContexto;
+    document.getElementById('plcAiContexto').style.display='block';
+  }
+
+  if(demoAI.planAccion&&demoAI.planAccion.length>0){
+    var semColors={critica:'#F44336',alta:'#FF9800',media:'#FFC107',baja:'#4CAF50'};
+    var semBgs={critica:'#FFEBEE',alta:'#FFF3E0',media:'#FFFDE7',baja:'#E8F5E9'};
+    var tbl='<table style="width:100%;border-collapse:collapse;font-size:13px;border-radius:8px;overflow:hidden">';
+    tbl+='<thead><tr style="background:var(--ink);color:#fff"><th style="padding:10px 12px;text-align:center;width:36px">#</th><th style="padding:10px 12px;text-align:left">Acción</th><th style="padding:10px 12px;text-align:center">Prioridad</th><th style="padding:10px 12px;text-align:center">Eje</th><th style="padding:10px 12px;text-align:center">Plazo</th></tr></thead><tbody>';
+    demoAI.planAccion.forEach(function(p,i){
+      var prio=(p.prioridad||'media').toLowerCase();
+      var pc=semColors[prio]||'#FF9800';
+      var bg=semBgs[prio]||'#FFF3E0';
+      var victoria=p.victoriaTemprana?'<div style="font-size:11px;color:#4CAF50;margin-top:4px;font-style:italic">&#9733; Victoria temprana: '+p.victoriaTemprana+'</div>':'';
+      tbl+='<tr style="background:'+(i%2===0?'#fff':'#FAFAFA')+'">';
+      tbl+='<td style="padding:10px 8px;text-align:center;border-bottom:1px solid rgba(0,0,0,.06)"><div style="width:24px;height:24px;border-radius:50%;background:'+pc+';color:#fff;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center">'+(i+1)+'</div></td>';
+      tbl+='<td style="padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.06);line-height:1.5">'+p.accion+victoria+'</td>';
+      tbl+='<td style="padding:10px 12px;text-align:center;border-bottom:1px solid rgba(0,0,0,.06)"><span style="display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;color:'+pc+';background:'+bg+';text-transform:uppercase">'+p.prioridad+'</span></td>';
+      tbl+='<td style="padding:10px 12px;text-align:center;border-bottom:1px solid rgba(0,0,0,.06)">'+p.eje+'</td>';
+      tbl+='<td style="padding:10px 12px;text-align:center;border-bottom:1px solid rgba(0,0,0,.06)">'+p.plazo+'</td></tr>';
+    });
+    tbl+='</tbody></table>';
+    document.getElementById('plcAiPlan').innerHTML=tbl;
+    document.getElementById('plcAiPlanWrap').style.display='block';
+  }
+
+  if(demoAI.siguientesPasos&&demoAI.siguientesPasos.length>0){
+    var ph='';
+    demoAI.siguientesPasos.forEach(function(p,i){
+      ph+='<div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:14px"><div style="width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">'+(i+1)+'</div><p style="font-size:14px;color:rgba(11,11,11,.75);line-height:1.6;margin:5px 0 0">'+p+'</p></div>';
+    });
+    document.getElementById('plcAiPasos').innerHTML=ph;
+    document.getElementById('plcAiPasosWrap').style.display='block';
+  }
+
+  document.getElementById('plcEmailMsg').textContent='MODO DEMO — Datos de prueba para refinamiento visual';
+}
+
+if(new URLSearchParams(window.location.search).get('demo')==='1'){
+  document.addEventListener('DOMContentLoaded',function(){setTimeout(demoMode,300)});
 }
 
 function solicitarPerfilMentoring(){
