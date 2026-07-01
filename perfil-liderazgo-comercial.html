@@ -1349,17 +1349,14 @@ if(new URLSearchParams(window.location.search).get('demo')==='1'){
 }
 
 function getClientData(){
-  var nameEl=document.getElementById('plcResultName');
-  var clientName=nameEl?nameEl.textContent:'';
-  var emailField=document.querySelector('input[name="email"]');
-  var phoneField=document.querySelector('input[name="phone"]');
-  var companyField=document.querySelector('input[name="company"]');
   var scoreEl=document.getElementById('plcTotalScore');
   return{
-    nombre:clientName.split('—')[0].trim(),
-    email:emailField?emailField.value:'',
-    telefono:phoneField?phoneField.value:'',
-    empresa:companyField?companyField.value:'',
+    nombre:(document.getElementById('plc-name')||{}).value||'',
+    email:(document.getElementById('plc-email')||{}).value||'',
+    telefono:(document.getElementById('plc-phone')||{}).value||'',
+    empresa:(document.getElementById('plc-company')||{}).value||'',
+    cargo:(document.getElementById('plc-role')||{}).value||'',
+    industria:(document.getElementById('plc-industry')||{}).value||'',
     scoreGeneral:scoreEl?scoreEl.textContent:'',
     fecha:new Date().toISOString()
   };

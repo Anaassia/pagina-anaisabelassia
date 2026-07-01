@@ -130,7 +130,9 @@
       "PowerShell($raw = Get-Content \"C:\\\\Users\\\\aassi\\\\.claude\\\\projects\\\\C--Users-aassi-Documents-PAGINA-ANA-ASSIA\\\\3cfa1de4-7d43-40c6-825e-4f9e631e0857\\\\tool-results\\\\mcp-n8n-mcp-n8n_get_workflow-1782893036781.txt\" -Raw -Encoding utf8; $data = $raw | ConvertFrom-Json; $wf = $data.data; $node = $wf.nodes | Where-Object { $_.id -eq 'code-prompt' }; $code = $node.parameters.jsCode; $idx = $code.IndexOf\\('siguientesPasos'\\); $code.Substring\\($idx - 50, 500\\))",
       "PowerShell($raw = Get-Content \"C:\\\\Users\\\\aassi\\\\.claude\\\\projects\\\\C--Users-aassi-Documents-PAGINA-ANA-ASSIA\\\\3cfa1de4-7d43-40c6-825e-4f9e631e0857\\\\tool-results\\\\mcp-n8n-mcp-n8n_get_workflow-1782893036781.txt\" -Raw -Encoding utf8; $data = $raw | ConvertFrom-Json; $wf = $data.data; $node = $wf.nodes | Where-Object { $_.id -eq 'code-prompt' }; $node.parameters.jsCode)",
       "Bash(node -e \"const fs=require\\('fs'\\);const code=fs.readFileSync\\('C:/Users/aassi/AppData/Local/Temp/claude/C--Users-aassi-Documents-PAGINA-ANA-ASSIA/3cfa1de4-7d43-40c6-825e-4f9e631e0857/scratchpad/code-html-v5.js','utf8'\\);fs.writeFileSync\\('C:/Users/aassi/AppData/Local/Temp/claude/C--Users-aassi-Documents-PAGINA-ANA-ASSIA/3cfa1de4-7d43-40c6-825e-4f9e631e0857/scratchpad/code-html-v5-escaped.txt',code\\);console.log\\('OK length:'+code.length\\)\")",
-      "PowerShell($code = Get-Content \"C:\\\\Users\\\\aassi\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-aassi-Documents-PAGINA-ANA-ASSIA\\\\3cfa1de4-7d43-40c6-825e-4f9e631e0857\\\\scratchpad\\\\code-html-v5.js\" -Raw -Encoding utf8; $code.Length)"
+      "PowerShell($code = Get-Content \"C:\\\\Users\\\\aassi\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-aassi-Documents-PAGINA-ANA-ASSIA\\\\3cfa1de4-7d43-40c6-825e-4f9e631e0857\\\\scratchpad\\\\code-html-v5.js\" -Raw -Encoding utf8; $code.Length)",
+      "mcp__odoo-mcp__get_model_fields",
+      "mcp__n8n-mcp__tools_documentation"
     ]
   }
 }
