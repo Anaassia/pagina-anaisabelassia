@@ -240,6 +240,18 @@
 </section>
 
 <!-- TALLERES -->
+<style>
+.conf-card{display:grid;gap:0;border-radius:16px;overflow:hidden;border:1px solid rgba(0,0,0,.06);background:var(--paper)}
+.conf-card--img-left{grid-template-columns:380px 1fr}
+.conf-card--img-right{grid-template-columns:1fr 380px}
+.conf-card img{width:100%;height:100%;object-fit:cover;min-height:280px;transition:transform .5s}
+.conf-card:hover img{transform:scale(1.05)}
+@media(max-width:768px){
+  .conf-card--img-left,.conf-card--img-right{grid-template-columns:1fr}
+  .conf-card--img-right .conf-card__body{order:-1}
+  .conf-card img{min-height:220px;max-height:260px}
+}
+</style>
 <section id="talleres" class="pad" style="background:var(--smoke)">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:48px">
@@ -247,34 +259,56 @@
       <h2 class="serif" style="font-weight:400;font-size:clamp(26px,3.5vw,38px);line-height:1.12;margin-top:18px">Conferencias y Talleres <em>Empresariales</em>.</h2>
       <p style="font-size:16px;color:rgba(11,11,11,.65);max-width:60ch;margin:18px auto 0">Conferencias empresariales y talleres personalizados para equipos de líderes comerciales, que buscan desarrollar y potenciar sus competencias y capacidades para liderar negocios y equipos.</p>
     </div>
-    <div class="lc-topics reveal">
-      <div class="lc-topic" style="background:var(--paper)">
-        <div class="lc-topic-num">01</div>
-        <div>
-          <h4>Contrata y desarrolla un equipo poderoso y vibrante</h4>
-          <p><b>"Deja de contratar héroes, construye equipos extraordinarios"</b>. Con la plataforma de inteligencia artificial 360PathFinder® descubres el perfil ideal de cada integrante de tu equipo comercial. En este taller experiencial, tus gerentes y jefes de ventas aprenden a identificar, seleccionar y desarrollar el talento que convierte objetivos ambiciosos en resultados comerciales rentables y sostenibles.</p>
-          <span class="lc-tag">Conferencia Taller Experiencial · 4:00 Horas | Exclusivo para Líderes Comerciales</span>
-          <a href="#registro" class="btn btn-red" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:8px 22px;font-size:13px">Contáctanos <span class="arrow">→</span></a>
+    <div style="display:flex;flex-direction:column;gap:28px">
+
+      <!-- Conferencia 01 -->
+      <div class="conf-card conf-card--img-left reveal">
+        <div style="position:relative;overflow:hidden">
+          <img src="assets/conf-equipo.jpg" alt="Contrata equipos poderosos">
+          <div style="position:absolute;top:16px;left:16px;background:var(--red);color:#fff;font-family:'Jost',sans-serif;font-size:13px;font-weight:700;padding:6px 14px;border-radius:6px;letter-spacing:.04em">01</div>
+        </div>
+        <div class="conf-card__body" style="padding:36px 32px;display:flex;flex-direction:column;justify-content:center">
+          <h4 style="font-family:'Jost',sans-serif;font-size:22px;font-weight:700;color:var(--ink);margin:0">Contrata y desarrolla un equipo poderoso y vibrante</h4>
+          <p style="font-size:15px;color:rgba(11,11,11,.7);line-height:1.6;margin-top:14px"><b>"Deja de contratar héroes, construye equipos extraordinarios"</b>. Con la plataforma de inteligencia artificial 360PathFinder® descubres el perfil ideal de cada integrante de tu equipo comercial. En este taller experiencial, tus gerentes y jefes de ventas aprenden a identificar, seleccionar y desarrollar el talento que convierte objetivos ambiciosos en resultados comerciales rentables y sostenibles.</p>
+          <div style="display:flex;align-items:center;gap:14px;margin-top:18px;flex-wrap:wrap">
+            <span class="lc-tag">Conferencia Taller Experiencial · 4:00 Horas | Exclusivo para Líderes Comerciales</span>
+            <a href="#registro" class="btn btn-red" style="display:inline-flex;align-items:center;gap:6px;padding:8px 22px;font-size:13px">Contáctanos <span class="arrow">→</span></a>
+          </div>
         </div>
       </div>
-      <div class="lc-topic" style="background:var(--paper)">
-        <div class="lc-topic-num">02</div>
-        <div>
-          <h4>Desprograma tu Liderazgo Tradicional</h4>
-          <p><b>"De líder tradicional a líder generativo"</b>. La era de la inteligencia artificial y la disrupción tecnológica exigen un nuevo modelo de liderazgo comercial. En este taller experiencial, tus gerentes, jefes de ventas y líderes comerciales desaprenden los paradigmas que frenan su crecimiento y activan las competencias que transforman equipos ordinarios en fuerzas comerciales de alto rendimiento.</p>
-          <span class="lc-tag">Conferencia Taller Experiencial · 4:00 Horas | Exclusivo para Líderes Comerciales</span>
-          <a href="#registro" class="btn btn-red" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:8px 22px;font-size:13px">Contáctanos <span class="arrow">→</span></a>
+
+      <!-- Conferencia 02 -->
+      <div class="conf-card conf-card--img-left reveal">
+        <div style="position:relative;overflow:hidden">
+          <img src="assets/conf-liderazgo.jpg" alt="Desprograma tu liderazgo">
+          <div style="position:absolute;top:16px;left:16px;background:var(--red);color:#fff;font-family:'Jost',sans-serif;font-size:13px;font-weight:700;padding:6px 14px;border-radius:6px;letter-spacing:.04em">02</div>
+        </div>
+        <div class="conf-card__body" style="padding:36px 32px;display:flex;flex-direction:column;justify-content:center">
+          <h4 style="font-family:'Jost',sans-serif;font-size:22px;font-weight:700;color:var(--ink);margin:0">Desprograma tu Liderazgo Tradicional</h4>
+          <p style="font-size:15px;color:rgba(11,11,11,.7);line-height:1.6;margin-top:14px"><b>"De líder tradicional a líder generativo"</b>. La era de la inteligencia artificial y la disrupción tecnológica exigen un nuevo modelo de liderazgo comercial. En este taller experiencial, tus gerentes, jefes de ventas y líderes comerciales desaprenden los paradigmas que frenan su crecimiento y activan las competencias que transforman equipos ordinarios en fuerzas comerciales de alto rendimiento.</p>
+          <div style="display:flex;align-items:center;gap:14px;margin-top:18px;flex-wrap:wrap">
+            <span class="lc-tag">Conferencia Taller Experiencial · 4:00 Horas | Exclusivo para Líderes Comerciales</span>
+            <a href="#registro" class="btn btn-red" style="display:inline-flex;align-items:center;gap:6px;padding:8px 22px;font-size:13px">Contáctanos <span class="arrow">→</span></a>
+          </div>
         </div>
       </div>
-      <div class="lc-topic" style="background:var(--paper)">
-        <div class="lc-topic-num">03</div>
-        <div>
-          <h4>Lidera Equipos Desafiantes y Divergentes</h4>
-          <p><b>"El desafío hoy es sincronizar Inteligencia Humana + Valores + Inteligencia Artificial"</b>. Los equipos diversos son los más poderosos — pero también los más difíciles de liderar. En este taller experiencial, tus gerentes y jefes de ventas aprenden a sincronizar inteligencia humana, propósito individual y colectivo, e inteligencia artificial para convertir la divergencia en ventaja competitiva y resultados comerciales extraordinarios.</p>
-          <span class="lc-tag">Conferencia Taller Experiencial · 4:00 Horas | Exclusivo para Líderes Comerciales</span>
-          <a href="#registro" class="btn btn-red" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:8px 22px;font-size:13px">Contáctanos <span class="arrow">→</span></a>
+
+      <!-- Conferencia 03 -->
+      <div class="conf-card conf-card--img-left reveal">
+        <div style="position:relative;overflow:hidden">
+          <img src="assets/conf-equipos-divergentes.jpg" alt="Lidera equipos divergentes">
+          <div style="position:absolute;top:16px;left:16px;background:var(--red);color:#fff;font-family:'Jost',sans-serif;font-size:13px;font-weight:700;padding:6px 14px;border-radius:6px;letter-spacing:.04em">03</div>
+        </div>
+        <div class="conf-card__body" style="padding:36px 32px;display:flex;flex-direction:column;justify-content:center">
+          <h4 style="font-family:'Jost',sans-serif;font-size:22px;font-weight:700;color:var(--ink);margin:0">Lidera Equipos Desafiantes y Divergentes</h4>
+          <p style="font-size:15px;color:rgba(11,11,11,.7);line-height:1.6;margin-top:14px"><b>"El desafío hoy es sincronizar Inteligencia Humana + Valores + Inteligencia Artificial"</b>. Los equipos diversos son los más poderosos — pero también los más difíciles de liderar. En este taller experiencial, tus gerentes y jefes de ventas aprenden a sincronizar inteligencia humana, propósito individual y colectivo, e inteligencia artificial para convertir la divergencia en ventaja competitiva y resultados comerciales extraordinarios.</p>
+          <div style="display:flex;align-items:center;gap:14px;margin-top:18px;flex-wrap:wrap">
+            <span class="lc-tag">Conferencia Taller Experiencial · 4:00 Horas | Exclusivo para Líderes Comerciales</span>
+            <a href="#registro" class="btn btn-red" style="display:inline-flex;align-items:center;gap:6px;padding:8px 22px;font-size:13px">Contáctanos <span class="arrow">→</span></a>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
