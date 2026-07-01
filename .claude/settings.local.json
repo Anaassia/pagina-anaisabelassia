@@ -117,7 +117,9 @@
       "mcp__n8n-mcp__n8n_update_full_workflow",
       "mcp__odoo-mcp__manage_crm_tags",
       "mcp__odoo-mcp__create_crm_tag",
-      "mcp__n8n-mcp__n8n_update_partial_workflow"
+      "mcp__n8n-mcp__n8n_update_partial_workflow",
+      "Bash(node -e ' *)",
+      "PowerShell($code = Get-Content \"C:\\\\Users\\\\aassi\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-aassi-Documents-PAGINA-ANA-ASSIA\\\\3cfa1de4-7d43-40c6-825e-4f9e631e0857\\\\scratchpad\\\\node4-informe-v3.js\" -Raw -Encoding utf8; $payload = @{jsCode=$code} | ConvertTo-Json -Depth 3 -Compress; Set-Content -Path \"C:\\\\Users\\\\aassi\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-aassi-Documents-PAGINA-ANA-ASSIA\\\\3cfa1de4-7d43-40c6-825e-4f9e631e0857\\\\scratchpad\\\\node4-payload.json\" -Value $payload -Encoding utf8; Write-Output \"Payload length: $\\($payload.Length\\)\")"
     ]
   }
 }
