@@ -1165,12 +1165,12 @@ function demoMode(){
     ],
     hallazgosClave:{
       fortalezas:[
-        {titulo:'Visión estratégica clara',descripcion:'Tu equipo tiene una dirección definida con capacidad de anticipar cambios del mercado'},
-        {titulo:'Base de clientes sólida',descripcion:'El crecimiento sostenido y la lealtad de clientes demuestran valor entregado consistentemente'}
+        {factor:'Visión estratégica clara',descripcion:'Tu equipo tiene una dirección definida con capacidad de anticipar cambios del mercado'},
+        {factor:'Base de clientes sólida',descripcion:'El crecimiento sostenido y la lealtad de clientes demuestran valor entregado consistentemente'}
       ],
       debilidades:[
-        {titulo:'Tecnología como cuello de botella',descripcion:'La ausencia de CRM y la gestión manual de datos limitan la escalabilidad del negocio'},
-        {titulo:'Procesos sin automatización',descripcion:'Los procesos manuales generan ineficiencias que frenan el potencial de crecimiento'}
+        {factor:'Tecnología como cuello de botella',descripcion:'La ausencia de CRM y la gestión manual de datos limitan la escalabilidad del negocio'},
+        {factor:'Procesos sin automatización',descripcion:'Los procesos manuales generan ineficiencias que frenan el potencial de crecimiento'}
       ]
     },
     resumenEjecutivo:'Tu perfil revela un sistema comercial con buena base estratégica y resultados, pero frenado por brechas críticas en tecnología y procesos. La visión está clara pero la ejecución carece de herramientas. El cuello de botella principal es la ausencia de CRM y automatización, que impide escalar lo que ya funciona. La palanca de mayor impacto: implementar tecnología que conecte estrategia con ejecución.',
@@ -1192,18 +1192,19 @@ function demoMode(){
 
   // Render AI sections
   document.getElementById('plcAiLoading').style.display='none';
-  document.getElementById('plcAiResults').style.display='block';
 
   if(demoAI.bienvenida){
-    document.getElementById('plcAiBienvenida').textContent=demoAI.bienvenida;
-    document.getElementById('plcAiBienvenidaWrap').style.display='block';
+    document.getElementById('plcBienvenidaText').innerHTML=demoAI.bienvenida.replace(/\n/g,'<br>');
+    document.getElementById('plcBienvenida').style.display='block';
   }
 
   var axClrs=['#4CAF50','#2196F3','#03A9F4','#FF9800','#9C27B0'];
+  var axKeys=['estrategia','procesos','personas','tecnologia','resultados'];
   if(demoAI.ejeResumenes){
-    var cards=document.querySelectorAll('#plcBars > div');
-    demoAI.ejeResumenes.forEach(function(er,idx){
-      if(!cards[idx])return;
+    var cards=document.getElementById('plcBars').children;
+    demoAI.ejeResumenes.forEach(function(er){
+      var idx=axKeys.indexOf(er.key);
+      if(idx===-1||!cards[idx])return;
       var aiBlock=document.createElement('div');
       aiBlock.style.cssText='margin-top:10px;padding-top:10px;border-top:1px solid #E0E0E0;font-size:13px;line-height:1.6;color:rgba(11,11,11,.7)';
       var html='';
@@ -1224,19 +1225,25 @@ function demoMode(){
   }
 
   if(demoAI.hallazgosClave){
-    var hk=demoAI.hallazgosClave;
+    var hc=demoAI.hallazgosClave;
     var hhtml='';
-    if(hk.fortalezas){
-      hhtml+='<div><h4 style="font-size:13px;font-weight:700;color:#4CAF50;margin:0 0 10px;text-transform:uppercase;letter-spacing:.5px">Top Fortalezas</h4>';
-      hk.fortalezas.forEach(function(f){
-        hhtml+='<div style="margin-bottom:10px;padding:10px 14px;background:#E8F5E9;border-radius:8px;border-left:3px solid #4CAF50"><div style="font-weight:700;font-size:13px;color:#2E7D32;margin-bottom:3px">'+f.titulo+'</div><div style="font-size:12px;color:rgba(11,11,11,.65)">'+f.descripcion+'</div></div>';
+    if(hc.fortalezas&&hc.fortalezas.length>0){
+      hhtml+='<div style="background:#fff;border-radius:10px;padding:16px 18px;border:1px solid #E8F5E9">';
+      hhtml+='<div style="font-size:12px;font-weight:700;color:#4CAF50;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Top Fortalezas</div>';
+      hc.fortalezas.forEach(function(f){
+        hhtml+='<div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:10px">';
+        hhtml+='<div style="width:28px;height:28px;border-radius:50%;background:#E8F5E9;color:#4CAF50;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0">&#10004;</div>';
+        hhtml+='<div><div style="font-size:13px;font-weight:700;color:var(--ink)">'+f.factor+'</div><div style="font-size:12px;color:rgba(11,11,11,.6);line-height:1.5;margin-top:2px">'+f.descripcion+'</div></div></div>';
       });
       hhtml+='</div>';
     }
-    if(hk.debilidades){
-      hhtml+='<div><h4 style="font-size:13px;font-weight:700;color:#F44336;margin:0 0 10px;text-transform:uppercase;letter-spacing:.5px">Debilidades Críticas</h4>';
-      hk.debilidades.forEach(function(d){
-        hhtml+='<div style="margin-bottom:10px;padding:10px 14px;background:#FFEBEE;border-radius:8px;border-left:3px solid #F44336"><div style="font-weight:700;font-size:13px;color:#C62828;margin-bottom:3px">'+d.titulo+'</div><div style="font-size:12px;color:rgba(11,11,11,.65)">'+d.descripcion+'</div></div>';
+    if(hc.debilidades&&hc.debilidades.length>0){
+      hhtml+='<div style="background:#fff;border-radius:10px;padding:16px 18px;border:1px solid #FFEBEE">';
+      hhtml+='<div style="font-size:12px;font-weight:700;color:#F44336;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Debilidades Críticas</div>';
+      hc.debilidades.forEach(function(d){
+        hhtml+='<div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:10px">';
+        hhtml+='<div style="width:28px;height:28px;border-radius:50%;background:#FFEBEE;color:#F44336;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0">&#9888;</div>';
+        hhtml+='<div><div style="font-size:13px;font-weight:700;color:var(--ink)">'+d.factor+'</div><div style="font-size:12px;color:rgba(11,11,11,.6);line-height:1.5;margin-top:2px">'+d.descripcion+'</div></div></div>';
       });
       hhtml+='</div>';
     }
@@ -1245,11 +1252,11 @@ function demoMode(){
   }
 
   if(demoAI.resumenEjecutivo){
-    document.getElementById('plcAiResumen').innerHTML=demoAI.resumenEjecutivo;
-    document.getElementById('plcAiResumenWrap').style.display='block';
+    document.getElementById('plcAiResumen').innerHTML=demoAI.resumenEjecutivo.replace(/\n/g,'<br>');
+    document.getElementById('plcAiResults').style.display='block';
   }
   if(demoAI.contrasteContexto){
-    document.getElementById('plcAiContextoText').textContent=demoAI.contrasteContexto;
+    document.getElementById('plcAiContextoText').innerHTML=demoAI.contrasteContexto.replace(/\n/g,'<br>');
     document.getElementById('plcAiContexto').style.display='block';
   }
 
