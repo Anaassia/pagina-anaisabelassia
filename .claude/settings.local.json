@@ -138,7 +138,11 @@
       "PowerShell(git config --global credential.helper)",
       "mcp__n8n-mcp__n8n_executions",
       "mcp__odoo-mcp__search_read",
-      "mcp__n8n-mcp__n8n_test_workflow"
+      "mcp__n8n-mcp__n8n_test_workflow",
+      "mcp__claude-in-chrome__tabs_context_mcp",
+      "mcp__claude-in-chrome__navigate",
+      "mcp__claude-in-chrome__computer",
+      "mcp__claude-in-chrome__browser_batch"
     ]
   }
 }
