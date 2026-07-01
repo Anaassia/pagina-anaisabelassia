@@ -137,7 +137,8 @@
       "PowerShell(gh auth status)",
       "PowerShell(git config --global credential.helper)",
       "mcp__n8n-mcp__n8n_executions",
-      "mcp__odoo-mcp__search_read"
+      "mcp__odoo-mcp__search_read",
+      "mcp__n8n-mcp__n8n_test_workflow"
     ]
   }
 }
