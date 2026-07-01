@@ -964,7 +964,10 @@ function calcPLC(e){
     if(!r.ok) throw new Error('HTTP '+r.status);
     return r.json();
   }).then(function(data){
-    console.log('PLC webhook response:',JSON.stringify(data).substring(0,500));
+    console.log('PLC webhook response:',JSON.stringify(data).substring(0,2000));
+    console.log('PLC hallazgosClave:', JSON.stringify(data.hallazgosClave));
+    console.log('PLC ejeResumenes count:', data.ejeResumenes ? data.ejeResumenes.length : 0);
+    console.log('PLC planAccion count:', data.planAccion ? data.planAccion.length : 0);
     document.getElementById('plcAiLoading').style.display='none';
     if(data.success){
       document.getElementById('plcEmailMsg').textContent='Tu informe ha sido enviado a '+email+'. Revisa tu bandeja de entrada.';
@@ -1006,7 +1009,10 @@ function calcPLC(e){
       if(data.hallazgosClave){
         var hc=data.hallazgosClave;
         var hhtml='';
-        if(hc.fortalezas&&hc.fortalezas.length>0){
+        var hasF=hc.fortalezas&&hc.fortalezas.length>0;
+        var hasD=hc.debilidades&&hc.debilidades.length>0;
+        document.getElementById('plcHallazgos').style.gridTemplateColumns=(hasF&&hasD)?'1fr 1fr':'1fr';
+        if(hasF){
           hhtml+='<div style="background:#fff;border-radius:10px;padding:16px 18px;border:1px solid #E8F5E9">';
           hhtml+='<div style="font-size:12px;font-weight:700;color:#4CAF50;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Competencias Destacadas</div>';
           hc.fortalezas.forEach(function(f){
@@ -1016,7 +1022,7 @@ function calcPLC(e){
           });
           hhtml+='</div>';
         }
-        if(hc.debilidades&&hc.debilidades.length>0){
+        if(hasD){
           hhtml+='<div style="background:#fff;border-radius:10px;padding:16px 18px;border:1px solid #FFEBEE">';
           hhtml+='<div style="font-size:12px;font-weight:700;color:#F44336;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Capacidades por Desarrollar</div>';
           hc.debilidades.forEach(function(d){
