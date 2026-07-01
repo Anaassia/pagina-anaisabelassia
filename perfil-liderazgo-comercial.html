@@ -952,9 +952,17 @@ function calcPLC(e){
           var aiBlock=document.createElement('div');
           aiBlock.style.cssText='margin-top:10px;padding-top:10px;border-top:1px solid #E0E0E0;font-size:13px;line-height:1.6;color:rgba(11,11,11,.7)';
           var html='';
-          if(er.fortalezas)html+='<div style="margin-bottom:6px"><span style="font-weight:700;color:'+axClrs[idx]+'">✦ Fortalezas:</span> '+er.fortalezas+'</div>';
-          if(er.debilidades)html+='<div style="margin-bottom:6px"><span style="font-weight:700;color:#F44336">⚠ Debilidades:</span> '+er.debilidades+'</div>';
-          if(er.recomendacion)html+='<div><span style="font-weight:700;color:var(--red)">→ Recomendación:</span> '+er.recomendacion+'</div>';
+          if(er.fortalezas){
+            var fArr=Array.isArray(er.fortalezas)?er.fortalezas:[er.fortalezas];
+            html+='<div style="margin-bottom:6px"><span style="font-weight:700;color:'+axClrs[idx]+'">✦ Fortalezas:</span></div>';
+            fArr.forEach(function(f){html+='<div style="margin-bottom:4px;padding-left:16px;font-size:13px">• '+f+'</div>';});
+          }
+          if(er.debilidades){
+            var dArr=Array.isArray(er.debilidades)?er.debilidades:[er.debilidades];
+            html+='<div style="margin-bottom:6px;margin-top:8px"><span style="font-weight:700;color:#F44336">⚠ Debilidades:</span></div>';
+            dArr.forEach(function(d){html+='<div style="margin-bottom:4px;padding-left:16px;font-size:13px">• '+d+'</div>';});
+          }
+          if(er.recomendacion)html+='<div style="margin-top:8px"><span style="font-weight:700;color:var(--red)">→ Recomendación:</span> '+er.recomendacion+'</div>';
           aiBlock.innerHTML=html;
           cards[idx].appendChild(aiBlock);
         });

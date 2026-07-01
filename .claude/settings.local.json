@@ -124,7 +124,9 @@
       "mcp__odoo-mcp__create_lead",
       "mcp__odoo-mcp__delete_lead",
       "Bash(python -c ' *)",
-      "PowerShell($raw = Get-Content \"C:\\\\Users\\\\aassi\\\\.claude\\\\projects\\\\C--Users-aassi-Documents-PAGINA-ANA-ASSIA\\\\3cfa1de4-7d43-40c6-825e-4f9e631e0857\\\\tool-results\\\\toolu_01JcSzgCRAcFPdrdsTR4Ldv9.json\" -Raw -Encoding utf8; $data = $raw | ConvertFrom-Json; $wf = $data[0].text | ConvertFrom-Json; $node = $wf.data.nodes | Where-Object { $_.id -eq 'code-html' }; $node.parameters.jsCode)"
+      "PowerShell($raw = Get-Content \"C:\\\\Users\\\\aassi\\\\.claude\\\\projects\\\\C--Users-aassi-Documents-PAGINA-ANA-ASSIA\\\\3cfa1de4-7d43-40c6-825e-4f9e631e0857\\\\tool-results\\\\toolu_01JcSzgCRAcFPdrdsTR4Ldv9.json\" -Raw -Encoding utf8; $data = $raw | ConvertFrom-Json; $wf = $data[0].text | ConvertFrom-Json; $node = $wf.data.nodes | Where-Object { $_.id -eq 'code-html' }; $node.parameters.jsCode)",
+      "PowerShell($raw = Get-Content \"C:\\\\Users\\\\aassi\\\\.claude\\\\projects\\\\C--Users-aassi-Documents-PAGINA-ANA-ASSIA\\\\3cfa1de4-7d43-40c6-825e-4f9e631e0857\\\\tool-results\\\\toolu_01JcSzgCRAcFPdrdsTR4Ldv9.json\" -Raw -Encoding utf8; $data = $raw | ConvertFrom-Json; $wf = $data[0].text | ConvertFrom-Json; $node = $wf.data.nodes | Where-Object { $_.id -eq 'code-html' }; $code = $node.parameters.jsCode; $idx = $code.IndexOf\\('if \\(ejeAI\\)'\\); $code.Substring\\($idx, 400\\))",
+      "PowerShell($raw = Get-Content \"C:\\\\Users\\\\aassi\\\\.claude\\\\projects\\\\C--Users-aassi-Documents-PAGINA-ANA-ASSIA\\\\3cfa1de4-7d43-40c6-825e-4f9e631e0857\\\\tool-results\\\\toolu_01JcSzgCRAcFPdrdsTR4Ldv9.json\" -Raw -Encoding utf8; $data = $raw | ConvertFrom-Json; $wf = $data[0].text | ConvertFrom-Json; $node = $wf.data.nodes | Where-Object { $_.id -eq 'code-html' }; $code = $node.parameters.jsCode; $idx = $code.IndexOf\\('if \\(ejeAI\\)'\\); $code.Substring\\($idx, 600\\))"
     ]
   }
 }
