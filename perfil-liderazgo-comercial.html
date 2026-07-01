@@ -1362,11 +1362,12 @@ function getClientData(){
   };
 }
 
-function crearOportunidadYAgendar(tipo,btn){
+function crearOportunidadYAgendar(tipo,btn,abrirCalendario){
   var data=getClientData();
   data.tipo=tipo;
   btn.disabled=true;
   btn.textContent='Procesando...';
+  if(abrirCalendario) window.open('https://calendar.app.google/otVvbMFM6H71Xc3Z7','_blank');
   fetch('https://automations.anaisabelassia.com/webhook/perfil-mentoring',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
@@ -1375,25 +1376,23 @@ function crearOportunidadYAgendar(tipo,btn){
     btn.textContent='✓ Oportunidad creada';
     btn.style.borderColor='#4CAF50';
     btn.style.color='#4CAF50';
-    window.open('https://calendar.app.google/otVvbMFM6H71Xc3Z7','_blank');
   }).catch(function(){
     btn.textContent='✓ Solicitud enviada';
     btn.style.borderColor='#4CAF50';
     btn.style.color='#4CAF50';
-    window.open('https://calendar.app.google/otVvbMFM6H71Xc3Z7','_blank');
   });
 }
 
 function agendarMentoria(e){
-  crearOportunidadYAgendar('mentoria_personalizada',e.currentTarget);
+  crearOportunidadYAgendar('mentoria_personalizada',e.currentTarget,true);
 }
 
 function agendarConversacion(e){
-  crearOportunidadYAgendar('conversacion_equipo',e.currentTarget);
+  crearOportunidadYAgendar('conversacion_equipo',e.currentTarget,true);
 }
 
 function solicitarPerfilMentoring(e){
-  crearOportunidadYAgendar('perfil_personalizado_mentoring',e.currentTarget);
+  crearOportunidadYAgendar('perfil_personalizado_mentoring',e.currentTarget,false);
 }
 </script>
 </body>
