@@ -41,6 +41,11 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
 .mx .mx-estado{font-size:11px;font-weight:700;white-space:nowrap;display:flex;align-items:center;gap:4px;justify-content:center}
 .mx .mx-valor{font-family:'Jost',sans-serif;font-size:15px;font-weight:800;color:var(--ink)}
 .mx .dot{width:12px;height:12px;border-radius:50%;display:inline-block;flex-shrink:0}
+.mx .mx-pond-input{width:52px;padding:4px 2px;border:2px solid rgba(0,0,0,.12);border-radius:6px;font-family:'Jost',sans-serif;font-size:14px;font-weight:700;text-align:center;background:#fff;color:var(--ink)}
+.mx .mx-pond-input:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(165,25,22,.1)}
+.mx .mx-impact-sel{padding:5px 2px;border:2px solid rgba(0,0,0,.12);border-radius:6px;font-size:12px;font-weight:600;background:#fff;color:var(--ink);cursor:pointer}
+.mx .mx-impact-sel:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(165,25,22,.1)}
+.mx-pond-warn{color:#F44336;font-size:11px;font-weight:700;text-align:center;padding:4px 0}
 .mx-total{background:#1a1a1a!important}
 .mx-total td{color:#fff!important;font-family:'Jost',sans-serif;font-weight:700;font-size:14px;border-bottom:none;padding:14px 10px}
 .mx-total .mx-estado{color:#fff}
@@ -199,8 +204,8 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
             <tr data-pond="20" data-impact="3">
               <td>1</td>
               <td>El estilo de liderazgo actual aporta al crecimiento y evolución del negocio</td>
-              <td class="mx-pond">20%</td>
-              <td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td>
+              <td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
               <td class="mx-estado">—</td>
               <td class="mx-valor">—</td>
@@ -208,8 +213,8 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
             <tr data-pond="15" data-impact="2">
               <td>2</td>
               <td>La mentalidad de los líderes está abierta a los cambios y la innovación</td>
-              <td class="mx-pond">15%</td>
-              <td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td>
+              <td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
               <td class="mx-estado">—</td>
               <td class="mx-valor">—</td>
@@ -217,8 +222,8 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
             <tr data-pond="20" data-impact="3">
               <td>3</td>
               <td>Paradigmas estratégicos están alineados con los desafíos de la era actual</td>
-              <td class="mx-pond">20%</td>
-              <td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td>
+              <td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
               <td class="mx-estado">—</td>
               <td class="mx-valor">—</td>
@@ -226,8 +231,8 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
             <tr data-pond="15" data-impact="2">
               <td>4</td>
               <td>Los líderes usan analítica y KPIs para la toma de decisiones estratégicas</td>
-              <td class="mx-pond">15%</td>
-              <td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td>
+              <td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
               <td class="mx-estado">—</td>
               <td class="mx-valor">—</td>
@@ -235,8 +240,8 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
             <tr data-pond="15" data-impact="3">
               <td>5</td>
               <td>Visión multi-horizonte: corto plazo (ejecución), mediano (crecimiento) y largo plazo (transformación)</td>
-              <td class="mx-pond">15%</td>
-              <td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td>
+              <td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
               <td class="mx-estado">—</td>
               <td class="mx-valor">—</td>
@@ -244,8 +249,8 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
             <tr data-pond="15" data-impact="2">
               <td>6</td>
               <td>Capacidad de pivoteo ágil: ajuste rápido del rumbo ante cambios del entorno</td>
-              <td class="mx-pond">15%</td>
-              <td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td>
+              <td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
               <td class="mx-estado">—</td>
               <td class="mx-valor">—</td>
@@ -253,7 +258,7 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
           </tbody>
           <tfoot><tr class="mx-total">
             <td colspan="2" style="text-align:left;font-size:13px">Resultado Capacidad Estratégica</td>
-            <td class="mx-pond">100%</td>
+            <td class="mx-pond-total">100%</td>
             <td></td>
             <td class="mx-eval-total" style="font-size:16px;font-weight:800">—</td>
             <td class="mx-estado">—</td>
@@ -275,38 +280,38 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
           <tbody>
             <tr data-pond="20" data-impact="3">
               <td>1</td><td>Pipeline comercial con metodología de forecasting confiable</td>
-              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="15" data-impact="2">
               <td>2</td><td>Integración de inbound, outbound y social selling en modelo omnicanal</td>
-              <td class="mx-pond">15%</td><td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="20" data-impact="3">
               <td>3</td><td>Customer Journey mapeado con métricas de experiencia (NPS, CSAT, CES)</td>
-              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="20" data-impact="3">
               <td>4</td><td>Protocolos que integran inteligencia humana + IA en procesos comerciales</td>
-              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="15" data-impact="2">
               <td>5</td><td>CRM integrado al ecosistema tecnológico como fuente confiable de datos</td>
-              <td class="mx-pond">15%</td><td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="10" data-impact="1">
               <td>6</td><td>Procesos lean-agile con resiliencia y capacidad antifragil</td>
-              <td class="mx-pond">10%</td><td><span class="mx-impact"><span class="dot" style="background:#F44336"></span>↓ Bajo</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="10" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2">→ Medio</option><option value="1" selected>↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
           </tbody>
           <tfoot><tr class="mx-total">
             <td colspan="2" style="text-align:left;font-size:13px">Resultado Capacidad de Procesos</td>
-            <td class="mx-pond">100%</td><td></td><td class="mx-eval-total" style="font-size:16px;font-weight:800">—</td><td class="mx-estado">—</td><td class="mx-valor" style="font-size:18px">—</td>
+            <td class="mx-pond-total">100%</td><td></td><td class="mx-eval-total" style="font-size:16px;font-weight:800">—</td><td class="mx-estado">—</td><td class="mx-valor" style="font-size:18px">—</td>
           </tr></tfoot>
         </table>
       </div>
@@ -324,38 +329,38 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
           <tbody>
             <tr data-pond="15" data-impact="3">
               <td>1</td><td>Equipos con mentalidad de crecimiento (growth mindset) y aprendizaje continuo</td>
-              <td class="mx-pond">15%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="20" data-impact="3">
               <td>2</td><td>Equipos comerciales diversos y de alto rendimiento con perfiles complementarios</td>
-              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="20" data-impact="3">
               <td>3</td><td>Programas de formación continua y desarrollo de competencias comerciales</td>
-              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="20" data-impact="2">
               <td>4</td><td>Seguridad psicológica para proponer ideas, cuestionar procesos y asumir riesgos</td>
-              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="15" data-impact="2">
               <td>5</td><td>Líderes promueven la agilidad, flexibilidad y adaptabilidad del equipo</td>
-              <td class="mx-pond">15%</td><td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="10" data-impact="1">
               <td>6</td><td>Equipos preparados para modelos híbridos humano + IA en desempeño diario</td>
-              <td class="mx-pond">10%</td><td><span class="mx-impact"><span class="dot" style="background:#F44336"></span>↓ Bajo</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="10" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2">→ Medio</option><option value="1" selected>↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
           </tbody>
           <tfoot><tr class="mx-total">
             <td colspan="2" style="text-align:left;font-size:13px">Resultado Capacidad de Personas</td>
-            <td class="mx-pond">100%</td><td></td><td class="mx-eval-total" style="font-size:16px;font-weight:800">—</td><td class="mx-estado">—</td><td class="mx-valor" style="font-size:18px">—</td>
+            <td class="mx-pond-total">100%</td><td></td><td class="mx-eval-total" style="font-size:16px;font-weight:800">—</td><td class="mx-estado">—</td><td class="mx-valor" style="font-size:18px">—</td>
           </tr></tfoot>
         </table>
       </div>
@@ -373,38 +378,38 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
           <tbody>
             <tr data-pond="20" data-impact="3">
               <td>1</td><td>Nivel de madurez digital de la organización frente a la industria</td>
-              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="20" data-impact="3">
               <td>2</td><td>Cultura organizacional de adopción de IA como herramienta estratégica</td>
-              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="20" data-impact="2">
               <td>3</td><td>Ecosistema tecnológico integrado (ERP + CRM + BI + IA + CDP)</td>
-              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="15" data-impact="2">
               <td>4</td><td>Analítica predictiva y modelos de pronóstico de comportamiento del mercado</td>
-              <td class="mx-pond">15%</td><td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="15" data-impact="1">
               <td>5</td><td>Líderes adoptan la tecnología para potenciar los procesos y resultados</td>
-              <td class="mx-pond">15%</td><td><span class="mx-impact"><span class="dot" style="background:#F44336"></span>↓ Bajo</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2">→ Medio</option><option value="1" selected>↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="10" data-impact="1">
               <td>6</td><td>Gobernanza ética para el uso de IA y tecnología en la gestión comercial</td>
-              <td class="mx-pond">10%</td><td><span class="mx-impact"><span class="dot" style="background:#F44336"></span>↓ Bajo</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="10" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2">→ Medio</option><option value="1" selected>↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
           </tbody>
           <tfoot><tr class="mx-total">
             <td colspan="2" style="text-align:left;font-size:13px">Resultado Capacidad Tecnológica</td>
-            <td class="mx-pond">100%</td><td></td><td class="mx-eval-total" style="font-size:16px;font-weight:800">—</td><td class="mx-estado">—</td><td class="mx-valor" style="font-size:18px">—</td>
+            <td class="mx-pond-total">100%</td><td></td><td class="mx-eval-total" style="font-size:16px;font-weight:800">—</td><td class="mx-estado">—</td><td class="mx-valor" style="font-size:18px">—</td>
           </tr></tfoot>
         </table>
       </div>
@@ -422,38 +427,38 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
           <tbody>
             <tr data-pond="20" data-impact="3">
               <td>1</td><td>Cumplimiento consistente de metas de ventas y rentabilidad</td>
-              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="20" data-impact="3">
               <td>2</td><td>OKRs claros con cultura de accountability y responsabilidad por resultados</td>
-              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="20" data-impact="3">
               <td>3</td><td>Decisiones comerciales basadas en datos y evidencia, no en intuición</td>
-              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="15" data-impact="2">
               <td>4</td><td>Dashboards ejecutivos actualizados para monitoreo en tiempo real</td>
-              <td class="mx-pond">15%</td><td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="15" data-impact="2">
               <td>5</td><td>Pronóstico predictivo de ventas y planificación basada en escenarios</td>
-              <td class="mx-pond">15%</td><td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="10" data-impact="1">
               <td>6</td><td>Líderes toman decisiones basadas en indicadores de desempeño — KPIs</td>
-              <td class="mx-pond">10%</td><td><span class="mx-impact"><span class="dot" style="background:#F44336"></span>↓ Bajo</span></td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="10" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2">→ Medio</option><option value="1" selected>↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
           </tbody>
           <tfoot><tr class="mx-total">
             <td colspan="2" style="text-align:left;font-size:13px">Resultado Capacidad de Resultados</td>
-            <td class="mx-pond">100%</td><td></td><td class="mx-eval-total" style="font-size:16px;font-weight:800">—</td><td class="mx-estado">—</td><td class="mx-valor" style="font-size:18px">—</td>
+            <td class="mx-pond-total">100%</td><td></td><td class="mx-eval-total" style="font-size:16px;font-weight:800">—</td><td class="mx-estado">—</td><td class="mx-valor" style="font-size:18px">—</td>
           </tr></tfoot>
         </table>
       </div>
@@ -619,12 +624,29 @@ function nivLabel(v){
   return'↓↓ Nivel Crítico';
 }
 
+function recalcPond(el){
+  var table=el.closest('table');
+  var inputs=table.querySelectorAll('tbody .mx-pond-input');
+  var sum=0;
+  inputs.forEach(function(inp){sum+=parseInt(inp.value)||0;});
+  var totalCell=table.querySelector('tfoot .mx-pond-total');
+  totalCell.textContent=sum+'%';
+  totalCell.style.color=sum===100?'#fff':'#F44336';
+  var warn=table.parentElement.querySelector('.mx-pond-warn');
+  if(sum!==100){
+    if(!warn){warn=document.createElement('div');warn.className='mx-pond-warn';table.parentElement.appendChild(warn);}
+    warn.textContent='⚠ La ponderación suma '+sum+'% — debe ser 100%';
+  }else if(warn){warn.remove();}
+  recalcAxis(el);
+}
+
 function recalcAxis(el){
   var table=el.closest('table');
   var rows=table.querySelectorAll('tbody tr');
   var totalValor=0,totalPond=0,count=0,sumEval=0;
   rows.forEach(function(row){
-    var pond=parseInt(row.getAttribute('data-pond'))/100;
+    var pondInput=row.querySelector('.mx-pond-input');
+    var pond=(parseInt(pondInput.value)||0)/100;
     var sel=row.querySelector('.mx-eval');
     var evalV=sel.value?parseInt(sel.value):0;
     var estadoCell=row.querySelector('.mx-estado');
@@ -678,11 +700,14 @@ function calcPLC(e){
   if(!name||!email||!phone){alert('Por favor completa nombre, email y WhatsApp.');return false;}
 
   var tables=f.querySelectorAll('table.mx');
-  var allFilled=true;
+  var allFilled=true,pondValid=true;
   tables.forEach(function(t){
     t.querySelectorAll('.mx-eval').forEach(function(s){if(!s.value)allFilled=false;});
+    var pSum=0;t.querySelectorAll('tbody .mx-pond-input').forEach(function(inp){pSum+=parseInt(inp.value)||0;});
+    if(pSum!==100)pondValid=false;
   });
   if(!allFilled){alert('Por favor evalúa todos los factores en cada eje.');return false;}
+  if(!pondValid){alert('La ponderación de cada eje debe sumar exactamente 100%.');return false;}
 
   var axisScores=[];
   var axisKeys=['estrategia','procesos','personas','tecnologia','resultados'];
@@ -702,15 +727,17 @@ function calcPLC(e){
     var totalValor=0,sumEval=0,count=0;
     var details=[];
     rows.forEach(function(row){
-      var pond=parseInt(row.getAttribute('data-pond'))/100;
+      var pond=(parseInt(row.querySelector('.mx-pond-input').value)||0)/100;
       var evalV=parseInt(row.querySelector('.mx-eval').value);
+      var impSel=row.querySelector('.mx-impact-sel');
+      var impLabel=impSel.options[impSel.selectedIndex].text;
       var factor=row.querySelector('td:nth-child(2)').textContent.trim();
       var valor=pond*evalV;
       var s=semEval(evalV);
       totalValor+=valor;
       sumEval+=evalV;
       count++;
-      details.push({factor:factor,pond:Math.round(pond*100),eval:evalV,estado:s.label,valor:valor});
+      details.push({factor:factor,pond:Math.round(pond*100),eval:evalV,estado:s.label,valor:valor,impacto:impLabel});
     });
     var avg=sumEval/count;
     var sv=semLabel(avg);
@@ -732,7 +759,7 @@ function calcPLC(e){
   axisScores.forEach(function(ax){
     msg+='['+ax.label+']\n';
     ax.details.forEach(function(d){
-      msg+='  '+d.factor.substring(0,60)+': '+d.eval+'/4 ('+d.estado+') Pond:'+d.pond+'% Val:'+d.valor.toFixed(2)+'\n';
+      msg+='  '+d.factor.substring(0,55)+': '+d.eval+'/4 ('+d.estado+') Pond:'+d.pond+'% Imp:'+d.impacto+' Val:'+d.valor.toFixed(2)+'\n';
     });
   });
   msg+='\nSolicito sesión de retroalimentación personalizada.';
