@@ -151,7 +151,9 @@
       "mcp__odoo-mcp__search_leads",
       "mcp__claude-in-chrome__read_page",
       "mcp__claude-in-chrome__javascript_tool",
-      "mcp__claude-in-chrome__find"
+      "mcp__claude-in-chrome__find",
+      "mcp__visualize__read_me",
+      "mcp__visualize__show_widget"
     ]
   }
 }

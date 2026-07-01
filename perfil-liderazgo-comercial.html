@@ -526,7 +526,31 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red);background:#fff
       <div id="plcBars"></div>
     </div>
 
-    <!-- 2b. HALLAZGOS CLAVE (2 fortalezas + 5 debilidades) -->
+    <!-- 2b. ANÁLISIS DE BRECHAS Y OPORTUNIDADES -->
+    <div id="plcBrechasWrap" class="plc-section" style="display:none;padding:24px 22px">
+      <div style="text-align:center;margin-bottom:22px">
+        <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px">Análisis Estratégico</div>
+        <h3 style="font-family:'Jost',sans-serif;font-size:20px;font-weight:800;color:var(--ink);margin:0 0 6px;line-height:1.3">Brechas y Oportunidades de <span style="color:var(--red)">Transformación Comercial</span></h3>
+        <div style="width:50px;height:3px;background:var(--red);border-radius:2px;margin:0 auto 10px"></div>
+        <p style="font-size:13px;color:rgba(11,11,11,.55);max-width:520px;margin:0 auto;line-height:1.6">Mapa de impacto en el negocio: factores que impulsan vs. factores que frenan tu liderazgo comercial generativo.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px">
+        <div id="plcPalancas" style="background:linear-gradient(135deg,#F8FFF8 0%,#fff 100%);border-radius:12px;padding:18px;border:1px solid #C8E6C9"></div>
+        <div id="plcBrechas" style="background:linear-gradient(135deg,#FFF8F8 0%,#fff 100%);border-radius:12px;padding:18px;border:1px solid #FFCDD2"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:12px">
+        <div id="plcImpactoNegocio" style="background:#FAFAFA;border-radius:12px;padding:18px 20px;border:1px solid #eee"></div>
+        <div id="plcImpactoLiderazgo" style="background:linear-gradient(135deg,#FFF8F0 0%,#fff 100%);border-radius:12px;padding:18px 20px;border:1px solid #FFE0B2"></div>
+      </div>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;padding:8px 0;font-size:11px;color:rgba(11,11,11,.5)">
+        <span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;border-radius:50%;background:#4CAF50;display:inline-block"></span>Fortaleza Mayor (4)</span>
+        <span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;border-radius:50%;background:#8BC34A;display:inline-block"></span>Fortaleza Menor (3)</span>
+        <span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;border-radius:50%;background:#FF9800;display:inline-block"></span>Debilidad Menor (2)</span>
+        <span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;border-radius:50%;background:#F44336;display:inline-block"></span>Debilidad Mayor (1)</span>
+      </div>
+    </div>
+
+    <!-- 2c. HALLAZGOS CLAVE (2 fortalezas + 5 debilidades) -->
     <div id="plcHallazgosWrap" class="plc-section" style="display:none;padding:24px 22px">
       <h3 style="font-family:'Jost',sans-serif;font-size:16px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;display:block">Hallazgos Clave</h3>
       <div style="width:40px;height:3px;background:var(--red);border-radius:2px;margin-bottom:16px"></div>
@@ -1005,7 +1029,62 @@ function calcPLC(e){
         });
       }
 
-      // 2b. Hallazgos Clave (2 fortalezas + 2 debilidades)
+      // 2b. Análisis de Brechas y Oportunidades
+      if(data.analisisBrechas){
+        var ab=data.analisisBrechas;
+        var semDot=function(s){return s>=4?'#4CAF50':s>=3?'#8BC34A':s>=2?'#FF9800':'#F44336'};
+        var semBg2=function(s){return s>=4?'#E8F5E9':s>=3?'#F1F8E9':s>=2?'#FFF3E0':'#FFEBEE'};
+        var semTx=function(s){return s>=4?'#2E7D32':s>=3?'#558B2F':s>=2?'#E65100':'#C62828'};
+        var renderFactorList=function(items,type){
+          var out='';
+          (items||[]).forEach(function(f,i){
+            var sc=f.score||0;
+            var brd=type==='f'?'#E8F5E9':'#FFEBEE';
+            out+='<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:#fff;border-radius:8px;border:1px solid '+brd+'">';
+            out+='<div style="width:22px;text-align:center;font-size:11px;font-weight:800;color:rgba(11,11,11,.35);flex-shrink:0">'+(i+1)+'</div>';
+            out+='<div style="width:10px;height:10px;border-radius:50%;background:'+semDot(sc)+';flex-shrink:0"></div>';
+            out+='<div style="flex:1;min-width:0">';
+            out+='<div style="font-size:12px;font-weight:700;color:#0B0B0B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="'+f.factor+'">'+f.factor+'</div>';
+            out+='<div style="font-size:10px;color:rgba(11,11,11,.5)">'+f.eje+' · '+(type==='f'?'Potencia':'Urgencia')+': '+(f.indice||0).toFixed(2)+'</div>';
+            if(f.descripcion) out+='<div style="font-size:10px;color:rgba(11,11,11,.45);margin-top:1px;line-height:1.3">'+f.descripcion+'</div>';
+            out+='</div>';
+            out+='<div style="background:'+semBg2(sc)+';border-radius:4px;padding:2px 6px;font-size:10px;font-weight:800;color:'+semTx(sc)+'">'+sc+'/4</div>';
+            out+='</div>';
+          });
+          return out;
+        };
+        var palHtml='<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">';
+        palHtml+='<div style="width:32px;height:32px;border-radius:50%;background:#4CAF50;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" style="width:16px;height:16px"><polyline points="20 6 9 17 4 12"/></svg></div>';
+        palHtml+='<div><div style="font-size:14px;font-weight:800;color:#2E7D32">Oportunidades de Palanca</div>';
+        palHtml+='<div style="font-size:10px;color:#66BB6A;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Factores que impulsan</div></div></div>';
+        palHtml+='<div style="display:flex;flex-direction:column;gap:5px">'+renderFactorList(ab.factoresFortaleza,'f')+'</div>';
+        document.getElementById('plcPalancas').innerHTML=palHtml;
+
+        var brHtml='<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">';
+        brHtml+='<div style="width:32px;height:32px;border-radius:50%;background:#F44336;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" style="width:16px;height:16px"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>';
+        brHtml+='<div><div style="font-size:14px;font-weight:800;color:#C62828">Brechas Críticas</div>';
+        brHtml+='<div style="font-size:10px;color:#EF5350;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Factores que frenan</div></div></div>';
+        brHtml+='<div style="display:flex;flex-direction:column;gap:5px">'+renderFactorList(ab.factoresBrechas,'d')+'</div>';
+        document.getElementById('plcBrechas').innerHTML=brHtml;
+
+        if(ab.impactoNegocio){
+          var impHtml='<div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">';
+          impHtml+='<div style="width:28px;height:28px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>';
+          impHtml+='<div style="font-size:14px;font-weight:800;color:var(--red)">Impacto en el Negocio</div></div>';
+          impHtml+='<p style="font-size:13px;line-height:1.7;color:rgba(11,11,11,.7);margin:0">'+ab.impactoNegocio.replace(/\n/g,'<br>')+'</p>';
+          document.getElementById('plcImpactoNegocio').innerHTML=impHtml;
+        }
+        if(ab.impactoLiderazgo){
+          var lidHtml='<div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">';
+          lidHtml+='<div style="width:28px;height:28px;border-radius:50%;background:#FF9800;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg></div>';
+          lidHtml+='<div style="font-size:14px;font-weight:800;color:#E65100">Impacto en el Liderazgo Comercial</div></div>';
+          lidHtml+='<p style="font-size:13px;line-height:1.7;color:rgba(11,11,11,.7);margin:0">'+ab.impactoLiderazgo.replace(/\n/g,'<br>')+'</p>';
+          document.getElementById('plcImpactoLiderazgo').innerHTML=lidHtml;
+        }
+        document.getElementById('plcBrechasWrap').style.display='block';
+      }
+
+      // 2c. Hallazgos Clave (2 fortalezas + 5 debilidades)
       if(data.hallazgosClave){
         var hc=data.hallazgosClave;
         var hhtml='';
@@ -1244,7 +1323,35 @@ function demoMode(){
       'Prioriza los 3 procesos comerciales con mayor fricción y asigna responsables de estandarización',
       'Establece una reunión quincenal de revisión estratégica con métricas claras de avance por elemento',
       'Evalúa los resultados del primer mes y ajusta el plan de acción según los datos reales obtenidos'
-    ]
+    ],
+    analisisBrechas:{
+      factoresFortaleza:[
+        {factor:'Visión comercial clara',eje:'Estrategia',score:3,indice:2.70,descripcion:'Dirección estratégica definida que alinea al equipo hacia objetivos comunes'},
+        {factor:'Base de clientes leal',eje:'Resultados',score:4,indice:2.40,descripcion:'Retención sólida que genera ingresos recurrentes y referidos'},
+        {factor:'Crecimiento sostenido',eje:'Resultados',score:3,indice:2.25,descripcion:'Tendencia positiva en ventas que valida el modelo comercial'},
+        {factor:'Equipo comprometido',eje:'Personas',score:3,indice:2.10,descripcion:'Capital humano con disposición al cambio y sentido de pertenencia'},
+        {factor:'Anticipación de mercado',eje:'Estrategia',score:3,indice:1.80,descripcion:'Capacidad de detectar tendencias y adaptar la oferta'},
+        {factor:'Comunicación interna',eje:'Personas',score:3,indice:1.50,descripcion:'Flujo de información que sostiene la operación diaria'},
+        {factor:'Procesos de venta definidos',eje:'Procesos',score:3,indice:1.35,descripcion:'Flujo comercial conocido por el equipo aunque sin automatización'},
+        {factor:'Disposición tecnológica',eje:'Tecnología',score:2,indice:1.20,descripcion:'Equipo abierto a herramientas digitales como palanca'},
+        {factor:'Propuesta de valor',eje:'Estrategia',score:3,indice:1.12,descripcion:'Diferenciación percibida por los clientes actuales'},
+        {factor:'Infraestructura básica',eje:'Tecnología',score:2,indice:1.00,descripcion:'Sistemas funcionales mínimos para operar'}
+      ],
+      factoresBrechas:[
+        {factor:'Implementación de CRM',eje:'Tecnología',score:1,indice:3.60,descripcion:'Sin CRM, la gestión comercial depende de memoria y hojas sueltas — el crecimiento se frena'},
+        {factor:'Automatización de procesos',eje:'Procesos',score:1,indice:3.00,descripcion:'Procesos manuales generan errores y roban tiempo al equipo comercial'},
+        {factor:'Métricas de conversión',eje:'Resultados',score:1,indice:2.70,descripcion:'Sin tracking de conversión, no se puede optimizar el embudo de ventas'},
+        {factor:'Capacitación estructurada',eje:'Personas',score:1,indice:2.40,descripcion:'Sin formación continua, las competencias del equipo se estancan'},
+        {factor:'Gestión de datos',eje:'Tecnología',score:1,indice:2.10,descripcion:'Datos en hojas de cálculo impiden análisis y toma de decisiones ágil'},
+        {factor:'Estandarización de propuestas',eje:'Procesos',score:2,indice:1.80,descripcion:'Propuestas inconsistentes reducen la tasa de cierre'},
+        {factor:'KPIs por eje',eje:'Estrategia',score:2,indice:1.50,descripcion:'Sin indicadores claros, la estrategia carece de control de ejecución'},
+        {factor:'Rentabilidad por cliente',eje:'Resultados',score:2,indice:1.35,descripcion:'Se vende sin saber qué clientes son rentables y cuáles no'},
+        {factor:'Revisión estratégica periódica',eje:'Estrategia',score:2,indice:1.20,descripcion:'La estrategia no se contrasta con resultados reales'},
+        {factor:'Métricas individuales',eje:'Personas',score:2,indice:1.00,descripcion:'Roles sin metas individuales diluyen la responsabilidad'}
+      ],
+      impactoNegocio:'Tu sistema comercial tiene una base estratégica sólida y resultados que validan tu modelo, pero opera significativamente por debajo de su potencial. Las brechas críticas en tecnología — especialmente la ausencia de CRM y automatización — actúan como cuello de botella sistémico: frenan la escalabilidad, impiden la visibilidad del pipeline y obligan al equipo a invertir energía en tareas operativas en lugar de vender. Si no se interviene en los próximos 60 días, el crecimiento sostenido que hoy es fortaleza puede convertirse en meseta. La buena noticia: tus palancas de mayor potencia (visión clara, equipo comprometido, base de clientes leal) son exactamente los activos que necesitas para implementar cambios rápidos con alto impacto.',
+      impactoLiderazgo:'Tu perfil de liderazgo comercial muestra una fortaleza clara en visión y dirección estratégica, pero las brechas en ejecución tecnológica y gestión por indicadores revelan un líder que sabe hacia dónde ir pero carece de las herramientas para medir el camino. El equipo percibe tu claridad de rumbo, pero sin métricas individuales ni automatización, tu capacidad de influencia se diluye en la operación diaria. La transformación de tu liderazgo pasa por evolucionar de un estilo basado en intuición y experiencia a uno potenciado por datos y sistemas que amplifiquen tu alcance como líder comercial.'
+    }
   };
 
   // Render AI sections
@@ -1279,6 +1386,58 @@ function demoMode(){
       aiBlock.innerHTML=html;
       cards[idx].appendChild(aiBlock);
     });
+  }
+
+  if(demoAI.analisisBrechas){
+    var ab=demoAI.analisisBrechas;
+    var semDot=function(s){return s>=4?'#4CAF50':s>=3?'#8BC34A':s>=2?'#FF9800':'#F44336'};
+    var semBg2=function(s){return s>=4?'#E8F5E9':s>=3?'#F1F8E9':s>=2?'#FFF3E0':'#FFEBEE'};
+    var semTx=function(s){return s>=4?'#2E7D32':s>=3?'#558B2F':s>=2?'#E65100':'#C62828'};
+    var renderFactorList=function(items,type){
+      var out='';
+      (items||[]).forEach(function(f,i){
+        var sc=f.score||0;
+        var brd=type==='f'?'#E8F5E9':'#FFEBEE';
+        out+='<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:#fff;border-radius:8px;border:1px solid '+brd+'">';
+        out+='<div style="width:22px;text-align:center;font-size:11px;font-weight:800;color:rgba(11,11,11,.35);flex-shrink:0">'+(i+1)+'</div>';
+        out+='<div style="width:10px;height:10px;border-radius:50%;background:'+semDot(sc)+';flex-shrink:0"></div>';
+        out+='<div style="flex:1;min-width:0">';
+        out+='<div style="font-size:12px;font-weight:700;color:#0B0B0B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="'+f.factor+'">'+f.factor+'</div>';
+        out+='<div style="font-size:10px;color:rgba(11,11,11,.5)">'+f.eje+' · '+(type==='f'?'Potencia':'Urgencia')+': '+(f.indice||0).toFixed(2)+'</div>';
+        if(f.descripcion) out+='<div style="font-size:10px;color:rgba(11,11,11,.45);margin-top:1px;line-height:1.3">'+f.descripcion+'</div>';
+        out+='</div>';
+        out+='<div style="background:'+semBg2(sc)+';border-radius:4px;padding:2px 6px;font-size:10px;font-weight:800;color:'+semTx(sc)+'">'+sc+'/4</div>';
+        out+='</div>';
+      });
+      return out;
+    };
+    var palHtml='<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">';
+    palHtml+='<div style="width:32px;height:32px;border-radius:50%;background:#4CAF50;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" style="width:16px;height:16px"><polyline points="20 6 9 17 4 12"/></svg></div>';
+    palHtml+='<div><div style="font-size:14px;font-weight:800;color:#2E7D32">Oportunidades de Palanca</div>';
+    palHtml+='<div style="font-size:10px;color:#66BB6A;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Factores que impulsan</div></div></div>';
+    palHtml+='<div style="display:flex;flex-direction:column;gap:5px">'+renderFactorList(ab.factoresFortaleza,'f')+'</div>';
+    document.getElementById('plcPalancas').innerHTML=palHtml;
+    var brHtml='<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">';
+    brHtml+='<div style="width:32px;height:32px;border-radius:50%;background:#F44336;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" style="width:16px;height:16px"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>';
+    brHtml+='<div><div style="font-size:14px;font-weight:800;color:#C62828">Brechas Críticas</div>';
+    brHtml+='<div style="font-size:10px;color:#EF5350;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Factores que frenan</div></div></div>';
+    brHtml+='<div style="display:flex;flex-direction:column;gap:5px">'+renderFactorList(ab.factoresBrechas,'d')+'</div>';
+    document.getElementById('plcBrechas').innerHTML=brHtml;
+    if(ab.impactoNegocio){
+      var impHtml='<div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">';
+      impHtml+='<div style="width:28px;height:28px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>';
+      impHtml+='<div style="font-size:14px;font-weight:800;color:var(--red)">Impacto en el Negocio</div></div>';
+      impHtml+='<p style="font-size:13px;line-height:1.7;color:rgba(11,11,11,.7);margin:0">'+ab.impactoNegocio.replace(/\n/g,'<br>')+'</p>';
+      document.getElementById('plcImpactoNegocio').innerHTML=impHtml;
+    }
+    if(ab.impactoLiderazgo){
+      var lidHtml='<div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">';
+      lidHtml+='<div style="width:28px;height:28px;border-radius:50%;background:#FF9800;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg></div>';
+      lidHtml+='<div style="font-size:14px;font-weight:800;color:#E65100">Impacto en el Liderazgo Comercial</div></div>';
+      lidHtml+='<p style="font-size:13px;line-height:1.7;color:rgba(11,11,11,.7);margin:0">'+ab.impactoLiderazgo.replace(/\n/g,'<br>')+'</p>';
+      document.getElementById('plcImpactoLiderazgo').innerHTML=lidHtml;
+    }
+    document.getElementById('plcBrechasWrap').style.display='block';
   }
 
   if(demoAI.hallazgosClave){
@@ -1535,6 +1694,59 @@ function testWebhookLive(){
         cards[idx].appendChild(aiBlock);
       });
       testStatus.innerHTML+=' | ejeResumenes: '+data.ejeResumenes.length+' ejes inyectados';
+    }
+
+    if(data.analisisBrechas){
+      var ab=data.analisisBrechas;
+      var semDot=function(s){return s>=4?'#4CAF50':s>=3?'#8BC34A':s>=2?'#FF9800':'#F44336'};
+      var semBg2=function(s){return s>=4?'#E8F5E9':s>=3?'#F1F8E9':s>=2?'#FFF3E0':'#FFEBEE'};
+      var semTx=function(s){return s>=4?'#2E7D32':s>=3?'#558B2F':s>=2?'#E65100':'#C62828'};
+      var renderFactorList=function(items,type){
+        var out='';
+        (items||[]).forEach(function(f,i){
+          var sc=f.score||0;
+          var brd=type==='f'?'#E8F5E9':'#FFEBEE';
+          out+='<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:#fff;border-radius:8px;border:1px solid '+brd+'">';
+          out+='<div style="width:22px;text-align:center;font-size:11px;font-weight:800;color:rgba(11,11,11,.35);flex-shrink:0">'+(i+1)+'</div>';
+          out+='<div style="width:10px;height:10px;border-radius:50%;background:'+semDot(sc)+';flex-shrink:0"></div>';
+          out+='<div style="flex:1;min-width:0">';
+          out+='<div style="font-size:12px;font-weight:700;color:#0B0B0B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="'+f.factor+'">'+f.factor+'</div>';
+          out+='<div style="font-size:10px;color:rgba(11,11,11,.5)">'+f.eje+' · '+(type==='f'?'Potencia':'Urgencia')+': '+(f.indice||0).toFixed(2)+'</div>';
+          if(f.descripcion) out+='<div style="font-size:10px;color:rgba(11,11,11,.45);margin-top:1px;line-height:1.3">'+f.descripcion+'</div>';
+          out+='</div>';
+          out+='<div style="background:'+semBg2(sc)+';border-radius:4px;padding:2px 6px;font-size:10px;font-weight:800;color:'+semTx(sc)+'">'+sc+'/4</div>';
+          out+='</div>';
+        });
+        return out;
+      };
+      var palHtml='<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">';
+      palHtml+='<div style="width:32px;height:32px;border-radius:50%;background:#4CAF50;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" style="width:16px;height:16px"><polyline points="20 6 9 17 4 12"/></svg></div>';
+      palHtml+='<div><div style="font-size:14px;font-weight:800;color:#2E7D32">Oportunidades de Palanca</div>';
+      palHtml+='<div style="font-size:10px;color:#66BB6A;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Factores que impulsan</div></div></div>';
+      palHtml+='<div style="display:flex;flex-direction:column;gap:5px">'+renderFactorList(ab.factoresFortaleza,'f')+'</div>';
+      document.getElementById('plcPalancas').innerHTML=palHtml;
+      var brHtml='<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">';
+      brHtml+='<div style="width:32px;height:32px;border-radius:50%;background:#F44336;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" style="width:16px;height:16px"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>';
+      brHtml+='<div><div style="font-size:14px;font-weight:800;color:#C62828">Brechas Críticas</div>';
+      brHtml+='<div style="font-size:10px;color:#EF5350;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Factores que frenan</div></div></div>';
+      brHtml+='<div style="display:flex;flex-direction:column;gap:5px">'+renderFactorList(ab.factoresBrechas,'d')+'</div>';
+      document.getElementById('plcBrechas').innerHTML=brHtml;
+      if(ab.impactoNegocio){
+        var impHtml='<div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">';
+        impHtml+='<div style="width:28px;height:28px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>';
+        impHtml+='<div style="font-size:14px;font-weight:800;color:var(--red)">Impacto en el Negocio</div></div>';
+        impHtml+='<p style="font-size:13px;line-height:1.7;color:rgba(11,11,11,.7);margin:0">'+ab.impactoNegocio.replace(/\n/g,'<br>')+'</p>';
+        document.getElementById('plcImpactoNegocio').innerHTML=impHtml;
+      }
+      if(ab.impactoLiderazgo){
+        var lidHtml='<div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">';
+        lidHtml+='<div style="width:28px;height:28px;border-radius:50%;background:#FF9800;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg></div>';
+        lidHtml+='<div style="font-size:14px;font-weight:800;color:#E65100">Impacto en el Liderazgo Comercial</div></div>';
+        lidHtml+='<p style="font-size:13px;line-height:1.7;color:rgba(11,11,11,.7);margin:0">'+ab.impactoLiderazgo.replace(/\n/g,'<br>')+'</p>';
+        document.getElementById('plcImpactoLiderazgo').innerHTML=lidHtml;
+      }
+      document.getElementById('plcBrechasWrap').style.display='block';
+      testStatus.innerHTML+=' | analisisBrechas: OK';
     }
 
     if(data.hallazgosClave){
