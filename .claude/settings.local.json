@@ -135,7 +135,8 @@
       "mcp__n8n-mcp__tools_documentation",
       "Bash(gh auth *)",
       "PowerShell(gh auth status)",
-      "PowerShell(git config --global credential.helper)"
+      "PowerShell(git config --global credential.helper)",
+      "mcp__n8n-mcp__n8n_executions"
     ]
   }
 }

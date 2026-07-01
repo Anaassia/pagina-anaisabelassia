@@ -960,7 +960,11 @@ function calcPLC(e){
 
   fetch('https://automations.anaisabelassia.com/webhook/perfil-liderazgo-comercial',{
     method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
-  }).then(function(r){return r.json()}).then(function(data){
+  }).then(function(r){
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    return r.json();
+  }).then(function(data){
+    console.log('PLC webhook response:',JSON.stringify(data).substring(0,500));
     document.getElementById('plcAiLoading').style.display='none';
     if(data.success){
       document.getElementById('plcEmailMsg').textContent='Tu informe ha sido enviado a '+email+'. Revisa tu bandeja de entrada.';
@@ -1004,7 +1008,7 @@ function calcPLC(e){
         var hhtml='';
         if(hc.fortalezas&&hc.fortalezas.length>0){
           hhtml+='<div style="background:#fff;border-radius:10px;padding:16px 18px;border:1px solid #E8F5E9">';
-          hhtml+='<div style="font-size:12px;font-weight:700;color:#4CAF50;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Top Fortalezas</div>';
+          hhtml+='<div style="font-size:12px;font-weight:700;color:#4CAF50;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Competencias Destacadas</div>';
           hc.fortalezas.forEach(function(f){
             hhtml+='<div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:10px">';
             hhtml+='<div style="width:28px;height:28px;border-radius:50%;background:#E8F5E9;color:#4CAF50;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0">&#10004;</div>';
@@ -1014,7 +1018,7 @@ function calcPLC(e){
         }
         if(hc.debilidades&&hc.debilidades.length>0){
           hhtml+='<div style="background:#fff;border-radius:10px;padding:16px 18px;border:1px solid #FFEBEE">';
-          hhtml+='<div style="font-size:12px;font-weight:700;color:#F44336;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Debilidades Críticas</div>';
+          hhtml+='<div style="font-size:12px;font-weight:700;color:#F44336;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Capacidades por Desarrollar</div>';
           hc.debilidades.forEach(function(d){
             hhtml+='<div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:10px">';
             hhtml+='<div style="width:28px;height:28px;border-radius:50%;background:#FFEBEE;color:#F44336;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0">&#9888;</div>';
@@ -1085,11 +1089,13 @@ function calcPLC(e){
         document.getElementById('plcCtaMentora').style.display='block';
       }
     }else{
+      console.warn('PLC: respuesta sin success=true',data);
       document.getElementById('plcEmailMsg').textContent='Tu diagnóstico ha sido procesado. Revisa tu correo para el informe completo.';
     }
-  }).catch(function(){
+  }).catch(function(err){
+    console.error('PLC webhook error:',err);
     document.getElementById('plcAiLoading').style.display='none';
-    document.getElementById('plcEmailMsg').textContent='Tu diagnóstico ha sido procesado. Revisa tu correo para el informe completo.';
+    document.getElementById('plcEmailMsg').textContent='Hubo un problema al generar el informe. Tu diagnóstico fue registrado — revisa tu correo o intenta nuevamente.';
   });
 
   return false;
@@ -1274,7 +1280,7 @@ function demoMode(){
     var hhtml='';
     if(hc.fortalezas&&hc.fortalezas.length>0){
       hhtml+='<div style="background:#fff;border-radius:10px;padding:16px 18px;border:1px solid #E8F5E9">';
-      hhtml+='<div style="font-size:12px;font-weight:700;color:#4CAF50;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Top Fortalezas</div>';
+      hhtml+='<div style="font-size:12px;font-weight:700;color:#4CAF50;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Competencias Destacadas</div>';
       hc.fortalezas.forEach(function(f){
         hhtml+='<div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:10px">';
         hhtml+='<div style="width:28px;height:28px;border-radius:50%;background:#E8F5E9;color:#4CAF50;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0">&#10004;</div>';
@@ -1284,7 +1290,7 @@ function demoMode(){
     }
     if(hc.debilidades&&hc.debilidades.length>0){
       hhtml+='<div style="background:#fff;border-radius:10px;padding:16px 18px;border:1px solid #FFEBEE">';
-      hhtml+='<div style="font-size:12px;font-weight:700;color:#F44336;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Debilidades Críticas</div>';
+      hhtml+='<div style="font-size:12px;font-weight:700;color:#F44336;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Capacidades por Desarrollar</div>';
       hc.debilidades.forEach(function(d){
         hhtml+='<div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:10px">';
         hhtml+='<div style="width:28px;height:28px;border-radius:50%;background:#FFEBEE;color:#F44336;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0">&#9888;</div>';
