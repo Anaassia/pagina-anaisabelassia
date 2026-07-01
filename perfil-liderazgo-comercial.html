@@ -10,41 +10,54 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <style>
-.plc-form{max-width:860px;margin:0 auto}
-.plc-section{background:#fff;border-radius:16px;padding:36px 32px;margin-bottom:28px;border:1px solid rgba(0,0,0,.06)}
+.plc-form{max-width:960px;margin:0 auto}
+.plc-section{background:#fff;border-radius:16px;padding:32px 28px;margin-bottom:28px;border:1px solid rgba(0,0,0,.06)}
 .plc-section h3{font-family:'Jost',sans-serif;font-size:22px;font-weight:700;margin:0 0 6px;display:flex;align-items:center;gap:10px}
 .plc-section h3 .plc-badge{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
-.plc-section p.plc-desc{font-size:14px;color:rgba(11,11,11,.55);margin:0 0 24px;padding-left:46px}
+.plc-section p.plc-desc{font-size:14px;color:rgba(11,11,11,.55);margin:0 0 20px;padding-left:46px}
 .plc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:640px){.plc-grid{grid-template-columns:1fr}}
-.plc-q{background:var(--smoke);border-radius:12px;padding:20px;border:1px solid rgba(0,0,0,.04)}
-.plc-q label.plc-qlabel{font-size:14px;font-weight:600;color:var(--ink);display:block;margin-bottom:12px;line-height:1.45}
-.plc-q label.plc-qlabel span.plc-qnum{color:var(--red);font-weight:800;margin-right:4px}
-.plc-radios{display:flex;gap:6px;flex-wrap:wrap}
-.plc-radios label{flex:1;min-width:0;text-align:center;cursor:pointer;position:relative}
-.plc-radios input{position:absolute;opacity:0;pointer-events:none}
-.plc-radios .plc-chip{display:block;padding:8px 4px;border-radius:8px;font-size:11px;font-weight:600;line-height:1.2;border:2px solid rgba(0,0,0,.08);background:#fff;transition:all .2s}
-.plc-radios .plc-chip .plc-val{display:block;font-size:18px;font-weight:800;margin-bottom:2px;font-family:'Jost',sans-serif}
-.plc-radios input:checked+.plc-chip{border-color:var(--red);background:var(--red);color:#fff}
-.plc-results{display:none;max-width:860px;margin:0 auto}
-.plc-results.show{display:block}
-.plc-sem-row{display:grid;grid-template-columns:180px 1fr 80px 100px;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid rgba(0,0,0,.06)}
-.plc-sem-row:last-child{border-bottom:none}
-@media(max-width:640px){.plc-sem-row{grid-template-columns:1fr;gap:8px}}
-.plc-bar-bg{height:18px;background:rgba(0,0,0,.06);border-radius:9px;overflow:hidden;position:relative}
-.plc-bar-fill{height:100%;border-radius:9px;transition:width .8s ease}
-.plc-dot{width:14px;height:14px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle}
-.plc-total-row{display:grid;grid-template-columns:180px 1fr 80px 100px;align-items:center;gap:12px;padding:20px;background:var(--ink);border-radius:12px;color:#fff;margin-top:20px}
-@media(max-width:640px){.plc-total-row{grid-template-columns:1fr;gap:8px}}
-.plc-radar{display:flex;justify-content:center;margin:32px 0}
-.plc-legend{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin:20px 0 0}
-.plc-legend span{font-size:13px;display:flex;align-items:center;gap:5px}
-textarea.plc-textarea{width:100%;min-height:160px;border:1px solid rgba(0,0,0,.12);border-radius:10px;padding:14px;font-family:'Inter',sans-serif;font-size:14px;resize:vertical;background:#fff}
+textarea.plc-textarea{width:100%;min-height:140px;border:1px solid rgba(0,0,0,.12);border-radius:10px;padding:14px;font-family:'Inter',sans-serif;font-size:14px;resize:vertical;background:#fff}
 textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
 .plc-form .field label{color:rgba(11,11,11,.6)}
 .plc-form .field input,.plc-form .field select{background:#fff;border:1px solid rgba(0,0,0,.15);color:var(--ink);padding:14px 16px;font-size:15px}
 .plc-form .field input::placeholder{color:rgba(11,11,11,.35)}
 .plc-form .field input:focus,.plc-form .field select:focus{border-color:var(--red);background:#fff;box-shadow:0 0 0 3px rgba(165,25,22,.08)}
+
+/* MATRIX TABLE */
+.mx-wrap{overflow-x:auto;margin-top:8px}
+.mx{width:100%;border-collapse:separate;border-spacing:0;font-size:13px}
+.mx th{background:#1a1a1a;color:#fff;padding:10px 10px;text-align:center;font-family:'Jost',sans-serif;font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;position:sticky;top:0;white-space:nowrap}
+.mx th:first-child{border-radius:8px 0 0 0;text-align:center;width:32px}
+.mx th:last-child{border-radius:0 8px 0 0}
+.mx th.th-factor{text-align:left;min-width:220px}
+.mx td{padding:10px 10px;border-bottom:1px solid rgba(0,0,0,.06);vertical-align:middle;text-align:center}
+.mx td:nth-child(2){text-align:left;font-size:13px;line-height:1.4;color:var(--ink)}
+.mx tr:last-child td{border-bottom:none}
+.mx .mx-pond{font-weight:700;color:var(--ink);font-family:'Jost',sans-serif;font-size:14px}
+.mx .mx-impact{font-size:12px;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:5px;justify-content:center}
+.mx select.mx-eval{width:56px;padding:6px 4px;border:2px solid rgba(0,0,0,.12);border-radius:8px;font-family:'Jost',sans-serif;font-size:16px;font-weight:800;text-align:center;cursor:pointer;background:#fff;color:var(--ink);appearance:none;-webkit-appearance:none}
+.mx select.mx-eval:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(165,25,22,.1)}
+.mx .mx-estado{font-size:11px;font-weight:700;white-space:nowrap;display:flex;align-items:center;gap:4px;justify-content:center}
+.mx .mx-valor{font-family:'Jost',sans-serif;font-size:15px;font-weight:800;color:var(--ink)}
+.mx .dot{width:12px;height:12px;border-radius:50%;display:inline-block;flex-shrink:0}
+.mx-total{background:#1a1a1a!important}
+.mx-total td{color:#fff!important;font-family:'Jost',sans-serif;font-weight:700;font-size:14px;border-bottom:none;padding:14px 10px}
+.mx-total .mx-estado{color:#fff}
+.mx-total .mx-valor{color:#fff;font-size:18px}
+
+/* RESULTS */
+.plc-results{display:none;max-width:960px;margin:0 auto}
+.plc-results.show{display:block}
+.plc-radar{display:flex;justify-content:center;margin:32px 0}
+.plc-legend{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin:20px 0 0}
+.plc-legend span{font-size:13px;display:flex;align-items:center;gap:5px}
+.plc-bar-bg{height:18px;background:rgba(0,0,0,.06);border-radius:9px;overflow:hidden}
+.plc-bar-fill{height:100%;border-radius:9px;transition:width .8s ease}
+.plc-sem-row{display:grid;grid-template-columns:180px 1fr 80px 120px;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.06)}
+.plc-sem-row:last-child{border-bottom:none}
+.plc-total-row{display:grid;grid-template-columns:180px 1fr 80px 120px;align-items:center;gap:12px;padding:20px;background:rgba(255,255,255,.08);border-radius:12px;color:#fff;margin-top:16px}
+@media(max-width:640px){.plc-sem-row,.plc-total-row{grid-template-columns:1fr;gap:8px}.mx{font-size:12px}.mx th,.mx td{padding:8px 6px}}
 .plc-submit-area{text-align:center;margin-top:12px}
 </style>
 </head>
@@ -89,48 +102,41 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
     <div class="breadcrumb"><a href="index.html">Inicio</a><span>/</span>Tools<span>/</span>Perfil Liderazgo Comercial</div>
     <span class="eyebrow light" style="color:var(--red)">Assessment Gratuito</span>
     <h1 class="serif">Perfil de Liderazgo<br>Comercial <em>Generativo</em></h1>
-    <p style="max-width:64ch;margin:18px auto 0;font-size:clamp(17px,1.8vw,20px);line-height:1.6">Diagnóstica tu nivel de capacidad comercial en 5 ejes clave: Estrategia, Procesos, Personas, Tecnología y Resultados. Obtén tu semáforo de fortalezas y oportunidades en menos de 10 minutos.</p>
+    <p style="max-width:64ch;margin:18px auto 0;font-size:clamp(17px,1.8vw,20px);line-height:1.6">Diagnostica tu nivel de capacidad comercial en 5 ejes clave. Evalúa cada factor, visualiza tu semáforo de fortalezas y debilidades, y obtén tu perfil ponderado en menos de 10 minutos.</p>
     <div style="display:flex;gap:16px;justify-content:center;margin-top:32px;flex-wrap:wrap">
       <a href="#evaluacion" class="btn btn-red" style="justify-content:center">Iniciar diagnóstico <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
 
-<!-- CÓMO FUNCIONA -->
+<!-- LEYENDA SEMÁFORO -->
 <section class="pad" style="background:var(--smoke)">
-  <div class="wrap" style="text-align:center;margin-bottom:48px">
-    <span class="eyebrow">Proceso</span>
-    <h2 class="serif" style="font-weight:400;font-size:clamp(26px,3.5vw,38px);line-height:1.12;margin-top:18px">¿Cómo funciona?</h2>
+  <div class="wrap" style="text-align:center;margin-bottom:36px">
+    <span class="eyebrow">Metodología</span>
+    <h2 class="serif" style="font-weight:400;font-size:clamp(26px,3.5vw,38px);line-height:1.12;margin-top:18px">Análisis de Capacidades <em style="color:var(--red)">Comerciales</em></h2>
+    <p style="font-size:16px;color:rgba(11,11,11,.55);max-width:62ch;margin:14px auto 0">Cada factor clave de éxito tiene una ponderación estratégica y un nivel de impacto. Evalúa tu nivel actual (1-4) y obtén tu semáforo de capacidades automáticamente.</p>
   </div>
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
-      <div class="reveal" style="text-align:center;padding:24px">
-        <div style="width:56px;height:56px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
-          <svg width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </div>
-        <h4 style="font-family:'Jost',sans-serif;font-size:17px;font-weight:700;margin:0 0 8px">1. Describe tu contexto</h4>
-        <p style="font-size:14px;color:rgba(11,11,11,.6);margin:0">Cuéntanos sobre tu negocio y los principales desafíos que enfrentas como líder comercial.</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+      <div class="reveal" style="background:#fff;border-radius:14px;padding:24px 20px;border:1px solid rgba(0,0,0,.06);text-align:center">
+        <div style="width:28px;height:28px;border-radius:50%;background:#4CAF50;margin:0 auto 12px"></div>
+        <h4 style="font-size:15px;margin:0 0 6px;font-family:'Jost',sans-serif;font-weight:700">Fortaleza Mayor</h4>
+        <p style="font-size:13px;color:rgba(11,11,11,.5);margin:0">Evaluación = 4<br>Capacidad consolidada</p>
       </div>
-      <div class="reveal" style="text-align:center;padding:24px">
-        <div style="width:56px;height:56px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
-          <svg width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-        </div>
-        <h4 style="font-family:'Jost',sans-serif;font-size:17px;font-weight:700;margin:0 0 8px">2. Evalúa 5 ejes</h4>
-        <p style="font-size:14px;color:rgba(11,11,11,.6);margin:0">Responde 25 preguntas clave sobre Estrategia, Procesos, Personas, Tecnología y Resultados.</p>
+      <div class="reveal" style="background:#fff;border-radius:14px;padding:24px 20px;border:1px solid rgba(0,0,0,.06);text-align:center">
+        <div style="width:28px;height:28px;border-radius:50%;background:#8BC34A;margin:0 auto 12px"></div>
+        <h4 style="font-size:15px;margin:0 0 6px;font-family:'Jost',sans-serif;font-weight:700">Fortaleza Menor</h4>
+        <p style="font-size:13px;color:rgba(11,11,11,.5);margin:0">Evaluación = 3<br>En buen camino</p>
       </div>
-      <div class="reveal" style="text-align:center;padding:24px">
-        <div style="width:56px;height:56px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
-          <svg width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        </div>
-        <h4 style="font-family:'Jost',sans-serif;font-size:17px;font-weight:700;margin:0 0 8px">3. Obtén tu semáforo</h4>
-        <p style="font-size:14px;color:rgba(11,11,11,.6);margin:0">Visualiza tu diagnóstico semaforizado con fortalezas mayores, menores y áreas de oportunidad.</p>
+      <div class="reveal" style="background:#fff;border-radius:14px;padding:24px 20px;border:1px solid rgba(0,0,0,.06);text-align:center">
+        <div style="width:28px;height:28px;border-radius:50%;background:#FF9800;margin:0 auto 12px"></div>
+        <h4 style="font-size:15px;margin:0 0 6px;font-family:'Jost',sans-serif;font-weight:700">Debilidad Menor</h4>
+        <p style="font-size:13px;color:rgba(11,11,11,.5);margin:0">Evaluación = 2<br>Requiere atención</p>
       </div>
-      <div class="reveal" style="text-align:center;padding:24px">
-        <div style="width:56px;height:56px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
-          <svg width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h4 style="font-family:'Jost',sans-serif;font-size:17px;font-weight:700;margin:0 0 8px">4. Agenda tu sesión</h4>
-        <p style="font-size:14px;color:rgba(11,11,11,.6);margin:0">Recibe una sesión de retroalimentación personalizada para diseñar tu plan de acción.</p>
+      <div class="reveal" style="background:#fff;border-radius:14px;padding:24px 20px;border:1px solid rgba(0,0,0,.06);text-align:center">
+        <div style="width:28px;height:28px;border-radius:50%;background:#F44336;margin:0 auto 12px"></div>
+        <h4 style="font-size:15px;margin:0 0 6px;font-family:'Jost',sans-serif;font-weight:700">Debilidad Mayor</h4>
+        <p style="font-size:13px;color:rgba(11,11,11,.5);margin:0">Evaluación = 1<br>Acción inmediata</p>
       </div>
     </div>
   </div>
@@ -141,7 +147,7 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
   <div class="wrap" style="text-align:center;margin-bottom:40px">
     <span class="eyebrow">Diagnóstico</span>
     <h2 class="serif" style="font-weight:400;font-size:clamp(26px,3.5vw,38px);line-height:1.12;margin-top:18px">Perfil de Liderazgo Comercial <em style="color:var(--red)">Generativo</em></h2>
-    <p style="font-size:16px;color:rgba(11,11,11,.55);max-width:60ch;margin:14px auto 0">Evalúa con honestidad cada factor. 1 = Crítico · 2 = Bajo · 3 = Intermedio · 4 = Avanzando · 5 = Sobresaliente</p>
+    <p style="font-size:15px;color:rgba(11,11,11,.55);max-width:58ch;margin:14px auto 0">Evalúa cada factor con honestidad: <strong>1</strong> = Debilidad Mayor · <strong>2</strong> = Debilidad Menor · <strong>3</strong> = Fortaleza Menor · <strong>4</strong> = Fortaleza Mayor</p>
   </div>
 
   <form id="plcForm" class="plc-form" onsubmit="return calcPLC(event)">
@@ -160,334 +166,322 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
       </div>
     </div>
 
-    <!-- CONTEXTO DEL NEGOCIO -->
+    <!-- CONTEXTO -->
     <div class="plc-section">
       <h3><span class="plc-badge" style="background:#555">C</span> Contexto actual del negocio</h3>
       <p class="plc-desc">Describe brevemente la situación actual de tu negocio y tu operación comercial.</p>
-      <textarea id="plc-context" class="plc-textarea" rows="8" placeholder="Describe el contexto actual de tu negocio: situación del mercado, tamaño de tu equipo, modelo comercial, canales de venta, facturación aproximada, principales productos/servicios y cualquier factor relevante para entender tu operación comercial actual..."></textarea>
+      <textarea id="plc-context" class="plc-textarea" rows="6" placeholder="Situación del mercado, tamaño de equipo, modelo comercial, canales de venta, facturación aproximada, principales productos/servicios..."></textarea>
     </div>
 
     <!-- DESAFÍOS -->
     <div class="plc-section">
       <h3><span class="plc-badge" style="background:#555">D</span> Principales desafíos como líder comercial</h3>
-      <p class="plc-desc">¿Cuáles son los retos más importantes que enfrentas hoy como líder de tu equipo comercial?</p>
-      <textarea id="plc-challenges" class="plc-textarea" rows="8" placeholder="Describe tus principales desafíos: rotación de equipo, cumplimiento de metas, transformación digital, competencia, márgenes, productividad, liderazgo del cambio, adopción de nuevas herramientas, alineación estratégica, gestión de talento..."></textarea>
+      <p class="plc-desc">¿Cuáles son los retos más importantes que enfrentas hoy?</p>
+      <textarea id="plc-challenges" class="plc-textarea" rows="6" placeholder="Rotación de equipo, cumplimiento de metas, transformación digital, competencia, márgenes, productividad, adopción de herramientas..."></textarea>
     </div>
 
     <!-- EJE 1: ESTRATEGIA -->
-    <div class="plc-section" data-axis="estrategia">
+    <div class="plc-section" id="ax-estrategia">
       <h3><span class="plc-badge" style="background:#4CAF50">E</span> Estrategia Comercial</h3>
       <p class="plc-desc">Visión, dirección y capacidad de anticipar y liderar el rumbo del negocio.</p>
-      <div class="plc-grid">
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">E1.</span> ¿Tu equipo lidera el cambio y rompe paradigmas comerciales con visión generativa, o se aferra a modelos tradicionales?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="e1" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="e1" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="e1" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="e1" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="e1" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">E2.</span> ¿Usas analítica avanzada y KPIs estratégicos para tomar decisiones comerciales en tiempo real?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="e2" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="e2" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="e2" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="e2" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="e2" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">E3.</span> ¿Identificas oportunidades de mercado emergentes y las conviertes en estrategias accionables con agilidad?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="e3" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="e3" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="e3" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="e3" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="e3" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">E4.</span> ¿Tu planificación integra visión multi-horizonte: corto plazo (ejecución), mediano (crecimiento) y largo plazo (transformación)?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="e4" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="e4" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="e4" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="e4" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="e4" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q" style="grid-column:1/-1">
-          <label class="plc-qlabel"><span class="plc-qnum">E5.</span> ¿Tu estrategia tiene capacidad de pivoteo ágil: ajustas rápidamente el rumbo comercial cuando cambian las condiciones del entorno?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="e5" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="e5" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="e5" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="e5" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="e5" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
+      <div class="mx-wrap">
+        <table class="mx" data-axis="estrategia">
+          <thead><tr>
+            <th>#</th>
+            <th class="th-factor">Factores Clave de Éxito</th>
+            <th>Pond.</th>
+            <th>Impacto</th>
+            <th>Eval.</th>
+            <th>Estado</th>
+            <th>Valor</th>
+          </tr></thead>
+          <tbody>
+            <tr data-pond="20" data-impact="3">
+              <td>1</td>
+              <td>El estilo de liderazgo actual aporta al crecimiento y evolución del negocio</td>
+              <td class="mx-pond">20%</td>
+              <td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
+              <td class="mx-estado">—</td>
+              <td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="15" data-impact="2">
+              <td>2</td>
+              <td>La mentalidad de los líderes está abierta a los cambios y la innovación</td>
+              <td class="mx-pond">15%</td>
+              <td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
+              <td class="mx-estado">—</td>
+              <td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="20" data-impact="3">
+              <td>3</td>
+              <td>Paradigmas estratégicos están alineados con los desafíos de la era actual</td>
+              <td class="mx-pond">20%</td>
+              <td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
+              <td class="mx-estado">—</td>
+              <td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="15" data-impact="2">
+              <td>4</td>
+              <td>Los líderes usan analítica y KPIs para la toma de decisiones estratégicas</td>
+              <td class="mx-pond">15%</td>
+              <td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
+              <td class="mx-estado">—</td>
+              <td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="15" data-impact="3">
+              <td>5</td>
+              <td>Visión multi-horizonte: corto plazo (ejecución), mediano (crecimiento) y largo plazo (transformación)</td>
+              <td class="mx-pond">15%</td>
+              <td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
+              <td class="mx-estado">—</td>
+              <td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="15" data-impact="2">
+              <td>6</td>
+              <td>Capacidad de pivoteo ágil: ajuste rápido del rumbo ante cambios del entorno</td>
+              <td class="mx-pond">15%</td>
+              <td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
+              <td class="mx-estado">—</td>
+              <td class="mx-valor">—</td>
+            </tr>
+          </tbody>
+          <tfoot><tr class="mx-total">
+            <td colspan="2" style="text-align:left;font-size:13px">Resultado Capacidad Estratégica</td>
+            <td class="mx-pond">100%</td>
+            <td></td>
+            <td class="mx-eval-total" style="font-size:16px;font-weight:800">—</td>
+            <td class="mx-estado">—</td>
+            <td class="mx-valor" style="font-size:18px">—</td>
+          </tr></tfoot>
+        </table>
       </div>
     </div>
 
     <!-- EJE 2: PROCESOS -->
-    <div class="plc-section" data-axis="procesos">
+    <div class="plc-section" id="ax-procesos">
       <h3><span class="plc-badge" style="background:#2196F3">P</span> Procesos Comerciales</h3>
-      <p class="plc-desc">Ejecución, pipeline, experiencia del cliente y eficiencia operativa comercial.</p>
-      <div class="plc-grid">
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">P1.</span> ¿Tu pipeline comercial tiene metodología de forecasting confiable que permite predecir resultados con precisión?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="p1" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="p1" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="p1" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="p1" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="p1" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">P2.</span> ¿Tienes mapeado el Customer Journey completo y mides experiencia del cliente con métricas como NPS, CSAT o CES?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="p2" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="p2" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="p2" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="p2" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="p2" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">P3.</span> ¿Integras estrategias inbound, outbound y social selling en un modelo comercial omnicanal (phygital)?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="p3" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="p3" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="p3" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="p3" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="p3" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">P4.</span> ¿Tus procesos comerciales cuentan con protocolos que integran inteligencia humana + IA para mayor eficiencia?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="p4" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="p4" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="p4" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="p4" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="p4" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q" style="grid-column:1/-1">
-          <label class="plc-qlabel"><span class="plc-qnum">P5.</span> ¿Tu CRM está integrado con el ecosistema tecnológico comercial y es una fuente confiable de datos para la toma de decisiones?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="p5" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="p5" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="p5" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="p5" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="p5" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
+      <p class="plc-desc">Pipeline, experiencia del cliente, omnicanalidad y eficiencia operativa.</p>
+      <div class="mx-wrap">
+        <table class="mx" data-axis="procesos">
+          <thead><tr>
+            <th>#</th><th class="th-factor">Factores Clave de Éxito</th><th>Pond.</th><th>Impacto</th><th>Eval.</th><th>Estado</th><th>Valor</th>
+          </tr></thead>
+          <tbody>
+            <tr data-pond="20" data-impact="3">
+              <td>1</td><td>Pipeline comercial con metodología de forecasting confiable</td>
+              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="15" data-impact="2">
+              <td>2</td><td>Integración de inbound, outbound y social selling en modelo omnicanal</td>
+              <td class="mx-pond">15%</td><td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="20" data-impact="3">
+              <td>3</td><td>Customer Journey mapeado con métricas de experiencia (NPS, CSAT, CES)</td>
+              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="20" data-impact="3">
+              <td>4</td><td>Protocolos que integran inteligencia humana + IA en procesos comerciales</td>
+              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="15" data-impact="2">
+              <td>5</td><td>CRM integrado al ecosistema tecnológico como fuente confiable de datos</td>
+              <td class="mx-pond">15%</td><td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="10" data-impact="1">
+              <td>6</td><td>Procesos lean-agile con resiliencia y capacidad antifragil</td>
+              <td class="mx-pond">10%</td><td><span class="mx-impact"><span class="dot" style="background:#F44336"></span>↓ Bajo</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+          </tbody>
+          <tfoot><tr class="mx-total">
+            <td colspan="2" style="text-align:left;font-size:13px">Resultado Capacidad de Procesos</td>
+            <td class="mx-pond">100%</td><td></td><td class="mx-eval-total" style="font-size:16px;font-weight:800">—</td><td class="mx-estado">—</td><td class="mx-valor" style="font-size:18px">—</td>
+          </tr></tfoot>
+        </table>
       </div>
     </div>
 
     <!-- EJE 3: PERSONAS -->
-    <div class="plc-section" data-axis="personas">
+    <div class="plc-section" id="ax-personas">
       <h3><span class="plc-badge" style="background:#FF9800">Pe</span> Personas y Talento</h3>
       <p class="plc-desc">Desarrollo, empoderamiento y gestión del talento comercial de alto rendimiento.</p>
-      <div class="plc-grid">
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">Pe1.</span> ¿Tu equipo opera con mentalidad de crecimiento (growth mindset), buscando aprendizaje continuo y superación constante?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="pe1" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="pe1" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="pe1" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="pe1" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="pe1" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">Pe2.</span> ¿Construyes equipos comerciales diversos y de alto rendimiento con perfiles complementarios?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="pe2" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="pe2" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="pe2" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="pe2" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="pe2" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">Pe3.</span> ¿Cuentas con programas de formación continua y desarrollo de competencias comerciales para tu equipo?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="pe3" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="pe3" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="pe3" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="pe3" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="pe3" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">Pe4.</span> ¿Existe seguridad psicológica en tu equipo para proponer ideas, cuestionar procesos y asumir riesgos sin temor?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="pe4" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="pe4" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="pe4" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="pe4" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="pe4" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q" style="grid-column:1/-1">
-          <label class="plc-qlabel"><span class="plc-qnum">Pe5.</span> ¿Tu equipo está preparado para trabajar en modelos híbridos humano+IA, integrando tecnología en su desempeño diario?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="pe5" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="pe5" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="pe5" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="pe5" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="pe5" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
+      <div class="mx-wrap">
+        <table class="mx" data-axis="personas">
+          <thead><tr>
+            <th>#</th><th class="th-factor">Factores Clave de Éxito</th><th>Pond.</th><th>Impacto</th><th>Eval.</th><th>Estado</th><th>Valor</th>
+          </tr></thead>
+          <tbody>
+            <tr data-pond="15" data-impact="3">
+              <td>1</td><td>Equipos con mentalidad de crecimiento (growth mindset) y aprendizaje continuo</td>
+              <td class="mx-pond">15%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="20" data-impact="3">
+              <td>2</td><td>Equipos comerciales diversos y de alto rendimiento con perfiles complementarios</td>
+              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="20" data-impact="3">
+              <td>3</td><td>Programas de formación continua y desarrollo de competencias comerciales</td>
+              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="20" data-impact="2">
+              <td>4</td><td>Seguridad psicológica para proponer ideas, cuestionar procesos y asumir riesgos</td>
+              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="15" data-impact="2">
+              <td>5</td><td>Líderes promueven la agilidad, flexibilidad y adaptabilidad del equipo</td>
+              <td class="mx-pond">15%</td><td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="10" data-impact="1">
+              <td>6</td><td>Equipos preparados para modelos híbridos humano + IA en desempeño diario</td>
+              <td class="mx-pond">10%</td><td><span class="mx-impact"><span class="dot" style="background:#F44336"></span>↓ Bajo</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+          </tbody>
+          <tfoot><tr class="mx-total">
+            <td colspan="2" style="text-align:left;font-size:13px">Resultado Capacidad de Personas</td>
+            <td class="mx-pond">100%</td><td></td><td class="mx-eval-total" style="font-size:16px;font-weight:800">—</td><td class="mx-estado">—</td><td class="mx-valor" style="font-size:18px">—</td>
+          </tr></tfoot>
+        </table>
       </div>
     </div>
 
     <!-- EJE 4: TECNOLOGÍA -->
-    <div class="plc-section" data-axis="tecnologia">
+    <div class="plc-section" id="ax-tecnologia">
       <h3><span class="plc-badge" style="background:#03A9F4">T</span> Tecnología e Innovación Digital</h3>
       <p class="plc-desc">Madurez digital, adopción de IA y ecosistema tecnológico integrado.</p>
-      <div class="plc-grid">
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">T1.</span> ¿Cuál es el nivel de madurez digital de tu organización comercial frente a los estándares de la industria?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="t1" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="t1" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="t1" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="t1" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="t1" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">T2.</span> ¿Existe una cultura organizacional de adopción de IA como herramienta estratégica, no solo operativa?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="t2" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="t2" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="t2" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="t2" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="t2" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">T3.</span> ¿Tu ecosistema tecnológico integra ERP + CRM + BI + IA + CDP en una plataforma coherente para la gestión comercial?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="t3" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="t3" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="t3" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="t3" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="t3" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">T4.</span> ¿Utilizas analítica predictiva y modelos de pronóstico para anticipar comportamientos del mercado y del cliente?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="t4" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="t4" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="t4" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="t4" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="t4" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q" style="grid-column:1/-1">
-          <label class="plc-qlabel"><span class="plc-qnum">T5.</span> ¿Tienes políticas de gobernanza ética para el uso de IA y tecnología en tu gestión comercial?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="t5" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="t5" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="t5" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="t5" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="t5" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
+      <div class="mx-wrap">
+        <table class="mx" data-axis="tecnologia">
+          <thead><tr>
+            <th>#</th><th class="th-factor">Factores Clave de Éxito</th><th>Pond.</th><th>Impacto</th><th>Eval.</th><th>Estado</th><th>Valor</th>
+          </tr></thead>
+          <tbody>
+            <tr data-pond="20" data-impact="3">
+              <td>1</td><td>Nivel de madurez digital de la organización frente a la industria</td>
+              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="20" data-impact="3">
+              <td>2</td><td>Cultura organizacional de adopción de IA como herramienta estratégica</td>
+              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="20" data-impact="2">
+              <td>3</td><td>Ecosistema tecnológico integrado (ERP + CRM + BI + IA + CDP)</td>
+              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="15" data-impact="2">
+              <td>4</td><td>Analítica predictiva y modelos de pronóstico de comportamiento del mercado</td>
+              <td class="mx-pond">15%</td><td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="15" data-impact="1">
+              <td>5</td><td>Líderes adoptan la tecnología para potenciar los procesos y resultados</td>
+              <td class="mx-pond">15%</td><td><span class="mx-impact"><span class="dot" style="background:#F44336"></span>↓ Bajo</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="10" data-impact="1">
+              <td>6</td><td>Gobernanza ética para el uso de IA y tecnología en la gestión comercial</td>
+              <td class="mx-pond">10%</td><td><span class="mx-impact"><span class="dot" style="background:#F44336"></span>↓ Bajo</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+          </tbody>
+          <tfoot><tr class="mx-total">
+            <td colspan="2" style="text-align:left;font-size:13px">Resultado Capacidad Tecnológica</td>
+            <td class="mx-pond">100%</td><td></td><td class="mx-eval-total" style="font-size:16px;font-weight:800">—</td><td class="mx-estado">—</td><td class="mx-valor" style="font-size:18px">—</td>
+          </tr></tfoot>
+        </table>
       </div>
     </div>
 
     <!-- EJE 5: RESULTADOS -->
-    <div class="plc-section" data-axis="resultados">
+    <div class="plc-section" id="ax-resultados">
       <h3><span class="plc-badge" style="background:#9C27B0">R</span> Resultados y Rendimiento</h3>
       <p class="plc-desc">Orientación a métricas, accountability, rentabilidad y crecimiento sostenible.</p>
-      <div class="plc-grid">
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">R1.</span> ¿Tu equipo cumple consistentemente las metas de ventas y rentabilidad establecidas en el plan comercial?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="r1" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="r1" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="r1" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="r1" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="r1" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">R2.</span> ¿Trabajas con OKRs claros y existe una cultura de accountability donde cada persona responde por sus resultados?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="r2" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="r2" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="r2" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="r2" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="r2" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">R3.</span> ¿Las decisiones comerciales se toman con base en datos y evidencia, no en intuición o urgencia?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="r3" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="r3" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="r3" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="r3" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="r3" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q">
-          <label class="plc-qlabel"><span class="plc-qnum">R4.</span> ¿Cuentas con dashboards ejecutivos actualizados que permiten monitorear la gestión comercial en tiempo real?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="r4" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="r4" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="r4" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="r4" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="r4" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
-        <div class="plc-q" style="grid-column:1/-1">
-          <label class="plc-qlabel"><span class="plc-qnum">R5.</span> ¿Realizas pronóstico predictivo de ventas y planificación basada en escenarios para anticipar resultados?</label>
-          <div class="plc-radios">
-            <label><input type="radio" name="r5" value="1" required><span class="plc-chip"><span class="plc-val">1</span>Crítico</span></label>
-            <label><input type="radio" name="r5" value="2"><span class="plc-chip"><span class="plc-val">2</span>Bajo</span></label>
-            <label><input type="radio" name="r5" value="3"><span class="plc-chip"><span class="plc-val">3</span>Intermedio</span></label>
-            <label><input type="radio" name="r5" value="4"><span class="plc-chip"><span class="plc-val">4</span>Avanzando</span></label>
-            <label><input type="radio" name="r5" value="5"><span class="plc-chip"><span class="plc-val">5</span>Sobresaliente</span></label>
-          </div>
-        </div>
+      <div class="mx-wrap">
+        <table class="mx" data-axis="resultados">
+          <thead><tr>
+            <th>#</th><th class="th-factor">Factores Clave de Éxito</th><th>Pond.</th><th>Impacto</th><th>Eval.</th><th>Estado</th><th>Valor</th>
+          </tr></thead>
+          <tbody>
+            <tr data-pond="20" data-impact="3">
+              <td>1</td><td>Cumplimiento consistente de metas de ventas y rentabilidad</td>
+              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="20" data-impact="3">
+              <td>2</td><td>OKRs claros con cultura de accountability y responsabilidad por resultados</td>
+              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="20" data-impact="3">
+              <td>3</td><td>Decisiones comerciales basadas en datos y evidencia, no en intuición</td>
+              <td class="mx-pond">20%</td><td><span class="mx-impact"><span class="dot" style="background:#4CAF50"></span>↑ Alto</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="15" data-impact="2">
+              <td>4</td><td>Dashboards ejecutivos actualizados para monitoreo en tiempo real</td>
+              <td class="mx-pond">15%</td><td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="15" data-impact="2">
+              <td>5</td><td>Pronóstico predictivo de ventas y planificación basada en escenarios</td>
+              <td class="mx-pond">15%</td><td><span class="mx-impact"><span class="dot" style="background:#FF9800"></span>→ Medio</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="10" data-impact="1">
+              <td>6</td><td>Líderes toman decisiones basadas en indicadores de desempeño — KPIs</td>
+              <td class="mx-pond">10%</td><td><span class="mx-impact"><span class="dot" style="background:#F44336"></span>↓ Bajo</span></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+          </tbody>
+          <tfoot><tr class="mx-total">
+            <td colspan="2" style="text-align:left;font-size:13px">Resultado Capacidad de Resultados</td>
+            <td class="mx-pond">100%</td><td></td><td class="mx-eval-total" style="font-size:16px;font-weight:800">—</td><td class="mx-estado">—</td><td class="mx-valor" style="font-size:18px">—</td>
+          </tr></tfoot>
+        </table>
       </div>
     </div>
 
     <!-- SUBMIT -->
     <div class="plc-submit-area">
       <button type="submit" class="btn btn-red" style="padding:16px 56px;font-size:17px">
-        Obtener mi diagnóstico <span class="arrow">→</span>
+        Obtener mi diagnóstico completo <span class="arrow">→</span>
       </button>
-      <p style="font-size:13px;color:rgba(11,11,11,.45);margin-top:12px">Tu información es confidencial. Los resultados se envían por WhatsApp para agendar tu sesión de retroalimentación.</p>
+      <p style="font-size:13px;color:rgba(11,11,11,.45);margin-top:12px">Los resultados se calculan en tiempo real. Al enviar, recibirás tu perfil completo por WhatsApp.</p>
     </div>
   </form>
 
-  <!-- RESULTADOS -->
+  <!-- RESULTADOS CONSOLIDADOS -->
   <div id="plcResults" class="plc-results">
     <div class="plc-section" style="background:#1a1a1a;border:none">
-      <div style="text-align:center;margin-bottom:32px">
+      <div style="text-align:center;margin-bottom:28px">
         <span class="eyebrow light" style="color:var(--red)">Tu diagnóstico</span>
-        <h2 class="serif" style="font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.15;margin-top:14px;color:#fff">Semáforo de Capacidades Comerciales</h2>
+        <h2 class="serif" style="font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.15;margin-top:14px;color:#fff">Resultado del Nivel de<br>Capacidad Comercial</h2>
         <p id="plcResultName" style="font-size:15px;color:rgba(255,255,255,.5);margin-top:8px"></p>
       </div>
 
-      <!-- LEYENDA -->
-      <div class="plc-legend" style="margin-bottom:28px">
-        <span><span class="plc-dot" style="background:#4CAF50"></span><span style="color:rgba(255,255,255,.7)">Fortaleza Mayor (4.1-5.0)</span></span>
-        <span><span class="plc-dot" style="background:#8BC34A"></span><span style="color:rgba(255,255,255,.7)">Fortaleza Menor (3.1-4.0)</span></span>
-        <span><span class="plc-dot" style="background:#FF9800"></span><span style="color:rgba(255,255,255,.7)">Debilidad Menor (2.1-3.0)</span></span>
-        <span><span class="plc-dot" style="background:#F44336"></span><span style="color:rgba(255,255,255,.7)">Debilidad Mayor (1.0-2.0)</span></span>
+      <div class="plc-legend" style="margin-bottom:24px">
+        <span><span style="width:12px;height:12px;border-radius:50%;background:#4CAF50;display:inline-block"></span><span style="color:rgba(255,255,255,.7)">Fortaleza Mayor (4)</span></span>
+        <span><span style="width:12px;height:12px;border-radius:50%;background:#8BC34A;display:inline-block"></span><span style="color:rgba(255,255,255,.7)">Fortaleza Menor (3)</span></span>
+        <span><span style="width:12px;height:12px;border-radius:50%;background:#FF9800;display:inline-block"></span><span style="color:rgba(255,255,255,.7)">Debilidad Menor (2)</span></span>
+        <span><span style="width:12px;height:12px;border-radius:50%;background:#F44336;display:inline-block"></span><span style="color:rgba(255,255,255,.7)">Debilidad Mayor (1)</span></span>
       </div>
 
       <!-- RADAR -->
@@ -499,21 +493,17 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
               <stop offset="100%" stop-color="#A51916" stop-opacity=".08"/>
             </linearGradient>
           </defs>
-          <!-- grid -->
           <g transform="translate(200,175)">
             <polygon points="0,-140 133,-43.3 82.2,113.3 -82.2,113.3 -133,-43.3" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
             <polygon points="0,-105 99.8,-32.5 61.6,85 -61.6,85 -99.8,-32.5" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
             <polygon points="0,-70 66.5,-21.6 41.1,56.6 -41.1,56.6 -66.5,-21.6" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
             <polygon points="0,-35 33.3,-10.8 20.6,28.3 -20.6,28.3 -33.3,-10.8" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
-            <!-- labels -->
             <text x="0" y="-152" text-anchor="middle" fill="#fff" font-size="12" font-family="Jost,sans-serif" font-weight="600">ESTRATEGIA</text>
             <text x="148" y="-36" text-anchor="start" fill="#fff" font-size="12" font-family="Jost,sans-serif" font-weight="600">PROCESOS</text>
             <text x="96" y="130" text-anchor="start" fill="#fff" font-size="12" font-family="Jost,sans-serif" font-weight="600">PERSONAS</text>
             <text x="-96" y="130" text-anchor="end" fill="#fff" font-size="12" font-family="Jost,sans-serif" font-weight="600">TECNOLOGÍA</text>
             <text x="-138" y="-36" text-anchor="end" fill="#fff" font-size="12" font-family="Jost,sans-serif" font-weight="600">RESULTADOS</text>
-            <!-- data polygon -->
             <polygon id="radarPoly" points="0,0 0,0 0,0 0,0 0,0" fill="url(#radarFill)" stroke="#A51916" stroke-width="2.5"/>
-            <!-- data dots -->
             <circle class="rDot" cx="0" cy="0" r="5" fill="#A51916"/>
             <circle class="rDot" cx="0" cy="0" r="5" fill="#A51916"/>
             <circle class="rDot" cx="0" cy="0" r="5" fill="#A51916"/>
@@ -523,21 +513,20 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
         </svg>
       </div>
 
-      <!-- BARRAS SEMÁFORO -->
-      <div id="plcBars" style="margin-top:16px"></div>
+      <!-- BARRAS -->
+      <div id="plcBars"></div>
 
       <!-- TOTAL -->
       <div id="plcTotal" class="plc-total-row" style="display:none">
         <strong style="font-family:'Jost',sans-serif;font-size:16px">NIVEL GENERAL</strong>
         <div class="plc-bar-bg" style="background:rgba(255,255,255,.15)"><div id="plcTotalBar" class="plc-bar-fill"></div></div>
         <span id="plcTotalScore" style="font-family:'Jost',sans-serif;font-size:20px;font-weight:800;text-align:center"></span>
-        <span id="plcTotalLabel" style="font-size:13px;font-weight:700;text-align:center"></span>
+        <span id="plcTotalLabel" style="font-size:12px;font-weight:700;text-align:center"></span>
       </div>
     </div>
 
-    <!-- CTA post-resultado -->
     <div style="text-align:center;margin-top:32px">
-      <p style="font-size:16px;color:rgba(11,11,11,.65);max-width:52ch;margin:0 auto 20px">Tu diagnóstico ha sido enviado. Agenda tu sesión de retroalimentación personalizada para profundizar en tu perfil y diseñar tu plan de acción.</p>
+      <p style="font-size:16px;color:rgba(11,11,11,.65);max-width:52ch;margin:0 auto 20px">Tu diagnóstico ha sido enviado. Agenda tu sesión de retroalimentación para profundizar en tu perfil.</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
         <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn btn-red" style="justify-content:center">Agendar sesión de retroalimentación <span class="arrow">→</span></a>
         <button type="button" class="btn btn-outline" onclick="window.print()" style="justify-content:center">Imprimir resultados</button>
@@ -602,6 +591,78 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
 </footer>
 <script src="js/main.js"></script>
 <script>
+var AXES_META={
+  estrategia:{label:'Estrategia',color:'#4CAF50'},
+  procesos:{label:'Procesos',color:'#2196F3'},
+  personas:{label:'Personas',color:'#FF9800'},
+  tecnologia:{label:'Tecnología',color:'#03A9F4'},
+  resultados:{label:'Resultados',color:'#9C27B0'}
+};
+
+function semLabel(v){
+  if(v>=3.5)return{label:'Fortaleza Mayor',color:'#4CAF50',arrow:'↑',level:'Alto'};
+  if(v>=2.5)return{label:'Fortaleza Menor',color:'#8BC34A',arrow:'→',level:'Medio'};
+  if(v>=1.5)return{label:'Debilidad Menor',color:'#FF9800',arrow:'→',level:'Medio'};
+  return{label:'Debilidad Mayor',color:'#F44336',arrow:'↓',level:'Bajo'};
+}
+function semEval(v){
+  if(v===4)return{label:'Fortaleza Mayor',color:'#4CAF50'};
+  if(v===3)return{label:'Fortaleza Menor',color:'#8BC34A'};
+  if(v===2)return{label:'Debilidad Menor',color:'#FF9800'};
+  if(v===1)return{label:'Debilidad Mayor',color:'#F44336'};
+  return{label:'—',color:'transparent'};
+}
+function nivLabel(v){
+  if(v>=3.5)return'↑ Nivel Competitivo Fuerte';
+  if(v>=2.5)return'→ Nivel Competitivo Medio';
+  if(v>=1.5)return'↓ Nivel Competitividad Débil';
+  return'↓↓ Nivel Crítico';
+}
+
+function recalcAxis(el){
+  var table=el.closest('table');
+  var rows=table.querySelectorAll('tbody tr');
+  var totalValor=0,totalPond=0,count=0,sumEval=0;
+  rows.forEach(function(row){
+    var pond=parseInt(row.getAttribute('data-pond'))/100;
+    var sel=row.querySelector('.mx-eval');
+    var evalV=sel.value?parseInt(sel.value):0;
+    var estadoCell=row.querySelector('.mx-estado');
+    var valorCell=row.querySelector('.mx-valor');
+    if(evalV>0){
+      var s=semEval(evalV);
+      var valor=pond*evalV;
+      estadoCell.innerHTML='<span class="dot" style="background:'+s.color+'"></span> '+s.label;
+      estadoCell.style.color=s.color;
+      valorCell.textContent=valor.toFixed(2);
+      totalValor+=valor;
+      sumEval+=evalV;
+      count++;
+    }else{
+      estadoCell.innerHTML='—';estadoCell.style.color='';
+      valorCell.textContent='—';
+    }
+    totalPond+=pond;
+  });
+  var foot=table.querySelector('tfoot');
+  var footEval=foot.querySelector('.mx-eval-total');
+  var footEstado=foot.querySelector('.mx-estado');
+  var footValor=foot.querySelector('.mx-valor');
+  if(count===rows.length){
+    var avg=totalValor/totalPond;
+    var sv=semLabel(avg);
+    footEval.textContent=(sumEval/count).toFixed(1);
+    footEstado.innerHTML='<span class="dot" style="background:'+sv.color+'"></span> '+nivLabel(totalValor);
+    footEstado.style.color=sv.color;
+    footValor.textContent=totalValor.toFixed(2);
+  }else{
+    footEval.textContent=count>0?(sumEval/count).toFixed(1):'—';
+    footEstado.innerHTML=count>0?count+'/'+rows.length+' resp.':'—';
+    footEstado.style.color='';
+    footValor.textContent=count>0?totalValor.toFixed(2):'—';
+  }
+}
+
 function calcPLC(e){
   e.preventDefault();
   var f=document.getElementById('plcForm');
@@ -616,86 +677,15 @@ function calcPLC(e){
 
   if(!name||!email||!phone){alert('Por favor completa nombre, email y WhatsApp.');return false;}
 
-  var axes=[
-    {key:'estrategia',label:'Estrategia',color:'#4CAF50',qs:['e1','e2','e3','e4','e5']},
-    {key:'procesos',label:'Procesos',color:'#2196F3',qs:['p1','p2','p3','p4','p5']},
-    {key:'personas',label:'Personas',color:'#FF9800',qs:['pe1','pe2','pe3','pe4','pe5']},
-    {key:'tecnologia',label:'Tecnología',color:'#03A9F4',qs:['t1','t2','t3','t4','t5']},
-    {key:'resultados',label:'Resultados',color:'#9C27B0',qs:['r1','r2','r3','r4','r5']}
-  ];
-
-  var allAnswered=true;
-  axes.forEach(function(ax){
-    ax.qs.forEach(function(q){
-      if(!f.querySelector('input[name="'+q+'"]:checked'))allAnswered=false;
-    });
+  var tables=f.querySelectorAll('table.mx');
+  var allFilled=true;
+  tables.forEach(function(t){
+    t.querySelectorAll('.mx-eval').forEach(function(s){if(!s.value)allFilled=false;});
   });
-  if(!allAnswered){alert('Por favor responde todas las preguntas del diagnóstico.');return false;}
+  if(!allFilled){alert('Por favor evalúa todos los factores en cada eje.');return false;}
 
-  var scores=[];
-  axes.forEach(function(ax){
-    var sum=0;
-    ax.qs.forEach(function(q){sum+=parseInt(f.querySelector('input[name="'+q+'"]:checked').value);});
-    ax.avg=sum/5;
-    ax.pct=(ax.avg/5)*100;
-    scores.push(ax.avg);
-  });
-
-  var totalAvg=scores.reduce(function(a,b){return a+b},0)/5;
-  var totalPct=(totalAvg/5)*100;
-
-  function semLabel(v){
-    if(v>=4.1)return{label:'Fortaleza Mayor',color:'#4CAF50'};
-    if(v>=3.1)return{label:'Fortaleza Menor',color:'#8BC34A'};
-    if(v>=2.1)return{label:'Debilidad Menor',color:'#FF9800'};
-    return{label:'Debilidad Mayor',color:'#F44336'};
-  }
-
-  // render bars
-  var barsEl=document.getElementById('plcBars');
-  barsEl.innerHTML='';
-  axes.forEach(function(ax){
-    var s=semLabel(ax.avg);
-    var row=document.createElement('div');
-    row.className='plc-sem-row';
-    row.innerHTML='<span style="color:#fff;font-family:Jost,sans-serif;font-weight:700;font-size:15px">'+ax.label+'</span>'+
-      '<div class="plc-bar-bg"><div class="plc-bar-fill" style="width:'+ax.pct+'%;background:'+s.color+'"></div></div>'+
-      '<span style="color:#fff;font-family:Jost,sans-serif;font-weight:800;font-size:20px;text-align:center">'+ax.avg.toFixed(1)+'</span>'+
-      '<span style="font-size:12px;font-weight:700;color:'+s.color+';text-align:center;display:flex;align-items:center;gap:4px"><span class="plc-dot" style="background:'+s.color+'"></span>'+s.label+'</span>';
-    barsEl.appendChild(row);
-  });
-
-  // total
-  var ts=semLabel(totalAvg);
-  document.getElementById('plcTotal').style.display='grid';
-  document.getElementById('plcTotalBar').style.width=totalPct+'%';
-  document.getElementById('plcTotalBar').style.background=ts.color;
-  document.getElementById('plcTotalScore').textContent=totalAvg.toFixed(1);
-  document.getElementById('plcTotalLabel').innerHTML='<span class="plc-dot" style="background:'+ts.color+'"></span>'+ts.label;
-
-  // radar
-  var angles=[Math.PI*1.5, Math.PI*1.5+Math.PI*2/5, Math.PI*1.5+Math.PI*4/5, Math.PI*1.5+Math.PI*6/5, Math.PI*1.5+Math.PI*8/5];
-  var R=140;
-  var pts=[];
-  var dots=document.querySelectorAll('.rDot');
-  scores.forEach(function(sc,i){
-    var r=(sc/5)*R;
-    var x=Math.cos(angles[i])*r;
-    var y=Math.sin(angles[i])*r;
-    pts.push(x.toFixed(1)+','+y.toFixed(1));
-    dots[i].setAttribute('cx',x.toFixed(1));
-    dots[i].setAttribute('cy',y.toFixed(1));
-  });
-  document.getElementById('radarPoly').setAttribute('points',pts.join(' '));
-
-  document.getElementById('plcResultName').textContent=name+(company?' — '+company:'');
-
-  // show results, hide form
-  document.getElementById('plcResults').classList.add('show');
-  f.style.display='none';
-  document.getElementById('plcResults').scrollIntoView({behavior:'smooth',block:'start'});
-
-  // Build WhatsApp message
+  var axisScores=[];
+  var axisKeys=['estrategia','procesos','personas','tecnologia','resultados'];
   var msg='PERFIL DE LIDERAZGO COMERCIAL GENERATIVO\n';
   msg+='━━━━━━━━━━━━━━━━━━━━━━━\n';
   msg+='Nombre: '+name+'\n';
@@ -703,26 +693,88 @@ function calcPLC(e){
   if(role)msg+='Cargo: '+role+'\n';
   if(industry)msg+='Industria: '+industry+'\n';
   msg+='Email: '+email+'\nWhatsApp: '+phone+'\n';
+
   msg+='\n━ DIAGNÓSTICO SEMAFORIZADO ━\n';
-  axes.forEach(function(ax){
-    var s=semLabel(ax.avg);
-    var emoji=ax.avg>=4.1?'🟢':ax.avg>=3.1?'🟡':ax.avg>=2.1?'🟠':'🔴';
-    msg+=emoji+' '+ax.label+': '+ax.avg.toFixed(1)+'/5 ('+s.label+')\n';
+
+  axisKeys.forEach(function(key){
+    var table=f.querySelector('table[data-axis="'+key+'"]');
+    var rows=table.querySelectorAll('tbody tr');
+    var totalValor=0,sumEval=0,count=0;
+    var details=[];
+    rows.forEach(function(row){
+      var pond=parseInt(row.getAttribute('data-pond'))/100;
+      var evalV=parseInt(row.querySelector('.mx-eval').value);
+      var factor=row.querySelector('td:nth-child(2)').textContent.trim();
+      var valor=pond*evalV;
+      var s=semEval(evalV);
+      totalValor+=valor;
+      sumEval+=evalV;
+      count++;
+      details.push({factor:factor,pond:Math.round(pond*100),eval:evalV,estado:s.label,valor:valor});
+    });
+    var avg=sumEval/count;
+    var sv=semLabel(avg);
+    axisScores.push({key:key,label:AXES_META[key].label,avg:avg,valor:totalValor,sem:sv,details:details});
+    var emoji=avg>=3.5?'🟢':avg>=2.5?'🟡':avg>=1.5?'🟠':'🔴';
+    msg+=emoji+' '+AXES_META[key].label+': '+avg.toFixed(1)+'/4 | Valor: '+totalValor.toFixed(2)+' ('+sv.label+')\n';
   });
-  var tEmoji=totalAvg>=4.1?'🟢':totalAvg>=3.1?'🟡':totalAvg>=2.1?'🟠':'🔴';
-  msg+='\n'+tEmoji+' NIVEL GENERAL: '+totalAvg.toFixed(1)+'/5 ('+ts.label+')\n';
-  if(context){msg+='\n━ CONTEXTO ━\n'+context.substring(0,500)+'\n';}
-  if(challenges){msg+='\n━ DESAFÍOS ━\n'+challenges.substring(0,500)+'\n';}
-  msg+='\n━ DETALLE POR PREGUNTA ━\n';
-  var qLabels={e1:'Liderazgo del cambio',e2:'Analítica y KPIs',e3:'Oportunidades de mercado',e4:'Visión multi-horizonte',e5:'Pivoteo ágil',p1:'Pipeline y forecasting',p2:'Customer Journey CX',p3:'Omnicanalidad phygital',p4:'Protocolos humano+IA',p5:'Integración CRM',pe1:'Growth mindset',pe2:'Equipos diversos',pe3:'Formación continua',pe4:'Seguridad psicológica',pe5:'Equipos híbridos IA',t1:'Madurez digital',t2:'Cultura de IA',t3:'Ecosistema integrado',t4:'Analítica predictiva',t5:'Gobernanza ética IA',r1:'Metas de ventas',r2:'OKRs y accountability',r3:'Decisiones basadas en datos',r4:'Dashboards ejecutivos',r5:'Pronóstico predictivo'};
-  axes.forEach(function(ax){
+
+  var grandTotal=axisScores.reduce(function(a,b){return a+b.valor},0);
+  var grandAvg=axisScores.reduce(function(a,b){return a+b.avg},0)/5;
+  var gs=semLabel(grandAvg);
+  var gEmoji=grandAvg>=3.5?'🟢':grandAvg>=2.5?'🟡':grandAvg>=1.5?'🟠':'🔴';
+  msg+='\n'+gEmoji+' NIVEL GENERAL: '+grandAvg.toFixed(1)+'/4 | Valor Total: '+grandTotal.toFixed(2)+' ('+nivLabel(grandTotal/5)+')\n';
+
+  if(context)msg+='\n━ CONTEXTO ━\n'+context.substring(0,500)+'\n';
+  if(challenges)msg+='\n━ DESAFÍOS ━\n'+challenges.substring(0,500)+'\n';
+
+  msg+='\n━ DETALLE POR FACTOR ━\n';
+  axisScores.forEach(function(ax){
     msg+='['+ax.label+']\n';
-    ax.qs.forEach(function(q){
-      var v=f.querySelector('input[name="'+q+'"]:checked').value;
-      msg+='  '+qLabels[q]+': '+v+'/5\n';
+    ax.details.forEach(function(d){
+      msg+='  '+d.factor.substring(0,60)+': '+d.eval+'/4 ('+d.estado+') Pond:'+d.pond+'% Val:'+d.valor.toFixed(2)+'\n';
     });
   });
   msg+='\nSolicito sesión de retroalimentación personalizada.';
+
+  // Render results
+  var barsEl=document.getElementById('plcBars');
+  barsEl.innerHTML='';
+  axisScores.forEach(function(ax){
+    var pct=(ax.avg/4)*100;
+    var row=document.createElement('div');
+    row.className='plc-sem-row';
+    row.innerHTML='<span style="color:#fff;font-family:Jost,sans-serif;font-weight:700;font-size:15px">'+ax.label+'</span>'+
+      '<div class="plc-bar-bg"><div class="plc-bar-fill" style="width:'+pct+'%;background:'+ax.sem.color+'"></div></div>'+
+      '<span style="color:#fff;font-family:Jost,sans-serif;font-weight:800;font-size:20px;text-align:center">'+ax.avg.toFixed(1)+'</span>'+
+      '<span style="font-size:12px;font-weight:700;color:'+ax.sem.color+';text-align:center;display:flex;align-items:center;gap:4px;justify-content:center"><span style="width:12px;height:12px;border-radius:50%;background:'+ax.sem.color+';display:inline-block"></span>'+ax.sem.label+'</span>';
+    barsEl.appendChild(row);
+  });
+
+  document.getElementById('plcTotal').style.display='grid';
+  document.getElementById('plcTotalBar').style.width=((grandAvg/4)*100)+'%';
+  document.getElementById('plcTotalBar').style.background=gs.color;
+  document.getElementById('plcTotalScore').textContent=grandAvg.toFixed(1);
+  document.getElementById('plcTotalLabel').innerHTML='<span style="width:12px;height:12px;border-radius:50%;background:'+gs.color+';display:inline-block;margin-right:4px"></span>'+nivLabel(grandTotal/5);
+
+  // Radar
+  var angles=[Math.PI*1.5,Math.PI*1.5+Math.PI*2/5,Math.PI*1.5+Math.PI*4/5,Math.PI*1.5+Math.PI*6/5,Math.PI*1.5+Math.PI*8/5];
+  var R=140;
+  var pts=[],dots=document.querySelectorAll('.rDot');
+  axisScores.forEach(function(ax,i){
+    var r=(ax.avg/4)*R;
+    var x=Math.cos(angles[i])*r;
+    var y=Math.sin(angles[i])*r;
+    pts.push(x.toFixed(1)+','+y.toFixed(1));
+    dots[i].setAttribute('cx',x.toFixed(1));
+    dots[i].setAttribute('cy',y.toFixed(1));
+  });
+  document.getElementById('radarPoly').setAttribute('points',pts.join(' '));
+  document.getElementById('plcResultName').textContent=name+(company?' — '+company:'');
+
+  document.getElementById('plcResults').classList.add('show');
+  f.style.display='none';
+  document.getElementById('plcResults').scrollIntoView({behavior:'smooth',block:'start'});
 
   window.open('https://wa.me/573116279068?text='+encodeURIComponent(msg),'_blank');
   return false;
