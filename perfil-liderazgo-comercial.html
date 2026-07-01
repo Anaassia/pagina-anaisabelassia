@@ -118,31 +118,45 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
 <!-- CÓMO FUNCIONA -->
 <section class="pad" style="background:#fff">
   <div class="wrap" style="text-align:center;margin-bottom:48px">
-    <span class="eyebrow">Cómo funciona</span>
+    <img src="assets/perfil.png" alt="Ana Isabel Assia" style="width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid rgba(225,6,0,.15);box-shadow:0 8px 30px rgba(0,0,0,.12);animation:profileFloat 3s ease-in-out infinite;display:block;margin:0 auto 28px">
+    <span class="eyebrow">Cómo funciona · Paso a Paso</span>
     <h2 class="serif" style="font-weight:400;font-size:clamp(26px,3.5vw,38px);line-height:1.12;margin-top:18px">Tu diagnóstico en <em style="color:var(--red)">4 pasos</em></h2>
+    <p style="font-size:16px;color:rgba(11,11,11,.65);max-width:60ch;margin:18px auto 0">Una ruta clara para evaluar tu liderazgo comercial, identificar brechas y recibir un plan de acción personalizado.</p>
   </div>
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center;position:relative">
-      <div style="position:absolute;top:32px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,var(--red),rgba(165,25,22,.15));z-index:0"></div>
-      <div class="reveal" style="position:relative;z-index:1">
-        <div style="width:64px;height:64px;border-radius:50%;background:var(--red);color:#fff;font-family:'Jost',sans-serif;font-weight:800;font-size:26px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 4px 20px rgba(165,25,22,.25)">1</div>
-        <h4 style="font-size:16px;font-family:'Jost',sans-serif;font-weight:700;margin:0 0 8px;color:var(--ink)">Lee y comprende</h4>
-        <p style="font-size:14px;color:rgba(11,11,11,.5);margin:0;line-height:1.5">Revisa la metodología y los factores de cada eje antes de comenzar.</p>
+    <style>
+      .plc-timeline{display:flex;align-items:flex-start;justify-content:center;position:relative;gap:0;padding:0 20px}
+      .plc-step{flex:1;text-align:center;position:relative;max-width:240px}
+      .plc-step-circle{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:28px;font-weight:800;margin:0 auto 16px;position:relative;z-index:2}
+      .plc-step:nth-child(1) .plc-step-circle{background:var(--red);color:#fff}
+      .plc-step:nth-child(2) .plc-step-circle{background:var(--red);color:#fff}
+      .plc-step:nth-child(3) .plc-step-circle{background:var(--ink);color:#fff}
+      .plc-step:nth-child(4) .plc-step-circle{background:var(--ink);color:#fff}
+      .plc-step:not(:last-child)::after{content:'';position:absolute;top:32px;left:calc(50% + 32px);width:calc(100% - 64px);height:4px;background:linear-gradient(90deg,var(--red),var(--ink));z-index:1}
+      .plc-step h4{font-size:15px;margin:0 0 6px}
+      .plc-step p{font-size:13px;color:rgba(11,11,11,.6);margin:0}
+      @media(max-width:768px){.plc-timeline{flex-direction:column;align-items:center;gap:32px}.plc-step{max-width:100%}.plc-step::after{display:none!important}}
+    </style>
+    <div class="plc-timeline">
+      <div class="plc-step reveal">
+        <div class="plc-step-circle">1</div>
+        <h4>Lee y comprende</h4>
+        <p>Revisa la metodología y los factores de cada eje antes de comenzar.</p>
       </div>
-      <div class="reveal" style="position:relative;z-index:1">
-        <div style="width:64px;height:64px;border-radius:50%;background:var(--red);color:#fff;font-family:'Jost',sans-serif;font-weight:800;font-size:26px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 4px 20px rgba(165,25,22,.25)">2</div>
-        <h4 style="font-size:16px;font-family:'Jost',sans-serif;font-weight:700;margin:0 0 8px;color:var(--ink)">Completa tu evaluación</h4>
-        <p style="font-size:14px;color:rgba(11,11,11,.5);margin:0;line-height:1.5">Llena tus datos y evalúa con honestidad cada factor clave en los 5 ejes.</p>
+      <div class="plc-step reveal">
+        <div class="plc-step-circle">2</div>
+        <h4>Completa tu evaluación</h4>
+        <p>Llena tus datos y evalúa con honestidad cada factor clave en los 5 ejes.</p>
       </div>
-      <div class="reveal" style="position:relative;z-index:1">
-        <div style="width:64px;height:64px;border-radius:50%;background:var(--red);color:#fff;font-family:'Jost',sans-serif;font-weight:800;font-size:26px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 4px 20px rgba(165,25,22,.25)">3</div>
-        <h4 style="font-size:16px;font-family:'Jost',sans-serif;font-weight:700;margin:0 0 8px;color:var(--ink)">Procesamos tu perfil</h4>
-        <p style="font-size:14px;color:rgba(11,11,11,.5);margin:0;line-height:1.5">Generamos tu informe con semáforo, radar y recomendaciones.</p>
+      <div class="plc-step reveal">
+        <div class="plc-step-circle">3</div>
+        <h4>Procesamos tu perfil</h4>
+        <p>Generamos tu informe con semáforo, radar y recomendaciones.</p>
       </div>
-      <div class="reveal" style="position:relative;z-index:1">
-        <div style="width:64px;height:64px;border-radius:50%;background:var(--red);color:#fff;font-family:'Jost',sans-serif;font-weight:800;font-size:26px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 4px 20px rgba(165,25,22,.25)">4</div>
-        <h4 style="font-size:16px;font-family:'Jost',sans-serif;font-weight:700;margin:0 0 8px;color:var(--ink)">Revisa tu correo</h4>
-        <p style="font-size:14px;color:rgba(11,11,11,.5);margin:0;line-height:1.5">En minutos recibirás tu diagnóstico completo en tu bandeja de entrada.</p>
+      <div class="plc-step reveal">
+        <div class="plc-step-circle">4</div>
+        <h4>Revisa tu correo</h4>
+        <p>En minutos recibirás tu diagnóstico completo en tu bandeja de entrada.</p>
       </div>
     </div>
   </div>
