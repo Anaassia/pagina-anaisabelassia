@@ -153,7 +153,10 @@
       "mcp__claude-in-chrome__javascript_tool",
       "mcp__claude-in-chrome__find",
       "mcp__visualize__read_me",
-      "mcp__visualize__show_widget"
+      "mcp__visualize__show_widget",
+      "PowerShell(\\(Get-Command node -ErrorAction SilentlyContinue\\).Source; \\(Get-Command node.exe -ErrorAction SilentlyContinue\\).Source; where.exe node 2>$null)",
+      "PowerShell($env:Path -split ';' | Where-Object { $_ -match 'node|nvm' })",
+      "PowerShell(Get-ChildItem \"C:\\\\Program Files\\\\nodejs\" -ErrorAction SilentlyContinue; Get-ChildItem \"$env:LOCALAPPDATA\\\\Programs\" -ErrorAction SilentlyContinue | Select-Object Name)"
     ]
   }
 }
