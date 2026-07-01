@@ -188,7 +188,7 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
     <!-- EJE 1: ESTRATEGIA -->
     <div class="plc-section" id="ax-estrategia">
       <h3><img src="assets/estrategia.png?v=2" alt="" style="width:48px;height:48px;border-radius:50%"> <span style="color:#4CAF50">Estrategia</span> <span style="font-weight:400;font-size:14px;color:rgba(11,11,11,.45);font-style:italic">— El rumbo</span></h3>
-      <p class="plc-desc">Visión, dirección y capacidad de anticipar y liderar el rumbo del negocio.</p>
+      <p class="plc-desc">Capacidad del líder para definir el rumbo, anticipar cambios y tomar decisiones con visión.</p>
       <div class="mx-wrap">
         <table class="mx" data-axis="estrategia">
           <thead><tr>
@@ -201,54 +201,45 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
             <th>Valor</th>
           </tr></thead>
           <tbody>
-            <tr data-pond="20" data-impact="3">
+            <tr data-pond="25" data-impact="3">
               <td>1</td>
-              <td>El estilo de liderazgo actual aporta al crecimiento y evolución del negocio</td>
-              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td>
+              <td>Define y comunica una visión comercial clara que moviliza al equipo</td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="25" min="0" max="100" onchange="recalcPond(this)"></td>
               <td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
               <td class="mx-estado">—</td>
               <td class="mx-valor">—</td>
             </tr>
-            <tr data-pond="15" data-impact="2">
+            <tr data-pond="20" data-impact="3">
               <td>2</td>
-              <td>La mentalidad de los líderes está abierta a los cambios y la innovación</td>
-              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td>
-              <td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
+              <td>Piensa de forma anticipativa: lee el entorno y decide antes de la urgencia</td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td>
+              <td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
               <td class="mx-estado">—</td>
               <td class="mx-valor">—</td>
             </tr>
             <tr data-pond="20" data-impact="3">
               <td>3</td>
-              <td>Paradigmas estratégicos están alineados con los desafíos de la era actual</td>
+              <td>Ajusta el rumbo con agilidad sin perder la dirección estratégica</td>
               <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td>
               <td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
               <td class="mx-estado">—</td>
               <td class="mx-valor">—</td>
             </tr>
-            <tr data-pond="15" data-impact="2">
+            <tr data-pond="20" data-impact="2">
               <td>4</td>
-              <td>Los líderes usan analítica y KPIs para la toma de decisiones estratégicas</td>
-              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td>
+              <td>Fundamenta sus decisiones estratégicas en datos, evidencia y análisis</td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td>
               <td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
               <td class="mx-estado">—</td>
               <td class="mx-valor">—</td>
             </tr>
-            <tr data-pond="15" data-impact="3">
-              <td>5</td>
-              <td>Visión multi-horizonte: corto plazo (ejecución), mediano (crecimiento) y largo plazo (transformación)</td>
-              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td>
-              <td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
-              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
-              <td class="mx-estado">—</td>
-              <td class="mx-valor">—</td>
-            </tr>
             <tr data-pond="15" data-impact="2">
-              <td>6</td>
-              <td>Capacidad de pivoteo ágil: ajuste rápido del rumbo ante cambios del entorno</td>
+              <td>5</td>
+              <td>Equilibra ejecución inmediata, crecimiento a mediano plazo y transformación a futuro</td>
               <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td>
               <td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
@@ -271,41 +262,36 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
     <!-- EJE 2: PROCESOS -->
     <div class="plc-section" id="ax-procesos">
       <h3><img src="assets/procesos.png?v=2" alt="" style="width:48px;height:48px;border-radius:50%"> <span style="color:#2196F3">Procesos</span> <span style="font-weight:400;font-size:14px;color:rgba(11,11,11,.45);font-style:italic">— La ejecución</span></h3>
-      <p class="plc-desc">Pipeline, experiencia del cliente, omnicanalidad y eficiencia operativa.</p>
+      <p class="plc-desc">Capacidad del líder para diseñar, ejecutar y mejorar procesos comerciales con disciplina.</p>
       <div class="mx-wrap">
         <table class="mx" data-axis="procesos">
           <thead><tr>
             <th>#</th><th class="th-factor">Factores Clave de Éxito</th><th>Pond.</th><th>Impacto</th><th>Eval.</th><th>Estado</th><th>Valor</th>
           </tr></thead>
           <tbody>
+            <tr data-pond="25" data-impact="3">
+              <td>1</td><td>Traduce la estrategia en procesos claros, repetibles y medibles</td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="25" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
             <tr data-pond="20" data-impact="3">
-              <td>1</td><td>Pipeline comercial con metodología de forecasting confiable</td>
+              <td>2</td><td>Gestiona el pipeline comercial con rigor, seguimiento y metodología</td>
               <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="20" data-impact="3">
+              <td>3</td><td>Lidera con foco en la experiencia del cliente como eje de la operación</td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="20" data-impact="2">
+              <td>4</td><td>Ejecuta con disciplina y consistencia, no solo cuando hay presión</td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="15" data-impact="2">
-              <td>2</td><td>Integración de inbound, outbound y social selling en modelo omnicanal</td>
+              <td>5</td><td>Simplifica y elimina lo que no aporta valor al proceso comercial</td>
               <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
-              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
-            </tr>
-            <tr data-pond="20" data-impact="3">
-              <td>3</td><td>Customer Journey mapeado con métricas de experiencia (NPS, CSAT, CES)</td>
-              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
-              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
-            </tr>
-            <tr data-pond="20" data-impact="3">
-              <td>4</td><td>Protocolos que integran inteligencia humana + IA en procesos comerciales</td>
-              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
-              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
-            </tr>
-            <tr data-pond="15" data-impact="2">
-              <td>5</td><td>CRM integrado al ecosistema tecnológico como fuente confiable de datos</td>
-              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
-              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
-            </tr>
-            <tr data-pond="10" data-impact="1">
-              <td>6</td><td>Procesos lean-agile con resiliencia y capacidad antifragil</td>
-              <td class="mx-pond"><input type="number" class="mx-pond-input" value="10" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2">→ Medio</option><option value="1" selected>↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
           </tbody>
@@ -320,41 +306,36 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
     <!-- EJE 3: PERSONAS -->
     <div class="plc-section" id="ax-personas">
       <h3><img src="assets/personas.png?v=2" alt="" style="width:48px;height:48px;border-radius:50%"> <span style="color:#03A9F4">Personas</span> <span style="font-weight:400;font-size:14px;color:rgba(11,11,11,.45);font-style:italic">— El talento</span></h3>
-      <p class="plc-desc">Desarrollo, empoderamiento y gestión del talento comercial de alto rendimiento.</p>
+      <p class="plc-desc">Capacidad del líder para desarrollar, empoderar y multiplicar el talento de su equipo.</p>
       <div class="mx-wrap">
         <table class="mx" data-axis="personas">
           <thead><tr>
             <th>#</th><th class="th-factor">Factores Clave de Éxito</th><th>Pond.</th><th>Impacto</th><th>Eval.</th><th>Estado</th><th>Valor</th>
           </tr></thead>
           <tbody>
-            <tr data-pond="15" data-impact="3">
-              <td>1</td><td>Equipos con mentalidad de crecimiento (growth mindset) y aprendizaje continuo</td>
-              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
+            <tr data-pond="25" data-impact="3">
+              <td>1</td><td>Desarrolla competencias y forma criterio en su equipo de forma continua</td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="25" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="20" data-impact="3">
-              <td>2</td><td>Equipos comerciales diversos y de alto rendimiento con perfiles complementarios</td>
+              <td>2</td><td>Genera confianza, autonomía y seguridad psicológica en el equipo</td>
               <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="20" data-impact="3">
-              <td>3</td><td>Programas de formación continua y desarrollo de competencias comerciales</td>
+              <td>3</td><td>Comunica con claridad, inspira y alinea al equipo hacia los objetivos</td>
               <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="20" data-impact="2">
-              <td>4</td><td>Seguridad psicológica para proponer ideas, cuestionar procesos y asumir riesgos</td>
+              <td>4</td><td>Delega con confianza y empodera la toma de decisiones en su equipo</td>
               <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="15" data-impact="2">
-              <td>5</td><td>Líderes promueven la agilidad, flexibilidad y adaptabilidad del equipo</td>
+              <td>5</td><td>Atrae, retiene y potencia talento comercial de alto rendimiento</td>
               <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
-              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
-            </tr>
-            <tr data-pond="10" data-impact="1">
-              <td>6</td><td>Equipos preparados para modelos híbridos humano + IA en desempeño diario</td>
-              <td class="mx-pond"><input type="number" class="mx-pond-input" value="10" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2">→ Medio</option><option value="1" selected>↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
           </tbody>
@@ -369,41 +350,36 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
     <!-- EJE 4: TECNOLOGÍA -->
     <div class="plc-section" id="ax-tecnologia">
       <h3><img src="assets/tecnologia.png?v=2" alt="" style="width:48px;height:48px;border-radius:50%"> <span style="color:#FF9800">Tecnología</span> <span style="font-weight:400;font-size:14px;color:rgba(11,11,11,.45);font-style:italic">— La palanca</span></h3>
-      <p class="plc-desc">Madurez digital, adopción de IA y ecosistema tecnológico integrado.</p>
+      <p class="plc-desc">Capacidad del líder para adoptar, integrar y liderar con tecnología como palanca de crecimiento.</p>
       <div class="mx-wrap">
         <table class="mx" data-axis="tecnologia">
           <thead><tr>
             <th>#</th><th class="th-factor">Factores Clave de Éxito</th><th>Pond.</th><th>Impacto</th><th>Eval.</th><th>Estado</th><th>Valor</th>
           </tr></thead>
           <tbody>
-            <tr data-pond="20" data-impact="3">
-              <td>1</td><td>Nivel de madurez digital de la organización frente a la industria</td>
-              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
+            <tr data-pond="25" data-impact="3">
+              <td>1</td><td>Mentalidad digital: curiosidad y apertura frente a nuevas herramientas</td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="25" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="20" data-impact="3">
-              <td>2</td><td>Cultura organizacional de adopción de IA como herramienta estratégica</td>
+              <td>2</td><td>Lidera la adopción de IA y automatización en la gestión comercial</td>
               <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="20" data-impact="2">
-              <td>3</td><td>Ecosistema tecnológico integrado (ERP + CRM + BI + IA + CDP)</td>
+              <td>3</td><td>Integra tecnología como palanca de productividad para su equipo</td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
+            <tr data-pond="20" data-impact="2">
+              <td>4</td><td>Usa datos y herramientas digitales para tomar decisiones informadas</td>
               <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="15" data-impact="2">
-              <td>4</td><td>Analítica predictiva y modelos de pronóstico de comportamiento del mercado</td>
+              <td>5</td><td>Evalúa y selecciona soluciones tecnológicas con propósito y criterio</td>
               <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
-              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
-            </tr>
-            <tr data-pond="15" data-impact="1">
-              <td>5</td><td>Líderes adoptan la tecnología para potenciar los procesos y resultados</td>
-              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2">→ Medio</option><option value="1" selected>↓ Bajo</option></select></td>
-              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
-            </tr>
-            <tr data-pond="10" data-impact="1">
-              <td>6</td><td>Gobernanza ética para el uso de IA y tecnología en la gestión comercial</td>
-              <td class="mx-pond"><input type="number" class="mx-pond-input" value="10" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2">→ Medio</option><option value="1" selected>↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
           </tbody>
@@ -418,41 +394,36 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
     <!-- EJE 5: RESULTADOS -->
     <div class="plc-section" id="ax-resultados">
       <h3><img src="assets/resultados.png?v=2" alt="" style="width:48px;height:48px;border-radius:50%"> <span style="color:#9C27B0">Resultados</span> <span style="font-weight:400;font-size:14px;color:rgba(11,11,11,.45);font-style:italic">— El crecimiento</span></h3>
-      <p class="plc-desc">Orientación a métricas, accountability, rentabilidad y crecimiento sostenible.</p>
+      <p class="plc-desc">Capacidad del líder para orientarse a métricas, asumir responsabilidad y construir crecimiento sostenible.</p>
       <div class="mx-wrap">
         <table class="mx" data-axis="resultados">
           <thead><tr>
             <th>#</th><th class="th-factor">Factores Clave de Éxito</th><th>Pond.</th><th>Impacto</th><th>Eval.</th><th>Estado</th><th>Valor</th>
           </tr></thead>
           <tbody>
+            <tr data-pond="25" data-impact="3">
+              <td>1</td><td>Define, mide y gestiona indicadores clave con disciplina y constancia</td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="25" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
+              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
+            </tr>
             <tr data-pond="20" data-impact="3">
-              <td>1</td><td>Cumplimiento consistente de metas de ventas y rentabilidad</td>
+              <td>2</td><td>Asume responsabilidad personal y exige accountability en su equipo</td>
               <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="20" data-impact="3">
-              <td>2</td><td>OKRs claros con cultura de accountability y responsabilidad por resultados</td>
+              <td>3</td><td>Diagnostica brechas y diseña planes de acción correctivos con rapidez</td>
               <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
-            <tr data-pond="20" data-impact="3">
-              <td>3</td><td>Decisiones comerciales basadas en datos y evidencia, no en intuición</td>
-              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
+            <tr data-pond="20" data-impact="2">
+              <td>4</td><td>Equilibra crecimiento con rentabilidad: no crece a cualquier costo</td>
+              <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
             <tr data-pond="15" data-impact="2">
-              <td>4</td><td>Dashboards ejecutivos actualizados para monitoreo en tiempo real</td>
+              <td>5</td><td>Construye resultados recurrentes y sostenibles, no solo transaccionales</td>
               <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
-              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
-            </tr>
-            <tr data-pond="15" data-impact="2">
-              <td>5</td><td>Pronóstico predictivo de ventas y planificación basada en escenarios</td>
-              <td class="mx-pond"><input type="number" class="mx-pond-input" value="15" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2" selected>→ Medio</option><option value="1">↓ Bajo</option></select></td>
-              <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
-            </tr>
-            <tr data-pond="10" data-impact="1">
-              <td>6</td><td>Líderes toman decisiones basadas en indicadores de desempeño — KPIs</td>
-              <td class="mx-pond"><input type="number" class="mx-pond-input" value="10" min="0" max="100" onchange="recalcPond(this)"></td><td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3">↑ Alto</option><option value="2">→ Medio</option><option value="1" selected>↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="mx-estado">—</td><td class="mx-valor">—</td>
             </tr>
           </tbody>
