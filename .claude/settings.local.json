@@ -111,7 +111,13 @@
       "Bash(curl -sL \"https://pikaso.cdnpk.net/private/production/4750115748/render.jpg?token=exp=1783296000~hmac=2ebddeae8e2c7fbd12abf1083362a5da1dfdb2d42f8ff4c66c9444616f00b21e\" -o \"C:\\\\Users\\\\aassi\\\\Documents\\\\PAGINA ANA ASSIA\\\\assets\\\\conf-liderazgo.jpg\")",
       "Bash(curl -sL \"https://pikaso.cdnpk.net/private/production/4750116289/render.jpg?token=exp=1783296000~hmac=d53636462d52e438110d1f0386fbfbb734d0fbac8857e289a03136f7253834a4\" -o \"C:\\\\Users\\\\aassi\\\\Documents\\\\PAGINA ANA ASSIA\\\\assets\\\\conf-equipos-divergentes.jpg\")",
       "mcp__n8n-mcp__n8n_health_check",
-      "mcp__n8n-mcp__n8n_create_workflow"
+      "mcp__n8n-mcp__n8n_create_workflow",
+      "mcp__n8n-mcp__n8n_list_workflows",
+      "mcp__n8n-mcp__n8n_get_workflow",
+      "mcp__n8n-mcp__n8n_update_full_workflow",
+      "mcp__odoo-mcp__manage_crm_tags",
+      "mcp__odoo-mcp__create_crm_tag",
+      "mcp__n8n-mcp__n8n_update_partial_workflow"
     ]
   }
 }

@@ -550,10 +550,36 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red);background:#fff
       </div>
     </div>
 
+    <!-- AI ANALYSIS LOADING -->
+    <div id="plcAiLoading" style="display:none;text-align:center;margin-top:32px">
+      <div style="display:inline-flex;align-items:center;gap:12px;background:#fff;padding:16px 28px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.06)">
+        <svg width="24" height="24" viewBox="0 0 24 24" style="animation:spin 1s linear infinite"><circle cx="12" cy="12" r="10" stroke="#A51916" stroke-width="3" fill="none" stroke-dasharray="31.4 31.4" stroke-linecap="round"/></svg>
+        <span style="font-size:15px;color:var(--ink);font-weight:600">Generando análisis personalizado con IA...</span>
+      </div>
+    </div>
+    <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+
+    <!-- AI RESULTS -->
+    <div id="plcAiResults" style="display:none;margin-top:32px">
+      <div class="plc-section" style="border-left:4px solid var(--red)">
+        <h3 style="font-family:'Jost',sans-serif;font-size:18px;font-weight:700;margin:0 0 12px;color:var(--red)">Resumen Ejecutivo</h3>
+        <p id="plcAiResumen" style="font-size:14px;line-height:1.7;color:rgba(11,11,11,.75);margin:0"></p>
+      </div>
+      <div id="plcAiPlanWrap" class="plc-section" style="display:none">
+        <h3 style="font-family:'Jost',sans-serif;font-size:18px;font-weight:700;margin:0 0 16px;color:var(--red)">Plan de Acción</h3>
+        <div id="plcAiPlan" style="overflow-x:auto"></div>
+      </div>
+      <div id="plcAiPasosWrap" class="plc-section" style="display:none">
+        <h3 style="font-family:'Jost',sans-serif;font-size:18px;font-weight:700;margin:0 0 16px;color:var(--red)">Siguientes Pasos</h3>
+        <div id="plcAiPasos"></div>
+      </div>
+    </div>
+
     <div style="text-align:center;margin-top:32px">
-      <p style="font-size:16px;color:rgba(11,11,11,.65);max-width:52ch;margin:0 auto 20px">Tu diagnóstico ha sido enviado. Agenda tu sesión de retroalimentación para profundizar en tu perfil.</p>
+      <p id="plcEmailMsg" style="font-size:15px;color:rgba(11,11,11,.55);max-width:52ch;margin:0 auto 20px">Procesando tu informe...</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
         <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn btn-red" style="justify-content:center">Agendar sesión de retroalimentación <span class="arrow">→</span></a>
+        <a href="https://wa.me/573116279068?text=Hola%20Ana%2C%20complet%C3%A9%20mi%20Perfil%20de%20Liderazgo%20Comercial%20Generativo%20y%20me%20gustar%C3%ADa%20agendar%20una%20sesi%C3%B3n." target="_blank" rel="noopener" class="btn btn-outline" style="justify-content:center;border-color:#25D366;color:#25D366">WhatsApp <span class="arrow">→</span></a>
         <button type="button" class="btn btn-outline" onclick="window.print()" style="justify-content:center">Imprimir resultados</button>
       </div>
     </div>
@@ -823,16 +849,57 @@ function calcPLC(e){
   f.style.display='none';
   document.getElementById('plcResults').scrollIntoView({behavior:'smooth',block:'start'});
 
-  // Enviar informe por email vía n8n
+  // Enviar diagnóstico y recibir análisis IA
   var payload={
     name:name,email:email,phone:phone,company:company,role:role,industry:industry,
     context:context,challenges:challenges,
     axes:axisScores.map(function(ax){return{key:ax.key,label:ax.label,avg:ax.avg,valor:ax.valor,details:ax.details}}),
     grandAvg:grandAvg,grandTotal:grandTotal,generalLevel:nivLabel(grandTotal/5)
   };
+
+  document.getElementById('plcAiLoading').style.display='block';
+  document.getElementById('plcAiResults').style.display='none';
+  document.getElementById('plcEmailMsg').textContent='Generando tu informe personalizado con IA...';
+
   fetch('https://automations.anaisabelassia.com/webhook/perfil-liderazgo-comercial',{
     method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
-  }).catch(function(){});
+  }).then(function(r){return r.json()}).then(function(data){
+    document.getElementById('plcAiLoading').style.display='none';
+    if(data.success){
+      document.getElementById('plcEmailMsg').textContent='Tu informe ha sido enviado a '+email+'. Revisa tu bandeja de entrada.';
+
+      if(data.resumenEjecutivo){
+        document.getElementById('plcAiResumen').innerHTML=data.resumenEjecutivo.replace(/\n/g,'<br>');
+        document.getElementById('plcAiResults').style.display='block';
+      }
+
+      if(data.planAccion&&data.planAccion.length>0){
+        var tbl='<table style="width:100%;border-collapse:collapse;font-size:13px">';
+        tbl+='<thead><tr style="background:var(--ink);color:#fff"><th style="padding:10px 12px;text-align:left">Acción</th><th style="padding:10px 12px;text-align:center">Prioridad</th><th style="padding:10px 12px;text-align:center">Eje</th><th style="padding:10px 12px;text-align:center">Plazo</th></tr></thead><tbody>';
+        data.planAccion.forEach(function(p){
+          var pc=p.prioridad==='alta'?'#A51916':'#FF9800';
+          tbl+='<tr><td style="padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.06);line-height:1.5">'+p.accion+'</td><td style="padding:10px 12px;text-align:center;border-bottom:1px solid rgba(0,0,0,.06);font-weight:700;color:'+pc+';text-transform:uppercase">'+p.prioridad+'</td><td style="padding:10px 12px;text-align:center;border-bottom:1px solid rgba(0,0,0,.06)">'+p.eje+'</td><td style="padding:10px 12px;text-align:center;border-bottom:1px solid rgba(0,0,0,.06)">'+p.plazo+'</td></tr>';
+        });
+        tbl+='</tbody></table>';
+        document.getElementById('plcAiPlan').innerHTML=tbl;
+        document.getElementById('plcAiPlanWrap').style.display='block';
+      }
+
+      if(data.siguientesPasos&&data.siguientesPasos.length>0){
+        var ph='';
+        data.siguientesPasos.forEach(function(p,i){
+          ph+='<div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:14px"><div style="width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">'+(i+1)+'</div><p style="font-size:14px;color:rgba(11,11,11,.75);line-height:1.6;margin:5px 0 0">'+p+'</p></div>';
+        });
+        document.getElementById('plcAiPasos').innerHTML=ph;
+        document.getElementById('plcAiPasosWrap').style.display='block';
+      }
+    }else{
+      document.getElementById('plcEmailMsg').textContent='Tu diagnóstico ha sido procesado. Revisa tu correo para el informe completo.';
+    }
+  }).catch(function(){
+    document.getElementById('plcAiLoading').style.display='none';
+    document.getElementById('plcEmailMsg').textContent='Tu diagnóstico ha sido procesado. Revisa tu correo para el informe completo.';
+  });
 
   return false;
 }
