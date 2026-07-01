@@ -98,7 +98,9 @@
       "Bash(docker --version)",
       "WebFetch(domain:github.com)",
       "Bash(docker run *)",
-      "Bash(docker rm *)"
+      "Bash(docker rm *)",
+      "Read(//c/Users/aassi/.claude/**)",
+      "Bash(echo \"exit: $?\")"
     ]
   }
 }
