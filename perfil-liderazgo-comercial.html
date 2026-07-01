@@ -612,15 +612,15 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red);background:#fff
         <img src="assets/logoalquimia.png" alt="Alquimia Comercial" style="height:56px;margin-bottom:18px">
         <p style="font-family:'Jost',sans-serif;font-size:24px;font-weight:800;color:#fff;margin:0 0 14px;line-height:1.3">Conviértete en un Alquimista de tu Éxito Comercial</p>
         <p style="font-size:14px;color:rgba(255,255,255,.75);line-height:1.7;margin:0 auto 22px;max-width:56ch">Agenda una sesión estratégica con Ana Isabel Assia, Consultora + Estratega + Mentora, para diseñar tu ruta para reconfigurar tu liderazgo comercial y potenciar las competencias y capacidades para crecer y ganar.</p>
-        <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn btn-red" style="justify-content:center">Agenda una mentoría personalizada por $250.000 COP C/h <span class="arrow">→</span></a>
+        <button type="button" class="btn btn-red" onclick="agendarMentoria(event)" style="justify-content:center">Agenda una mentoría personalizada por $250.000 COP C/h <span class="arrow">→</span></button>
       </div>
     </div>
 
     <div style="text-align:center;margin-top:32px">
       <p id="plcEmailMsg" style="font-size:15px;color:rgba(11,11,11,.55);max-width:52ch;margin:0 auto 20px">Procesando tu informe...</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-        <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn btn-red" style="justify-content:center">Agenda una mentoría personalizada por $250.000 COP C/h <span class="arrow">→</span></a>
-        <button type="button" class="btn btn-outline" onclick="solicitarPerfilMentoring()" style="justify-content:center;border-color:var(--red);color:var(--red)">Deseas un Diagnóstico Personalizado + Mentoring <span class="arrow">→</span></button>
+        <button type="button" class="btn btn-outline" onclick="agendarConversacion(event)" style="justify-content:center;border-color:var(--ink);color:var(--ink)">Agenda una conversación con el equipo <span class="arrow">→</span></button>
+        <button type="button" class="btn btn-outline" onclick="solicitarPerfilMentoring(event)" style="justify-content:center;border-color:var(--red);color:var(--red)">Deseas un Diagnóstico Personalizado + Mentoring <span class="arrow">→</span></button>
         <button type="button" class="btn btn-outline" onclick="descargarPDF()" style="justify-content:center">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;margin-right:6px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Descargar diagnóstico en PDF
@@ -1191,11 +1191,11 @@ function demoMode(){
       {accion:'Establecer análisis de rentabilidad por cliente',eje:'Resultados',prioridad:'baja',plazo:'medio (60-90 días)'}
     ],
     siguientesPasos:[
-      'Esta semana selecciona e instala un CRM (HubSpot gratuito o Pipedrive) y migra tus 20 clientes más importantes',
-      'Define 5 KPIs comerciales clave y crea un tablero de seguimiento semanal para tu equipo',
-      'Estandariza tus 3 propuestas comerciales más frecuentes como plantillas reutilizables',
-      'Diseña un programa de capacitación mensual con métricas de impacto por persona',
-      'Implementa una rutina de revisión trimestral del plan estratégico con tu equipo de liderazgo'
+      'Decide qué herramienta CRM adoptar e inicia la migración de tus 20 cuentas clave esta semana',
+      'Convoca a tu equipo y define los 5 indicadores comerciales que medirán el éxito del próximo trimestre',
+      'Prioriza los 3 procesos comerciales con mayor fricción y asigna responsables de estandarización',
+      'Establece una reunión quincenal de revisión estratégica con métricas claras de avance por elemento',
+      'Evalúa los resultados del primer mes y ajusta el plan de acción según los datos reales obtenidos'
     ]
   };
 
@@ -1308,41 +1308,55 @@ if(new URLSearchParams(window.location.search).get('demo')==='1'){
   document.addEventListener('DOMContentLoaded',function(){setTimeout(demoMode,300)});
 }
 
-function solicitarPerfilMentoring(){
+function getClientData(){
   var nameEl=document.getElementById('plcResultName');
   var clientName=nameEl?nameEl.textContent:'';
   var emailField=document.querySelector('input[name="email"]');
   var phoneField=document.querySelector('input[name="phone"]');
   var companyField=document.querySelector('input[name="company"]');
-  var email=emailField?emailField.value:'';
-  var phone=phoneField?phoneField.value:'';
-  var company=companyField?companyField.value:'';
   var scoreEl=document.getElementById('plcTotalScore');
-  var score=scoreEl?scoreEl.textContent:'';
-  var btn=event.currentTarget;
+  return{
+    nombre:clientName.split('—')[0].trim(),
+    email:emailField?emailField.value:'',
+    telefono:phoneField?phoneField.value:'',
+    empresa:companyField?companyField.value:'',
+    scoreGeneral:scoreEl?scoreEl.textContent:'',
+    fecha:new Date().toISOString()
+  };
+}
+
+function crearOportunidadYAgendar(tipo,btn){
+  var data=getClientData();
+  data.tipo=tipo;
   btn.disabled=true;
-  btn.textContent='Enviando solicitud...';
+  btn.textContent='Procesando...';
   fetch('https://automations.anaisabelassia.com/webhook/perfil-mentoring',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({
-      tipo:'perfil_personalizado_mentoring',
-      nombre:clientName.split('—')[0].trim(),
-      email:email,
-      telefono:phone,
-      empresa:company,
-      scoreGeneral:score,
-      fecha:new Date().toISOString()
-    })
+    body:JSON.stringify(data)
   }).then(function(){
-    btn.textContent='Solicitud enviada';
+    btn.textContent='✓ Oportunidad creada';
     btn.style.borderColor='#4CAF50';
     btn.style.color='#4CAF50';
+    window.open('https://calendar.app.google/otVvbMFM6H71Xc3Z7','_blank');
   }).catch(function(){
-    btn.textContent='Solicitud enviada';
+    btn.textContent='✓ Solicitud enviada';
     btn.style.borderColor='#4CAF50';
     btn.style.color='#4CAF50';
+    window.open('https://calendar.app.google/otVvbMFM6H71Xc3Z7','_blank');
   });
+}
+
+function agendarMentoria(e){
+  crearOportunidadYAgendar('mentoria_personalizada',e.currentTarget);
+}
+
+function agendarConversacion(e){
+  crearOportunidadYAgendar('conversacion_equipo',e.currentTarget);
+}
+
+function solicitarPerfilMentoring(e){
+  crearOportunidadYAgendar('perfil_personalizado_mentoring',e.currentTarget);
 }
 </script>
 </body>
