@@ -602,9 +602,12 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red);background:#fff
     <div style="text-align:center;margin-top:32px">
       <p id="plcEmailMsg" style="font-size:15px;color:rgba(11,11,11,.55);max-width:52ch;margin:0 auto 20px">Procesando tu informe...</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-        <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn btn-red" style="justify-content:center">Agendar sesión de retroalimentación <span class="arrow">→</span></a>
-        <a href="https://wa.me/573116279068?text=Hola%20Ana%2C%20complet%C3%A9%20mi%20Perfil%20de%20Liderazgo%20Comercial%20Generativo%20y%20me%20gustar%C3%ADa%20agendar%20una%20sesi%C3%B3n." target="_blank" rel="noopener" class="btn btn-outline" style="justify-content:center;border-color:#25D366;color:#25D366">WhatsApp <span class="arrow">→</span></a>
-        <button type="button" class="btn btn-outline" onclick="window.print()" style="justify-content:center">Imprimir resultados</button>
+        <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn btn-red" style="justify-content:center">Agenda una mentoría personalizada por $250.000 COP C/h <span class="arrow">→</span></a>
+        <button type="button" class="btn btn-outline" onclick="solicitarPerfilMentoring()" style="justify-content:center;border-color:var(--red);color:var(--red)">Desea un perfil personalizado + Mentoring <span class="arrow">→</span></button>
+        <button type="button" class="btn btn-outline" onclick="descargarPDF()" style="justify-content:center">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;margin-right:6px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Descargar diagnóstico en PDF
+        </button>
       </div>
     </div>
   </div>
@@ -664,6 +667,7 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red);background:#fff
     </div>
   </div>
 </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
 <script src="js/main.js"></script>
 <script>
 var AXES_META={
@@ -982,6 +986,63 @@ function calcPLC(e){
   });
 
   return false;
+}
+
+function descargarPDF(){
+  var el=document.getElementById('plcResults');
+  if(!el)return;
+  var btns=el.querySelectorAll('.btn,.btn-red,.btn-outline');
+  btns.forEach(function(b){b.style.display='none'});
+  var nameEl=document.getElementById('plcResultName');
+  var clientName=nameEl?nameEl.textContent.split('—')[0].trim():'diagnostico';
+  var filename='Diagnostico-Liderazgo-'+clientName.replace(/\s+/g,'-')+'.pdf';
+  html2pdf().set({
+    margin:[10,10,10,10],
+    filename:filename,
+    image:{type:'jpeg',quality:0.98},
+    html2canvas:{scale:2,useCORS:true,scrollY:0},
+    jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},
+    pagebreak:{mode:['avoid-all','css','legacy']}
+  }).from(el).save().then(function(){
+    btns.forEach(function(b){b.style.display=''});
+  });
+}
+
+function solicitarPerfilMentoring(){
+  var nameEl=document.getElementById('plcResultName');
+  var clientName=nameEl?nameEl.textContent:'';
+  var emailField=document.querySelector('input[name="email"]');
+  var phoneField=document.querySelector('input[name="phone"]');
+  var companyField=document.querySelector('input[name="company"]');
+  var email=emailField?emailField.value:'';
+  var phone=phoneField?phoneField.value:'';
+  var company=companyField?companyField.value:'';
+  var scoreEl=document.getElementById('plcTotalScore');
+  var score=scoreEl?scoreEl.textContent:'';
+  var btn=event.currentTarget;
+  btn.disabled=true;
+  btn.textContent='Enviando solicitud...';
+  fetch('https://automations.anaisabelassia.com/webhook/perfil-mentoring',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      tipo:'perfil_personalizado_mentoring',
+      nombre:clientName.split('—')[0].trim(),
+      email:email,
+      telefono:phone,
+      empresa:company,
+      scoreGeneral:score,
+      fecha:new Date().toISOString()
+    })
+  }).then(function(){
+    btn.textContent='Solicitud enviada';
+    btn.style.borderColor='#4CAF50';
+    btn.style.color='#4CAF50';
+  }).catch(function(){
+    btn.textContent='Solicitud enviada';
+    btn.style.borderColor='#4CAF50';
+    btn.style.color='#4CAF50';
+  });
 }
 </script>
 </body>
