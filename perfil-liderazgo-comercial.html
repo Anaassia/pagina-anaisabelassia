@@ -518,9 +518,9 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red);background:#fff
     </div>
     <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
 
-    <!-- 2. ANÁLISIS POR EJE (scores + AI fortalezas/debilidades) -->
+    <!-- 2. ANÁLISIS POR ELEMENTO (scores + AI fortalezas/debilidades) -->
     <div class="plc-section" style="padding:24px 22px">
-      <h3 style="font-family:'Jost',sans-serif;font-size:16px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;display:block">Análisis por Eje</h3>
+      <h3 style="font-family:'Jost',sans-serif;font-size:16px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;display:block">Análisis por Elemento</h3>
       <div style="width:40px;height:3px;background:var(--red);border-radius:2px;margin-bottom:16px"></div>
       <div id="plcBars"></div>
     </div>
@@ -608,6 +608,11 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red);background:#fff
       <h3 style="font-family:'Jost',sans-serif;font-size:16px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;display:block">Siguientes Pasos</h3>
       <div style="width:40px;height:3px;background:var(--red);border-radius:2px;margin-bottom:16px"></div>
       <div id="plcAiPasos"></div>
+      <div id="plcCtaMentora" style="display:none;margin-top:28px;padding:28px 24px;background:linear-gradient(135deg,#A51916 0%,#C62828 100%);border-radius:14px;text-align:center">
+        <p style="font-family:'Jost',sans-serif;font-size:24px;font-weight:800;color:#fff;margin:0 0 14px;line-height:1.3">Conviértete en un Alquimista de tu Éxito Comercial</p>
+        <p style="font-size:14px;color:rgba(255,255,255,.85);line-height:1.7;margin:0 auto 20px;max-width:56ch">Agenda una sesión estratégica con Ana Isabel Assia, Consultora + Estratega + Mentora, para diseñar tu ruta para reconfigurar tu liderazgo comercial y potenciar las competencias y capacidades para crecer y ganar.</p>
+        <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" style="display:inline-block;padding:12px 32px;background:#fff;color:var(--red);font-family:'Jost',sans-serif;font-size:15px;font-weight:700;border-radius:30px;text-decoration:none;transition:opacity .2s">Agenda tu sesión estratégica <span style="margin-left:6px">→</span></a>
+      </div>
     </div>
 
     <div style="text-align:center;margin-top:32px">
@@ -1043,6 +1048,7 @@ function calcPLC(e){
         });
         document.getElementById('plcAiPasos').innerHTML=ph;
         document.getElementById('plcAiPasosWrap').style.display='block';
+        document.getElementById('plcCtaMentora').style.display='block';
       }
     }else{
       document.getElementById('plcEmailMsg').textContent='Tu diagnóstico ha sido procesado. Revisa tu correo para el informe completo.';
@@ -1184,9 +1190,11 @@ function demoMode(){
       {accion:'Establecer análisis de rentabilidad por cliente',eje:'Resultados',prioridad:'baja',plazo:'medio (60-90 días)'}
     ],
     siguientesPasos:[
-      'Paso 1: Esta semana selecciona e instala un CRM (HubSpot gratuito o Pipedrive) y migra tus 20 clientes más importantes',
-      'Paso 2: En las próximas 2-4 semanas, estandariza tus 3 propuestas comerciales más frecuentes como plantillas reutilizables',
-      'Paso 3: Agenda una sesión estratégica con Ana Isabel Assia para diseñar tu ruta de transformación comercial personalizada'
+      'Esta semana selecciona e instala un CRM (HubSpot gratuito o Pipedrive) y migra tus 20 clientes más importantes',
+      'Define 5 KPIs comerciales clave y crea un tablero de seguimiento semanal para tu equipo',
+      'Estandariza tus 3 propuestas comerciales más frecuentes como plantillas reutilizables',
+      'Diseña un programa de capacitación mensual con métricas de impacto por persona',
+      'Implementa una rutina de revisión trimestral del plan estratégico con tu equipo de liderazgo'
     ]
   };
 
@@ -1289,6 +1297,7 @@ function demoMode(){
     });
     document.getElementById('plcAiPasos').innerHTML=ph;
     document.getElementById('plcAiPasosWrap').style.display='block';
+    document.getElementById('plcCtaMentora').style.display='block';
   }
 
   document.getElementById('plcEmailMsg').textContent='MODO DEMO — Datos de prueba para refinamiento visual';
