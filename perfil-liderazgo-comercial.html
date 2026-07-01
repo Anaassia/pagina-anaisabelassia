@@ -107,7 +107,32 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
     <div class="breadcrumb"><a href="index.html">Inicio</a><span>/</span>Tools<span>/</span>Perfil Liderazgo Comercial</div>
     <span class="eyebrow light" style="color:var(--red)">Assessment Gratuito</span>
     <h1 class="serif">Perfil de Liderazgo<br>Comercial <em>Generativo</em></h1>
-    <p style="max-width:64ch;margin:18px auto 0;font-size:clamp(17px,1.8vw,20px);line-height:1.6">Diagnostica tu nivel de capacidad comercial en 5 ejes clave. Evalúa cada factor, visualiza tu semáforo de fortalezas y debilidades, y obtén tu perfil ponderado en menos de 10 minutos.</p>
+    <p style="max-width:66ch;margin:18px auto 0;font-size:clamp(17px,1.8vw,20px);line-height:1.6">Este assessment evalúa tu perfil como líder comercial en los 5 elementos de la Alquimia Comercial: <strong>Estrategia, Procesos, Personas, Tecnología y Resultados</strong>. Al completarlo recibirás un informe con tu semáforo de fortalezas y debilidades, tu nivel de capacidad en cada eje y un diagnóstico general que te mostrará dónde están tus mayores oportunidades de crecimiento como líder.</p>
+
+    <!-- PASO A PASO -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px;text-align:center">
+      <div style="padding:20px 12px">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--red);color:#fff;font-family:'Jost',sans-serif;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">1</div>
+        <h4 style="font-size:14px;font-family:'Jost',sans-serif;font-weight:700;color:#fff;margin:0 0 6px">Lee y comprende</h4>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);margin:0">Revisa la metodología, la escala de evaluación y los factores de cada eje antes de comenzar.</p>
+      </div>
+      <div style="padding:20px 12px">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--red);color:#fff;font-family:'Jost',sans-serif;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">2</div>
+        <h4 style="font-size:14px;font-family:'Jost',sans-serif;font-weight:700;color:#fff;margin:0 0 6px">Completa tu evaluación</h4>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);margin:0">Llena tus datos, describe tu contexto y evalúa con honestidad cada factor clave en los 5 ejes.</p>
+      </div>
+      <div style="padding:20px 12px">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--red);color:#fff;font-family:'Jost',sans-serif;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">3</div>
+        <h4 style="font-size:14px;font-family:'Jost',sans-serif;font-weight:700;color:#fff;margin:0 0 6px">Procesamos tu perfil</h4>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);margin:0">Al enviar, generamos tu informe personalizado con semáforo, radar y recomendaciones.</p>
+      </div>
+      <div style="padding:20px 12px">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--red);color:#fff;font-family:'Jost',sans-serif;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">4</div>
+        <h4 style="font-size:14px;font-family:'Jost',sans-serif;font-weight:700;color:#fff;margin:0 0 6px">Revisa tu correo</h4>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);margin:0">En unos minutos recibirás tu diagnóstico completo en la bandeja de correo que registraste.</p>
+      </div>
+    </div>
+
     <div style="display:flex;gap:16px;justify-content:center;margin-top:32px;flex-wrap:wrap">
       <a href="#evaluacion" class="btn btn-red" style="justify-content:center">Iniciar diagnóstico <span class="arrow">→</span></a>
     </div>
@@ -164,7 +189,7 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
       <div class="plc-grid">
         <div class="field"><label for="plc-name">Nombre completo *</label><input type="text" id="plc-name" required placeholder="Tu nombre"></div>
         <div class="field"><label for="plc-email">Correo electrónico *</label><input type="email" id="plc-email" required placeholder="tucorreo@empresa.com"></div>
-        <div class="field"><label for="plc-phone">WhatsApp *</label><input type="tel" id="plc-phone" required placeholder="+57 311 000 0000"></div>
+        <div class="field"><label for="plc-phone">Teléfono / WhatsApp *</label><input type="tel" id="plc-phone" required placeholder="+57 311 000 0000"></div>
         <div class="field"><label for="plc-company">Empresa</label><input type="text" id="plc-company" placeholder="Nombre de tu empresa"></div>
         <div class="field"><label for="plc-role">Cargo actual</label><input type="text" id="plc-role" placeholder="Ej: Gerente Comercial, VP Ventas"></div>
         <div class="field"><label for="plc-industry">Industria / Sector</label><input type="text" id="plc-industry" placeholder="Ej: Tecnología, Consumo masivo"></div>
@@ -440,7 +465,7 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red)}
       <button type="submit" class="btn btn-red" style="padding:16px 56px;font-size:17px">
         Obtener mi diagnóstico completo <span class="arrow">→</span>
       </button>
-      <p style="font-size:13px;color:rgba(11,11,11,.45);margin-top:12px">Los resultados se calculan en tiempo real. Al enviar, recibirás tu perfil completo por WhatsApp.</p>
+      <p style="font-size:13px;color:rgba(11,11,11,.45);margin-top:12px">Los resultados se calculan en tiempo real. Al enviar, recibirás tu informe completo en el correo electrónico que registraste.</p>
     </div>
   </form>
 
@@ -668,7 +693,7 @@ function calcPLC(e){
       context=f.querySelector('#plc-context').value.trim(),
       challenges=f.querySelector('#plc-challenges').value.trim();
 
-  if(!name||!email||!phone){alert('Por favor completa nombre, email y WhatsApp.');return false;}
+  if(!name||!email||!phone){alert('Por favor completa nombre, correo y teléfono.');return false;}
 
   var tables=f.querySelectorAll('table.mx');
   var allFilled=true,pondValid=true;
@@ -688,7 +713,7 @@ function calcPLC(e){
   if(company)msg+='Empresa: '+company+'\n';
   if(role)msg+='Cargo: '+role+'\n';
   if(industry)msg+='Industria: '+industry+'\n';
-  msg+='Email: '+email+'\nWhatsApp: '+phone+'\n';
+  msg+='Email: '+email+'\nTeléfono: '+phone+'\n';
 
   msg+='\n━ DIAGNÓSTICO SEMAFORIZADO ━\n';
 
@@ -785,7 +810,6 @@ function calcPLC(e){
     method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
   }).catch(function(){});
 
-  window.open('https://wa.me/573116279068?text='+encodeURIComponent(msg),'_blank');
   return false;
 }
 </script>
