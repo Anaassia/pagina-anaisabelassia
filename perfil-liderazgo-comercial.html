@@ -519,9 +519,9 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red);background:#fff
     </div>
     <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
 
-    <!-- 2. ANÁLISIS POR ELEMENTO (scores + AI fortalezas/debilidades) -->
+    <!-- 2. ANÁLISIS POR EJE/ELEMENTO (scores + AI fortalezas/debilidades) -->
     <div class="plc-section" style="padding:24px 22px">
-      <h3 style="font-family:'Jost',sans-serif;font-size:16px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;display:block">Análisis por Elemento</h3>
+      <h3 style="font-family:'Jost',sans-serif;font-size:16px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;display:block">Análisis por Eje/Elemento</h3>
       <div style="width:40px;height:3px;background:var(--red);border-radius:2px;margin-bottom:16px"></div>
       <div id="plcBars"></div>
     </div>
@@ -538,13 +538,19 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red);background:#fff
       <h3 style="font-family:'Jost',sans-serif;font-size:16px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;display:block">Contexto del Negocio y Desafíos</h3>
       <div style="width:40px;height:3px;background:var(--red);border-radius:2px;margin-bottom:16px"></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-        <div style="background:#fff;border-radius:10px;padding:16px 18px;border:1px solid #E3F2FD">
-          <div style="font-size:12px;font-weight:700;color:#2196F3;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Contexto del Negocio</div>
-          <p id="plcContextoNegocio" style="font-size:13px;line-height:1.7;color:rgba(11,11,11,.7);margin:0"></p>
+        <div style="background:#fff;border-radius:10px;padding:16px 18px;border:1px solid rgba(0,0,0,.08)">
+          <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px">
+            <div style="width:28px;height:28px;border-radius:50%;background:#E3F2FD;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+            <div style="font-size:13px;font-weight:700;color:var(--ink)">Contexto del Negocio</div>
+          </div>
+          <p id="plcContextoNegocio" style="font-size:13px;line-height:1.7;color:rgba(11,11,11,.75);margin:0"></p>
         </div>
-        <div style="background:#fff;border-radius:10px;padding:16px 18px;border:1px solid #FFF3E0">
-          <div style="font-size:12px;font-weight:700;color:#FF9800;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Principales Desafíos</div>
-          <p id="plcDesafiosNegocio" style="font-size:13px;line-height:1.7;color:rgba(11,11,11,.7);margin:0"></p>
+        <div style="background:#fff;border-radius:10px;padding:16px 18px;border:1px solid rgba(0,0,0,.08)">
+          <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px">
+            <div style="width:28px;height:28px;border-radius:50%;background:#FFF3E0;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="#FF9800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div style="font-size:13px;font-weight:700;color:var(--ink)">Principales Desafíos</div>
+          </div>
+          <p id="plcDesafiosNegocio" style="font-size:13px;line-height:1.7;color:rgba(11,11,11,.75);margin:0"></p>
         </div>
       </div>
     </div>
