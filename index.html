@@ -155,6 +155,61 @@
   </div>
 </section>
 
+<!-- TESTIMONIOS -->
+<section class="pad testimonios-section">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Testimonios</span>
+      <h2 class="serif">Líderes que ya transformaron sus <em>resultados</em>.</h2>
+      <p>Empresas que confiaron en nuestra metodología para acelerar su crecimiento comercial y operativo.</p>
+    </div>
+    <div class="testi-carousel reveal">
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-slide">
+          <div class="testi-logo-wrap">
+            <svg class="testi-logo" viewBox="0 0 80 80"><circle cx="40" cy="40" r="40" fill="#0D5C8F"/><text x="40" y="46" text-anchor="middle" fill="#fff" font-family="Jost,sans-serif" font-size="22" font-weight="700">GP</text></svg>
+          </div>
+          <blockquote class="testi-quote">"La innovación estratégica que implementamos con Ana Isabel revolucionó nuestra operación pediátrica global. Pasamos de gestionar procesos reactivos a liderar una transformación digital que redujo tiempos de respuesta en un 40% y elevó la satisfacción de nuestros clientes a niveles históricos."</blockquote>
+          <div class="testi-author"><strong>Diana Velázquez</strong><span>Gerente Global · Pediátrica</span></div>
+        </div>
+        <div class="testi-slide">
+          <div class="testi-logo-wrap">
+            <svg class="testi-logo" viewBox="0 0 80 80"><circle cx="40" cy="40" r="40" fill="#1A1A1A"/><text x="40" y="46" text-anchor="middle" fill="#E10600" font-family="Jost,sans-serif" font-size="22" font-weight="700">AP</text></svg>
+          </div>
+          <blockquote class="testi-quote">"La gestión comercial de Autopro dio un giro de 180 grados. El enfoque sistémico nos permitió automatizar procesos clave, profesionalizar nuestro equipo de ventas y construir un modelo comercial rentable que hoy crece de manera sostenida trimestre tras trimestre."</blockquote>
+          <div class="testi-author"><strong>David Arango</strong><span>Gerente · Autopro</span></div>
+        </div>
+        <div class="testi-slide">
+          <div class="testi-logo-wrap">
+            <svg class="testi-logo" viewBox="0 0 80 80"><circle cx="40" cy="40" r="40" fill="#C0392B"/><text x="40" y="46" text-anchor="middle" fill="#fff" font-family="Jost,sans-serif" font-size="22" font-weight="700">TJ</text></svg>
+          </div>
+          <blockquote class="testi-quote">"Gracias a la automatización de procesos y la visión estratégica que construimos juntos, Tejaditos logró escalar su operación sin perder la esencia de nuestro servicio. Hoy gestionamos el doble de volumen con el mismo equipo, más motivado y mejor estructurado."</blockquote>
+          <div class="testi-author"><strong>Alex Velasco</strong><span>Gerente · Tejaditos</span></div>
+        </div>
+        <div class="testi-slide">
+          <div class="testi-logo-wrap">
+            <svg class="testi-logo" viewBox="0 0 80 80"><circle cx="40" cy="40" r="40" fill="#27AE60"/><text x="40" y="46" text-anchor="middle" fill="#fff" font-family="Jost,sans-serif" font-size="22" font-weight="700">CI</text></svg>
+          </div>
+          <blockquote class="testi-quote">"La transformación digital de nuestra clínica fue integral: desde la gestión de pacientes hasta la estrategia comercial. Ana Isabel nos ayudó a integrar tecnología, talento y procesos en un sistema que hoy nos posiciona como referentes en medicina integrativa."</blockquote>
+          <div class="testi-author"><strong>Grisell Isaac</strong><span>Gerente · Clínica Integrativa</span></div>
+        </div>
+        <div class="testi-slide">
+          <div class="testi-logo-wrap">
+            <svg class="testi-logo" viewBox="0 0 80 80"><circle cx="40" cy="40" r="40" fill="#2C3E50"/><text x="40" y="46" text-anchor="middle" fill="#4FC3F7" font-family="Jost,sans-serif" font-size="22" font-weight="700">BT</text></svg>
+          </div>
+          <blockquote class="testi-quote">"La innovación operativa y la gestión comercial estratégica transformaron por completo nuestro laboratorio. Hoy tenemos procesos automatizados, un equipo comercial empoderado y una rentabilidad que nos permite invertir en investigación y desarrollo con confianza."</blockquote>
+          <div class="testi-author"><strong>Laura Valencia</strong><span>Gerente · Bioterapéutico</span></div>
+        </div>
+      </div>
+      <div class="testi-controls">
+        <button class="testi-btn testi-prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"/></svg></button>
+        <div class="testi-dots" id="testiDots"></div>
+        <button class="testi-btn testi-next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,6 15,12 9,18"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- RUTA (teaser) -->
 <section class="pad">
   <div class="wrap">
@@ -273,5 +328,32 @@
   </div>
 </footer>
 <script src="js/main.js"></script>
+<script>
+(function(){
+  var track=document.getElementById('testiTrack');
+  if(!track)return;
+  var slides=track.querySelectorAll('.testi-slide');
+  var dotsC=document.getElementById('testiDots');
+  var cur=0,total=slides.length,auto;
+  for(var i=0;i<total;i++){
+    var d=document.createElement('button');
+    d.className='testi-dot'+(i===0?' active':'');
+    d.setAttribute('aria-label','Testimonio '+(i+1));
+    d.dataset.i=i;
+    dotsC.appendChild(d);
+  }
+  function go(n){
+    cur=((n%total)+total)%total;
+    track.style.transform='translateX(-'+cur*100+'%)';
+    var dots=dotsC.querySelectorAll('.testi-dot');
+    for(var j=0;j<dots.length;j++)dots[j].className='testi-dot'+(j===cur?' active':'');
+  }
+  document.querySelector('.testi-prev').addEventListener('click',function(){go(cur-1);resetAuto()});
+  document.querySelector('.testi-next').addEventListener('click',function(){go(cur+1);resetAuto()});
+  dotsC.addEventListener('click',function(e){if(e.target.classList.contains('testi-dot')){go(+e.target.dataset.i);resetAuto()}});
+  function resetAuto(){clearInterval(auto);auto=setInterval(function(){go(cur+1)},6000)}
+  resetAuto();
+})();
+</script>
 </body>
 </html>
