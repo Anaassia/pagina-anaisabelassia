@@ -100,15 +100,12 @@ function handleSubmit(e) {
     b.addEventListener('click', function (e) { e.preventDefault(); open(); });
   });
 
-  // Google Sheets endpoint (Google Apps Script Web App URL)
-  var SHEETS_URL = 'GOOGLE_APPS_SCRIPT_URL';
+  var CRM_WEBHOOK = 'https://automations.anaisabelassia.com/webhook/whatsapp-lead';
 
-  function saveToSheets(data) {
-    if (SHEETS_URL === 'GOOGLE_APPS_SCRIPT_URL') return;
+  function sendToCRM(data) {
     try {
-      fetch(SHEETS_URL, {
+      fetch(CRM_WEBHOOK, {
         method: 'POST',
-        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
@@ -124,7 +121,7 @@ function handleSubmit(e) {
     var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     if (!name || !emailOk || !reason) { err.style.display = 'block'; return; }
 
-    saveToSheets({
+    sendToCRM({
       fecha: new Date().toISOString(),
       nombre: name,
       email: email,
