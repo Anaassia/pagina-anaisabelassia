@@ -300,44 +300,121 @@
   </div>
 </section>
 
-<!-- BLOG (previews) -->
-<section class="pad bg-smoke">
+<!-- FEED COMUNIDAD -->
+<section class="fd-section">
+  <style>
+  .fd-section{background:var(--paper,#fff);padding:80px 0}
+  .fd-head{text-align:center;margin-bottom:48px}
+  .fd-head .eyebrow{justify-content:center}
+  .fd-feed{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .fd-post{background:#fff;border:1px solid var(--line,rgba(0,0,0,.08));border-radius:16px;padding:28px 24px;transition:all .4s var(--ease,cubic-bezier(.4,0,.2,1));position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit}
+  .fd-post:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.06);border-color:rgba(204,45,26,.15)}
+  .fd-post-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .fd-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex-shrink:0}
+  .fd-avatar-1{background:linear-gradient(135deg,var(--red),#E85D4A)}
+  .fd-avatar-2{background:linear-gradient(135deg,#0B0B0B,#333)}
+  .fd-avatar-3{background:linear-gradient(135deg,#F59E0B,#D97706)}
+  .fd-author-info{flex:1;min-width:0}
+  .fd-author{font-weight:600;font-size:14px;color:var(--ink,#0B0B0B);display:flex;align-items:center;gap:8px}
+  .fd-member-tag{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:50px;background:rgba(204,45,26,.08);color:var(--red)}
+  .fd-meta{font-size:12px;color:rgba(11,11,11,.35);margin-top:2px}
+  .fd-topic{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+  .fd-topic svg{width:14px;height:14px;stroke:var(--red);fill:none;stroke-width:2}
+  .fd-post h4{font-family:'Jost',sans-serif;font-weight:500;font-size:18px;line-height:1.35;color:var(--ink,#0B0B0B);margin-bottom:10px}
+  .fd-post>p{font-size:14px;line-height:1.7;color:rgba(11,11,11,.55);flex:1}
+  .fd-engagement{display:flex;align-items:center;gap:20px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line,rgba(0,0,0,.06))}
+  .fd-react{display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(11,11,11,.4);font-weight:500}
+  .fd-react svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .fd-react:first-child svg{stroke:var(--red);fill:rgba(204,45,26,.1)}
+  .fd-read{margin-left:auto;font-size:12px;font-weight:600;color:var(--red);text-decoration:none;display:flex;align-items:center;gap:4px;opacity:.7;transition:opacity .3s}
+  .fd-post:hover .fd-read{opacity:1}
+  .fd-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .fd-tag{font-size:11px;padding:4px 10px;border-radius:50px;background:rgba(11,11,11,.04);color:rgba(11,11,11,.45);font-weight:500}
+  .fd-live-badge{position:absolute;top:16px;right:16px;display:flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#10B981}
+  .fd-live-dot{width:8px;height:8px;border-radius:50%;background:#10B981;animation:fd-pulse 2s ease-in-out infinite}
+  @keyframes fd-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+  @media(max-width:768px){.fd-feed{grid-template-columns:1fr}}
+  </style>
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Blog · Ideas que movilizan</span>
-      <h2 class="serif">Perspectivas sobre liderazgo, innovación y <em>crecimiento</em>.</h2>
+    <div class="fd-head reveal">
+      <span class="eyebrow">Conversaciones que importan</span>
+      <h2 class="serif">Lo que se habla dentro de la <em>comunidad</em>.</h2>
+      <p>Ideas, debates y provocaciones que no encontrarás en LinkedIn. Solo para miembros.</p>
     </div>
-    <div class="blog-grid">
-      <a class="post reveal" href="blog-lideres-catalizadores.html">
-        <div class="img"><img src="assets/blog1.jpg" alt=""><span class="cat">Liderazgo</span></div>
-        <div class="body">
-          <small>Lectura · 6 min</small>
-          <h4>Líderes catalizadores: cómo reconfigurar tu mentalidad comercial</h4>
-          <p>El crecimiento no empieza en las ventas, empieza en el liderazgo. Tres cambios de mentalidad para transformar tus resultados.</p>
-          <span class="more">Leer artículo <span class="arrow">→</span></span>
+    <div class="fd-feed">
+      <!-- Post 1 -->
+      <a class="fd-post reveal" href="blog-lideres-catalizadores.html">
+        <div class="fd-post-header">
+          <div class="fd-avatar fd-avatar-1">AI</div>
+          <div class="fd-author-info">
+            <div class="fd-author">Ana Isabel Assia <span class="fd-member-tag">Mentora</span></div>
+            <div class="fd-meta">26 Jun 2026 · 6 min lectura</div>
+          </div>
+        </div>
+        <div class="fd-topic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Liderazgo</div>
+        <h4>El crecimiento no empieza en las ventas. Empieza en el liderazgo.</h4>
+        <p>Tres cambios de mentalidad que están transformando la forma en que los líderes comerciales generan resultados sin desgastar a sus equipos.</p>
+        <div class="fd-tags">
+          <span class="fd-tag">Mentalidad</span>
+          <span class="fd-tag">Ventas B2B</span>
+          <span class="fd-tag">Equipos</span>
+        </div>
+        <div class="fd-engagement">
+          <span class="fd-react"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 47</span>
+          <span class="fd-react"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> 12</span>
+          <span class="fd-read">Leer más →</span>
         </div>
       </a>
-      <a class="post reveal" href="blog-metodo-dever.html">
-        <div class="img"><img src="assets/blog2.jpg" alt=""><span class="cat">Innovación</span></div>
-        <div class="body">
-          <small>Lectura · 7 min</small>
-          <h4>Crear, medir, aprender: el método D.E.V.E.R. en la práctica</h4>
-          <p>De las ideas a los resultados. Cómo aplicar las cinco etapas para escalar y rentabilizar tus oportunidades comerciales.</p>
-          <span class="more">Leer artículo <span class="arrow">→</span></span>
+      <!-- Post 2 -->
+      <a class="fd-post reveal" href="blog-metodo-dever.html">
+        <span class="fd-live-badge"><span class="fd-live-dot"></span> Trending</span>
+        <div class="fd-post-header">
+          <div class="fd-avatar fd-avatar-2">RC</div>
+          <div class="fd-author-info">
+            <div class="fd-author">Ricardo Castillo <span class="fd-member-tag">Miembro</span></div>
+            <div class="fd-meta">22 Jun 2026 · 7 min lectura</div>
+          </div>
+        </div>
+        <div class="fd-topic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Innovación</div>
+        <h4>Aplicamos D.E.V.E.R. en 90 días y duplicamos la conversión. Así lo hicimos.</h4>
+        <p>Un caso real de cómo pasamos de "vender más" a "vender mejor" usando las cinco etapas del método en nuestra operación B2B.</p>
+        <div class="fd-tags">
+          <span class="fd-tag">Caso Real</span>
+          <span class="fd-tag">Método D.E.V.E.R.</span>
+          <span class="fd-tag">Conversión</span>
+        </div>
+        <div class="fd-engagement">
+          <span class="fd-react"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 83</span>
+          <span class="fd-react"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> 24</span>
+          <span class="fd-read">Leer más →</span>
         </div>
       </a>
-      <a class="post reveal" href="blog-vision-sistemica.html">
-        <div class="img"><img src="assets/blog3.jpg" alt=""><span class="cat">Estrategia</span></div>
-        <div class="body">
-          <small>Lectura · 5 min</small>
-          <h4>Visión sistémica: integrar estrategia, procesos, personas y tecnología</h4>
-          <p>Por qué los negocios que crecen de forma sostenible no optimizan partes aisladas, sino el sistema completo.</p>
-          <span class="more">Leer artículo <span class="arrow">→</span></span>
+      <!-- Post 3 -->
+      <a class="fd-post reveal" href="blog-vision-sistemica.html">
+        <div class="fd-post-header">
+          <div class="fd-avatar fd-avatar-3">VM</div>
+          <div class="fd-author-info">
+            <div class="fd-author">Valentina Méndez <span class="fd-member-tag">Líder</span></div>
+            <div class="fd-meta">18 Jun 2026 · 5 min lectura</div>
+          </div>
+        </div>
+        <div class="fd-topic"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Estrategia</div>
+        <h4>¿Por qué optimizar partes aisladas mata tu negocio? Visión sistémica en la práctica.</h4>
+        <p>Los negocios que crecen de forma sostenible no arreglan piezas — transforman el sistema completo. Aquí va mi aprendizaje después de 3 pivots.</p>
+        <div class="fd-tags">
+          <span class="fd-tag">Visión Sistémica</span>
+          <span class="fd-tag">Procesos</span>
+          <span class="fd-tag">Crecimiento</span>
+        </div>
+        <div class="fd-engagement">
+          <span class="fd-react"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 36</span>
+          <span class="fd-react"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> 9</span>
+          <span class="fd-read">Leer más →</span>
         </div>
       </a>
     </div>
     <div style="text-align:center;margin-top:48px" class="reveal">
-      <a href="blog.html" class="text-link" style="justify-content:center">Ver todos los artículos <span class="arrow">→</span></a>
+      <a href="comunidad.html" class="text-link" style="justify-content:center">Unirme a la conversación <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
