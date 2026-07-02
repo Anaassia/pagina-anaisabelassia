@@ -1193,28 +1193,29 @@ function calcPLC(e){
 function descargarPDF(){
   var el=document.getElementById('plcResults');
   if(!el)return;
-  var PDF_W=900;
+  var PDF_W=960;
 
-  // -- Collect ALL modifications so we can restore them --
+  // -- Save/restore registry --
   var mods=[];
-  function save(node){var o=node.getAttribute('style')||'';mods.push({node:node,orig:o});return node}
+  function save(node){
+    if(mods.some(function(m){return m.node===node}))return;
+    mods.push({node:node,orig:node.getAttribute('style')||''});
+  }
 
-  // 1. Hide buttons, disclaimer, status, loading
-  var btns=el.querySelectorAll('.btn,.btn-red,.btn-outline');
-  btns.forEach(function(b){save(b);b.style.display='none'});
-  var hideIds=['plcDisclaimer','plcEmailMsg','plcAiLoading'];
-  hideIds.forEach(function(id){var h=document.getElementById(id);if(h){save(h);h.style.display='none'}});
-
-  // 2. Resolve ALL CSS variables in inline styles (html2canvas ignores custom properties)
-  el.querySelectorAll('*').forEach(function(node){
-    var cs=node.getAttribute('style');
-    if(cs&&cs.indexOf('var(--')!==-1){
-      save(node);
-      node.setAttribute('style',cs.replace(/var\(--red\)/g,'#CC2D1A').replace(/var\(--ink\)/g,'#0B0B0B'));
-    }
+  // 1. Hide UI-only elements
+  el.querySelectorAll('.btn,.btn-red,.btn-outline').forEach(function(b){save(b);b.style.display='none'});
+  ['plcDisclaimer','plcEmailMsg','plcAiLoading'].forEach(function(id){
+    var h=document.getElementById(id);if(h){save(h);h.style.display='none'}
   });
 
-  // 3. Convert SVGs to PNG images (html2canvas can't render inline SVGs reliably)
+  // 2. Resolve CSS variables everywhere (html2canvas ignores custom properties)
+  function resolveVars(str){return str.replace(/var\(--red\)/g,'#CC2D1A').replace(/var\(--ink\)/g,'#0B0B0B')}
+  el.querySelectorAll('*').forEach(function(node){
+    var s=node.getAttribute('style');
+    if(s&&s.indexOf('var(--')!==-1){save(node);node.setAttribute('style',resolveVars(s))}
+  });
+
+  // 3. Convert SVGs → PNG (html2canvas cannot render inline SVGs)
   var svgSwaps=[];
   var svgPending=0;
   el.querySelectorAll('svg').forEach(function(svg){
@@ -1222,96 +1223,120 @@ function descargarPDF(){
       var box=svg.getBoundingClientRect();
       if(box.width<2||box.height<2)return;
       svgPending++;
+      var w=Math.ceil(box.width),h=Math.ceil(box.height);
       var clone=svg.cloneNode(true);
       clone.setAttribute('xmlns','http://www.w3.org/2000/svg');
-      clone.setAttribute('width',box.width);
-      clone.setAttribute('height',box.height);
-      // Resolve CSS vars inside SVG attributes
+      clone.setAttribute('width',w);
+      clone.setAttribute('height',h);
+      if(!clone.getAttribute('viewBox')){
+        var vb=svg.getAttribute('viewBox');
+        if(vb)clone.setAttribute('viewBox',vb);
+        else clone.setAttribute('viewBox','0 0 '+w+' '+h);
+      }
+      // Resolve CSS vars in SVG attributes
       clone.querySelectorAll('*').forEach(function(n){
         ['fill','stroke','stop-color','color','style'].forEach(function(attr){
           var v=n.getAttribute(attr);
-          if(v&&v.indexOf('var(')!==-1){
-            n.setAttribute(attr,v.replace(/var\(--red\)/g,'#CC2D1A').replace(/var\(--ink\)/g,'#0B0B0B'));
-          }
+          if(v&&v.indexOf('var(')!==-1)n.setAttribute(attr,resolveVars(v));
         });
+        // Resolve computed fill/stroke that might use CSS vars
+        try{
+          var origN=svg.querySelector(n.tagName+'#'+n.id)||null;
+          if(origN){
+            var cs=getComputedStyle(origN);
+            if(!n.getAttribute('fill')&&cs.fill&&cs.fill!=='none')n.setAttribute('fill',cs.fill);
+          }
+        }catch(e2){}
       });
-      // Copy gradient/filter defs
+      // Ensure defs are included (gradients, filters)
+      var origDefs=svg.querySelector('defs');
+      if(origDefs&&!clone.querySelector('defs')){
+        clone.insertBefore(origDefs.cloneNode(true),clone.firstChild);
+      }
+      // Also copy any url() referenced defs
       clone.querySelectorAll('[fill^="url("]').forEach(function(n){
         var href=n.getAttribute('fill');
-        if(href){
-          var id=href.replace(/url\(#?/,'').replace(/\)/,'');
-          var def=svg.querySelector('#'+id);
-          if(def){var defs=clone.querySelector('defs');if(!defs){defs=document.createElementNS('http://www.w3.org/2000/svg','defs');clone.insertBefore(defs,clone.firstChild)}if(!clone.querySelector('#'+id))defs.appendChild(def.cloneNode(true))}
+        if(!href)return;
+        var id=href.replace(/url\(#?/,'').replace(/\)/,'');
+        var def=svg.querySelector('#'+id);
+        if(def&&!clone.querySelector('#'+id)){
+          var defs=clone.querySelector('defs');
+          if(!defs){defs=document.createElementNS('http://www.w3.org/2000/svg','defs');clone.insertBefore(defs,clone.firstChild)}
+          defs.appendChild(def.cloneNode(true));
         }
       });
-      var data=new XMLSerializer().serializeToString(clone);
+      var xmlStr=new XMLSerializer().serializeToString(clone);
       var canvas=document.createElement('canvas');
-      canvas.width=box.width*2;canvas.height=box.height*2;
+      canvas.width=w*2;canvas.height=h*2;
       var ctx=canvas.getContext('2d');
       var img=new Image();
       img.onload=function(){
         ctx.drawImage(img,0,0,canvas.width,canvas.height);
         var imgEl=document.createElement('img');
         imgEl.src=canvas.toDataURL('image/png');
-        imgEl.style.cssText='width:'+box.width+'px;height:'+box.height+'px;max-width:100%;display:block;margin:0 auto';
+        imgEl.style.cssText='width:'+w+'px;height:'+h+'px;max-width:100%;display:block;margin:0 auto';
         svg.parentNode.insertBefore(imgEl,svg);
         svg.style.display='none';
         svgSwaps.push({svg:svg,img:imgEl});
         svgPending--;
       };
       img.onerror=function(){svgPending--};
-      img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(data);
-    }catch(e){/* skip broken SVGs */}
+      img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(xmlStr);
+    }catch(e){}
   });
 
-  // 4. Save container original style
   var origStyle=el.getAttribute('style')||'';
 
   function waitAndRender(){
     if(svgPending>0){setTimeout(waitAndRender,100);return}
 
-    // 5. Force container: exact width, NO overflow hidden (that clips content)
-    el.style.cssText='display:block;width:'+PDF_W+'px;max-width:'+PDF_W+'px;margin:0;padding:0;position:relative;left:0;box-sizing:border-box;overflow:visible';
+    // 4. Force container width
+    el.style.cssText='display:block;width:'+PDF_W+'px;max-width:'+PDF_W+'px;margin:0;padding:0;box-sizing:border-box;overflow:visible';
 
-    // 6. Direct DOM manipulation — the ONLY reliable way to override inline styles
-    //    CSS !important in a <style> tag does NOT beat inline styles in html2canvas
+    // 5. KEY FIX: html2canvas does NOT support CSS Grid.
+    //    Convert display:grid → display:block, children → display:block;width:100%
     el.querySelectorAll('*').forEach(function(node){
       var s=node.getAttribute('style');
       if(!s)return;
-      var changed=false;
-      // Force 2-col grids → 1 column
-      if(s.indexOf('grid-template-columns')!==-1&&s.indexOf('1fr 1fr')!==-1){
-        if(mods.every(function(m){return m.node!==node}))save(node);
-        node.style.gridTemplateColumns='1fr';
-        node.style.gap='10px';
-        changed=true;
-      }
-      // Remove max-width constraints that clip content
-      if(s.indexOf('max-width')!==-1){
-        var mw=node.style.maxWidth;
-        if(mw&&mw!=='100%'&&mw!=='none'){
-          if(!changed&&mods.every(function(m){return m.node!==node}))save(node);
-          node.style.maxWidth='100%';
-          changed=true;
+      var cs=getComputedStyle(node);
+
+      // Grid → Block conversion
+      if(cs.display==='grid'){
+        save(node);
+        node.style.display='block';
+        var kids=node.children;
+        for(var i=0;i<kids.length;i++){
+          save(kids[i]);
+          kids[i].style.display='block';
+          kids[i].style.width='100%';
+          kids[i].style.maxWidth='100%';
+          kids[i].style.marginBottom='10px';
+          kids[i].style.boxSizing='border-box';
         }
       }
-      // Remove overflow:hidden from all children
-      if(s.indexOf('overflow')!==-1&&node.style.overflow==='hidden'){
-        if(!changed&&mods.every(function(m){return m.node!==node}))save(node);
-        node.style.overflow='visible';
+      // Flex wrap
+      if(cs.display==='flex'){
+        save(node);
+        node.style.flexWrap='wrap';
+        node.style.maxWidth='100%';
+      }
+      // Remove fixed max-width
+      if(node.style.maxWidth&&node.style.maxWidth!=='100%'&&node.style.maxWidth!=='none'){
+        save(node);
+        node.style.maxWidth='100%';
       }
     });
 
-    // 7. Force all sections to visible overflow and proper box-sizing
+    // 6. Sections: overflow visible, proper sizing
     el.querySelectorAll('.plc-section').forEach(function(sec){
-      if(mods.every(function(m){return m.node!==sec}))save(sec);
+      save(sec);
       sec.style.overflow='visible';
       sec.style.boxSizing='border-box';
       sec.style.maxWidth='100%';
       sec.style.pageBreakInside='avoid';
     });
 
-    // 8. Fix table layout for Plan de Acción
+    // 7. Plan de Acción table
     var planTable=document.querySelector('#plcAiPlanWrap table');
     if(planTable){
       save(planTable);
@@ -1325,7 +1350,7 @@ function descargarPDF(){
       });
     }
 
-    // 9. Minimal CSS for page breaks only (NOT for layout overrides)
+    // 8. Page breaks only
     var style=document.createElement('style');
     style.id='pdfBreaks';
     style.textContent=
@@ -1336,6 +1361,9 @@ function descargarPDF(){
       +' table{page-break-inside:auto}'
       +' tr{page-break-inside:avoid;break-inside:avoid}';
     document.head.appendChild(style);
+
+    // 9. Force layout reflow before capture
+    void el.offsetHeight;
 
     var nameEl=document.getElementById('plcResultName');
     var clientName=nameEl?nameEl.textContent.split('—')[0].trim():'diagnostico';
@@ -1349,7 +1377,7 @@ function descargarPDF(){
       jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},
       pagebreak:{mode:['css','legacy'],avoid:['tr']}
     }).from(el).save().then(function(){
-      // Restore ALL modified elements to their original inline styles
+      // Restore ALL elements
       mods.forEach(function(m){
         if(m.orig)m.node.setAttribute('style',m.orig);
         else m.node.removeAttribute('style');
@@ -1357,7 +1385,6 @@ function descargarPDF(){
       el.style.cssText=origStyle;
       if(!origStyle)el.removeAttribute('style');
       el.classList.add('show');
-      // Restore SVG swaps
       svgSwaps.forEach(function(s){s.svg.style.display='';s.img.remove()});
       var s=document.getElementById('pdfBreaks');if(s)s.remove();
     });
