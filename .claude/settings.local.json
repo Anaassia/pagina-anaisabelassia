@@ -205,7 +205,15 @@
       "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__images_generate_svg",
       "Bash(curl -s \"https://pikaso.cdnpk.net/private/production/4763989262/3234670185.svg?token=exp=1783296000~hmac=5b36c85ef0400265f50d8d8a4e624acdd1f61193d6ac41ac968c0d1162cd77b1\" -o \"C:/Users/aassi/Documents/PAGINA ANA ASSIA/assets/mentor-ia-icon.svg\")",
       "Bash(curl -sL -o assets/mentor-ia-icon.svg \"https://pikaso.cdnpk.net/private/production/4764098579/3234729576.svg?token=exp=1783296000~hmac=8d6b3822ed2e3067649fbd9c20634824218a6893c011c34415fdca8161b3b3d6\")",
-      "Bash(curl -sL -o assets/mentor-ia-icon.svg \"https://pikaso.cdnpk.net/private/production/4764153775/3234758913.svg?token=exp=1783296000~hmac=17d935a224edba99139a204658956346bebc980a76f402b4c7a53429e0688e7a\")"
+      "Bash(curl -sL -o assets/mentor-ia-icon.svg \"https://pikaso.cdnpk.net/private/production/4764153775/3234758913.svg?token=exp=1783296000~hmac=17d935a224edba99139a204658956346bebc980a76f402b4c7a53429e0688e7a\")",
+      "Bash(npx netlify-cli *)",
+      "PowerShell(npm --version)",
+      "PowerShell(node --version 2>$null)",
+      "PowerShell(winget search Node.js --source winget 2>$null)",
+      "PowerShell(winget install OpenJS.NodeJS.LTS --accept-package-agreements --accept-source-agreements)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\", \"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\", \"User\"\\); node --version; npm --version)",
+      "PowerShell(docker run --rm -v \"C:\\\\Users\\\\aassi\\\\Documents\\\\PAGINA ANA ASSIA:/site\" -w /site node:lts sh -c \"npm install -g netlify-cli && netlify --version\")",
+      "PowerShell(docker run --rm -it -v \"C:\\\\Users\\\\aassi\\\\Documents\\\\PAGINA ANA ASSIA:/site\" -w /site -p 8888:8888 node:lts sh -c \"npm install -g netlify-cli 2>/dev/null && netlify login\")"
     ]
   }
 }
