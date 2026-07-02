@@ -1193,7 +1193,7 @@ function calcPLC(e){
 function descargarPDF(){
   var el=document.getElementById('plcResults');
   if(!el)return;
-  var PDF_W=760;
+  var PDF_W=800;
 
   // 1. Hide buttons, disclaimer, status, loading
   var btns=el.querySelectorAll('.btn,.btn-red,.btn-outline');
@@ -1203,14 +1203,27 @@ function descargarPDF(){
 
   // 2. Convert SVGs to canvas images (html2canvas fails on inline SVGs)
   var svgSwaps=[];
-  el.querySelectorAll('svg').forEach(function(svg){
+  var svgList=el.querySelectorAll('svg');
+  var svgPending=0;
+  svgList.forEach(function(svg){
     try{
       var box=svg.getBoundingClientRect();
       if(box.width<2||box.height<2)return;
+      svgPending++;
       var clone=svg.cloneNode(true);
       clone.setAttribute('xmlns','http://www.w3.org/2000/svg');
       if(!clone.getAttribute('width'))clone.setAttribute('width',box.width);
       if(!clone.getAttribute('height'))clone.setAttribute('height',box.height);
+      // Resolve CSS variables inside SVG attributes
+      clone.querySelectorAll('*').forEach(function(n){
+        ['fill','stroke','stop-color','color'].forEach(function(attr){
+          var v=n.getAttribute(attr);
+          if(v&&v.indexOf('var(')!==-1){
+            v=v.replace(/var\(--red\)/g,'#CC2D1A').replace(/var\(--ink\)/g,'#0B0B0B');
+            n.setAttribute(attr,v);
+          }
+        });
+      });
       clone.querySelectorAll('[fill^="url("]').forEach(function(n){
         var href=n.getAttribute('fill');
         if(href){
@@ -1233,66 +1246,90 @@ function descargarPDF(){
         svg.parentNode.insertBefore(imgEl,svg);
         svg.style.display='none';
         svgSwaps.push({svg:svg,img:imgEl});
+        svgPending--;
       };
+      img.onerror=function(){svgPending--};
       img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(data);
     }catch(e){}
   });
 
-  // 3. Resolve CSS variables (html2canvas ignores custom properties)
-  var cssVarMap={'var(--red)':'#CC2D1A','var(--ink)':'#0B0B0B'};
+  // 3. Resolve CSS variables in inline styles (html2canvas ignores custom properties)
   var varFixEls=[];
   el.querySelectorAll('*').forEach(function(node){
     var cs=node.getAttribute('style');
-    if(cs&&(cs.indexOf('var(--red)')!==-1||cs.indexOf('var(--ink)')!==-1)){
+    if(cs&&(cs.indexOf('var(--')!==-1)){
       varFixEls.push({node:node,orig:cs});
-      var fixed=cs;
-      for(var k in cssVarMap)fixed=fixed.split(k).join(cssVarMap[k]);
+      var fixed=cs.replace(/var\(--red\)/g,'#CC2D1A').replace(/var\(--ink\)/g,'#0B0B0B');
       node.setAttribute('style',fixed);
     }
   });
 
-  // 4. Save original inline styles we'll override
+  // 4. Also resolve CSS vars applied via computed styles on key elements
+  var computedFixes=[];
+  el.querySelectorAll('[style*="color"],[style*="background"],[style*="border"]').forEach(function(node){
+    var cs=getComputedStyle(node);
+    var pairs=[];
+    if(cs.color==='rgb(11, 11, 11)'||!node.style.color){}
+    ['borderLeftColor','borderColor'].forEach(function(p){
+      var v=cs[p];
+      if(v&&v.indexOf('var(')!==-1){pairs.push({prop:p,val:v})}
+    });
+  });
+
+  // 5. Save original inline styles
   var origStyle=el.getAttribute('style')||'';
 
   // Wait for SVG→img conversions
-  setTimeout(function(){
-    // 5. Force element to exact PDF width, left-aligned
+  function waitAndRender(){
+    if(svgPending>0){setTimeout(waitAndRender,100);return}
+
+    // 6. Force element to exact PDF width, left-aligned
     el.style.cssText='display:block;width:'+PDF_W+'px;max-width:'+PDF_W+'px;margin:0;padding:0;position:relative;left:0;box-sizing:border-box;overflow:hidden';
 
-    // 6. Inject PDF-specific styles
+    // 7. Force all 2-column grids to single column for PDF
+    var gridEls=[];
+    el.querySelectorAll('[style]').forEach(function(node){
+      var s=node.getAttribute('style')||'';
+      if(s.indexOf('grid-template-columns')!==-1&&s.indexOf('1fr 1fr')!==-1){
+        gridEls.push({node:node,orig:s});
+        node.style.gridTemplateColumns='1fr';
+      }
+    });
+
+    // 8. Inject PDF-specific styles
     var style=document.createElement('style');
     style.id='pdfBreaks';
     style.textContent=
-      '#plcResults,#plcResults *{box-sizing:border-box!important}'
+      '#plcResults,#plcResults *{box-sizing:border-box!important;overflow-wrap:break-word!important;word-wrap:break-word!important}'
       +' #plcResults{width:'+PDF_W+'px!important;max-width:'+PDF_W+'px!important;padding:0!important;margin:0!important;overflow:hidden!important}'
-      +' .plc-section{page-break-inside:avoid;break-inside:avoid;margin-bottom:4px!important;padding:12px 10px!important;border-radius:8px!important;overflow:hidden!important;max-width:100%!important}'
+      +' .plc-section{page-break-inside:avoid;break-inside:avoid;margin-bottom:6px!important;padding:16px 14px!important;border-radius:8px!important;overflow:hidden!important;max-width:100%!important}'
       +' #plcBrechasWrap{page-break-before:always}'
       +' #plcAiPlanWrap{page-break-before:always}'
       +' #plcCtaMentora{page-break-before:always}'
       +' #plcHallazgosWrap{page-break-before:always}'
-      +' #plcResults [style*="grid-template-columns"]{gap:8px!important;max-width:100%!important}'
-      +' #plcResults [style*="grid-template-columns"]>div{padding:10px!important;overflow:hidden!important;word-wrap:break-word!important;overflow-wrap:break-word!important}'
-      +' #plcResults [style*="display:flex"]{max-width:100%!important}'
-      +' #plcResults [style*="display: flex"]{max-width:100%!important}'
-      +' #plcResults p{max-width:100%!important;word-wrap:break-word!important;overflow-wrap:break-word!important}'
-      +' #plcResults h2,#plcResults h3{max-width:100%!important;word-wrap:break-word!important}'
+      +' #plcResults [style*="grid-template-columns"]{grid-template-columns:1fr!important;gap:10px!important;max-width:100%!important}'
+      +' #plcResults [style*="grid-template-columns"]>div{padding:14px!important;overflow:hidden!important;max-width:100%!important}'
+      +' #plcResults [style*="display:flex"]{max-width:100%!important;flex-wrap:wrap!important}'
+      +' #plcResults [style*="display: flex"]{max-width:100%!important;flex-wrap:wrap!important}'
+      +' #plcResults p{max-width:100%!important}'
+      +' #plcResults h2,#plcResults h3{max-width:100%!important}'
       +' #plcResults img{max-width:100%!important;height:auto!important}'
-      +' #plcAiPlanWrap table{width:100%!important;table-layout:fixed!important;font-size:9px!important;word-wrap:break-word!important}'
-      +' #plcAiPlanWrap th,#plcAiPlanWrap td{padding:5px 4px!important;word-wrap:break-word!important;overflow-wrap:break-word!important;overflow:hidden!important}'
-      +' #plcAiPlanWrap th:first-child,#plcAiPlanWrap td:first-child{width:22px!important}'
+      +' #plcAiPlanWrap table{width:100%!important;table-layout:fixed!important;font-size:10px!important}'
+      +' #plcAiPlanWrap th,#plcAiPlanWrap td{padding:6px 5px!important;overflow:hidden!important}'
+      +' #plcAiPlanWrap th:first-child,#plcAiPlanWrap td:first-child{width:24px!important}'
       +' #plcAiPlanWrap th:nth-child(2),#plcAiPlanWrap td:nth-child(2){width:auto!important}'
-      +' #plcAiPlanWrap th:nth-child(3),#plcAiPlanWrap td:nth-child(3){width:58px!important}'
-      +' #plcAiPlanWrap th:nth-child(4),#plcAiPlanWrap td:nth-child(4){width:62px!important}'
-      +' #plcAiPlanWrap th:nth-child(5),#plcAiPlanWrap td:nth-child(5){width:72px!important}'
+      +' #plcAiPlanWrap th:nth-child(3),#plcAiPlanWrap td:nth-child(3){width:65px!important}'
+      +' #plcAiPlanWrap th:nth-child(4),#plcAiPlanWrap td:nth-child(4){width:70px!important}'
+      +' #plcAiPlanWrap th:nth-child(5),#plcAiPlanWrap td:nth-child(5){width:80px!important}'
       +' table{page-break-inside:auto} tr{page-break-inside:avoid;break-inside:avoid}'
-      +' .plc-legend{font-size:8px!important;gap:6px!important}'
-      +' .plc-radar{margin:6px 0!important}'
+      +' .plc-legend{font-size:9px!important;gap:8px!important}'
+      +' .plc-radar{margin:8px 0!important}'
       +' #plcResults [style*="max-width:600px"],#plcResults [style*="max-width:520px"],#plcResults [style*="max-width: 600px"],#plcResults [style*="max-width: 520px"]{max-width:100%!important}'
       +' #plcResults [style*="max-width:56ch"]{max-width:100%!important}'
-      +' #plcResults .plc-section [style*="padding:30px"]{padding:12px 10px!important}'
-      +' #plcResults .plc-section [style*="padding:24px"]{padding:12px 10px!important}'
-      +' #plcResults .plc-section [style*="padding:32px"]{padding:14px 10px!important}'
-      +' #plcResults [style*="font-size:clamp"]{font-size:22px!important}';
+      +' #plcResults .plc-section [style*="padding:30px"]{padding:16px 14px!important}'
+      +' #plcResults .plc-section [style*="padding:24px"]{padding:16px 14px!important}'
+      +' #plcResults .plc-section [style*="padding:32px"]{padding:18px 14px!important}'
+      +' #plcResults [style*="font-size:clamp"]{font-size:24px!important}';
     document.head.appendChild(style);
 
     var nameEl=document.getElementById('plcResultName');
@@ -1300,7 +1337,7 @@ function descargarPDF(){
     var filename='Diagnostico-Liderazgo-'+clientName.replace(/\s+/g,'-')+'.pdf';
 
     html2pdf().set({
-      margin:[8,6,8,6],
+      margin:[10,8,10,8],
       filename:filename,
       image:{type:'jpeg',quality:0.95},
       html2canvas:{scale:2,useCORS:true,allowTaint:true,scrollX:0,scrollY:0,x:0,y:0,windowWidth:PDF_W,logging:false},
@@ -1315,9 +1352,11 @@ function descargarPDF(){
       hideIds.forEach(function(id){var h=document.getElementById(id);if(h)h.style.display=h.getAttribute('data-pdf-d')||''});
       svgSwaps.forEach(function(s){s.svg.style.display='';s.img.remove()});
       varFixEls.forEach(function(v){v.node.setAttribute('style',v.orig)});
+      gridEls.forEach(function(g){g.node.setAttribute('style',g.orig)});
       var s=document.getElementById('pdfBreaks');if(s)s.remove();
     });
-  },400);
+  }
+  waitAndRender();
 }
 
 function demoMode(){
