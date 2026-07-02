@@ -16,13 +16,13 @@
 /* HERO */
 .cm-hero{background:#0B0B0B;padding:120px 0 80px;position:relative;overflow:hidden}
 .cm-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(204,45,26,.12) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(124,58,237,.08) 0%,transparent 50%);pointer-events:none}
-.cm-hero .wrap{position:relative;text-align:center}
+.cm-hero .wrap{position:relative;text-align:center;max-width:800px}
 .cm-hero .eyebrow{color:var(--red);justify-content:center}
-.cm-hero h1{font-family:'Jost',sans-serif;font-weight:400;font-size:clamp(32px,4.5vw,56px);line-height:1.08;color:#fff;margin-top:20px}
+.cm-hero h1{font-family:'Jost',sans-serif;font-weight:400;font-size:clamp(34px,5vw,62px);line-height:1.06;color:#fff;margin:24px auto 0;max-width:16ch}
 .cm-hero h1 em{font-style:italic;color:var(--red)}
-.cm-hero p{color:rgba(255,255,255,.55);max-width:62ch;margin:20px auto 0;font-size:17px;line-height:1.7}
-.cm-hero-tags{display:flex;justify-content:center;gap:10px;margin-top:32px;flex-wrap:wrap}
-.cm-hero-tags span{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);transition:all .3s}
+.cm-hero-sub{color:rgba(255,255,255,.5);max-width:48ch;margin:22px auto 0;font-size:17px;line-height:1.65;font-weight:300}
+.cm-hero-tags{display:flex;justify-content:center;gap:10px;margin-top:28px;flex-wrap:wrap}
+.cm-hero-tags span{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:7px 16px;border-radius:50px;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);transition:all .3s}
 .cm-hero-tags span:hover{border-color:var(--red);color:var(--red)}
 
 /* STATS BAR */
@@ -77,8 +77,16 @@
 .cm-ai-chat-msg p{color:rgba(255,255,255,.75);margin:0}
 .cm-ai-chat-bot p strong{color:#38BDF8}
 .cm-ai-typing{border-right:2px solid #38BDF8;animation:typing-cursor .8s steps(1) infinite}
+.cm-ai-chat-source{opacity:0;animation:chat-fade-in .6s ease forwards;animation-delay:2.6s;display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:2px 0 0 18px}
+.cm-ai-chat-source svg{width:12px;height:12px;stroke:rgba(56,189,248,.5);fill:none;stroke-width:2}
 @keyframes chat-fade-in{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:translateY(0)}}
 @keyframes typing-cursor{50%{border-color:transparent}}
+/* Knowledge Sources */
+.cm-ai-sources{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.cm-ai-source{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:12px;color:rgba(255,255,255,.5);transition:all .3s}
+.cm-ai-source:hover{border-color:rgba(56,189,248,.3);color:rgba(255,255,255,.7)}
+.cm-ai-source b{color:rgba(56,189,248,.8);font-weight:700;font-family:'Jost',sans-serif;font-size:14px}
+.cm-ai-source svg{width:14px;height:14px;stroke:rgba(56,189,248,.5);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 /* Floating AI Agent */
 .cm-ai-agent{position:fixed;right:24px;bottom:100px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#38BDF8,#4F46E5);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:90;box-shadow:0 4px 20px rgba(56,189,248,.35);transition:all .3s;animation:ai-agent-glow 3s ease-in-out infinite}
 .cm-ai-agent:hover{transform:scale(1.12);box-shadow:0 8px 32px rgba(56,189,248,.5)}
@@ -271,14 +279,12 @@
 <section class="cm-hero">
   <div class="wrap">
     <span class="eyebrow">Comunidad · Red de Mentores</span>
-    <h1 class="serif">Conecta, crece y lidera con los mejores <em>mentores comerciales</em>.</h1>
-    <p>Una comunidad colaborativa donde líderes comerciales, mentores expertos e inteligencia artificial se integran para potenciar tu crecimiento. Club de líderes, mentoría 24/7 y foro estratégico en un solo lugar.</p>
+    <h1 class="serif">Tu próximo nivel no está en un curso. Está en una <em>conversación</em>.</h1>
+    <p class="cm-hero-sub">Mentores que ya estuvieron donde tú estás, IA comercial 24/7 y una comunidad que no te deja estancarte.</p>
     <div class="cm-hero-tags">
-      <span>Club de Líderes</span>
-      <span>Red de Mentores</span>
-      <span>Mentor IA 24/7</span>
-      <span>Foro Estratégico</span>
-      <span>Comunidad</span>
+      <span>Mentores Verificados</span>
+      <span>IA Comercial 24/7</span>
+      <span>Comunidad Exclusiva</span>
     </div>
   </div>
 </section>
@@ -290,55 +296,9 @@
       <div class="cm-stat"><b>+120</b><span>Mentores Activos</span></div>
       <div class="cm-stat"><b>+2,400</b><span>Líderes Conectados</span></div>
       <div class="cm-stat"><b>+8,500</b><span>Sesiones de Mentoría</span></div>
-      <div class="cm-stat"><b>24/7</b><span>Mentor IA Disponible</span></div>
-      <div class="cm-stat"><b>+350</b><span>Preguntas Resueltas</span></div>
     </div>
   </div>
 </div>
-
-<!-- ====== MENTOR IA 24/7 ====== -->
-<section class="cm-ai">
-  <div class="wrap">
-    <div class="cm-ai-grid">
-      <div class="cm-ai-icon">
-        <div class="cm-ai-pulse"></div>
-        <div class="cm-ai-pulse-2"></div>
-        <div class="cm-ai-orbit"></div>
-        <div class="cm-ai-orbit-2"></div>
-        <img src="assets/mentor-ia-icon.svg" alt="tumentorcomercial.ia — Cerebro + Robot">
-      </div>
-      <div class="cm-ai-text">
-        <span class="eyebrow" style="color:#38BDF8">tumentorcomercial.ia · 24/7</span>
-        <h2 class="serif">Tu mentor comercial <em>siempre disponible</em>.</h2>
-        <p>Un asistente de inteligencia artificial entrenado con las metodologías de Alquimia Comercial y el Método D.E.V.E.R., disponible las 24 horas para resolver tus dudas, guiarte en decisiones estratégicas y acelerar tu aprendizaje.</p>
-
-        <!-- Simulated AI Chat Interaction -->
-        <div class="cm-ai-chat">
-          <div class="cm-ai-chat-msg cm-ai-chat-user">
-            <span class="cm-ai-chat-label">Tú</span>
-            <p>¿Cómo puedo mejorar mi tasa de cierre en ventas B2B?</p>
-          </div>
-          <div class="cm-ai-chat-msg cm-ai-chat-bot">
-            <span class="cm-ai-chat-label">tumentorcomercial.ia</span>
-            <p class="cm-ai-typing">Según el Método D.E.V.E.R., el cierre comienza en la fase de <strong>Descubrimiento</strong>. Te recomiendo 3 pasos...</p>
-          </div>
-        </div>
-
-        <div class="cm-ai-features">
-          <div class="cm-ai-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Respuestas estratégicas basadas en metodología probada</div>
-          <div class="cm-ai-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Diagnósticos comerciales en tiempo real</div>
-          <div class="cm-ai-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Planes de acción personalizados para tu negocio</div>
-          <div class="cm-ai-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Disponible 24/7 — sin esperas ni agendas</div>
-        </div>
-        <a href="#" class="cm-ai-cta">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          <span>Hablar con tumentorcomercial.ia</span>
-        </a>
-        <div class="cm-ai-cta-badge"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Exclusivo Miembros</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ====== CLUB DE LÍDERES ====== -->
 <section class="cm-club">
@@ -366,6 +326,60 @@
         <h4>Mentoría entre Pares</h4>
         <p>Grupos de mentoría cruzada donde los líderes se convierten en mentores de otros líderes en crecimiento.</p>
         <span class="cm-club-badge">Comunidad activa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== MENTOR IA 24/7 ====== -->
+<section class="cm-ai">
+  <div class="wrap">
+    <div class="cm-ai-grid">
+      <div class="cm-ai-icon">
+        <div class="cm-ai-pulse"></div>
+        <div class="cm-ai-pulse-2"></div>
+        <div class="cm-ai-orbit"></div>
+        <div class="cm-ai-orbit-2"></div>
+        <img src="assets/mentor-ia-icon.svg" alt="tumentorcomercial.ia — Cerebro + Robot">
+      </div>
+      <div class="cm-ai-text">
+        <span class="eyebrow" style="color:#38BDF8">tumentorcomercial.ia · 24/7</span>
+        <h2 class="serif">La experiencia de 120 mentores en una sola <em>conversación</em>.</h2>
+        <p>No es un chatbot. Es la inteligencia colectiva de nuestra comunidad: miles de sesiones reales, metodologías probadas en campo y el conocimiento acumulado de mentores que ya resolvieron lo que tú enfrentas hoy.</p>
+
+        <!-- Knowledge Sources -->
+        <div class="cm-ai-sources">
+          <div class="cm-ai-source"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><b>3</b> Metodologías</div>
+          <div class="cm-ai-source"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><b>120+</b> Mentores</div>
+          <div class="cm-ai-source"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><b>8,500+</b> Sesiones</div>
+        </div>
+
+        <!-- Simulated AI Chat Interaction -->
+        <div class="cm-ai-chat">
+          <div class="cm-ai-chat-msg cm-ai-chat-user">
+            <span class="cm-ai-chat-label">Tú</span>
+            <p>Mi equipo cerró 78% este trimestre pero perdemos los deals grandes. ¿Qué hago diferente?</p>
+          </div>
+          <div class="cm-ai-chat-msg cm-ai-chat-bot">
+            <span class="cm-ai-chat-label">tumentorcomercial.ia</span>
+            <p class="cm-ai-typing">En el 82% de los casos que analicé, la pérdida de deals grandes viene de la fase de <strong>Descubrimiento</strong> — no del cierre. Tu equipo probablemente está calificando con criterios de volumen, no de complejidad. Te sugiero aplicar el <strong>Framework DEVER-Enterprise</strong> en 3 pasos...</p>
+          </div>
+          <div class="cm-ai-chat-source">
+            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Fuente: Método D.E.V.E.R. · 360PathFinder® · 847 casos similares
+          </div>
+        </div>
+
+        <div class="cm-ai-features">
+          <div class="cm-ai-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Diagnósticos basados en datos reales de la comunidad</div>
+          <div class="cm-ai-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Frameworks accionables: D.E.V.E.R., 360PathFinder®, Alquimia</div>
+          <div class="cm-ai-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Aprende de +8,500 sesiones de mentoría real — no teoría</div>
+        </div>
+        <a href="#" class="cm-ai-cta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span>Hablar con tumentorcomercial.ia</span>
+        </a>
+        <div class="cm-ai-cta-badge"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Exclusivo Miembros</div>
       </div>
     </div>
   </div>
