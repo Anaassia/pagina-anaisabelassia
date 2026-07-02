@@ -156,7 +156,25 @@
       "mcp__visualize__show_widget",
       "PowerShell(\\(Get-Command node -ErrorAction SilentlyContinue\\).Source; \\(Get-Command node.exe -ErrorAction SilentlyContinue\\).Source; where.exe node 2>$null)",
       "PowerShell($env:Path -split ';' | Where-Object { $_ -match 'node|nvm' })",
-      "PowerShell(Get-ChildItem \"C:\\\\Program Files\\\\nodejs\" -ErrorAction SilentlyContinue; Get-ChildItem \"$env:LOCALAPPDATA\\\\Programs\" -ErrorAction SilentlyContinue | Select-Object Name)"
+      "PowerShell(Get-ChildItem \"C:\\\\Program Files\\\\nodejs\" -ErrorAction SilentlyContinue; Get-ChildItem \"$env:LOCALAPPDATA\\\\Programs\" -ErrorAction SilentlyContinue | Select-Object Name)",
+      "Bash(base64 -w0 \"assets/procesos.png\")",
+      "Bash(base64 -w0 \"assets/personas.png\")",
+      "Bash(base64 -w0 \"assets/perfil.png\")",
+      "Bash(curl -s -H 'Content-Type: text/xml' -d '<?xml version=\"1.0\"?> *)",
+      "Bash(python /tmp/upload_odoo_image.py \"assets/personas.png\")",
+      "Bash(python /tmp/upload_odoo_image.py \"assets/procesos.png\")",
+      "Bash(python /tmp/upload_odoo_image.py \"assets/perfil.png\")",
+      "PowerShell(node --version)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{size_download}\" \"https://anaisabelassia.com/web/image/8949-6fa8f7f8/personas.png\")",
+      "Bash(curl -s -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmOTBlZmE2ZC1kNzE3LTQ4OWQtYjA3MS1iNjc3NjIxOWM3NDUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzczMDk3OTA4fQ.XIIeajoKimLjDgdo7zqaD3ctsBDXI0nTqvnPBjxLPGs' https://automations.anaisabelassia.com/api/v1/workflows/Rdmcu4fYvxJyUm2B)",
+      "Read(//tmp/**)",
+      "Bash(SCRATCHPAD=\"C:/Users/aassi/AppData/Local/Temp/claude/C--Users-aassi-Documents-PAGINA-ANA-ASSIA/3cfa1de4-7d43-40c6-825e-4f9e631e0857/scratchpad\" *)",
+      "Bash(ls -la /tmp/workflow.json)",
+      "Bash(ls -la /tmp/workflow_updated.json 2>/dev/null || echo \"not ready yet\")",
+      "Bash(grep -o '.\\\\{0,60\\\\}anaisabelassia.com/assets/.\\\\{0,60\\\\}' /tmp/workflow.json)",
+      "Bash(curl -s -X PUT -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmOTBlZmE2ZC1kNzE3LTQ4OWQtYjA3MS1iNjc3NjIxOWM3NDUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzczMDk3OTA4fQ.XIIeajoKimLjDgdo7zqaD3ctsBDXI0nTqvnPBjxLPGs' -H 'Content-Type: application/json' -d @/tmp/workflow_updated.json https://automations.anaisabelassia.com/api/v1/workflows/Rdmcu4fYvxJyUm2B)",
+      "Bash(# Remove the unwanted top-level fields *)",
+      "Bash(curl -s -H \"X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmOTBlZmE2ZC1kNzE3LTQ4OWQtYjA3MS1iNjc3NjIxOWM3NDUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzczMDk3OTA4fQ.XIIeajoKimLjDgdo7zqaD3ctsBDXI0nTqvnPBjxLPGs\" \"https://automations.anaisabelassia.com/api/v1/workflows/Rdmcu4fYvxJyUm2B\")"
     ]
   }
 }
