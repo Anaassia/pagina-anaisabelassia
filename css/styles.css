@@ -415,11 +415,11 @@ section{position:relative}
 
 /* ============ PROGRAMAS ============ */
 .programas-section{background:var(--smoke)}
-.prog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .prog-card{background:#fff;border-radius:14px;padding:36px 32px 28px;border:1px solid rgba(0,0,0,.06);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .prog-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,.08)}
-.prog-card-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--red),#c00);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
-.prog-card-icon svg{width:22px;height:22px;stroke:#fff}
+.prog-card-icon{width:52px;height:52px;margin-bottom:18px}
+.prog-card-icon img{width:100%;height:100%;object-fit:contain}
 .prog-card h4{font-family:'Jost',sans-serif;font-size:22px;font-weight:600;margin-bottom:10px;color:var(--ink)}
 .prog-card p{font-size:15px;line-height:1.65;color:rgba(11,11,11,.7);margin-bottom:16px}
 .prog-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}

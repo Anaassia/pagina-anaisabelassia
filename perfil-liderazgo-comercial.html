@@ -88,7 +88,6 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red);background:#fff
           <a href="liderazgo-comercial.html">Liderazgo Comercial</a>
           <a href="blog.html">Productividad Comercial</a>
           <a href="blog.html">Ventas Rentables</a>
-          <a href="blog.html">Equipos Empoderados</a>
         </div>
       </div>
       <div class="dropdown">
@@ -1193,7 +1192,7 @@ function calcPLC(e){
 function descargarPDF(){
   var el=document.getElementById('plcResults');
   if(!el)return;
-  var PDF_W=960;
+  var PDF_W=780;
 
   // -- Save/restore registry --
   var mods=[];
@@ -1291,7 +1290,7 @@ function descargarPDF(){
     if(svgPending>0){setTimeout(waitAndRender,100);return}
 
     // 4. Force container width
-    el.style.cssText='display:block;width:'+PDF_W+'px;max-width:'+PDF_W+'px;margin:0;padding:0;box-sizing:border-box;overflow:visible';
+    el.style.cssText='display:block;width:'+PDF_W+'px;max-width:'+PDF_W+'px;margin:0 auto;padding:0;box-sizing:border-box;overflow:hidden';
 
     // 5. KEY FIX: html2canvas clones the DOM via cloneNode. When using
     //    node.style.display='block', grid-template-columns STAYS in the
@@ -1376,7 +1375,7 @@ function descargarPDF(){
     var filename='Diagnostico-Liderazgo-'+clientName.replace(/\s+/g,'-')+'.pdf';
 
     html2pdf().set({
-      margin:[10,10,10,10],
+      margin:[10,15,10,15],
       filename:filename,
       image:{type:'jpeg',quality:0.95},
       html2canvas:{scale:2,useCORS:true,allowTaint:true,scrollX:0,scrollY:0,x:0,y:0,windowWidth:PDF_W,logging:false},

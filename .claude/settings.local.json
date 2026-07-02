@@ -190,7 +190,13 @@
       "mcp__02fd6016-2110-4be5-adce-65fb9600303a__start-editing-transaction",
       "mcp__02fd6016-2110-4be5-adce-65fb9600303a__perform-editing-operations",
       "mcp__02fd6016-2110-4be5-adce-65fb9600303a__commit-editing-transaction",
-      "mcp__02fd6016-2110-4be5-adce-65fb9600303a__export-design"
+      "mcp__02fd6016-2110-4be5-adce-65fb9600303a__export-design",
+      "mcp__claude-in-chrome__read_console_messages",
+      "PowerShell(Start-Process \"C:\\\\Program Files \\(x86\\)\\\\Foxit Software\\\\Foxit PDF Reader\\\\FoxitPDFReader.exe\" -ArgumentList \"`\"$env:USERPROFILE\\\\Downloads\\\\Diagnostico-Liderazgo-TEST-WEBHOOK \\(1\\).pdf`\"\")",
+      "PowerShell(Stop-Process -Name \"FoxitPDFReader\" -Force -ErrorAction SilentlyContinue)",
+      "PowerShell(Copy-Item \"$env:USERPROFILE\\\\Downloads\\\\Diagnostico-Liderazgo-TEST-WEBHOOK \\(1\\).pdf\" -Destination \"C:\\\\Users\\\\aassi\\\\Documents\\\\PAGINA ANA ASSIA\\\\test-pdf-output.pdf\")",
+      "mcp__claude-in-chrome__tabs_create_mcp",
+      "PowerShell(Start-Process \"$env:USERPROFILE\\\\Downloads\\\\Diagnostico-Liderazgo-TEST-WEBHOOK \\(1\\).pdf\")"
     ]
   }
 }
