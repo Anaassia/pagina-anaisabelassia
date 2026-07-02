@@ -196,7 +196,12 @@
       "PowerShell(Stop-Process -Name \"FoxitPDFReader\" -Force -ErrorAction SilentlyContinue)",
       "PowerShell(Copy-Item \"$env:USERPROFILE\\\\Downloads\\\\Diagnostico-Liderazgo-TEST-WEBHOOK \\(1\\).pdf\" -Destination \"C:\\\\Users\\\\aassi\\\\Documents\\\\PAGINA ANA ASSIA\\\\test-pdf-output.pdf\")",
       "mcp__claude-in-chrome__tabs_create_mcp",
-      "PowerShell(Start-Process \"$env:USERPROFILE\\\\Downloads\\\\Diagnostico-Liderazgo-TEST-WEBHOOK \\(1\\).pdf\")"
+      "PowerShell(Start-Process \"$env:USERPROFILE\\\\Downloads\\\\Diagnostico-Liderazgo-TEST-WEBHOOK \\(1\\).pdf\")",
+      "WebFetch(domain:www.tejaditos.com)",
+      "WebFetch(domain:logos.fandom.com)",
+      "WebFetch(domain:seeklogo.com)",
+      "WebFetch(domain:clinicaintegrativaacm.com)",
+      "WebFetch(domain:www.unilab.com.ph)"
     ]
   }
 }
