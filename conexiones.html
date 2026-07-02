@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Red de Conexiones · TuMentorComercial | Ana Isabel Assia</title>
+<meta name="description" content="Encuentra mentores y líderes comerciales verificados. Conecta, aprende y crece con la red profesional de TuMentorComercial." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+/* ====== RED DE CONEXIONES ====== */
+:root{--gold:#F59E0B;--gold-dark:#D97706;--emerald:#10B981;--violet:#7C3AED;--slate:#64748B}
+
+/* HERO + SEARCH */
+.cx-hero{background:#0B0B0B;padding:120px 0 0;position:relative;overflow:hidden}
+.cx-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 30%,rgba(204,45,26,.15) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(124,58,237,.1) 0%,transparent 50%);pointer-events:none}
+.cx-hero .wrap{position:relative;text-align:center}
+.cx-hero .eyebrow{color:var(--red);justify-content:center}
+.cx-hero h1{font-family:'Jost',sans-serif;font-weight:400;font-size:clamp(30px,4vw,52px);line-height:1.1;color:#fff;margin-top:20px}
+.cx-hero h1 em{font-style:italic;color:var(--red)}
+.cx-hero p{color:rgba(255,255,255,.5);max-width:58ch;margin:18px auto 0;font-size:16px;line-height:1.7}
+
+/* SEARCH BAR — Booking style */
+.cx-search{background:#111;border-top:1px solid rgba(255,255,255,.06);padding:0 0 0}
+.cx-search-bar{display:flex;background:#1a1a1a;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;max-width:1000px;margin:-28px auto 0;position:relative;z-index:2;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.cx-search-field{flex:1;padding:20px 24px;border-right:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;gap:4px;cursor:pointer;transition:background .2s}
+.cx-search-field:hover{background:rgba(255,255,255,.04)}
+.cx-search-field:last-of-type{border-right:none}
+.cx-search-field label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.cx-search-field select,.cx-search-field input{background:transparent;border:none;color:#fff;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;outline:none;cursor:pointer;padding:0;width:100%;appearance:none;-webkit-appearance:none}
+.cx-search-field select option{background:#1a1a1a;color:#fff}
+.cx-search-btn{background:var(--red);color:#fff;border:none;padding:20px 32px;font-size:15px;font-weight:600;cursor:pointer;transition:all .3s;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.cx-search-btn:hover{background:var(--red-deep, #a82315)}
+.cx-search-btn svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* TRUST BAR */
+.cx-trust{background:#111;padding:28px 0 40px;border-bottom:1px solid rgba(255,255,255,.06)}
+.cx-trust-row{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:20px}
+.cx-trust-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.45);font-size:13px}
+.cx-trust-item svg{width:18px;height:18px;stroke:var(--emerald);fill:none;stroke-width:2}
+
+/* SECTION TABS */
+.cx-tabs{padding:60px 0 0;background:var(--smoke, #F5F4F2)}
+.cx-tab-nav{display:flex;justify-content:center;gap:8px;margin-bottom:48px}
+.cx-tab-btn{padding:14px 28px;border-radius:50px;border:1px solid var(--line);background:#fff;font-size:14px;font-weight:600;cursor:pointer;transition:all .3s;color:var(--ink);display:flex;align-items:center;gap:8px}
+.cx-tab-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cx-tab-btn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cx-tab-btn.active svg{stroke:#fff}
+.cx-tab-panel{display:none}
+.cx-tab-panel.active{display:block}
+
+/* PROFILE CARDS */
+.cx-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;padding-bottom:80px}
+.cx-card{background:#fff;border-radius:20px;border:1px solid var(--line);overflow:hidden;transition:all .45s var(--ease);position:relative}
+.cx-card:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(0,0,0,.1)}
+.cx-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),var(--gold));opacity:0;transition:opacity .3s}
+.cx-card:hover::before{opacity:1}
+
+/* Card header */
+.cx-card-head{display:flex;gap:20px;padding:28px 28px 0;align-items:flex-start}
+.cx-card-avatar{width:80px;height:80px;border-radius:50%;border:3px solid var(--red);overflow:hidden;background:var(--smoke);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cx-card-avatar svg{width:40px;height:40px;stroke:var(--ash);fill:none;stroke-width:1.5}
+.cx-card-info{flex:1}
+.cx-card-info h3{font-family:'Jost',sans-serif;font-size:20px;font-weight:600;color:var(--ink);line-height:1.2}
+.cx-card-role{font-size:13px;color:var(--ash);margin-top:2px;line-height:1.4}
+.cx-card-loc{font-size:12px;color:var(--ash);margin-top:6px;display:flex;align-items:center;gap:4px}
+.cx-card-loc svg{width:13px;height:13px;stroke:var(--red);fill:none;stroke-width:2}
+.cx-card-verified{display:inline-flex;align-items:center;gap:4px;margin-top:6px;font-size:11px;font-weight:600;color:var(--emerald);letter-spacing:.03em}
+.cx-card-verified svg{width:14px;height:14px;fill:var(--emerald)}
+
+/* Stats row */
+.cx-card-stats{display:flex;gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:20px 0 0}
+.cx-card-stat{flex:1;padding:14px 0;text-align:center;border-right:1px solid var(--line)}
+.cx-card-stat:last-child{border-right:none}
+.cx-card-stat b{font-family:'Jost',sans-serif;font-size:20px;font-weight:700;color:var(--red);display:block}
+.cx-card-stat span{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--ash);line-height:1.2;display:block;margin-top:2px}
+
+/* Quote */
+.cx-card-quote{padding:20px 28px;font-size:14px;font-style:italic;color:var(--ink);line-height:1.6;position:relative;border-bottom:1px solid var(--line)}
+.cx-card-quote::before{content:'\201C';font-family:'Jost',sans-serif;font-size:48px;color:rgba(204,45,26,.15);position:absolute;top:6px;left:20px;line-height:1}
+
+/* Tags */
+.cx-card-tags{display:flex;flex-wrap:wrap;gap:6px;padding:16px 28px}
+.cx-card-tag{font-size:11px;font-weight:500;padding:5px 12px;border-radius:50px;background:rgba(204,45,26,.06);color:var(--red);border:1px solid rgba(204,45,26,.1)}
+
+/* Sectors */
+.cx-card-sectors{padding:0 28px 16px;font-size:12px;color:var(--ash);display:flex;align-items:center;gap:6px}
+.cx-card-sectors svg{width:14px;height:14px;stroke:var(--slate);fill:none;stroke-width:2;flex-shrink:0}
+
+/* Rating */
+.cx-card-rating{display:flex;align-items:center;gap:6px;padding:0 28px 16px}
+.cx-card-rating .stars{display:flex;gap:1px}
+.cx-card-rating .stars svg{width:15px;height:15px;fill:var(--gold);stroke:none}
+.cx-card-rating .score{font-family:'Jost',sans-serif;font-size:14px;font-weight:700;color:var(--gold-dark)}
+.cx-card-rating .count{font-size:11px;color:var(--ash)}
+
+/* Actions */
+.cx-card-actions{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.cx-card-actions a{padding:16px;text-align:center;font-size:14px;font-weight:600;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:6px}
+.cx-card-actions a svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cx-card-actions .btn-profile{border-right:1px solid var(--line);color:var(--ink);background:#fff}
+.cx-card-actions .btn-profile:hover{background:var(--smoke)}
+.cx-card-actions .btn-mentoria{color:#fff;background:var(--red)}
+.cx-card-actions .btn-mentoria:hover{background:var(--red-deep, #a82315)}
+
+/* MONETIZATION CTA */
+.cx-monetize{padding:80px 0;background:#0B0B0B;text-align:center;position:relative;overflow:hidden}
+.cx-monetize::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(204,45,26,.08) 0%,transparent 60%);pointer-events:none}
+.cx-monetize .wrap{position:relative}
+.cx-monetize h2{font-family:'Jost',sans-serif;font-weight:400;font-size:clamp(26px,3.2vw,40px);color:#fff;line-height:1.12}
+.cx-monetize h2 em{color:var(--red);font-style:italic}
+.cx-monetize p{color:rgba(255,255,255,.45);margin:16px auto 0;max-width:52ch;font-size:15px;line-height:1.7}
+.cx-monetize-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;text-align:left}
+.cx-monetize-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px 24px;transition:all .3s}
+.cx-monetize-card:hover{border-color:rgba(204,45,26,.3);background:rgba(255,255,255,.06)}
+.cx-monetize-card h4{font-family:'Jost',sans-serif;font-size:17px;font-weight:600;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.cx-monetize-card h4 svg{width:20px;height:20px;stroke:var(--red);fill:none;stroke-width:2}
+.cx-monetize-card p{color:rgba(255,255,255,.4);font-size:13px;line-height:1.6;margin:0;max-width:none}
+.cx-monetize-btns{display:flex;justify-content:center;gap:16px;margin-top:40px;flex-wrap:wrap}
+.cx-monetize-btns a{padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px;transition:all .3s}
+.cx-monetize-btns .btn-primary{background:var(--red);color:#fff}
+.cx-monetize-btns .btn-primary:hover{background:var(--red-deep, #a82315);transform:translateY(-2px)}
+.cx-monetize-btns .btn-outline{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7)}
+.cx-monetize-btns .btn-outline:hover{border-color:var(--red);color:var(--red)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .cx-search-bar{flex-direction:column;border-radius:12px}
+  .cx-search-field{border-right:none;border-bottom:1px solid rgba(255,255,255,.06);padding:16px 20px}
+  .cx-search-btn{justify-content:center;padding:16px}
+  .cx-grid{grid-template-columns:1fr}
+  .cx-monetize-grid{grid-template-columns:1fr}
+  .cx-trust-row{gap:20px}
+}
+@media(max-width:600px){
+  .cx-hero h1{font-size:26px}
+  .cx-card-head{flex-direction:column;align-items:center;text-align:center}
+  .cx-card-loc{justify-content:center}
+  .cx-card-verified{justify-content:center}
+  .cx-tab-nav{flex-direction:column;align-items:stretch}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-blanco.png" alt="Ana Isabel Assia — Líder de Transformación" class="logo logo-white">
+      <img src="assets/logo-negro.png" alt="Ana Isabel Assia — Líder de Transformación" class="logo logo-color">
+    </a>
+    <nav class="menu" id="menu">
+      <a href="index.html">Inicio</a>
+      <a href="sobre-mi.html">Sobre mí</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="ruta-de-innovacion.html">Ruta de Innovación</a>
+      <div class="dropdown">
+        <a href="liderazgo-comercial.html">Alquimia Comercial <svg class="chevron" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></a>
+        <div class="dropdown-menu">
+          <a href="liderazgo-comercial.html">Liderazgo Comercial</a>
+          <a href="blog.html">Productividad Comercial</a>
+          <a href="blog.html">Ventas Rentables</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#">Tools <svg class="chevron" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></a>
+        <div class="dropdown-menu">
+          <a href="360pathfinder.html">360PathFinder®</a>
+          <a href="perfil-liderazgo-comercial.html">Perfil Liderazgo Comercial</a>
+        </div>
+      </div>
+    </nav>
+    <a href="comunidad.html" class="nav-cta"><svg class="nav-cta-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Únete a la Comunidad</a>
+    <button class="burger" id="burger" aria-label="Menú"><span></span></button>
+  </div>
+</header>
+
+<!-- ====== HERO + SMART SEARCH ====== -->
+<section class="cx-hero">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">TuMentorComercial · Red de Conexiones</span>
+      <h1>Encuentra al profesional que <em>acelera</em> tu siguiente nivel.</h1>
+      <p>Conecta con mentores y líderes comerciales verificados. Filtra por especialidad, sector o ubicación y agenda una sesión en minutos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SMART SEARCH BAR -->
+<div class="cx-search">
+  <div class="wrap">
+    <div class="cx-search-bar" id="searchBar">
+      <div class="cx-search-field">
+        <label>Especialidad</label>
+        <select id="fEspecialidad">
+          <option value="">Todas las especialidades</option>
+          <option>Estrategia Comercial</option>
+          <option>Transformación Digital</option>
+          <option>Gestión Financiera</option>
+          <option>Innovación</option>
+          <option>Liderazgo</option>
+          <option>Ventas B2B</option>
+          <option>Modelos de Negocio</option>
+          <option>Analítica de Datos</option>
+        </select>
+      </div>
+      <div class="cx-search-field">
+        <label>Sector</label>
+        <select id="fSector">
+          <option value="">Todos los sectores</option>
+          <option>Alimentos</option>
+          <option>Tecnología</option>
+          <option>Salud</option>
+          <option>Servicios</option>
+          <option>Manufactura</option>
+          <option>E-commerce</option>
+          <option>Distribución</option>
+          <option>Agroindustria</option>
+        </select>
+      </div>
+      <div class="cx-search-field">
+        <label>Ubicación</label>
+        <select id="fUbicacion">
+          <option value="">Cualquier ubicación</option>
+          <option>Bogotá</option>
+          <option>Medellín</option>
+          <option>Cali</option>
+          <option>Ciudad de México</option>
+          <option>LATAM remoto</option>
+        </select>
+      </div>
+      <div class="cx-search-field">
+        <label>Disponibilidad</label>
+        <select id="fDisponibilidad">
+          <option value="">Cualquier horario</option>
+          <option>Esta semana</option>
+          <option>Próximos 7 días</option>
+          <option>Solo fines de semana</option>
+          <option>Horario flexible</option>
+        </select>
+      </div>
+      <button class="cx-search-btn" id="searchBtn">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Buscar
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="cx-trust">
+  <div class="wrap">
+    <div class="cx-trust-row">
+      <div class="cx-trust-item">
+        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        Perfiles verificados
+      </div>
+      <div class="cx-trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Transacciones seguras
+      </div>
+      <div class="cx-trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Calificación por la comunidad
+      </div>
+      <div class="cx-trust-item">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Agenda en minutos
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== PROFILES ====== -->
+<section class="cx-tabs">
+  <div class="wrap">
+
+    <!-- Tab navigation -->
+    <div class="cx-tab-nav">
+      <button class="cx-tab-btn active" data-tab="mentores">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Mentores Estratégicos
+      </button>
+      <button class="cx-tab-btn" data-tab="lideres">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Líderes Comerciales
+      </button>
+    </div>
+
+    <!-- TAB: Mentores -->
+    <div class="cx-tab-panel active" id="tab-mentores">
+      <div class="cx-grid">
+
+        <!-- PERFIL 1: Ana Isabel Assia -->
+        <div class="cx-card reveal" data-especialidad="Estrategia Comercial,Innovación,Liderazgo,Modelos de Negocio" data-sector="Salud,Alimentos,Tecnología,E-commerce,Distribución" data-ubicacion="Cali">
+          <div class="cx-card-head">
+            <div class="cx-card-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div class="cx-card-info">
+              <h3>Ana Isabel Assia</h3>
+              <div class="cx-card-role">Consultora · Estratega · Mentora de Líderes de Negocios</div>
+              <div class="cx-card-loc"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cali, Colombia</div>
+              <div class="cx-card-verified"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>Consultora Master Verificada</div>
+            </div>
+          </div>
+          <div class="cx-card-stats">
+            <div class="cx-card-stat"><b>+30</b><span>Años experiencia</span></div>
+            <div class="cx-card-stat"><b>+10</b><span>Años consultoría</span></div>
+            <div class="cx-card-stat"><b>10+</b><span>Sectores</span></div>
+          </div>
+          <div class="cx-card-quote">Te desafío a lograr victorias tempranas. Impulso a líderes y equipos a crecer rentable y productivo desde una visión sistémica.</div>
+          <div class="cx-card-tags">
+            <span class="cx-card-tag">Innovación Estratégica</span>
+            <span class="cx-card-tag">Transformación Digital</span>
+            <span class="cx-card-tag">Gestión Comercial Phygital</span>
+            <span class="cx-card-tag">Modelos de Negocio</span>
+            <span class="cx-card-tag">Agilidad Empresarial</span>
+          </div>
+          <div class="cx-card-sectors">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            Salud · Alimentos · Automotriz · Tecnología · Textil · Cosmética · E-commerce
+          </div>
+          <div class="cx-card-rating">
+            <span class="score">4.9</span>
+            <span class="stars"><svg viewBox="0 0 20 20"><path d="M10 1l2.47 5.01L18 6.93l-4 3.9.94 5.5L10 13.77l-4.94 2.56.94-5.5-4-3.9 5.53-.92z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1l2.47 5.01L18 6.93l-4 3.9.94 5.5L10 13.77l-4.94 2.56.94-5.5-4-3.9 5.53-.92z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1l2.47 5.01L18 6.93l-4 3.9.94 5.5L10 13.77l-4.94 2.56.94-5.5-4-3.9 5.53-.92z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1l2.47 5.01L18 6.93l-4 3.9.94 5.5L10 13.77l-4.94 2.56.94-5.5-4-3.9 5.53-.92z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1l2.47 5.01L18 6.93l-4 3.9.94 5.5L10 13.77l-4.94 2.56.94-5.5-4-3.9 5.53-.92z"/></svg></span>
+            <span class="count">(247 sesiones)</span>
+          </div>
+          <div class="cx-card-actions">
+            <a href="#" class="btn-profile"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Ver perfil</a>
+            <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-mentoria"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Quiero una mentoría</a>
+          </div>
+        </div>
+
+        <!-- PERFIL 2: Andrés Saúl Díaz -->
+        <div class="cx-card reveal" data-especialidad="Gestión Financiera,Transformación Digital,Analítica de Datos" data-sector="Alimentos,Servicios,Manufactura,Distribución,Agroindustria" data-ubicacion="Cali">
+          <div class="cx-card-head">
+            <div class="cx-card-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div class="cx-card-info">
+              <h3>Andrés Saúl Díaz</h3>
+              <div class="cx-card-role">Consultor Contable y Financiero · Especialista ERP / BI</div>
+              <div class="cx-card-loc"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cali, Colombia</div>
+              <div class="cx-card-verified"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>Consultor Verificado</div>
+            </div>
+          </div>
+          <div class="cx-card-stats">
+            <div class="cx-card-stat"><b>+20</b><span>Años experiencia</span></div>
+            <div class="cx-card-stat"><b>+100</b><span>Mipymes transformadas</span></div>
+            <div class="cx-card-stat"><b>5</b><span>Especialidades</span></div>
+          </div>
+          <div class="cx-card-quote">Los datos son el activo más subutilizado de su empresa. Convierto la complejidad financiera en decisiones claras.</div>
+          <div class="cx-card-tags">
+            <span class="cx-card-tag">Diagnóstico Corporativo</span>
+            <span class="cx-card-tag">Planeación Financiera</span>
+            <span class="cx-card-tag">Asesoría Tributaria</span>
+            <span class="cx-card-tag">ERP SaaS</span>
+            <span class="cx-card-tag">Analítica de Datos</span>
+          </div>
+          <div class="cx-card-sectors">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            Alimentos · Economía Solidaria · Servicios · Manufactura · Distribución · Agroindustria
+          </div>
+          <div class="cx-card-rating">
+            <span class="score">4.8</span>
+            <span class="stars"><svg viewBox="0 0 20 20"><path d="M10 1l2.47 5.01L18 6.93l-4 3.9.94 5.5L10 13.77l-4.94 2.56.94-5.5-4-3.9 5.53-.92z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1l2.47 5.01L18 6.93l-4 3.9.94 5.5L10 13.77l-4.94 2.56.94-5.5-4-3.9 5.53-.92z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1l2.47 5.01L18 6.93l-4 3.9.94 5.5L10 13.77l-4.94 2.56.94-5.5-4-3.9 5.53-.92z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1l2.47 5.01L18 6.93l-4 3.9.94 5.5L10 13.77l-4.94 2.56.94-5.5-4-3.9 5.53-.92z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1l2.47 5.01L18 6.93l-4 3.9.94 5.5L10 13.77l-4.94 2.56.94-5.5-4-3.9 5.53-.92z"/></svg></span>
+            <span class="count">(183 sesiones)</span>
+          </div>
+          <div class="cx-card-actions">
+            <a href="#" class="btn-profile"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Ver perfil</a>
+            <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-mentoria"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Quiero una mentoría</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB: Líderes Comerciales -->
+    <div class="cx-tab-panel" id="tab-lideres">
+      <div class="cx-grid">
+        <div class="cx-card reveal" style="display:flex;align-items:center;justify-content:center;min-height:320px;border-style:dashed;background:var(--smoke)">
+          <div style="text-align:center;padding:40px">
+            <svg viewBox="0 0 24 24" style="width:48px;height:48px;stroke:var(--ash);fill:none;stroke-width:1.5;margin-bottom:16px"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+            <h4 style="font-family:'Jost',sans-serif;font-size:18px;font-weight:600;color:var(--ink);margin-bottom:8px">¿Eres líder comercial?</h4>
+            <p style="font-size:14px;color:var(--ash);max-width:32ch;margin:0 auto 20px;line-height:1.6">Conecta con mentores, comparte tus desafíos y accede a la red de crecimiento colaborativo.</p>
+            <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" style="display:inline-block;padding:12px 24px;background:var(--red);color:#fff;border-radius:8px;font-size:14px;font-weight:600;transition:all .3s">Postula tu perfil</a>
+          </div>
+        </div>
+        <div class="cx-card reveal" style="display:flex;align-items:center;justify-content:center;min-height:320px;border-style:dashed;background:var(--smoke)">
+          <div style="text-align:center;padding:40px">
+            <svg viewBox="0 0 24 24" style="width:48px;height:48px;stroke:var(--ash);fill:none;stroke-width:1.5;margin-bottom:16px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <h4 style="font-family:'Jost',sans-serif;font-size:18px;font-weight:600;color:var(--ink);margin-bottom:8px">Próximamente</h4>
+            <p style="font-size:14px;color:var(--ash);max-width:32ch;margin:0 auto;line-height:1.6">Nuevos líderes comerciales se están uniendo a la red. Vuelve pronto para descubrir nuevos perfiles.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====== MONETIZATION MODEL ====== -->
+<section class="cx-monetize">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow" style="color:var(--red);justify-content:center">Modelo Colaborativo</span>
+      <h2>Una red que <em>crece</em> con cada conexión.</h2>
+      <p>Cada mentoría, cada sesión y cada conexión genera valor compartido entre mentores, líderes y la plataforma.</p>
+    </div>
+    <div class="cx-monetize-grid reveal">
+      <div class="cx-monetize-card">
+        <h4><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Sesiones 1 a 1</h4>
+        <p>Agenda una mentoría personalizada con el profesional de tu elección. Paga por sesión y recibe seguimiento.</p>
+      </div>
+      <div class="cx-monetize-card">
+        <h4><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Mastermind Grupal</h4>
+        <p>Sesiones semanales en grupo con la comunidad. Debate desafíos reales con mentores y pares del ecosistema.</p>
+      </div>
+      <div class="cx-monetize-card">
+        <h4><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>Referidos con Beneficio</h4>
+        <p>Recomienda un mentor o líder. Cada conexión exitosa genera créditos para futuras sesiones.</p>
+      </div>
+    </div>
+    <div class="cx-monetize-btns reveal">
+      <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-primary">Unirme como Mentor</a>
+      <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-outline">Unirme como Líder Comercial</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="assets/logo-blanco.png" alt="Ana Isabel Assia — Líder de Transformación" class="foot-logo">
+        <p>CEO &amp; Fundadora de IBC Group. Consultora, estratega y mentora de liderazgo comercial.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <b>Navegación</b>
+          <a href="index.html">Inicio</a>
+          <a href="sobre-mi.html">Sobre mí</a>
+          <a href="servicios.html">Servicios</a>
+          <a href="ruta-de-innovacion.html">Ruta de Innovación</a>
+          <a href="blog.html">Alquimia Comercial</a>
+        </div>
+        <div class="foot-col">
+          <b>Contacto</b>
+          <a href="tel:+573116279068">+57 311 627 9068</a>
+          <a href="mailto:gerencia@anaisabelassia.com">gerencia@anaisabelassia.com</a>
+          <a href="https://instagram.com/anaisabelassia" target="_blank" rel="noopener">@anaisabelassia</a>
+          <a href="https://anaisabelassia.com" target="_blank" rel="noopener">anaisabelassia.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Ana Isabel Assia &middot; IBC Group SAS &middot; Agencia de Innovación y Negocios. Todos los derechos reservados.</span>
+      <div class="socials">
+        <a href="https://www.instagram.com/anaisabelassia/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@anaisabelassia" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.linkedin.com/in/anaisabelassia/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+<script>
+(function(){
+  // Tab switching
+  var tabs = document.querySelectorAll('.cx-tab-btn');
+  var panels = document.querySelectorAll('.cx-tab-panel');
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      tabs.forEach(function(b){b.classList.remove('active')});
+      t.classList.add('active');
+      var target = t.dataset.tab;
+      panels.forEach(function(p){
+        p.classList.toggle('active', p.id === 'tab-' + target);
+      });
+    });
+  });
+
+  // Smart search filtering
+  var cards = document.querySelectorAll('.cx-card[data-especialidad]');
+  document.getElementById('searchBtn').addEventListener('click', function(){
+    var esp = document.getElementById('fEspecialidad').value;
+    var sec = document.getElementById('fSector').value;
+    var ubi = document.getElementById('fUbicacion').value;
+    cards.forEach(function(c){
+      var show = true;
+      if(esp && c.dataset.especialidad.indexOf(esp) === -1) show = false;
+      if(sec && c.dataset.sector.indexOf(sec) === -1) show = false;
+      if(ubi && c.dataset.ubicacion.indexOf(ubi) === -1) show = false;
+      c.style.display = show ? '' : 'none';
+    });
+    // Switch to mentores tab
+    tabs[0].click();
+  });
+})();
+</script>
+</body>
+</html>
