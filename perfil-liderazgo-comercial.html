@@ -1293,32 +1293,38 @@ function descargarPDF(){
     // 4. Force container width
     el.style.cssText='display:block;width:'+PDF_W+'px;max-width:'+PDF_W+'px;margin:0;padding:0;box-sizing:border-box;overflow:visible';
 
-    // 5. KEY FIX: html2canvas does NOT support CSS Grid.
-    //    Convert display:grid → display:block, children → display:block;width:100%
+    // 5. KEY FIX: html2canvas clones the DOM via cloneNode. When using
+    //    node.style.display='block', grid-template-columns STAYS in the
+    //    style attribute and html2canvas re-applies it as a 2-col layout.
+    //    Must use setAttribute to REWRITE the entire style string,
+    //    physically removing grid-template-columns.
     el.querySelectorAll('*').forEach(function(node){
       var s=node.getAttribute('style');
       if(!s)return;
       var cs=getComputedStyle(node);
 
-      // Grid → Block conversion
+      // Grid → Block: rewrite style attribute to remove all grid properties
       if(cs.display==='grid'){
         save(node);
-        node.style.display='block';
+        var cleaned=s
+          .replace(/display\s*:\s*grid/gi,'display:block')
+          .replace(/grid-template-columns\s*:[^;]+;?/gi,'')
+          .replace(/grid-template-rows\s*:[^;]+;?/gi,'')
+          .replace(/grid-gap\s*:[^;]+;?/gi,'')
+          .replace(/gap\s*:[^;]+;?/gi,'');
+        node.setAttribute('style',cleaned);
         var kids=node.children;
         for(var i=0;i<kids.length;i++){
           save(kids[i]);
-          kids[i].style.display='block';
-          kids[i].style.width='100%';
-          kids[i].style.maxWidth='100%';
-          kids[i].style.marginBottom='10px';
-          kids[i].style.boxSizing='border-box';
+          var kidS=kids[i].getAttribute('style')||'';
+          kids[i].setAttribute('style',kidS+';display:block;width:100%;max-width:100%;margin-bottom:10px;box-sizing:border-box');
         }
       }
       // Flex wrap
       if(cs.display==='flex'){
         save(node);
-        node.style.flexWrap='wrap';
-        node.style.maxWidth='100%';
+        var flexS=s+';flex-wrap:wrap;max-width:100%';
+        node.setAttribute('style',flexS);
       }
       // Remove fixed max-width
       if(node.style.maxWidth&&node.style.maxWidth!=='100%'&&node.style.maxWidth!=='none'){
