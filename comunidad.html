@@ -37,9 +37,10 @@
 .cm-ai::before{content:'';position:absolute;top:50%;left:50%;width:600px;height:600px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(56,189,248,.06) 0%,transparent 60%);pointer-events:none}
 .cm-ai::after{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(79,70,229,.12) 0%,transparent 70%);pointer-events:none}
 .cm-ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.cm-ai-icon{width:260px;height:260px;margin:0 auto;position:relative;display:flex;align-items:center;justify-content:center}
-.cm-ai-icon img{width:180px;height:180px;object-fit:contain;filter:drop-shadow(0 0 20px rgba(56,189,248,.3));animation:ai-float 4s ease-in-out infinite;position:relative;z-index:2}
-@keyframes ai-float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.03)}}
+.cm-ai-icon{width:300px;height:300px;margin:0 auto;position:relative;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.cm-ai-icon img{width:200px;height:200px;object-fit:contain;filter:drop-shadow(0 0 30px rgba(56,189,248,.4)) drop-shadow(0 0 60px rgba(79,70,229,.2));animation:ai-float 4s ease-in-out infinite;position:relative;z-index:2;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.cm-ai-icon:hover img{filter:drop-shadow(0 0 40px rgba(56,189,248,.6)) drop-shadow(0 0 80px rgba(79,70,229,.35));transform:scale(1.08) rotateY(12deg)}
+@keyframes ai-float{0%,100%{transform:translateY(0) scale(1) rotateY(0deg)}25%{transform:translateY(-8px) scale(1.02) rotateY(3deg)}50%{transform:translateY(-12px) scale(1.04) rotateY(0deg)}75%{transform:translateY(-6px) scale(1.01) rotateY(-3deg)}}
 .cm-ai-orbit{position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(56,189,248,.15);animation:ai-orbit-spin 12s linear infinite}
 .cm-ai-orbit::before{content:'';position:absolute;top:-4px;left:50%;width:8px;height:8px;border-radius:50%;background:#38BDF8;box-shadow:0 0 12px #38BDF8,0 0 24px rgba(56,189,248,.4);transform:translateX(-50%)}
 .cm-ai-orbit-2{position:absolute;inset:15px;border-radius:50%;border:1px dashed rgba(79,70,229,.2);animation:ai-orbit-spin 18s linear infinite reverse}
@@ -55,11 +56,29 @@
 .cm-ai-features{display:flex;flex-direction:column;gap:14px;margin-top:28px}
 .cm-ai-feat{display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(255,255,255,.7)}
 .cm-ai-feat svg{width:20px;height:20px;flex-shrink:0;stroke:#38BDF8;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.cm-ai-cta{display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:14px 28px;background:linear-gradient(135deg,#38BDF8,#4F46E5);color:#fff;border-radius:8px;font-weight:600;font-size:15px;transition:all .3s;position:relative;overflow:hidden}
+.cm-ai-cta{display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:16px 32px;background:linear-gradient(135deg,#38BDF8,#4F46E5);color:#fff;border-radius:12px;font-weight:600;font-size:15px;transition:all .4s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;animation:cta-shimmer 3s ease-in-out infinite}
 .cm-ai-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#4F46E5,#38BDF8);opacity:0;transition:opacity .3s}
-.cm-ai-cta:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(56,189,248,.25)}
+.cm-ai-cta::after{content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transform:skewX(-20deg);transition:left .6s}
+.cm-ai-cta:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 16px 40px rgba(56,189,248,.35)}
 .cm-ai-cta:hover::before{opacity:1}
+.cm-ai-cta:hover::after{left:120%}
 .cm-ai-cta svg,.cm-ai-cta span{position:relative;z-index:1}
+.cm-ai-cta-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:12px;position:relative;z-index:1}
+.cm-ai-cta-badge svg{width:14px;height:14px;stroke:#10B981;fill:none;stroke-width:2.5}
+@keyframes cta-shimmer{0%,100%{box-shadow:0 4px 20px rgba(56,189,248,.25)}50%{box-shadow:0 4px 28px rgba(79,70,229,.35)}}
+/* Simulated Chat */
+.cm-ai-chat{margin-top:24px;display:flex;flex-direction:column;gap:12px;max-width:420px}
+.cm-ai-chat-msg{padding:14px 18px;border-radius:16px;font-size:13.5px;line-height:1.55;opacity:0;animation:chat-fade-in .6s ease forwards}
+.cm-ai-chat-user{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px 16px 4px 16px;align-self:flex-end;animation-delay:.5s}
+.cm-ai-chat-bot{background:linear-gradient(135deg,rgba(56,189,248,.1),rgba(79,70,229,.1));border:1px solid rgba(56,189,248,.15);border-radius:16px 16px 16px 4px;align-self:flex-start;animation-delay:1.8s}
+.cm-ai-chat-label{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.cm-ai-chat-user .cm-ai-chat-label{color:rgba(255,255,255,.4)}
+.cm-ai-chat-bot .cm-ai-chat-label{color:#38BDF8}
+.cm-ai-chat-msg p{color:rgba(255,255,255,.75);margin:0}
+.cm-ai-chat-bot p strong{color:#38BDF8}
+.cm-ai-typing{border-right:2px solid #38BDF8;animation:typing-cursor .8s steps(1) infinite}
+@keyframes chat-fade-in{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes typing-cursor{50%{border-color:transparent}}
 /* Floating AI Agent */
 .cm-ai-agent{position:fixed;right:24px;bottom:100px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#38BDF8,#4F46E5);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:90;box-shadow:0 4px 20px rgba(56,189,248,.35);transition:all .3s;animation:ai-agent-glow 3s ease-in-out infinite}
 .cm-ai-agent:hover{transform:scale(1.12);box-shadow:0 8px 32px rgba(56,189,248,.5)}
@@ -250,12 +269,25 @@
         <div class="cm-ai-pulse-2"></div>
         <div class="cm-ai-orbit"></div>
         <div class="cm-ai-orbit-2"></div>
-        <img src="assets/mentor-ia-icon.svg" alt="Mentor IA — Cerebro + Robot">
+        <img src="assets/mentor-ia-icon.svg" alt="tumentorcomercial.ia — Cerebro + Robot">
       </div>
       <div class="cm-ai-text">
-        <span class="eyebrow" style="color:#38BDF8">Mentor IA · 24/7</span>
+        <span class="eyebrow" style="color:#38BDF8">tumentorcomercial.ia · 24/7</span>
         <h2 class="serif">Tu mentor comercial <em>siempre disponible</em>.</h2>
         <p>Un asistente de inteligencia artificial entrenado con las metodologías de Alquimia Comercial y el Método D.E.V.E.R., disponible las 24 horas para resolver tus dudas, guiarte en decisiones estratégicas y acelerar tu aprendizaje.</p>
+
+        <!-- Simulated AI Chat Interaction -->
+        <div class="cm-ai-chat">
+          <div class="cm-ai-chat-msg cm-ai-chat-user">
+            <span class="cm-ai-chat-label">Tú</span>
+            <p>¿Cómo puedo mejorar mi tasa de cierre en ventas B2B?</p>
+          </div>
+          <div class="cm-ai-chat-msg cm-ai-chat-bot">
+            <span class="cm-ai-chat-label">tumentorcomercial.ia</span>
+            <p class="cm-ai-typing">Según el Método D.E.V.E.R., el cierre comienza en la fase de <strong>Descubrimiento</strong>. Te recomiendo 3 pasos...</p>
+          </div>
+        </div>
+
         <div class="cm-ai-features">
           <div class="cm-ai-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Respuestas estratégicas basadas en metodología probada</div>
           <div class="cm-ai-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Diagnósticos comerciales en tiempo real</div>
@@ -264,8 +296,9 @@
         </div>
         <a href="#" class="cm-ai-cta">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          <span>Hablar con el Mentor IA</span>
+          <span>Hablar con tumentorcomercial.ia</span>
         </a>
+        <div class="cm-ai-cta-badge"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Exclusivo Miembros</div>
       </div>
     </div>
   </div>
@@ -553,7 +586,7 @@
 </footer>
 
 <!-- Floating AI Agent -->
-<a href="#" class="cm-ai-agent" title="Hablar con el Mentor IA">
+<a href="#" class="cm-ai-agent" title="Hablar con tumentorcomercial.ia">
   <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1.07A7 7 0 0 1 14 24h-4a7 7 0 0 1-6.93-6H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/><circle cx="9" cy="14" r="1.5" fill="#fff" stroke="none"/><circle cx="15" cy="14" r="1.5" fill="#fff" stroke="none"/><path d="M9 18c.83.67 2 1 3 1s2.17-.33 3-1"/></svg>
   <span class="cm-ai-agent-badge"></span>
 </a>
