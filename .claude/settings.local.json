@@ -201,7 +201,9 @@
       "WebFetch(domain:logos.fandom.com)",
       "WebFetch(domain:seeklogo.com)",
       "WebFetch(domain:clinicaintegrativaacm.com)",
-      "WebFetch(domain:www.unilab.com.ph)"
+      "WebFetch(domain:www.unilab.com.ph)",
+      "mcp__71615da3-d9c7-473a-9f0d-393071e393c8__images_generate_svg",
+      "Bash(curl -s \"https://pikaso.cdnpk.net/private/production/4763989262/3234670185.svg?token=exp=1783296000~hmac=5b36c85ef0400265f50d8d8a4e624acdd1f61193d6ac41ac968c0d1162cd77b1\" -o \"C:/Users/aassi/Documents/PAGINA ANA ASSIA/assets/mentor-ia-icon.svg\")"
     ]
   }
 }
