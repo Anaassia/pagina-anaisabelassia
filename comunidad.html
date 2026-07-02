@@ -54,15 +54,15 @@
 .cm-club{padding:80px 0;background:var(--paper)}
 .cm-club .section-head{text-align:center;margin-bottom:48px}
 .cm-club-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.cm-club-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:36px 28px;text-align:center;transition:all .4s var(--ease);position:relative;overflow:hidden}
+.cm-club-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:36px 28px;text-align:center;transition:all .4s var(--ease);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center}
 .cm-club-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),var(--gold));opacity:0;transition:opacity .3s}
 .cm-club-card:hover{transform:translateY(-8px);box-shadow:0 20px 48px rgba(0,0,0,.08)}
 .cm-club-card:hover::before{opacity:1}
 .cm-club-ic{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,rgba(204,45,26,.08),rgba(204,45,26,.04));display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
 .cm-club-ic svg{width:28px;height:28px;stroke:var(--red);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .cm-club-card h4{font-family:'Jost',sans-serif;font-size:20px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.cm-club-card p{font-size:14px;color:var(--ash);line-height:1.65}
-.cm-club-badge{display:inline-block;margin-top:16px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:50px;background:rgba(204,45,26,.06);color:var(--red)}
+.cm-club-card p{font-size:14px;color:var(--ash);line-height:1.65;flex:1}
+.cm-club-badge{display:inline-block;margin-top:auto;padding-top:16px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:50px;background:rgba(204,45,26,.06);color:var(--red)}
 
 /* MENTORES MARKETPLACE */
 .cm-mentores{padding:80px 0;background:var(--smoke)}
@@ -295,8 +295,8 @@
       </div>
       <div class="cm-club-card">
         <div class="cm-club-ic"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
-        <h4>Mentoría en Vivo</h4>
-        <p>Sesiones en vivo con la red de mentores TuMentorComercial: estrategia, ventas, innovación y transformación digital aplicada a tu negocio.</p>
+        <h4>Conversatorios en Vivo</h4>
+        <p>Sesiones semanales tipo Mastermind con la red de mentores TuMentorComercial: un espacio para debatir desafíos reales del liderazgo comercial junto a la comunidad.</p>
         <span class="cm-club-badge">Red de mentores</span>
       </div>
       <div class="cm-club-card">
@@ -502,8 +502,8 @@
     <h2 class="serif">Únete a la comunidad que está <em>transformando</em> el liderazgo comercial.</h2>
     <p>Accede a mentores, herramientas de IA, foro estratégico y una red de líderes que crecen juntos.</p>
     <div class="cm-cta-btns">
-      <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-primary">Quiero unirme</a>
-      <a href="#" class="btn-outline">Conocer más</a>
+      <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-primary">Unirme como Mentor</a>
+      <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-outline">Unirme como Líder Comercial</a>
     </div>
   </div>
 </section>
