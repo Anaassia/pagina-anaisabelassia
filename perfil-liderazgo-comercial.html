@@ -1193,37 +1193,49 @@ function calcPLC(e){
 function descargarPDF(){
   var el=document.getElementById('plcResults');
   if(!el)return;
-  var PDF_W=800;
+  var PDF_W=900;
+
+  // -- Collect ALL modifications so we can restore them --
+  var mods=[];
+  function save(node){var o=node.getAttribute('style')||'';mods.push({node:node,orig:o});return node}
 
   // 1. Hide buttons, disclaimer, status, loading
   var btns=el.querySelectorAll('.btn,.btn-red,.btn-outline');
-  btns.forEach(function(b){b.setAttribute('data-pdf-d',b.style.display||'');b.style.display='none'});
+  btns.forEach(function(b){save(b);b.style.display='none'});
   var hideIds=['plcDisclaimer','plcEmailMsg','plcAiLoading'];
-  hideIds.forEach(function(id){var h=document.getElementById(id);if(h){h.setAttribute('data-pdf-d',h.style.display||'');h.style.display='none'}});
+  hideIds.forEach(function(id){var h=document.getElementById(id);if(h){save(h);h.style.display='none'}});
 
-  // 2. Convert SVGs to canvas images (html2canvas fails on inline SVGs)
+  // 2. Resolve ALL CSS variables in inline styles (html2canvas ignores custom properties)
+  el.querySelectorAll('*').forEach(function(node){
+    var cs=node.getAttribute('style');
+    if(cs&&cs.indexOf('var(--')!==-1){
+      save(node);
+      node.setAttribute('style',cs.replace(/var\(--red\)/g,'#CC2D1A').replace(/var\(--ink\)/g,'#0B0B0B'));
+    }
+  });
+
+  // 3. Convert SVGs to PNG images (html2canvas can't render inline SVGs reliably)
   var svgSwaps=[];
-  var svgList=el.querySelectorAll('svg');
   var svgPending=0;
-  svgList.forEach(function(svg){
+  el.querySelectorAll('svg').forEach(function(svg){
     try{
       var box=svg.getBoundingClientRect();
       if(box.width<2||box.height<2)return;
       svgPending++;
       var clone=svg.cloneNode(true);
       clone.setAttribute('xmlns','http://www.w3.org/2000/svg');
-      if(!clone.getAttribute('width'))clone.setAttribute('width',box.width);
-      if(!clone.getAttribute('height'))clone.setAttribute('height',box.height);
-      // Resolve CSS variables inside SVG attributes
+      clone.setAttribute('width',box.width);
+      clone.setAttribute('height',box.height);
+      // Resolve CSS vars inside SVG attributes
       clone.querySelectorAll('*').forEach(function(n){
-        ['fill','stroke','stop-color','color'].forEach(function(attr){
+        ['fill','stroke','stop-color','color','style'].forEach(function(attr){
           var v=n.getAttribute(attr);
           if(v&&v.indexOf('var(')!==-1){
-            v=v.replace(/var\(--red\)/g,'#CC2D1A').replace(/var\(--ink\)/g,'#0B0B0B');
-            n.setAttribute(attr,v);
+            n.setAttribute(attr,v.replace(/var\(--red\)/g,'#CC2D1A').replace(/var\(--ink\)/g,'#0B0B0B'));
           }
         });
       });
+      // Copy gradient/filter defs
       clone.querySelectorAll('[fill^="url("]').forEach(function(n){
         var href=n.getAttribute('fill');
         if(href){
@@ -1234,8 +1246,7 @@ function descargarPDF(){
       });
       var data=new XMLSerializer().serializeToString(clone);
       var canvas=document.createElement('canvas');
-      var sc=2;
-      canvas.width=box.width*sc;canvas.height=box.height*sc;
+      canvas.width=box.width*2;canvas.height=box.height*2;
       var ctx=canvas.getContext('2d');
       var img=new Image();
       img.onload=function(){
@@ -1250,86 +1261,80 @@ function descargarPDF(){
       };
       img.onerror=function(){svgPending--};
       img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(data);
-    }catch(e){}
+    }catch(e){/* skip broken SVGs */}
   });
 
-  // 3. Resolve CSS variables in inline styles (html2canvas ignores custom properties)
-  var varFixEls=[];
-  el.querySelectorAll('*').forEach(function(node){
-    var cs=node.getAttribute('style');
-    if(cs&&(cs.indexOf('var(--')!==-1)){
-      varFixEls.push({node:node,orig:cs});
-      var fixed=cs.replace(/var\(--red\)/g,'#CC2D1A').replace(/var\(--ink\)/g,'#0B0B0B');
-      node.setAttribute('style',fixed);
-    }
-  });
-
-  // 4. Also resolve CSS vars applied via computed styles on key elements
-  var computedFixes=[];
-  el.querySelectorAll('[style*="color"],[style*="background"],[style*="border"]').forEach(function(node){
-    var cs=getComputedStyle(node);
-    var pairs=[];
-    if(cs.color==='rgb(11, 11, 11)'||!node.style.color){}
-    ['borderLeftColor','borderColor'].forEach(function(p){
-      var v=cs[p];
-      if(v&&v.indexOf('var(')!==-1){pairs.push({prop:p,val:v})}
-    });
-  });
-
-  // 5. Save original inline styles
+  // 4. Save container original style
   var origStyle=el.getAttribute('style')||'';
 
-  // Wait for SVG→img conversions
   function waitAndRender(){
     if(svgPending>0){setTimeout(waitAndRender,100);return}
 
-    // 6. Force element to exact PDF width, left-aligned
-    el.style.cssText='display:block;width:'+PDF_W+'px;max-width:'+PDF_W+'px;margin:0;padding:0;position:relative;left:0;box-sizing:border-box;overflow:hidden';
+    // 5. Force container: exact width, NO overflow hidden (that clips content)
+    el.style.cssText='display:block;width:'+PDF_W+'px;max-width:'+PDF_W+'px;margin:0;padding:0;position:relative;left:0;box-sizing:border-box;overflow:visible';
 
-    // 7. Force all 2-column grids to single column for PDF
-    var gridEls=[];
-    el.querySelectorAll('[style]').forEach(function(node){
-      var s=node.getAttribute('style')||'';
+    // 6. Direct DOM manipulation — the ONLY reliable way to override inline styles
+    //    CSS !important in a <style> tag does NOT beat inline styles in html2canvas
+    el.querySelectorAll('*').forEach(function(node){
+      var s=node.getAttribute('style');
+      if(!s)return;
+      var changed=false;
+      // Force 2-col grids → 1 column
       if(s.indexOf('grid-template-columns')!==-1&&s.indexOf('1fr 1fr')!==-1){
-        gridEls.push({node:node,orig:s});
+        if(mods.every(function(m){return m.node!==node}))save(node);
         node.style.gridTemplateColumns='1fr';
+        node.style.gap='10px';
+        changed=true;
+      }
+      // Remove max-width constraints that clip content
+      if(s.indexOf('max-width')!==-1){
+        var mw=node.style.maxWidth;
+        if(mw&&mw!=='100%'&&mw!=='none'){
+          if(!changed&&mods.every(function(m){return m.node!==node}))save(node);
+          node.style.maxWidth='100%';
+          changed=true;
+        }
+      }
+      // Remove overflow:hidden from all children
+      if(s.indexOf('overflow')!==-1&&node.style.overflow==='hidden'){
+        if(!changed&&mods.every(function(m){return m.node!==node}))save(node);
+        node.style.overflow='visible';
       }
     });
 
-    // 8. Inject PDF-specific styles
+    // 7. Force all sections to visible overflow and proper box-sizing
+    el.querySelectorAll('.plc-section').forEach(function(sec){
+      if(mods.every(function(m){return m.node!==sec}))save(sec);
+      sec.style.overflow='visible';
+      sec.style.boxSizing='border-box';
+      sec.style.maxWidth='100%';
+      sec.style.pageBreakInside='avoid';
+    });
+
+    // 8. Fix table layout for Plan de Acción
+    var planTable=document.querySelector('#plcAiPlanWrap table');
+    if(planTable){
+      save(planTable);
+      planTable.style.cssText='width:100%;table-layout:fixed;font-size:10px;border-collapse:separate;border-spacing:0';
+      planTable.querySelectorAll('th,td').forEach(function(cell){
+        save(cell);
+        cell.style.overflow='hidden';
+        cell.style.wordWrap='break-word';
+        cell.style.overflowWrap='break-word';
+        cell.style.padding='6px 5px';
+      });
+    }
+
+    // 9. Minimal CSS for page breaks only (NOT for layout overrides)
     var style=document.createElement('style');
     style.id='pdfBreaks';
     style.textContent=
-      '#plcResults,#plcResults *{box-sizing:border-box!important;overflow-wrap:break-word!important;word-wrap:break-word!important}'
-      +' #plcResults{width:'+PDF_W+'px!important;max-width:'+PDF_W+'px!important;padding:0!important;margin:0!important;overflow:hidden!important}'
-      +' .plc-section{page-break-inside:avoid;break-inside:avoid;margin-bottom:6px!important;padding:16px 14px!important;border-radius:8px!important;overflow:hidden!important;max-width:100%!important}'
-      +' #plcBrechasWrap{page-break-before:always}'
+      '#plcBrechasWrap{page-break-before:always}'
       +' #plcAiPlanWrap{page-break-before:always}'
       +' #plcCtaMentora{page-break-before:always}'
       +' #plcHallazgosWrap{page-break-before:always}'
-      +' #plcResults [style*="grid-template-columns"]{grid-template-columns:1fr!important;gap:10px!important;max-width:100%!important}'
-      +' #plcResults [style*="grid-template-columns"]>div{padding:14px!important;overflow:hidden!important;max-width:100%!important}'
-      +' #plcResults [style*="display:flex"]{max-width:100%!important;flex-wrap:wrap!important}'
-      +' #plcResults [style*="display: flex"]{max-width:100%!important;flex-wrap:wrap!important}'
-      +' #plcResults p{max-width:100%!important}'
-      +' #plcResults h2,#plcResults h3{max-width:100%!important}'
-      +' #plcResults img{max-width:100%!important;height:auto!important}'
-      +' #plcAiPlanWrap table{width:100%!important;table-layout:fixed!important;font-size:10px!important}'
-      +' #plcAiPlanWrap th,#plcAiPlanWrap td{padding:6px 5px!important;overflow:hidden!important}'
-      +' #plcAiPlanWrap th:first-child,#plcAiPlanWrap td:first-child{width:24px!important}'
-      +' #plcAiPlanWrap th:nth-child(2),#plcAiPlanWrap td:nth-child(2){width:auto!important}'
-      +' #plcAiPlanWrap th:nth-child(3),#plcAiPlanWrap td:nth-child(3){width:65px!important}'
-      +' #plcAiPlanWrap th:nth-child(4),#plcAiPlanWrap td:nth-child(4){width:70px!important}'
-      +' #plcAiPlanWrap th:nth-child(5),#plcAiPlanWrap td:nth-child(5){width:80px!important}'
-      +' table{page-break-inside:auto} tr{page-break-inside:avoid;break-inside:avoid}'
-      +' .plc-legend{font-size:9px!important;gap:8px!important}'
-      +' .plc-radar{margin:8px 0!important}'
-      +' #plcResults [style*="max-width:600px"],#plcResults [style*="max-width:520px"],#plcResults [style*="max-width: 600px"],#plcResults [style*="max-width: 520px"]{max-width:100%!important}'
-      +' #plcResults [style*="max-width:56ch"]{max-width:100%!important}'
-      +' #plcResults .plc-section [style*="padding:30px"]{padding:16px 14px!important}'
-      +' #plcResults .plc-section [style*="padding:24px"]{padding:16px 14px!important}'
-      +' #plcResults .plc-section [style*="padding:32px"]{padding:18px 14px!important}'
-      +' #plcResults [style*="font-size:clamp"]{font-size:24px!important}';
+      +' table{page-break-inside:auto}'
+      +' tr{page-break-inside:avoid;break-inside:avoid}';
     document.head.appendChild(style);
 
     var nameEl=document.getElementById('plcResultName');
@@ -1337,22 +1342,23 @@ function descargarPDF(){
     var filename='Diagnostico-Liderazgo-'+clientName.replace(/\s+/g,'-')+'.pdf';
 
     html2pdf().set({
-      margin:[10,8,10,8],
+      margin:[10,10,10,10],
       filename:filename,
       image:{type:'jpeg',quality:0.95},
       html2canvas:{scale:2,useCORS:true,allowTaint:true,scrollX:0,scrollY:0,x:0,y:0,windowWidth:PDF_W,logging:false},
       jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},
       pagebreak:{mode:['css','legacy'],avoid:['tr']}
     }).from(el).save().then(function(){
-      // Restore everything
+      // Restore ALL modified elements to their original inline styles
+      mods.forEach(function(m){
+        if(m.orig)m.node.setAttribute('style',m.orig);
+        else m.node.removeAttribute('style');
+      });
       el.style.cssText=origStyle;
       if(!origStyle)el.removeAttribute('style');
       el.classList.add('show');
-      btns.forEach(function(b){b.style.display=b.getAttribute('data-pdf-d')||''});
-      hideIds.forEach(function(id){var h=document.getElementById(id);if(h)h.style.display=h.getAttribute('data-pdf-d')||''});
+      // Restore SVG swaps
       svgSwaps.forEach(function(s){s.svg.style.display='';s.img.remove()});
-      varFixEls.forEach(function(v){v.node.setAttribute('style',v.orig)});
-      gridEls.forEach(function(g){g.node.setAttribute('style',g.orig)});
       var s=document.getElementById('pdfBreaks');if(s)s.remove();
     });
   }
