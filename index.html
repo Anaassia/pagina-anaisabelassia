@@ -220,61 +220,53 @@
 <!-- 360PATHFINDER® -->
 <section class="pf-section">
   <style>
-  .pf-section{background:linear-gradient(135deg,#0B0B0B 0%,#1a0a0a 50%,#0B0B0B 100%);padding:100px 0;position:relative;overflow:hidden}
-  .pf-section::before{content:'';position:absolute;top:50%;left:50%;width:800px;height:800px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(204,45,26,.06) 0%,transparent 60%);pointer-events:none}
-  .pf-section::after{content:'';position:absolute;bottom:-200px;right:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(204,45,26,.08) 0%,transparent 60%);pointer-events:none}
-  .pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+  .pf-section{background:var(--smoke,#F5F4F2);padding:80px 0;position:relative}
+  .pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
   .pf-content{position:relative;z-index:1}
-  .pf-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:50px;border:1px solid rgba(204,45,26,.3);background:rgba(204,45,26,.08);margin-bottom:20px}
-  .pf-badge svg{width:16px;height:16px;stroke:var(--red);fill:none;stroke-width:2}
-  .pf-badge span{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
-  .pf-content h2{font-family:'Jost',sans-serif;font-weight:400;font-size:clamp(28px,3.5vw,44px);line-height:1.1;color:#fff;margin-bottom:8px}
+  .pf-eyebrow{color:var(--red)}
+  .pf-content h2{font-family:'Jost',sans-serif;font-weight:400;font-size:clamp(28px,3.5vw,44px);line-height:1.1;color:var(--ink,#0B0B0B);margin-top:16px}
   .pf-content h2 em{font-style:italic;color:var(--red)}
   .pf-content h2 .pf-reg{font-size:.5em;vertical-align:super;color:var(--red)}
-  .pf-subtitle{font-size:15px;color:rgba(255,255,255,.45);font-weight:500;letter-spacing:.04em;margin-bottom:24px}
-  .pf-content>p{color:rgba(255,255,255,.6);line-height:1.75;font-size:15px;margin-bottom:28px}
-  .pf-stats{display:flex;gap:32px;margin-bottom:32px;padding:24px 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+  .pf-hook{font-family:'Jost',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:400;color:var(--ink,#0B0B0B);line-height:1.35;margin-top:20px}
+  .pf-hook em{font-style:italic;color:var(--red)}
+  .pf-desc{color:rgba(11,11,11,.55);line-height:1.75;font-size:15px;margin-top:16px}
+  .pf-stats{display:flex;gap:32px;margin-top:32px;padding:24px 0;border-top:1px solid var(--line,rgba(0,0,0,.08));border-bottom:1px solid var(--line,rgba(0,0,0,.08))}
   .pf-stat{text-align:center;flex:1}
   .pf-stat b{font-family:'Jost',sans-serif;font-size:32px;font-weight:700;color:var(--red);display:block}
-  .pf-stat span{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35)}
-  .pf-ctas{display:flex;gap:16px;flex-wrap:wrap}
+  .pf-stat span{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(11,11,11,.35)}
+  .pf-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px}
   .pf-cta-primary{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:var(--red);color:#fff;border-radius:8px;font-weight:600;font-size:15px;transition:all .4s;text-decoration:none;position:relative;overflow:hidden}
-  .pf-cta-primary::after{content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);transform:skewX(-20deg);transition:left .5s}
-  .pf-cta-primary:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(204,45,26,.3)}
+  .pf-cta-primary::after{content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transform:skewX(-20deg);transition:left .5s}
+  .pf-cta-primary:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(204,45,26,.25)}
   .pf-cta-primary:hover::after{left:120%}
-  .pf-cta-secondary{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border:1px solid rgba(255,255,255,.15);color:#fff;border-radius:8px;font-weight:600;font-size:15px;transition:all .3s;text-decoration:none}
+  .pf-cta-secondary{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border:1px solid var(--line,rgba(0,0,0,.12));color:var(--ink,#0B0B0B);border-radius:8px;font-weight:600;font-size:15px;transition:all .3s;text-decoration:none}
   .pf-cta-secondary:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
   /* Visual side */
-  .pf-visual{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:28px}
-  .pf-challenge{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:40px 36px;text-align:center;position:relative;overflow:hidden}
-  .pf-challenge::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),#F59E0B,var(--red))}
-  .pf-challenge h3{font-family:'Jost',sans-serif;font-weight:400;font-size:20px;color:rgba(255,255,255,.4);margin-bottom:8px;letter-spacing:.04em;text-transform:uppercase;font-size:13px}
-  .pf-challenge p{font-family:'Jost',sans-serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;color:#fff;line-height:1.3}
-  .pf-challenge p em{font-style:italic;color:var(--red)}
-  .pf-instruments{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%}
-  .pf-instr{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:20px 16px;text-align:center;transition:all .3s}
-  .pf-instr:hover{border-color:rgba(204,45,26,.3);background:rgba(204,45,26,.04);transform:translateY(-4px)}
-  .pf-instr-icon{width:36px;height:36px;margin:0 auto 10px;border-radius:10px;background:rgba(204,45,26,.08);display:flex;align-items:center;justify-content:center}
-  .pf-instr-icon svg{width:18px;height:18px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .pf-instr h5{font-size:13px;font-weight:600;color:#fff;margin-bottom:4px}
-  .pf-instr span{font-size:11px;color:rgba(255,255,255,.35)}
+  .pf-visual{position:relative;z-index:1}
+  .pf-card{background:#fff;border:1px solid var(--line,rgba(0,0,0,.08));border-radius:20px;padding:48px 40px;text-align:center;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.04)}
+  .pf-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),#F59E0B)}
+  .pf-card-icon{width:64px;height:64px;margin:0 auto 24px;border-radius:16px;background:linear-gradient(135deg,rgba(204,45,26,.08),rgba(204,45,26,.04));display:flex;align-items:center;justify-content:center}
+  .pf-card-icon svg{width:32px;height:32px;stroke:var(--red);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .pf-card h3{font-family:'Jost',sans-serif;font-weight:400;font-size:clamp(20px,2.5vw,28px);color:var(--ink,#0B0B0B);line-height:1.3}
+  .pf-card h3 em{font-style:italic;color:var(--red)}
+  .pf-card>p{color:rgba(11,11,11,.5);font-size:15px;line-height:1.7;margin-top:16px}
+  .pf-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:24px}
+  .pf-tag{font-size:12px;font-weight:600;letter-spacing:.04em;padding:6px 14px;border-radius:50px;border:1px solid var(--line,rgba(0,0,0,.08));color:rgba(11,11,11,.45);transition:all .3s}
+  .pf-tag:hover{border-color:var(--red);color:var(--red)}
   @media(max-width:768px){
-    .pf-grid{grid-template-columns:1fr;gap:48px}
+    .pf-grid{grid-template-columns:1fr;gap:40px}
     .pf-stats{gap:20px}
-    .pf-instruments{grid-template-columns:repeat(2,1fr)}
     .pf-ctas{flex-direction:column}
+    .pf-card{padding:36px 28px}
   }
   </style>
   <div class="wrap">
     <div class="pf-grid">
       <div class="pf-content reveal">
-        <div class="pf-badge">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-          <span>Ecosistema de Talento Humano con Propósito</span>
-        </div>
-        <h2 class="serif">360PathFinder<span class="pf-reg">®</span></h2>
-        <p class="pf-subtitle">El autoconocimiento es la base para contratar y desarrollar equipos poderosos.</p>
-        <p>Integra <strong style="color:#fff">15 instrumentos psicométricos</strong> con fundamento científico para revelar el <em style="color:var(--red);font-style:normal;font-weight:600">quién</em>, el <em style="color:var(--red);font-style:normal;font-weight:600">cómo</em> y el <em style="color:var(--red);font-style:normal;font-weight:600">para qué</em> cada persona llega a tu equipo — y transformar ese conocimiento en decisiones estratégicas para contratar un equipo extraordinario.</p>
+        <span class="eyebrow pf-eyebrow">360PathFinder®</span>
+        <h2 class="serif">Deja de contratar héroes.<br>Contrata <em>equipos que vibran</em>.</h2>
+        <p class="pf-hook">15 instrumentos psicométricos para descubrir el <em>talento que tu equipo necesita</em>.</p>
+        <p class="pf-desc">La decisión más estratégica que puedes tomar no es llenar vacantes — es elegir personas que vibran con tu propósito y cultura.</p>
         <div class="pf-stats">
           <div class="pf-stat"><b>15</b><span>Instrumentos</span></div>
           <div class="pf-stat"><b>+2,400</b><span>Evaluaciones</span></div>
@@ -282,44 +274,25 @@
         </div>
         <div class="pf-ctas">
           <a href="360pathfinder.html" class="pf-cta-primary">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Realiza la prueba gratuita
+            Realiza la prueba gratuita <span>→</span>
           </a>
-          <a href="360pathfinder.html#contacto" class="pf-cta-secondary">
-            Solicitar información <span style="margin-left:4px">→</span>
+          <a href="360pathfinder.html" class="pf-cta-secondary">
+            Conoce más <span>→</span>
           </a>
         </div>
       </div>
       <div class="pf-visual reveal">
-        <div class="pf-challenge">
-          <h3>El desafío organizacional</h3>
-          <p>Deja de contratar héroes y mejor contrata<br><em>equipos poderosos y vibrantes</em>.</p>
-          <p style="font-size:14px;color:rgba(255,255,255,.45);margin-top:16px;line-height:1.7;font-family:'Inter',sans-serif">La decisión más estratégica que puedes tomar es contratar personas que vibran con tu propósito y cultura. Esta decisión no se toma con métodos tradicionales, se toma con tecnologías que apoyan el descubrimiento del mejor talento para tu equipo.</p>
-        </div>
-        <div class="pf-instruments">
-          <div class="pf-instr">
-            <div class="pf-instr-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-            <h5>Perfil</h5><span>Conductual</span>
-          </div>
-          <div class="pf-instr">
-            <div class="pf-instr-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-            <h5>Valores</h5><span>Motivadores</span>
-          </div>
-          <div class="pf-instr">
-            <div class="pf-instr-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
-            <h5>Inteligencia</h5><span>Emocional</span>
-          </div>
-          <div class="pf-instr">
-            <div class="pf-instr-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-            <h5>Competencias</h5><span>Clave</span>
-          </div>
-          <div class="pf-instr">
-            <div class="pf-instr-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-            <h5>Cultura</h5><span>Organizacional</span>
-          </div>
-          <div class="pf-instr">
-            <div class="pf-instr-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-            <h5>Desempeño</h5><span>Potencial</span>
+        <div class="pf-card">
+          <div class="pf-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3 class="serif">Ecosistema de Talento Humano<br>con <em>Propósito</em></h3>
+          <p>Descubre el quién, el cómo y el para qué de cada persona en tu equipo — y transforma ese conocimiento en contrataciones extraordinarias.</p>
+          <div class="pf-tags">
+            <span class="pf-tag">Perfil Conductual</span>
+            <span class="pf-tag">Valores</span>
+            <span class="pf-tag">Inteligencia Emocional</span>
+            <span class="pf-tag">Competencias</span>
+            <span class="pf-tag">Cultura</span>
+            <span class="pf-tag">Desempeño</span>
           </div>
         </div>
       </div>
