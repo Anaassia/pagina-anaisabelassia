@@ -664,8 +664,11 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red);background:#fff
       </div>
     </div>
 
-    <div style="text-align:center;margin-top:32px">
-      <p id="plcEmailMsg" style="font-size:15px;color:rgba(11,11,11,.55);max-width:52ch;margin:0 auto 20px">Procesando tu informe...</p>
+    <div id="plcDisclaimer" style="display:none;text-align:center;margin-top:24px;padding:14px 20px;background:#F9F9F9;border-radius:10px;border:1px solid #EEE;max-width:600px;margin-left:auto;margin-right:auto">
+      <p style="font-size:12px;color:rgba(11,11,11,.45);line-height:1.6;margin:0;font-style:italic">Este es un diagnóstico gratuito, desarrollado con propiedad intelectual conceptual, apoyado con inteligencia artificial LLM Claude + CGPT + Odoo y responde al contexto individual de cada perfil y contexto registrado en el formulario.</p>
+    </div>
+    <div style="text-align:center;margin-top:12px">
+      <p id="plcEmailMsg" style="font-size:12px;color:rgba(11,11,11,.3);max-width:52ch;margin:0 auto 20px">Procesando tu informe...</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
         <button type="button" class="btn btn-outline" onclick="agendarConversacion(event)" style="justify-content:center;border-color:var(--ink);color:var(--ink)">Agenda una conversación con el equipo <span class="arrow">→</span></button>
         <button type="button" class="btn btn-outline" onclick="solicitarPerfilMentoring(event)" style="justify-content:center;border-color:var(--red);color:var(--red)">Deseas un Diagnóstico Personalizado + Mentoring <span class="arrow">→</span></button>
@@ -1173,6 +1176,7 @@ function calcPLC(e){
         document.getElementById('plcAiPasosWrap').style.display='block';
         document.getElementById('plcCtaMentora').style.display='block';
       }
+      document.getElementById('plcDisclaimer').style.display='block';
     }else{
       console.warn('PLC: respuesta sin success=true',data);
       document.getElementById('plcEmailMsg').textContent='Tu diagnóstico ha sido procesado. Revisa tu correo para el informe completo.';
@@ -1191,18 +1195,31 @@ function descargarPDF(){
   if(!el)return;
   var btns=el.querySelectorAll('.btn,.btn-red,.btn-outline');
   btns.forEach(function(b){b.style.display='none'});
+  var hideEls=[document.getElementById('plcDisclaimer'),document.getElementById('plcEmailMsg'),document.getElementById('plcAiLoading')];
+  hideEls.forEach(function(h){if(h)h.setAttribute('data-pdf-hidden',h.style.display||'');h.style.display='none'});
+  var style=document.createElement('style');
+  style.id='pdfBreaks';
+  style.textContent='.plc-section{page-break-inside:avoid;break-inside:avoid;margin-bottom:8px}'
+    +' #plcBrechasWrap{page-break-before:always;break-before:always}'
+    +' #plcAiPlanWrap{page-break-before:always;break-before:always}'
+    +' #plcCtaMentora{page-break-before:always;break-before:always}'
+    +' table{page-break-inside:auto} tr{page-break-inside:avoid;break-inside:avoid}'
+    +' svg{max-width:100%}';
+  document.head.appendChild(style);
   var nameEl=document.getElementById('plcResultName');
   var clientName=nameEl?nameEl.textContent.split('—')[0].trim():'diagnostico';
   var filename='Diagnostico-Liderazgo-'+clientName.replace(/\s+/g,'-')+'.pdf';
   html2pdf().set({
-    margin:[10,10,10,10],
+    margin:[8,8,8,8],
     filename:filename,
     image:{type:'jpeg',quality:0.98},
-    html2canvas:{scale:2,useCORS:true,scrollY:0},
+    html2canvas:{scale:2,useCORS:true,scrollY:0,windowWidth:800},
     jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},
-    pagebreak:{mode:['avoid-all','css','legacy']}
+    pagebreak:{mode:['css','legacy'],avoid:['tr','.plc-section']}
   }).from(el).save().then(function(){
     btns.forEach(function(b){b.style.display=''});
+    hideEls.forEach(function(h){if(h)h.style.display=h.getAttribute('data-pdf-hidden')||''});
+    var s=document.getElementById('pdfBreaks');if(s)s.remove();
   });
 }
 
@@ -1662,7 +1679,8 @@ function testWebhookLive(){
       return;
     }
 
-    testStatus.innerHTML='<span style="color:#4CAF50;font-weight:700">WEBHOOK OK — Renderizando informe IA...</span>';
+    document.getElementById('plcDisclaimer').style.display='block';
+    testStatus.innerHTML='<span style="color:rgba(11,11,11,.3);font-size:11px">WEBHOOK OK — Renderizando informe IA...</span>';
 
     if(data.bienvenida){
       document.getElementById('plcBienvenidaText').innerHTML=data.bienvenida.replace(/\n/g,'<br>');
@@ -1693,7 +1711,7 @@ function testWebhookLive(){
         aiBlock.innerHTML=html;
         cards[idx].appendChild(aiBlock);
       });
-      testStatus.innerHTML+=' | ejeResumenes: '+data.ejeResumenes.length+' ejes inyectados';
+      testStatus.innerHTML+='<span style="color:rgba(11,11,11,.3);font-size:11px"> | ejeResumenes: '+data.ejeResumenes.length+' ejes inyectados</span>';
     }
 
     if(data.analisisBrechas){
@@ -1746,7 +1764,7 @@ function testWebhookLive(){
         document.getElementById('plcImpactoLiderazgo').innerHTML=lidHtml;
       }
       document.getElementById('plcBrechasWrap').style.display='block';
-      testStatus.innerHTML+=' | analisisBrechas: OK';
+      testStatus.innerHTML+='<span style="color:rgba(11,11,11,.3);font-size:11px"> | analisisBrechas: OK</span>';
     }
 
     if(data.hallazgosClave){
