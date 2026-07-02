@@ -217,7 +217,13 @@
       "Bash(zip -r /c/Users/aassi/AppData/Local/Temp/claude/site-deploy.zip . -x \".git/*\" \".claude/*\" \"*.pptx\" \"~\\\\$*\" \"test-pdf-output.pdf\")",
       "mcp__claude-in-chrome__file_upload",
       "Bash(gh --version)",
-      "PowerShell(try { \\(Get-Command gh -ErrorAction Stop\\).Source } catch {}; try { \\(Get-Command git -ErrorAction Stop\\).Source } catch {})"
+      "PowerShell(try { \\(Get-Command gh -ErrorAction Stop\\).Source } catch {}; try { \\(Get-Command git -ErrorAction Stop\\).Source } catch {})",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "PowerShell(git -C \"C:\\\\Users\\\\aassi\\\\Documents\\\\PAGINA ANA ASSIA\" config credential.helper)",
+      "PowerShell(git -C \"C:\\\\Users\\\\aassi\\\\Documents\\\\PAGINA ANA ASSIA\" push -u origin master)",
+      "Bash(gh repo *)",
+      "PowerShell(gh repo edit Anaassia/pagina-anaisabelassia --visibility public 2>&1)"
     ]
   }
 }
