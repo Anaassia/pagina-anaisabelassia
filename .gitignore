@@ -1,5 +1,14 @@
-# Respaldos comprimidos (se generan aparte)
+# Respaldos comprimidos
 *.zip
 
-# Configuración local de previsualización (rutas de esta máquina)
+# Archivos temporales Office
+~$*
+
+# PDF de prueba
+test-pdf-output.pdf
+
+# PowerPoint
+*.pptx
+
+# Configuración local
 .claude/launch.json

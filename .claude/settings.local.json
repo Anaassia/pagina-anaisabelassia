@@ -213,7 +213,11 @@
       "PowerShell(winget install OpenJS.NodeJS.LTS --accept-package-agreements --accept-source-agreements)",
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\", \"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\", \"User\"\\); node --version; npm --version)",
       "PowerShell(docker run --rm -v \"C:\\\\Users\\\\aassi\\\\Documents\\\\PAGINA ANA ASSIA:/site\" -w /site node:lts sh -c \"npm install -g netlify-cli && netlify --version\")",
-      "PowerShell(docker run --rm -it -v \"C:\\\\Users\\\\aassi\\\\Documents\\\\PAGINA ANA ASSIA:/site\" -w /site -p 8888:8888 node:lts sh -c \"npm install -g netlify-cli 2>/dev/null && netlify login\")"
+      "PowerShell(docker run --rm -it -v \"C:\\\\Users\\\\aassi\\\\Documents\\\\PAGINA ANA ASSIA:/site\" -w /site -p 8888:8888 node:lts sh -c \"npm install -g netlify-cli 2>/dev/null && netlify login\")",
+      "Bash(zip -r /c/Users/aassi/AppData/Local/Temp/claude/site-deploy.zip . -x \".git/*\" \".claude/*\" \"*.pptx\" \"~\\\\$*\" \"test-pdf-output.pdf\")",
+      "mcp__claude-in-chrome__file_upload",
+      "Bash(gh --version)",
+      "PowerShell(try { \\(Get-Command gh -ErrorAction Stop\\).Source } catch {}; try { \\(Get-Command git -ErrorAction Stop\\).Source } catch {})"
     ]
   }
 }
