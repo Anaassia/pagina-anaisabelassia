@@ -560,6 +560,7 @@ footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
 .follow-ic .lbl{font-size:12.5px;font-weight:600;letter-spacing:.05em;color:var(--ash);transition:color .3s}
 .follow-ic:hover .ic{background:var(--red);transform:translateY(-6px);box-shadow:0 16px 34px rgba(204,45,26,.32)}
 .follow-ic:hover .lbl{color:var(--red)}
+.follow-handle{font-family:'Jost',sans-serif;font-size:16px;font-weight:500;color:var(--ink);letter-spacing:.02em;margin-top:28px}
 
 /* ============ WHATSAPP ============ */
 .btn-wa{background:#25D366;color:#fff}
