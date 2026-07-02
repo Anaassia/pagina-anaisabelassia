@@ -1193,34 +1193,93 @@ function calcPLC(e){
 function descargarPDF(){
   var el=document.getElementById('plcResults');
   if(!el)return;
+
+  // 1. Hide buttons, disclaimer, status, loading
   var btns=el.querySelectorAll('.btn,.btn-red,.btn-outline');
-  btns.forEach(function(b){b.style.display='none'});
-  var hideEls=[document.getElementById('plcDisclaimer'),document.getElementById('plcEmailMsg'),document.getElementById('plcAiLoading')];
-  hideEls.forEach(function(h){if(h)h.setAttribute('data-pdf-hidden',h.style.display||'');h.style.display='none'});
-  var style=document.createElement('style');
-  style.id='pdfBreaks';
-  style.textContent='.plc-section{page-break-inside:avoid;break-inside:avoid;margin-bottom:8px}'
-    +' #plcBrechasWrap{page-break-before:always;break-before:always}'
-    +' #plcAiPlanWrap{page-break-before:always;break-before:always}'
-    +' #plcCtaMentora{page-break-before:always;break-before:always}'
-    +' table{page-break-inside:auto} tr{page-break-inside:avoid;break-inside:avoid}'
-    +' svg{max-width:100%}';
-  document.head.appendChild(style);
-  var nameEl=document.getElementById('plcResultName');
-  var clientName=nameEl?nameEl.textContent.split('—')[0].trim():'diagnostico';
-  var filename='Diagnostico-Liderazgo-'+clientName.replace(/\s+/g,'-')+'.pdf';
-  html2pdf().set({
-    margin:[8,8,8,8],
-    filename:filename,
-    image:{type:'jpeg',quality:0.98},
-    html2canvas:{scale:2,useCORS:true,scrollY:0,windowWidth:800},
-    jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},
-    pagebreak:{mode:['css','legacy'],avoid:['tr','.plc-section']}
-  }).from(el).save().then(function(){
-    btns.forEach(function(b){b.style.display=''});
-    hideEls.forEach(function(h){if(h)h.style.display=h.getAttribute('data-pdf-hidden')||''});
-    var s=document.getElementById('pdfBreaks');if(s)s.remove();
+  btns.forEach(function(b){b.setAttribute('data-pdf-d',b.style.display||'');b.style.display='none'});
+  var hideIds=['plcDisclaimer','plcEmailMsg','plcAiLoading'];
+  hideIds.forEach(function(id){var h=document.getElementById(id);if(h){h.setAttribute('data-pdf-d',h.style.display||'');h.style.display='none'}});
+
+  // 2. Convert SVGs to canvas images (html2canvas fails on inline SVGs)
+  var svgSwaps=[];
+  el.querySelectorAll('svg').forEach(function(svg){
+    try{
+      var box=svg.getBoundingClientRect();
+      if(box.width<2||box.height<2)return;
+      var clone=svg.cloneNode(true);
+      clone.setAttribute('xmlns','http://www.w3.org/2000/svg');
+      if(!clone.getAttribute('width'))clone.setAttribute('width',box.width);
+      if(!clone.getAttribute('height'))clone.setAttribute('height',box.height);
+      var data=new XMLSerializer().serializeToString(clone);
+      var canvas=document.createElement('canvas');
+      var sc=2;
+      canvas.width=box.width*sc;canvas.height=box.height*sc;
+      var ctx=canvas.getContext('2d');
+      var img=new Image();
+      img.onload=function(){
+        ctx.drawImage(img,0,0,canvas.width,canvas.height);
+        var imgEl=document.createElement('img');
+        imgEl.src=canvas.toDataURL('image/png');
+        imgEl.style.cssText='width:'+box.width+'px;height:'+box.height+'px;max-width:100%;display:block;margin:0 auto';
+        svg.parentNode.insertBefore(imgEl,svg);
+        svg.style.display='none';
+        svgSwaps.push({svg:svg,img:imgEl});
+      };
+      img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(data);
+    }catch(e){}
   });
+
+  // 3. Resolve CSS variables (html2canvas ignores custom properties)
+  var cssVarMap={'var(--red)':'#CC2D1A','var(--ink)':'#0B0B0B'};
+  var varFixEls=[];
+  el.querySelectorAll('*').forEach(function(node){
+    var cs=node.getAttribute('style');
+    if(cs&&(cs.indexOf('var(--red)')!==-1||cs.indexOf('var(--ink)')!==-1)){
+      varFixEls.push({node:node,orig:cs});
+      var fixed=cs;
+      for(var k in cssVarMap)fixed=fixed.split(k).join(cssVarMap[k]);
+      node.setAttribute('style',fixed);
+    }
+  });
+
+  // Wait for SVG→img conversions
+  setTimeout(function(){
+    // 4. Inject PDF-specific styles
+    var style=document.createElement('style');
+    style.id='pdfBreaks';
+    style.textContent=
+      '.plc-section{page-break-inside:avoid;break-inside:avoid;margin-bottom:6px;padding:18px 16px!important}'
+      +' #plcBrechasWrap{page-break-before:always}'
+      +' #plcAiPlanWrap{page-break-before:always}'
+      +' #plcCtaMentora{page-break-before:always}'
+      +' #plcHallazgosWrap{page-break-before:always}'
+      +' table{page-break-inside:auto;font-size:11px!important}'
+      +' tr{page-break-inside:avoid;break-inside:avoid}'
+      +' .plc-results{max-width:none!important}'
+      +' .plc-legend{font-size:10px!important;gap:10px!important}'
+      +' .plc-radar{margin:12px 0!important}';
+    document.head.appendChild(style);
+
+    var nameEl=document.getElementById('plcResultName');
+    var clientName=nameEl?nameEl.textContent.split('—')[0].trim():'diagnostico';
+    var filename='Diagnostico-Liderazgo-'+clientName.replace(/\s+/g,'-')+'.pdf';
+
+    html2pdf().set({
+      margin:[6,6,6,6],
+      filename:filename,
+      image:{type:'jpeg',quality:0.95},
+      html2canvas:{scale:2,useCORS:true,allowTaint:true,scrollY:0,windowWidth:960,logging:false},
+      jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},
+      pagebreak:{mode:['css','legacy'],avoid:['tr']}
+    }).from(el).save().then(function(){
+      // Restore everything
+      btns.forEach(function(b){b.style.display=b.getAttribute('data-pdf-d')||''});
+      hideIds.forEach(function(id){var h=document.getElementById(id);if(h)h.style.display=h.getAttribute('data-pdf-d')||''});
+      svgSwaps.forEach(function(s){s.svg.style.display='';s.img.remove()});
+      varFixEls.forEach(function(v){v.node.setAttribute('style',v.orig)});
+      var s=document.getElementById('pdfBreaks');if(s)s.remove();
+    });
+  },400);
 }
 
 function demoMode(){
