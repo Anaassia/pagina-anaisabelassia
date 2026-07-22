@@ -12,3 +12,7 @@ test-pdf-output.pdf
 
 # Configuración local
 .claude/launch.json
+
+# Variables de entorno (credenciales)
+.env
+.env.local

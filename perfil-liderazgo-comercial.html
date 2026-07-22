@@ -285,8 +285,8 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red);background:#fff
 
     <!-- EJE 1: ESTRATEGIA -->
     <div class="plc-section" id="ax-estrategia">
-      <h3><img src="assets/estrategia.png?v=2" alt="" style="width:48px;height:48px;border-radius:50%"> <span style="color:#4CAF50">Estrategia</span> <span style="font-weight:400;font-size:14px;color:rgba(11,11,11,.45);font-style:italic">— El rumbo</span></h3>
-      <p class="plc-desc">Capacidad del líder para definir el rumbo, anticipar cambios y tomar decisiones con visión.</p>
+      <h3><img src="assets/estrategia.png?v=2" alt="" style="width:48px;height:48px;border-radius:50%"> <span style="color:#4CAF50">Estrategia</span> <span style="font-weight:400;font-size:14px;color:rgba(11,11,11,.45);font-style:italic">— El Horizonte</span></h3>
+      <p class="plc-desc">Capacidad del líder para definir el horizonte, anticipar cambios y tomar decisiones con visión.</p>
       <div class="mx-wrap">
         <table class="mx" data-axis="estrategia">
           <thead><tr>
@@ -319,7 +319,7 @@ textarea.plc-textarea:focus{outline:none;border-color:var(--red);background:#fff
             </tr>
             <tr data-pond="20" data-impact="3">
               <td>3</td>
-              <td>Ajusta el rumbo con agilidad sin perder la dirección estratégica</td>
+              <td>Ajusta el horizonte con agilidad sin perder la dirección estratégica</td>
               <td class="mx-pond"><input type="number" class="mx-pond-input" value="20" min="0" max="100" onchange="recalcPond(this)"></td>
               <td><select class="mx-impact-sel" onchange="recalcAxis(this)"><option value="3" selected>↑ Alto</option><option value="2">→ Medio</option><option value="1">↓ Bajo</option></select></td>
               <td><select class="mx-eval" onchange="recalcAxis(this)"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
@@ -960,7 +960,7 @@ function calcPLC(e){
   var barsEl=document.getElementById('plcBars');
   barsEl.innerHTML='';
   var axIcons=['estrategia','procesos','personas','tecnologia','resultados'];
-  var axSubs=['El rumbo','La ejecución','El talento','La palanca','El crecimiento'];
+  var axSubs=['El Horizonte','La ejecución','El talento','La palanca','El crecimiento'];
   var axColors=['#4CAF50','#2196F3','#03A9F4','#FF9800','#9C27B0'];
   axisScores.forEach(function(ax,i){
     var pct=(ax.avg/4)*100;
@@ -1451,7 +1451,7 @@ function descargarPDF(){
 function demoMode(){
   var axColors=['#4CAF50','#2196F3','#03A9F4','#FF9800','#9C27B0'];
   var axIcons=['estrategia','procesos','personas','tecnologia','resultados'];
-  var axSubs=['El rumbo','La ejecución','El talento','La palanca','El crecimiento'];
+  var axSubs=['El Horizonte','La ejecución','El talento','La palanca','El crecimiento'];
   var axisScores=[
     {key:'estrategia',label:'Estrategia',avg:3.2,valor:3.2,sem:semLabel(3.2),details:[]},
     {key:'procesos',label:'Procesos',avg:2.2,valor:2.2,sem:semLabel(2.2),details:[]},
@@ -1764,7 +1764,7 @@ if(new URLSearchParams(window.location.search).get('demo')==='1'){
 function testWebhookLive(){
   var axColors=['#4CAF50','#2196F3','#03A9F4','#FF9800','#9C27B0'];
   var axIcons=['estrategia','procesos','personas','tecnologia','resultados'];
-  var axSubs=['El rumbo','La ejecución','El talento','La palanca','El crecimiento'];
+  var axSubs=['El Horizonte','La ejecución','El talento','La palanca','El crecimiento'];
   var axisScores=[
     {key:'estrategia',label:'Estrategia',avg:2.6,valor:2.6,sem:semLabel(2.6),details:[
       {factor:'Visión comercial clara y comunicada',pond:30,eval:3,estado:'Fortaleza Menor',valor:0.9,impacto:'↑ Alto'},
