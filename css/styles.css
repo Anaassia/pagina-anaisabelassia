@@ -579,7 +579,7 @@ footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
 .wa-fab{
   position:fixed;right:26px;bottom:26px;z-index:200;
   width:62px;height:62px;border-radius:50%;border:none;cursor:pointer;
-  background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;
+  background:#25D366;color:#fff;display:none !important;align-items:center;justify-content:center;
   box-shadow:0 14px 34px rgba(37,211,102,.45);
   transition:transform .3s var(--ease),box-shadow .3s var(--ease);
 }
