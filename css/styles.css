@@ -697,3 +697,6 @@ footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
   .foot-col a{padding:10px 0}
   .menu.open a{padding:10px 0}
 }
+
+/* --- Ocultar programa Liderazgo Comercial (temporalmente) --- */
+.dropdown-menu a[href="liderazgo-comercial.html"]{display:none}
