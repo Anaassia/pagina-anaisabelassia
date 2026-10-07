@@ -501,6 +501,47 @@
   </div>
 </section>
 
+<!-- NEWSLETTER -->
+<section class="nl-band">
+  <div class="wrap">
+    <div class="nl-copy">
+      <span class="nl-eyebrow">Exclusivo para líderes</span>
+      <div class="nl-title">Recibe estrategias de liderazgo comercial directo en tu correo.</div>
+      <p class="nl-sub">Contenido exclusivo, casos reales y herramientas que no publico en redes. Sin spam — solo valor.</p>
+    </div>
+    <div class="nl-form">
+      <div class="nl-row">
+        <input id="nlName" type="text" placeholder="Tu nombre" autocomplete="name">
+        <input id="nlEmail" type="email" placeholder="tucorreo@empresa.com" autocomplete="email">
+        <button class="nl-btn" type="button" id="nlBtn">Suscribirme</button>
+      </div>
+      <p class="nl-note">Sin spam. Puedes cancelar en cualquier momento.</p>
+      <div class="nl-msg" id="nlMsg"></div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var NL_WEBHOOK='https://automations.anaisabelassia.com/webhook/newsletter-lead';
+  document.getElementById('nlBtn').addEventListener('click',function(){
+    var name=document.getElementById('nlName').value.trim();
+    var email=document.getElementById('nlEmail').value.trim();
+    var msg=document.getElementById('nlMsg');
+    msg.className='nl-msg';
+    if(!name||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      msg.textContent='Por favor ingresa tu nombre y un email válido.';
+      msg.classList.add('err');return;
+    }
+    try{fetch(NL_WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({nombre:name,email:email,pagina:'Inicio',fecha:new Date().toISOString()})});}catch(_){}
+    msg.textContent='¡Listo! Ya estás suscrito. Revisa tu correo.';
+    msg.classList.add('ok');
+    document.getElementById('nlName').value='';
+    document.getElementById('nlEmail').value='';
+  });
+})();
+</script>
+
 <!-- CTA BAND -->
 <section class="cta-band">
   <div class="wrap">

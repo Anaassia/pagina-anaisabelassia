@@ -571,6 +571,31 @@ footer{background:#070707;color:rgba(255,255,255,.6);padding:64px 0 32px}
 .follow-ic:hover .lbl{color:var(--red)}
 .follow-handle{font-family:'Jost',sans-serif;font-size:16px;font-weight:500;color:var(--ink);letter-spacing:.02em;margin-top:28px}
 
+/* ============ NEWSLETTER BAND ============ */
+.nl-band{background:#0B0B0B;padding:32px 0}
+.nl-band .wrap{display:flex;align-items:center;gap:48px;flex-wrap:nowrap}
+.nl-copy{flex:0 0 auto}
+.nl-eyebrow{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:6px;display:block}
+.nl-title{font-family:'Jost',sans-serif;font-size:clamp(16px,1.4vw,20px);font-weight:700;color:#fff;line-height:1.25;white-space:nowrap}
+.nl-sub{font-size:12px;color:rgba(255,255,255,.4);margin-top:5px;line-height:1.5;max-width:400px}
+.nl-form{flex:1;min-width:300px}
+.nl-row{display:flex;gap:8px;align-items:stretch}
+.nl-row input{flex:1;min-width:0;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:0 16px;height:46px;font-size:14px;color:#fff;font-family:inherit;transition:border-color .25s;outline:none}
+.nl-row input::placeholder{color:rgba(255,255,255,.3)}
+.nl-row input:focus{border-color:var(--red)}
+.nl-row .nl-btn{flex-shrink:0;background:var(--red);color:#fff;border:none;border-radius:8px;padding:0 22px;height:46px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;white-space:nowrap;transition:background .25s,transform .2s}
+.nl-row .nl-btn:hover{background:#a82315;transform:translateY(-1px)}
+.nl-note{font-size:11px;color:rgba(255,255,255,.25);margin-top:8px}
+.nl-msg{font-size:13px;margin-top:8px;display:none}
+.nl-msg.ok{color:#10B981;display:block}
+.nl-msg.err{color:#f87171;display:block}
+@media(max-width:900px){
+  .nl-band .wrap{flex-wrap:wrap;gap:24px}
+  .nl-title{white-space:normal}
+  .nl-row{flex-wrap:wrap}
+  .nl-row input,.nl-row .nl-btn{width:100%;min-width:0;height:48px}
+}
+
 /* ============ WHATSAPP ============ */
 .btn-wa{background:#25D366;color:#fff}
 .btn-wa:hover{background:#0B0B0B;color:#fff;transform:translateY(-2px)}
