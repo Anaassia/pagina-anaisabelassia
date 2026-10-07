@@ -126,6 +126,49 @@
 .cx-monetize-btns .btn-outline{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7)}
 .cx-monetize-btns .btn-outline:hover{border-color:var(--red);color:var(--red)}
 
+/* ====== BOLSA DE HORAS ====== */
+.bh-intro{padding:0 0 48px}
+.bh-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:32px 0 0}
+.bh-step{text-align:center;padding:24px}
+.bh-step-num{width:40px;height:40px;border-radius:50%;background:var(--red);color:#fff;font-family:'Jost',sans-serif;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.bh-step h4{font-family:'Jost',sans-serif;font-size:16px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.bh-step p{font-size:13px;color:var(--ash);line-height:1.6}
+.bh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-bottom:80px}
+.bh-card{background:#fff;border-radius:20px;border:2px solid var(--line);overflow:hidden;transition:all .4s;position:relative}
+.bh-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.1)}
+.bh-card.featured{border-color:var(--red)}
+.bh-badge{position:absolute;top:16px;right:16px;background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:50px;letter-spacing:.04em;text-transform:uppercase}
+.bh-card-top{padding:32px 28px 20px}
+.bh-plan{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ash);margin-bottom:6px}
+.bh-plan-name{font-family:'Jost',sans-serif;font-size:26px;font-weight:600;color:var(--ink);margin-bottom:16px}
+.bh-price{display:flex;align-items:flex-end;gap:4px;margin-bottom:4px}
+.bh-price b{font-family:'Jost',sans-serif;font-size:44px;font-weight:700;color:var(--ink);line-height:1}
+.bh-price sup{font-size:18px;font-weight:600;color:var(--ink);margin-bottom:10px}
+.bh-price-note{font-size:12px;color:var(--ash);margin-bottom:14px}
+.bh-saving{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--emerald)}
+.bh-saving svg{width:13px;height:13px;stroke:var(--emerald);fill:none;stroke-width:2.5}
+.bh-card.featured .bh-price b,.bh-card.featured .bh-price sup{color:var(--red)}
+.bh-divider{height:1px;background:var(--line)}
+.bh-features{padding:20px 28px}
+.bh-features ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.bh-features li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--ink);line-height:1.4}
+.bh-features li svg{width:16px;height:16px;stroke:var(--emerald);fill:none;stroke-width:2.5;flex-shrink:0;margin-top:1px}
+.bh-features li.dim svg{stroke:#ccc}
+.bh-features li.dim{color:#bbb}
+.bh-card-cta{padding:4px 28px 28px}
+.bh-cta-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 20px;border-radius:10px;font-size:15px;font-weight:600;transition:all .3s;background:var(--smoke);color:var(--ink);border:2px solid var(--line);cursor:pointer}
+.bh-cta-btn:hover{border-color:var(--ink);background:var(--ink);color:#fff}
+.bh-card.featured .bh-cta-btn{background:var(--red);color:#fff;border-color:var(--red)}
+.bh-card.featured .bh-cta-btn:hover{background:#a82315;border-color:#a82315}
+.bh-cta-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bh-faq{padding:0 0 80px}
+.bh-faq-title{font-family:'Jost',sans-serif;font-size:24px;font-weight:400;color:var(--ink);text-align:center;margin-bottom:28px}
+.bh-faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bh-faq-item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 24px}
+.bh-faq-item h5{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;display:flex;align-items:flex-start;gap:8px;line-height:1.3}
+.bh-faq-item h5 svg{width:18px;height:18px;stroke:var(--red);fill:none;stroke-width:2;flex-shrink:0;margin-top:1px}
+.bh-faq-item p{font-size:13px;color:var(--ash);line-height:1.6}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .cx-search-bar{flex-direction:column;border-radius:12px}
@@ -134,6 +177,9 @@
   .cx-grid{grid-template-columns:1fr}
   .cx-monetize-grid{grid-template-columns:1fr}
   .cx-trust-row{gap:20px}
+  .bh-grid{grid-template-columns:1fr}
+  .bh-steps{grid-template-columns:1fr}
+  .bh-faq-grid{grid-template-columns:1fr}
 }
 @media(max-width:600px){
   .cx-hero h1{font-size:26px}
@@ -287,6 +333,10 @@
       <button class="cx-tab-btn" data-tab="lideres">
         <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         Líderes Comerciales
+      </button>
+      <button class="cx-tab-btn" data-tab="bolsa">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Bolsa de Horas
       </button>
     </div>
 
@@ -777,6 +827,158 @@
       </div>
     </div>
 
+    <!-- TAB: Bolsa de Horas -->
+    <div class="cx-tab-panel" id="tab-bolsa">
+
+      <!-- CÓMO FUNCIONA -->
+      <div class="bh-intro">
+        <div style="text-align:center">
+          <span class="eyebrow" style="justify-content:center">Contratación Flexible</span>
+          <h2 style="font-family:'Jost',sans-serif;font-size:clamp(22px,3vw,38px);font-weight:400;color:var(--ink);margin-top:12px;line-height:1.15">Compra horas, <em style="color:var(--red);font-style:italic">agenda cuando quieras.</em></h2>
+          <p style="max-width:56ch;margin:14px auto 0;font-size:15px;color:var(--ash);line-height:1.7">Adquiere un paquete de horas de mentoría y úsalas con cualquier consultor del marketplace. Sin fechas fijas, sin vencimiento mensual.</p>
+        </div>
+        <div class="bh-steps">
+          <div class="bh-step reveal">
+            <div class="bh-step-num">1</div>
+            <h4>Elige tu paquete</h4>
+            <p>Selecciona la cantidad de horas que necesitas según la profundidad de tu reto comercial.</p>
+          </div>
+          <div class="bh-step reveal">
+            <div class="bh-step-num">2</div>
+            <h4>Agenda con tu mentor</h4>
+            <p>Reserva sesiones directamente en el calendario del mentor que elegiste del marketplace.</p>
+          </div>
+          <div class="bh-step reveal">
+            <div class="bh-step-num">3</div>
+            <h4>Mide tus resultados</h4>
+            <p>Cada sesión termina con compromisos de acción y métricas para trackear tu avance real.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAQUETES -->
+      <div class="bh-grid">
+
+        <!-- PACK INICIO -->
+        <div class="bh-card reveal">
+          <div class="bh-card-top">
+            <div class="bh-plan">Pack</div>
+            <div class="bh-plan-name">Inicio</div>
+            <div class="bh-price"><sup>USD</sup><b>180</b></div>
+            <div class="bh-price-note">2 horas &middot; USD 90 / hora</div>
+          </div>
+          <div class="bh-divider"></div>
+          <div class="bh-features">
+            <ul>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>2 horas de mentoría 1:1</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Elige cualquier mentor del marketplace</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Agenda online en 2 minutos</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Resumen ejecutivo post-sesión</li>
+              <li class="dim"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg>Seguimiento entre sesiones</li>
+              <li class="dim"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg>Plan de acción personalizado</li>
+              <li class="dim"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg>Diagnóstico inicial + cierre de ciclo</li>
+            </ul>
+          </div>
+          <div class="bh-card-cta">
+            <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="bh-cta-btn">
+              <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+              Contratar Pack Inicio
+            </a>
+          </div>
+        </div>
+
+        <!-- PACK IMPULSO (destacado) -->
+        <div class="bh-card featured reveal">
+          <span class="bh-badge">Más popular</span>
+          <div class="bh-card-top">
+            <div class="bh-plan">Pack</div>
+            <div class="bh-plan-name">Impulso</div>
+            <div class="bh-price"><sup>USD</sup><b>395</b></div>
+            <div class="bh-price-note">5 horas &middot; USD 79 / hora</div>
+            <div class="bh-saving">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Ahorras USD 55 vs sesiones individuales
+            </div>
+          </div>
+          <div class="bh-divider"></div>
+          <div class="bh-features">
+            <ul>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>5 horas de mentoría 1:1</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Elige cualquier mentor del marketplace</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Agenda online en 2 minutos</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Resumen ejecutivo post-sesión</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Seguimiento entre sesiones</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Plan de acción personalizado</li>
+              <li class="dim"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg>Diagnóstico inicial + cierre de ciclo</li>
+            </ul>
+          </div>
+          <div class="bh-card-cta">
+            <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="bh-cta-btn">
+              <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+              Contratar Pack Impulso
+            </a>
+          </div>
+        </div>
+
+        <!-- PACK TRANSFORMACIÓN -->
+        <div class="bh-card reveal">
+          <div class="bh-card-top">
+            <div class="bh-plan">Pack</div>
+            <div class="bh-plan-name">Transformación</div>
+            <div class="bh-price"><sup>USD</sup><b>700</b></div>
+            <div class="bh-price-note">10 horas &middot; USD 70 / hora</div>
+            <div class="bh-saving">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Ahorras USD 200 vs sesiones individuales
+            </div>
+          </div>
+          <div class="bh-divider"></div>
+          <div class="bh-features">
+            <ul>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>10 horas de mentoría 1:1</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Elige cualquier mentor del marketplace</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Agenda online en 2 minutos</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Resumen ejecutivo post-sesión</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Seguimiento entre sesiones</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Plan de acción personalizado</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Diagnóstico inicial + cierre de ciclo</li>
+            </ul>
+          </div>
+          <div class="bh-card-cta">
+            <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="bh-cta-btn">
+              <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+              Contratar Pack Transformación
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FAQ -->
+      <div class="bh-faq">
+        <h3 class="bh-faq-title">Preguntas frecuentes</h3>
+        <div class="bh-faq-grid">
+          <div class="bh-faq-item reveal">
+            <h5><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>¿Cuándo vencen las horas?</h5>
+            <p>Las horas no tienen vencimiento mensual. Tienes 6 meses para usarlas desde la fecha de compra, con total flexibilidad de agenda.</p>
+          </div>
+          <div class="bh-faq-item reveal">
+            <h5><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>¿Puedo distribuir horas entre distintos mentores?</h5>
+            <p>Sí. Puedes usar tus horas con diferentes mentores del marketplace según las necesidades de cada etapa de tu proyecto.</p>
+          </div>
+          <div class="bh-faq-item reveal">
+            <h5><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>¿Cuánto dura cada sesión?</h5>
+            <p>Cada sesión es de 60 minutos. Puedes agendar bloques de 90 o 120 min descontando las horas correspondientes del paquete.</p>
+          </div>
+          <div class="bh-faq-item reveal">
+            <h5><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>¿Cómo se gestiona el pago?</h5>
+            <p>El proceso de pago se coordina directamente con el equipo IBC Group. Agenda una llamada de confirmación para activar tu paquete.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-bolsa -->
+
   </div>
 </section>
 
@@ -789,9 +991,9 @@
       <p>Cada mentoría, cada sesión y cada conexión genera valor compartido entre mentores, líderes y la plataforma.</p>
     </div>
     <div class="cx-monetize-grid reveal">
-      <div class="cx-monetize-card">
-        <h4><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Sesiones 1 a 1</h4>
-        <p>Agenda una mentoría personalizada con el profesional de tu elección. Paga por sesión y recibe seguimiento.</p>
+      <div class="cx-monetize-card" style="cursor:pointer" onclick="document.querySelector('[data-tab=bolsa]').click();document.querySelector('.cx-tabs').scrollIntoView({behavior:'smooth'})">
+        <h4><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Bolsa de Horas</h4>
+        <p>Compra un paquete de horas y úsalas cuando necesites, con cualquier mentor del marketplace. Sin vencimiento rígido.</p>
       </div>
       <div class="cx-monetize-card">
         <h4><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Mastermind Grupal</h4>
