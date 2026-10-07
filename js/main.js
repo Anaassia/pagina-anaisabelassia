@@ -140,6 +140,83 @@ function handleSubmit(e) {
   });
 })();
 
+// ===== Newsletter band =====
+(function () {
+  if (document.querySelector('.article')) return;
+  var footer = document.querySelector('footer');
+  if (!footer) return;
+
+  var NL_WEBHOOK = 'https://automations.anaisabelassia.com/webhook/newsletter-lead';
+
+  var sec = document.createElement('section');
+  sec.className = 'nl-band';
+  sec.innerHTML =
+    '<style>' +
+    '.nl-band{background:#0B0B0B;padding:40px 0}' +
+    '.nl-inner{display:flex;align-items:center;gap:40px;flex-wrap:wrap}' +
+    '.nl-copy{flex:0 0 auto;max-width:400px}' +
+    '.nl-eyebrow{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:8px;display:block}' +
+    '.nl-title{font-family:"Jost",sans-serif;font-size:clamp(18px,2.2vw,24px);font-weight:700;color:#fff;line-height:1.2;white-space:nowrap}' +
+    '.nl-sub{font-size:13px;color:rgba(255,255,255,.4);margin-top:6px;line-height:1.5}' +
+    '.nl-form{flex:1;min-width:280px}' +
+    '.nl-row{display:flex;gap:8px;align-items:stretch}' +
+    '.nl-row input{flex:1;min-width:0;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:0 16px;height:46px;font-size:14px;color:#fff;font-family:inherit;transition:border-color .25s;outline:none}' +
+    '.nl-row input::placeholder{color:rgba(255,255,255,.3)}' +
+    '.nl-row input:focus{border-color:var(--red)}' +
+    '.nl-row .nl-btn{flex-shrink:0;background:var(--red);color:#fff;border:none;border-radius:8px;padding:0 22px;height:46px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;white-space:nowrap;transition:background .25s,transform .2s}' +
+    '.nl-row .nl-btn:hover{background:#a82315;transform:translateY(-1px)}' +
+    '.nl-note{font-size:11px;color:rgba(255,255,255,.25);margin-top:8px}' +
+    '.nl-msg{font-size:13px;margin-top:8px;display:none}' +
+    '.nl-msg.ok{color:#10B981;display:block}' +
+    '.nl-msg.err{color:#f87171;display:block}' +
+    '@media(max-width:768px){.nl-inner{gap:24px}.nl-title{white-space:normal}.nl-row{flex-wrap:wrap}.nl-row input{min-width:100%}.nl-row .nl-btn{width:100%;height:44px}}' +
+    '</style>' +
+    '<div class="wrap"><div class="nl-inner">' +
+      '<div class="nl-copy">' +
+        '<span class="nl-eyebrow">Exclusivo para líderes</span>' +
+        '<div class="nl-title">Recibe estrategias de liderazgo comercial directo en tu correo.</div>' +
+        '<p class="nl-sub">Contenido exclusivo, casos reales y herramientas que no publico en redes. Sin spam — solo valor.</p>' +
+      '</div>' +
+      '<div class="nl-form">' +
+        '<div class="nl-row">' +
+          '<input id="nlName" type="text" placeholder="Tu nombre" autocomplete="name">' +
+          '<input id="nlEmail" type="email" placeholder="tucorreo@empresa.com" autocomplete="email">' +
+          '<button class="nl-btn" type="button" id="nlBtn">Suscribirme</button>' +
+        '</div>' +
+        '<p class="nl-note">Sin spam. Puedes cancelar en cualquier momento.</p>' +
+        '<div class="nl-msg" id="nlMsg"></div>' +
+      '</div>' +
+    '</div></div>';
+
+  var allCtaBands = document.querySelectorAll('.cta-band');
+  var ctaBand = allCtaBands.length ? allCtaBands[allCtaBands.length - 1] : null;
+  var insertBefore = ctaBand || footer;
+  insertBefore.parentNode.insertBefore(sec, insertBefore);
+
+  document.getElementById('nlBtn').addEventListener('click', function () {
+    var name = document.getElementById('nlName').value.trim();
+    var email = document.getElementById('nlEmail').value.trim();
+    var msg = document.getElementById('nlMsg');
+    msg.className = 'nl-msg';
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      msg.textContent = 'Por favor ingresa tu nombre y un email válido.';
+      msg.classList.add('err');
+      return;
+    }
+    try {
+      fetch(NL_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre: name, email: email, pagina: (document.title || '').split(/[—|]/)[0].trim(), fecha: new Date().toISOString() })
+      });
+    } catch (_) {}
+    msg.textContent = '¡Listo! Ya estás suscrito. Revisa tu correo.';
+    msg.classList.add('ok');
+    document.getElementById('nlName').value = '';
+    document.getElementById('nlEmail').value = '';
+  });
+})();
+
 // ===== "Sígueme" social band (internal pages only) =====
 (function () {
   if (document.querySelector('.article')) return; // no mostrar en artículos de blog
