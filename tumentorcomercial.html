@@ -56,6 +56,12 @@
 .tmc-dots{display:flex;justify-content:center;gap:8px;margin-top:36px}
 .tmc-dot{width:8px;height:8px;border-radius:50%;background:var(--line);border:none;cursor:pointer;transition:all .3s;padding:0}
 .tmc-dot.active{background:var(--red);width:24px;border-radius:4px}
+.tmc-slide-btn{display:inline-block;margin-top:14px;font-size:12px;font-weight:600;color:var(--red);text-decoration:none;letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid transparent;transition:border-color .3s}
+.tmc-slide-btn:hover{border-color:var(--red)}
+.tmc-experts-cta{text-align:center;margin-top:48px}
+.tmc-experts-cta a{display:inline-flex;align-items:center;gap:10px;padding:15px 36px;background:var(--ink,#0B0B0B);color:#fff;border-radius:50px;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;text-decoration:none;transition:all .3s}
+.tmc-experts-cta a:hover{background:var(--red);transform:translateY(-2px);box-shadow:0 12px 32px rgba(204,45,26,.25)}
+.tmc-experts-cta a svg{width:18px;height:18px;flex-shrink:0}
 
 /* PROFILES GRID */
 .tmc-profiles{padding:0 0 80px;background:#fff}
@@ -188,6 +194,7 @@
             </div>
             <div class="tmc-name">Atalía Isaid Ordoñez</div>
             <div class="tmc-role">Experta en Gestión del Talento y Productividad</div>
+            <a href="#perfil-atalia" class="tmc-slide-btn">Ver perfil →</a>
           </div>
 
           <!-- Slide 2 -->
@@ -197,6 +204,7 @@
             </div>
             <div class="tmc-name">Ana Cristina Chávez</div>
             <div class="tmc-role">Experta en Estrategia y Crecimiento</div>
+            <a href="#perfil-cristina" class="tmc-slide-btn">Ver perfil →</a>
           </div>
 
           <!-- Slide 3 -->
@@ -206,6 +214,7 @@
             </div>
             <div class="tmc-name">Andrés Díaz</div>
             <div class="tmc-role">Experto de Gestión Financiera y Contable</div>
+            <a href="#perfil-andres" class="tmc-slide-btn">Ver perfil →</a>
           </div>
 
           <!-- Slide 4 -->
@@ -215,6 +224,7 @@
             </div>
             <div class="tmc-name">Carlos Ruiz</div>
             <div class="tmc-role">Experto en Productividad y Eficiencia</div>
+            <a href="#perfil-carlos" class="tmc-slide-btn">Ver perfil →</a>
           </div>
 
           <!-- Slide 5 — Ana Isabel -->
@@ -224,6 +234,7 @@
             </div>
             <div class="tmc-name">Ana Isabel Assia</div>
             <div class="tmc-role">Consultora · Estratega · Mentora Fundadora</div>
+            <a href="#perfil-ana" class="tmc-slide-btn">Ver perfil →</a>
           </div>
 
         </div>
@@ -233,11 +244,17 @@
       </button>
     </div>
     <div class="tmc-dots" id="tmcDots"></div>
+    <div class="tmc-experts-cta reveal">
+      <a href="#perfiles">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Ver todos los perfiles y tarifas
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- PERFILES COMPLETOS -->
-<section class="tmc-profiles">
+<section class="tmc-profiles" id="perfiles">
   <div class="wrap">
     <div class="tmc-profiles-head reveal">
       <h3>Perfiles del <em>equipo</em></h3>
@@ -246,7 +263,7 @@
     <div class="tmc-grid">
 
       <!-- Atalía -->
-      <div class="tmc-card reveal">
+      <div class="tmc-card reveal" id="perfil-atalia">
         <div class="tmc-card-head">
           <div class="tmc-card-photo">
             <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -272,7 +289,7 @@
       </div>
 
       <!-- Ana Cristina -->
-      <div class="tmc-card reveal">
+      <div class="tmc-card reveal" id="perfil-cristina">
         <div class="tmc-card-head">
           <div class="tmc-card-photo">
             <img src="assets/cristina.png" alt="Ana Cristina Chávez">
@@ -298,7 +315,7 @@
       </div>
 
       <!-- Andrés Díaz -->
-      <div class="tmc-card reveal">
+      <div class="tmc-card reveal" id="perfil-andres">
         <div class="tmc-card-head">
           <div class="tmc-card-photo">
             <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -324,7 +341,7 @@
       </div>
 
       <!-- Carlos Ruiz -->
-      <div class="tmc-card reveal">
+      <div class="tmc-card reveal" id="perfil-carlos">
         <div class="tmc-card-head">
           <div class="tmc-card-photo">
             <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
