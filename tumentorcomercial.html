@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TuMentorComercial · Equipo de Expertos | Ana Isabel Assia</title>
+<meta name="description" content="Conoce al equipo de expertos de TuMentorComercial. Profesionales verificados en estrategia, finanzas, talento y productividad a tu servicio." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+:root{--gold:#F59E0B;--gold-dark:#D97706;--emerald:#10B981}
+
+/* HERO */
+.tmc-hero{background:#0B0B0B;padding:120px 0 80px;text-align:center;position:relative;overflow:hidden}
+.tmc-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(204,45,26,.12) 0%,transparent 55%),radial-gradient(ellipse at 70% 50%,rgba(245,158,11,.06) 0%,transparent 55%);pointer-events:none}
+.tmc-hero .wrap{position:relative}
+.tmc-hero .eyebrow{color:var(--red);justify-content:center}
+.tmc-hero h1{font-family:'Jost',sans-serif;font-weight:400;font-size:clamp(28px,4vw,52px);line-height:1.1;color:#fff;margin-top:20px}
+.tmc-hero h1 em{font-style:italic;color:var(--red)}
+.tmc-hero p{color:rgba(255,255,255,.5);max-width:56ch;margin:18px auto 0;font-size:16px;line-height:1.7}
+.tmc-hero-btns{display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap}
+.tmc-hero-btns a{padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px;transition:all .3s}
+.tmc-hero-btns .btn-primary{background:var(--red);color:#fff}
+.tmc-hero-btns .btn-primary:hover{background:#a82315;transform:translateY(-2px)}
+.tmc-hero-btns .btn-outline{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7)}
+.tmc-hero-btns .btn-outline:hover{border-color:var(--red);color:var(--red)}
+
+/* EXPERTS CAROUSEL SECTION */
+.tmc-experts{padding:80px 0;background:#fff}
+.tmc-experts .section-head{margin-bottom:52px}
+.tmc-experts .section-head h2{font-size:clamp(26px,3.5vw,42px)}
+
+/* Carousel */
+.tmc-carousel-wrap{position:relative}
+.tmc-viewport{overflow:hidden}
+.tmc-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.tmc-slide{min-width:25%;flex-shrink:0;padding:0 16px;box-sizing:border-box;text-align:center}
+.tmc-avatar{width:160px;height:160px;border-radius:50%;margin:0 auto 20px;overflow:hidden;background:var(--smoke);border:3px solid var(--line);transition:border-color .3s}
+.tmc-avatar img{width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+.tmc-avatar-svg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#e8e6e3}
+.tmc-avatar-svg svg{width:72px;height:72px;stroke:#999;fill:none;stroke-width:1.2}
+.tmc-slide:hover .tmc-avatar{border-color:var(--red)}
+.tmc-name{font-family:'Jost',sans-serif;font-size:17px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.tmc-role{font-size:13px;color:var(--ash);line-height:1.4;max-width:22ch;margin:0 auto}
+
+/* Carousel controls */
+.tmc-car-btn{position:absolute;top:80px;width:40px;height:40px;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;z-index:2;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.tmc-car-btn:hover{background:var(--ink);border-color:var(--ink)}
+.tmc-car-btn:hover svg{stroke:#fff}
+.tmc-car-btn svg{width:18px;height:18px;stroke:var(--ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tmc-car-prev{left:-20px}
+.tmc-car-next{right:-20px}
+.tmc-dots{display:flex;justify-content:center;gap:8px;margin-top:36px}
+.tmc-dot{width:8px;height:8px;border-radius:50%;background:var(--line);border:none;cursor:pointer;transition:all .3s;padding:0}
+.tmc-dot.active{background:var(--red);width:24px;border-radius:4px}
+
+/* PROFILES GRID */
+.tmc-profiles{padding:0 0 80px;background:#fff}
+.tmc-profiles-head{text-align:center;margin-bottom:48px}
+.tmc-profiles-head h3{font-family:'Jost',sans-serif;font-size:28px;font-weight:400;color:var(--ink)}
+.tmc-profiles-head h3 em{color:var(--red);font-style:italic}
+.tmc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+
+/* Profile card */
+.tmc-card{background:#fff;border-radius:20px;border:1px solid var(--line);overflow:hidden;transition:all .4s}
+.tmc-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.09)}
+.tmc-card-head{display:flex;gap:20px;padding:28px 28px 0;align-items:flex-start}
+.tmc-card-photo{width:80px;height:80px;border-radius:50%;border:3px solid var(--red);overflow:hidden;background:var(--smoke);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tmc-card-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+.tmc-card-photo svg{width:40px;height:40px;stroke:#bbb;fill:none;stroke-width:1.4}
+.tmc-card-info h3{font-family:'Jost',sans-serif;font-size:19px;font-weight:600;color:var(--ink);line-height:1.2}
+.tmc-card-info .role{font-size:13px;color:var(--ash);margin-top:3px}
+.tmc-card-info .loc{font-size:12px;color:var(--ash);margin-top:6px;display:flex;align-items:center;gap:4px}
+.tmc-card-info .loc svg{width:13px;height:13px;stroke:var(--red);fill:none;stroke-width:2}
+.tmc-verified{display:inline-flex;align-items:center;gap:4px;margin-top:6px;font-size:11px;font-weight:600;color:var(--emerald);letter-spacing:.03em}
+.tmc-verified svg{width:14px;height:14px;fill:var(--emerald)}
+.tmc-card-tags{display:flex;flex-wrap:wrap;gap:6px;padding:18px 28px 0}
+.tmc-tag{font-size:11px;font-weight:500;padding:5px 12px;border-radius:50px;background:rgba(204,45,26,.06);color:var(--red);border:1px solid rgba(204,45,26,.1)}
+.tmc-card-desc{padding:16px 28px;font-size:14px;color:var(--ash);line-height:1.6;border-top:1px solid var(--line);margin-top:18px}
+.tmc-card-actions{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.tmc-card-actions a{padding:16px;text-align:center;font-size:14px;font-weight:600;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:6px}
+.tmc-card-actions a svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tmc-card-actions .btn-ver{border-right:1px solid var(--line);color:var(--ink)}
+.tmc-card-actions .btn-ver:hover{background:var(--smoke)}
+.tmc-card-actions .btn-contactar{color:#fff;background:var(--red)}
+.tmc-card-actions .btn-contactar:hover{background:#a82315}
+
+/* CTA BAND */
+.tmc-cta{padding:80px 0;background:#0B0B0B;text-align:center}
+.tmc-cta h2{font-family:'Jost',sans-serif;font-weight:400;font-size:clamp(24px,3vw,40px);color:#fff;line-height:1.15}
+.tmc-cta h2 em{color:var(--red);font-style:italic}
+.tmc-cta p{color:rgba(255,255,255,.45);margin:14px auto 36px;max-width:52ch;font-size:15px;line-height:1.7}
+.tmc-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.tmc-cta-btns a{padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px;transition:all .3s}
+.tmc-cta-btns .btn-red{background:var(--red);color:#fff}
+.tmc-cta-btns .btn-red:hover{background:#a82315;transform:translateY(-2px)}
+.tmc-cta-btns .btn-outline{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7)}
+.tmc-cta-btns .btn-outline:hover{border-color:var(--red);color:var(--red)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .tmc-grid{grid-template-columns:1fr}
+  .tmc-slide{min-width:50%}
+}
+@media(max-width:600px){
+  .tmc-slide{min-width:100%}
+  .tmc-card-head{flex-direction:column;align-items:center;text-align:center}
+  .tmc-card-info .loc{justify-content:center}
+  .tmc-verified{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-blanco.png" alt="Ana Isabel Assia — Líder de Transformación" class="logo logo-white">
+      <img src="assets/logo-negro.png" alt="Ana Isabel Assia — Líder de Transformación" class="logo logo-color">
+    </a>
+    <nav class="menu" id="menu">
+      <a href="index.html">Inicio</a>
+      <a href="sobre-mi.html">Sobre mí</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="ruta-de-innovacion.html">Ruta de Innovación</a>
+      <div class="dropdown">
+        <a href="#">Alquimia Comercial <svg class="chevron" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></a>
+        <div class="dropdown-menu">
+          <a href="liderazgo-comercial.html">Liderazgo Comercial</a>
+          <a href="blog.html">Productividad Comercial</a>
+          <a href="blog.html">Ventas Rentables</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#">Tools <svg class="chevron" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></a>
+        <div class="dropdown-menu">
+          <a href="360pathfinder.html">360PathFinder®</a>
+          <a href="perfil-liderazgo-comercial.html">Perfil Liderazgo Comercial</a>
+        </div>
+      </div>
+    </nav>
+    <a href="conexiones.html" class="nav-cta">
+      <svg class="nav-cta-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Ver Marketplace
+    </a>
+    <button class="burger" id="burger" aria-label="Menú"><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="tmc-hero">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">TuMentorComercial · Red de Expertos</span>
+      <h1>Un equipo de <em>expertos</em><br>a tu servicio.</h1>
+      <p>Profesionales verificados dispuestos a trabajar en equipo para generar transformación y crecimiento en tu negocio.</p>
+      <div class="tmc-hero-btns">
+        <a href="conexiones.html" class="btn-primary">Explorar el Marketplace</a>
+        <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-outline">Agenda una sesión</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAROUSEL DE EXPERTOS -->
+<section class="tmc-experts">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Nuestro Equipo · Mentores Verificados</span>
+      <h2 class="serif">Conoce a los <em>expertos</em> que te acompañan.</h2>
+      <p>Cada mentor es seleccionado por su trayectoria, resultados comprobados y compromiso con el crecimiento de sus clientes.</p>
+    </div>
+
+    <div class="tmc-carousel-wrap">
+      <button class="tmc-car-btn tmc-car-prev" id="tmcPrev" aria-label="Anterior">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="tmc-viewport">
+        <div class="tmc-track" id="tmcTrack">
+
+          <!-- Slide 1 -->
+          <div class="tmc-slide">
+            <div class="tmc-avatar">
+              <div class="tmc-avatar-svg"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            </div>
+            <div class="tmc-name">Atalía Isaid Ordoñez</div>
+            <div class="tmc-role">Experta en Gestión del Talento y Productividad</div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="tmc-slide">
+            <div class="tmc-avatar">
+              <img src="assets/cristina.png" alt="Ana Cristina Chávez">
+            </div>
+            <div class="tmc-name">Ana Cristina Chávez</div>
+            <div class="tmc-role">Experta en Estrategia y Crecimiento</div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="tmc-slide">
+            <div class="tmc-avatar">
+              <div class="tmc-avatar-svg"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            </div>
+            <div class="tmc-name">Andrés Díaz</div>
+            <div class="tmc-role">Experto de Gestión Financiera y Contable</div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="tmc-slide">
+            <div class="tmc-avatar">
+              <div class="tmc-avatar-svg"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            </div>
+            <div class="tmc-name">Carlos Ruiz</div>
+            <div class="tmc-role">Experto en Productividad y Eficiencia</div>
+          </div>
+
+          <!-- Slide 5 — Ana Isabel -->
+          <div class="tmc-slide">
+            <div class="tmc-avatar">
+              <img src="assets/iconoana.png" alt="Ana Isabel Assia">
+            </div>
+            <div class="tmc-name">Ana Isabel Assia</div>
+            <div class="tmc-role">Consultora · Estratega · Mentora Fundadora</div>
+          </div>
+
+        </div>
+      </div>
+      <button class="tmc-car-btn tmc-car-next" id="tmcNext" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+    <div class="tmc-dots" id="tmcDots"></div>
+  </div>
+</section>
+
+<!-- PERFILES COMPLETOS -->
+<section class="tmc-profiles">
+  <div class="wrap">
+    <div class="tmc-profiles-head reveal">
+      <h3>Perfiles del <em>equipo</em></h3>
+      <p>Descubre la especialidad, trayectoria y enfoque de cada experto.</p>
+    </div>
+    <div class="tmc-grid">
+
+      <!-- Atalía -->
+      <div class="tmc-card reveal">
+        <div class="tmc-card-head">
+          <div class="tmc-card-photo">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="tmc-card-info">
+            <h3>Atalía Isaid Ordoñez</h3>
+            <div class="role">Experta en Gestión del Talento y Productividad</div>
+            <div class="loc"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ciudad de México</div>
+            <div class="tmc-verified"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>Mentora Verificada</div>
+          </div>
+        </div>
+        <div class="tmc-card-tags">
+          <span class="tmc-tag">Gestión del Talento</span>
+          <span class="tmc-tag">Productividad</span>
+          <span class="tmc-tag">Liderazgo de Equipos</span>
+          <span class="tmc-tag">Cultura Organizacional</span>
+        </div>
+        <div class="tmc-card-desc">Especialista en diseñar y activar equipos comerciales de alto desempeño. Combina metodologías de gestión humana con estrategias de productividad para generar resultados sostenibles.</div>
+        <div class="tmc-card-actions">
+          <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-ver"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Ver perfil</a>
+          <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-contactar"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Agendar sesión</a>
+        </div>
+      </div>
+
+      <!-- Ana Cristina -->
+      <div class="tmc-card reveal">
+        <div class="tmc-card-head">
+          <div class="tmc-card-photo">
+            <img src="assets/cristina.png" alt="Ana Cristina Chávez">
+          </div>
+          <div class="tmc-card-info">
+            <h3>Ana Cristina Chávez</h3>
+            <div class="role">Experta en Estrategia y Crecimiento</div>
+            <div class="loc"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Bogotá, Colombia</div>
+            <div class="tmc-verified"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>Mentora Verificada</div>
+          </div>
+        </div>
+        <div class="tmc-card-tags">
+          <span class="tmc-tag">Estrategia Comercial</span>
+          <span class="tmc-tag">Crecimiento de Negocios</span>
+          <span class="tmc-tag">Modelos de Negocio</span>
+          <span class="tmc-tag">Expansión de Mercados</span>
+        </div>
+        <div class="tmc-card-desc">Estratega de negocios con enfoque en escalar empresas de forma rentable. Acompaña a líderes en el diseño de rutas de crecimiento sólidas y la activación de nuevos mercados.</div>
+        <div class="tmc-card-actions">
+          <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-ver"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Ver perfil</a>
+          <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-contactar"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Agendar sesión</a>
+        </div>
+      </div>
+
+      <!-- Andrés Díaz -->
+      <div class="tmc-card reveal">
+        <div class="tmc-card-head">
+          <div class="tmc-card-photo">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="tmc-card-info">
+            <h3>Andrés Díaz</h3>
+            <div class="role">Experto de Gestión Financiera y Contable</div>
+            <div class="loc"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Medellín, Colombia</div>
+            <div class="tmc-verified"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>Mentor Verificado</div>
+          </div>
+        </div>
+        <div class="tmc-card-tags">
+          <span class="tmc-tag">Gestión Financiera</span>
+          <span class="tmc-tag">Contabilidad Gerencial</span>
+          <span class="tmc-tag">Analítica de Negocios</span>
+          <span class="tmc-tag">Flujo de Caja</span>
+        </div>
+        <div class="tmc-card-desc">Especialista en traducir los números del negocio en decisiones estratégicas. Ayuda a líderes y empresarios a entender su situación financiera real y a tomar el control del flujo de caja.</div>
+        <div class="tmc-card-actions">
+          <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-ver"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Ver perfil</a>
+          <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-contactar"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Agendar sesión</a>
+        </div>
+      </div>
+
+      <!-- Carlos Ruiz -->
+      <div class="tmc-card reveal">
+        <div class="tmc-card-head">
+          <div class="tmc-card-photo">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="tmc-card-info">
+            <h3>Carlos Ruiz</h3>
+            <div class="role">Experto en Productividad y Eficiencia</div>
+            <div class="loc"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cali, Colombia</div>
+            <div class="tmc-verified"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>Mentor Verificado</div>
+          </div>
+        </div>
+        <div class="tmc-card-tags">
+          <span class="tmc-tag">Productividad</span>
+          <span class="tmc-tag">Procesos y Sistemas</span>
+          <span class="tmc-tag">Transformación Digital</span>
+          <span class="tmc-tag">Automatización</span>
+        </div>
+        <div class="tmc-card-desc">Experto en diseñar sistemas que multiplican la capacidad de los equipos. Combina metodologías ágiles, automatización y cultura de eficiencia para que cada esfuerzo genere el máximo impacto.</div>
+        <div class="tmc-card-actions">
+          <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-ver"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Ver perfil</a>
+          <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-contactar"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Agendar sesión</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="tmc-cta">
+  <div class="wrap">
+    <div class="reveal">
+      <h2>¿Listo para conectar con el<br><em>experto que necesitas</em>?</h2>
+      <p>Agenda una sesión exploratoria gratuita y encuentra el mentor ideal para tu reto comercial.</p>
+      <div class="tmc-cta-btns">
+        <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="btn-red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;display:inline;vertical-align:middle;margin-right:6px"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Agendar sesión exploratoria
+        </a>
+        <a href="conexiones.html" class="btn-outline">Ver todos los perfiles</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="assets/logo-blanco.png" alt="Ana Isabel Assia — Líder de Transformación" class="foot-logo">
+        <p>CEO &amp; Fundadora de IBC Group. Consultora, estratega y mentora de liderazgo comercial.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <b>Navegación</b>
+          <a href="index.html">Inicio</a>
+          <a href="sobre-mi.html">Sobre mí</a>
+          <a href="servicios.html">Servicios</a>
+          <a href="conexiones.html">Marketplace</a>
+          <a href="blog.html">Alquimia Comercial</a>
+        </div>
+        <div class="foot-col">
+          <b>Contacto</b>
+          <a href="tel:+573116279068">+57 311 627 9068</a>
+          <a href="mailto:gerencia@anaisabelassia.com">gerencia@anaisabelassia.com</a>
+          <a href="https://instagram.com/anaisabelassia" target="_blank" rel="noopener">@anaisabelassia</a>
+          <a href="https://anaisabelassia.com" target="_blank" rel="noopener">anaisabelassia.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Ana Isabel Assia &middot; IBC Group SAS &middot; Agencia de Innovación y Negocios. Todos los derechos reservados.</span>
+      <div class="socials">
+        <a href="https://www.instagram.com/anaisabelassia/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@anaisabelassia" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.linkedin.com/in/anaisabelassia/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+(function(){
+  // Carousel
+  var track = document.getElementById('tmcTrack');
+  var slides = track.querySelectorAll('.tmc-slide');
+  var dotsWrap = document.getElementById('tmcDots');
+  var perView = window.innerWidth >= 900 ? 4 : window.innerWidth >= 600 ? 2 : 1;
+  var total = slides.length;
+  var current = 0;
+  var maxIndex = total - perView;
+
+  function buildDots(){
+    dotsWrap.innerHTML = '';
+    for(var i = 0; i <= maxIndex; i++){
+      var d = document.createElement('button');
+      d.className = 'tmc-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label','Slide ' + (i+1));
+      d.dataset.i = i;
+      d.addEventListener('click', function(){ go(+this.dataset.i); });
+      dotsWrap.appendChild(d);
+    }
+  }
+
+  function go(idx){
+    current = Math.max(0, Math.min(idx, maxIndex));
+    track.style.transform = 'translateX(-' + (current * (100 / perView)) + '%)';
+    dotsWrap.querySelectorAll('.tmc-dot').forEach(function(d,i){ d.classList.toggle('active', i === current); });
+  }
+
+  document.getElementById('tmcPrev').addEventListener('click', function(){ go(current - 1); });
+  document.getElementById('tmcNext').addEventListener('click', function(){ go(current + 1); });
+
+  buildDots();
+
+  window.addEventListener('resize', function(){
+    var nv = window.innerWidth >= 900 ? 4 : window.innerWidth >= 600 ? 2 : 1;
+    if(nv !== perView){ perView = nv; maxIndex = total - perView; current = 0; buildDots(); go(0); }
+  });
+})();
+</script>
+</body>
+</html>
