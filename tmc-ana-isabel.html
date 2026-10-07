@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ana Isabel Assia · Consultora, Estratega y Mentora | TuMentorComercial</title>
+<meta name="description" content="Perfil de Ana Isabel Assia — Consultora, Estratega y Mentora. 25+ años en gestión comercial. Especializada en Gestión Comercial Phygital, Liderazgo y Transformación Digital." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+/* ── PERFIL LAYOUT ──────────────────────────────────── */
+.prf-back{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:rgba(255,255,255,.55);text-decoration:none;letter-spacing:.03em;transition:color .3s;padding:24px 0 0}
+.prf-back:hover{color:#fff}
+.prf-back svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* HERO */
+.prf-hero{background:var(--ink,#0B0B0B);padding:40px 0 0;position:relative;overflow:hidden}
+.prf-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 60%,rgba(204,45,26,.14) 0%,transparent 55%),radial-gradient(ellipse at 80% 30%,rgba(204,45,26,.06) 0%,transparent 50%);pointer-events:none}
+.prf-hero-inner{display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:start;position:relative;padding-bottom:48px}
+.prf-photo{width:120px;height:120px;border-radius:50%;border:3px solid var(--red,#CC2D1A);overflow:hidden;flex-shrink:0;background:rgba(255,255,255,.08)}
+.prf-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+.prf-identity{}
+.prf-name-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.prf-name{font-family:'Jost',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:700;color:#fff;line-height:1.15}
+.prf-badge-v{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);background:rgba(204,45,26,.12);border:1px solid rgba(204,45,26,.25);padding:3px 10px;border-radius:50px}
+.prf-badge-v svg{width:12px;height:12px;fill:var(--red)}
+.prf-title{font-family:'Jost',sans-serif;font-size:17px;font-weight:400;color:rgba(255,255,255,.7);margin-top:6px}
+.prf-spec{font-size:14px;color:rgba(255,255,255,.4);margin-top:4px}
+.prf-loc{display:flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,.4);margin-top:8px}
+.prf-loc svg{width:14px;height:14px;stroke:var(--red);fill:none;stroke-width:2}
+.prf-creds{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.prf-cred{font-size:12px;font-weight:500;padding:5px 14px;border-radius:50px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.65)}
+.prf-hero-actions{display:flex;flex-direction:column;gap:10px;align-self:start;padding-top:8px}
+.prf-btn-connect{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 28px;background:var(--red);color:#fff;border-radius:8px;font-family:'Jost',sans-serif;font-size:14px;font-weight:600;text-decoration:none;transition:all .3s;white-space:nowrap}
+.prf-btn-connect:hover{background:#b02516;transform:translateY(-1px)}
+.prf-btn-connect svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+.prf-btn-agenda{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 28px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all .3s;white-space:nowrap}
+.prf-btn-agenda:hover{border-color:var(--red);color:var(--red)}
+.prf-btn-agenda svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* STATS BAND */
+.prf-stats-band{background:#fff;border-top:3px solid var(--red);box-shadow:0 4px 24px rgba(0,0,0,.07)}
+.prf-stats-inner{display:flex;justify-content:center;gap:0;padding:0}
+.prf-stat{text-align:center;padding:28px 48px;border-right:1px solid var(--line,rgba(0,0,0,.08))}
+.prf-stat:last-child{border-right:none}
+.prf-stat b{font-family:'Jost',sans-serif;font-size:32px;font-weight:700;color:var(--red);display:block;line-height:1}
+.prf-stat span{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(11,11,11,.35);margin-top:6px;display:block}
+
+/* BODY */
+.prf-body{padding:64px 0 80px;background:var(--smoke,#F5F4F2)}
+.prf-grid{display:grid;grid-template-columns:1fr 380px;gap:40px;align-items:start}
+
+/* LEFT COLUMN */
+.prf-section{background:#fff;border-radius:16px;border:1px solid var(--line,rgba(0,0,0,.08));padding:32px;margin-bottom:24px}
+.prf-section:last-child{margin-bottom:0}
+.prf-section-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.prf-section-label::after{content:'';flex:1;height:1px;background:var(--line,rgba(0,0,0,.08))}
+.prf-promesa{font-family:'Jost',sans-serif;font-size:18px;font-weight:400;line-height:1.65;color:var(--ink);border-left:3px solid var(--red);padding-left:20px}
+.prf-trayectoria{font-size:15px;line-height:1.8;color:rgba(11,11,11,.65)}
+.prf-connect-box{background:var(--ink);border-radius:16px;padding:28px;text-align:center;margin-top:24px}
+.prf-connect-box p{color:rgba(255,255,255,.55);font-size:14px;margin-bottom:16px}
+.prf-connect-box .prf-btn-connect{width:100%;justify-content:center}
+
+/* RIGHT COLUMN */
+.prf-sidebar-card{background:#fff;border-radius:16px;border:1px solid var(--line,rgba(0,0,0,.08));padding:28px;margin-bottom:24px}
+.prf-sidebar-card:last-child{margin-bottom:0}
+.prf-sidebar-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.prf-tags{display:flex;flex-wrap:wrap;gap:8px}
+.prf-tag-sector{font-size:12px;font-weight:500;padding:6px 14px;border-radius:50px;border:1px solid var(--line,rgba(0,0,0,.1));color:rgba(11,11,11,.6);background:#fff;transition:all .3s}
+.prf-tag-sector:hover{border-color:var(--red);color:var(--red)}
+.prf-tag-result{font-size:12px;font-weight:500;padding:6px 14px;border-radius:50px;background:rgba(204,45,26,.06);color:var(--red);border:1px solid rgba(204,45,26,.15)}
+
+/* TARIFAS */
+.prf-tarifas{padding:0 0 80px;background:var(--smoke,#F5F4F2)}
+.prf-tarifas-head{text-align:center;margin-bottom:48px}
+.prf-tarifas-head h2{font-family:'Jost',sans-serif;font-weight:400;font-size:clamp(24px,3vw,36px);color:var(--ink);margin-top:8px}
+.prf-tarifas-head h2 em{font-style:italic;color:var(--red)}
+.prf-tarifas-head p{color:rgba(11,11,11,.5);font-size:15px;margin-top:10px}
+.prf-plans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.prf-plan{background:#fff;border:1px solid var(--line,rgba(0,0,0,.08));border-radius:20px;padding:36px 28px;text-align:center;position:relative;transition:all .4s}
+.prf-plan:hover{transform:translateY(-6px);box-shadow:0 20px 56px rgba(0,0,0,.08)}
+.prf-plan.featured{border-color:var(--red);border-width:2px}
+.prf-plan.featured::before{content:'Más elegido';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;border-radius:50px;white-space:nowrap}
+.prf-plan-icon{width:52px;height:52px;border-radius:14px;background:rgba(204,45,26,.07);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.prf-plan-icon svg{width:26px;height:26px;stroke:var(--red);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.prf-plan-name{font-family:'Jost',sans-serif;font-size:18px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.prf-plan-desc{font-size:13px;color:rgba(11,11,11,.5);line-height:1.6;margin-bottom:24px;min-height:52px}
+.prf-plan-price{margin-bottom:24px}
+.prf-plan-price .amount{font-family:'Jost',sans-serif;font-size:40px;font-weight:700;color:var(--ink);line-height:1}
+.prf-plan-price .currency{font-size:18px;font-weight:400;vertical-align:super;color:rgba(11,11,11,.4)}
+.prf-plan-price .period{font-size:13px;color:rgba(11,11,11,.35);display:block;margin-top:4px}
+.prf-plan-price .quote-text{font-family:'Jost',sans-serif;font-size:22px;font-weight:600;color:var(--ink)}
+.prf-plan-includes{list-style:none;text-align:left;margin-bottom:28px}
+.prf-plan-includes li{font-size:13px;color:rgba(11,11,11,.6);padding:7px 0;border-bottom:1px solid var(--line,rgba(0,0,0,.06));display:flex;align-items:center;gap:8px}
+.prf-plan-includes li:last-child{border-bottom:none}
+.prf-plan-includes li svg{width:14px;height:14px;stroke:var(--red);fill:none;stroke-width:2.5;flex-shrink:0}
+.prf-plan-cta{display:block;padding:13px 24px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;transition:all .3s;text-align:center}
+.prf-plan:not(.featured) .prf-plan-cta{border:1px solid var(--line,rgba(0,0,0,.12));color:var(--ink)}
+.prf-plan:not(.featured) .prf-plan-cta:hover{border-color:var(--red);color:var(--red)}
+.prf-plan.featured .prf-plan-cta{background:var(--red);color:#fff}
+.prf-plan.featured .prf-plan-cta:hover{background:#b02516;transform:translateY(-1px)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .prf-hero-inner{grid-template-columns:auto 1fr;gap:24px}
+  .prf-hero-actions{flex-direction:row;flex-wrap:wrap;grid-column:1/-1}
+  .prf-grid{grid-template-columns:1fr}
+  .prf-plans{grid-template-columns:1fr;max-width:420px;margin:0 auto}
+  .prf-stats-inner{flex-wrap:wrap;justify-content:center}
+  .prf-stat{border-right:none;border-bottom:1px solid var(--line,rgba(0,0,0,.08));width:50%;padding:20px 24px}
+  .prf-stat:last-child{border-bottom:none}
+}
+@media(max-width:600px){
+  .prf-hero-inner{grid-template-columns:1fr;text-align:center}
+  .prf-photo{margin:0 auto}
+  .prf-name-row{justify-content:center}
+  .prf-loc{justify-content:center}
+  .prf-creds{justify-content:center}
+  .prf-hero-actions{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-blanco.png" alt="Ana Isabel Assia — Líder de Transformación" class="logo logo-white">
+      <img src="assets/logo-negro.png" alt="Ana Isabel Assia — Líder de Transformación" class="logo logo-color">
+    </a>
+    <nav class="menu" id="menu">
+      <a href="sobre-mi.html">Sobre mí</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="360pathfinder.html">360PathFinder®</a>
+      <div class="dropdown">
+        <a href="#">Alquimia Comercial <svg class="chevron" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></a>
+        <div class="dropdown-menu">
+          <a href="liderazgo-comercial.html">Liderazgo Comercial</a>
+          <a href="blog.html">Productividad Comercial</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#">Tools <svg class="chevron" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></a>
+        <div class="dropdown-menu">
+          <a href="360pathfinder.html">360PathFinder®</a>
+          <a href="perfil-liderazgo-comercial.html">Perfil Liderazgo Comercial</a>
+        </div>
+      </div>
+    </nav>
+    <a href="tumentorcomercial.html" class="nav-cta">
+      <svg class="nav-cta-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Red de Expertos
+    </a>
+    <button class="burger" id="burger" aria-label="Menú"><span></span></button>
+  </div>
+</header>
+
+<!-- HERO PERFIL -->
+<section class="prf-hero">
+  <div class="wrap">
+    <a href="tumentorcomercial.html" class="prf-back">
+      <svg viewBox="0 0 24 24"><polyline points="19 12 5 12"/><polyline points="12 5 5 12 12 19"/></svg>
+      Volver a consultores
+    </a>
+    <div class="prf-hero-inner">
+
+      <!-- FOTO -->
+      <div class="prf-photo">
+        <img src="assets/iconoana.png" alt="Ana Isabel Assia">
+      </div>
+
+      <!-- IDENTIDAD -->
+      <div class="prf-identity">
+        <div class="prf-name-row">
+          <span class="prf-name">Ana Isabel Assia</span>
+          <span class="prf-badge-v">
+            <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            Verificada
+          </span>
+        </div>
+        <div class="prf-title">Consultora · Estratega · Mentora</div>
+        <div class="prf-spec">Especializada en Gestión Comercial Phygital y Modelos de Negocios</div>
+        <div class="prf-loc">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Colombia
+        </div>
+        <div class="prf-creds">
+          <span class="prf-cred">Administradora de Empresas</span>
+          <span class="prf-cred">Especializada en Marketing Estratégico</span>
+          <span class="prf-cred">Certificada Metodologías de Innovación y Agile</span>
+        </div>
+      </div>
+
+      <!-- ACCIONES -->
+      <div class="prf-hero-actions">
+        <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="prf-btn-connect">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Conectar
+        </a>
+        <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="prf-btn-agenda">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Agendar sesión
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="prf-stats-band">
+  <div class="wrap">
+    <div class="prf-stats-inner">
+      <div class="prf-stat">
+        <b>25+</b>
+        <span>Años en Gestión Comercial</span>
+      </div>
+      <div class="prf-stat">
+        <b>10+</b>
+        <span>Años como Consultora</span>
+      </div>
+      <div class="prf-stat">
+        <b>+50</b>
+        <span>Proyectos Acompañados</span>
+      </div>
+      <div class="prf-stat">
+        <b>8+</b>
+        <span>Sectores Atendidos</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CUERPO PRINCIPAL -->
+<div class="prf-body">
+  <div class="wrap">
+    <div class="prf-grid">
+
+      <!-- COLUMNA IZQUIERDA -->
+      <div>
+
+        <!-- Promesa de Servicio -->
+        <div class="prf-section reveal">
+          <div class="prf-section-label">Promesa de Servicio</div>
+          <p class="prf-promesa">Impulso a líderes de negocios y sus equipos a crecer rentable, productivo y eficiente, promoviendo la innovación y el desarrollo de liderazgo, competencias y capacidades, desde una visión sistémica que integra la estrategia, procesos, personas, tecnologías y resultados.</p>
+        </div>
+
+        <!-- Trayectoria -->
+        <div class="prf-section reveal">
+          <div class="prf-section-label">Trayectoria</div>
+          <p class="prf-trayectoria">Más de 25 años en la vida laboral y más de 10 años como empresaria y consultora de negocios, acompañando empresas de todos los sectores en procesos consultivos directos y a través de programas de cámara de comercio de Cali, Colombia. Hoy como parte del equipo de consultores de IBC Group SAS, lidera proyectos de innovación y transformación empresarial para clientes y para proyectos internos como líder de proyectos consultivos.</p>
+        </div>
+
+        <!-- CTA Conectar -->
+        <div class="prf-connect-box reveal">
+          <p>¿Deseas conectar con Ana Isabel?</p>
+          <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="prf-btn-connect">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Envía un mensaje
+          </a>
+        </div>
+
+      </div>
+
+      <!-- COLUMNA DERECHA (sidebar) -->
+      <div>
+
+        <!-- Sectores -->
+        <div class="prf-sidebar-card reveal">
+          <div class="prf-sidebar-label">Sectores</div>
+          <div class="prf-tags">
+            <span class="prf-tag-sector">Industrial</span>
+            <span class="prf-tag-sector">Comercial</span>
+            <span class="prf-tag-sector">Distribución</span>
+            <span class="prf-tag-sector">Servicios</span>
+            <span class="prf-tag-sector">B2B</span>
+            <span class="prf-tag-sector">B2C</span>
+            <span class="prf-tag-sector">Retail</span>
+            <span class="prf-tag-sector">Tecnología</span>
+          </div>
+        </div>
+
+        <!-- Resultados que impulso -->
+        <div class="prf-sidebar-card reveal">
+          <div class="prf-sidebar-label">Resultados que Impulso</div>
+          <div class="prf-tags">
+            <span class="prf-tag-result">Gestión Comercial Phygital</span>
+            <span class="prf-tag-result">Liderazgo Comercial</span>
+            <span class="prf-tag-result">Transformación Digital</span>
+            <span class="prf-tag-result">Modelos de Negocio</span>
+            <span class="prf-tag-result">Productividad Comercial</span>
+            <span class="prf-tag-result">Reingeniería Comercial</span>
+            <span class="prf-tag-result">Gestión de Talento Comercial</span>
+            <span class="prf-tag-result">Crecimiento Rentable</span>
+            <span class="prf-tag-result">Eficiencia Operativa Comercial</span>
+          </div>
+        </div>
+
+        <!-- Programas destacados -->
+        <div class="prf-sidebar-card reveal">
+          <div class="prf-sidebar-label">Programas Destacados</div>
+          <div class="prf-tags">
+            <span class="prf-tag-sector">Método D.E.V.E.R.®</span>
+            <span class="prf-tag-sector">360PathFinder®</span>
+            <span class="prf-tag-sector">Perfil Liderazgo Comercial</span>
+            <span class="prf-tag-sector">Alquimia Comercial</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TARIFAS -->
+<section class="prf-tarifas">
+  <div class="wrap">
+    <div class="prf-tarifas-head reveal">
+      <span class="eyebrow">Servicios y Tarifas</span>
+      <h2>Elige cómo quieres <em>trabajar juntos</em>.</h2>
+      <p>Sesiones individuales, acompañamiento mensual o programas de transformación completos.</p>
+    </div>
+    <div class="prf-plans">
+
+      <!-- Plan 1: Sesión -->
+      <div class="prf-plan reveal">
+        <div class="prf-plan-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="prf-plan-name">Sesión de Mentoría</div>
+        <div class="prf-plan-desc">Una sesión individual de diagnóstico y orientación estratégica.</div>
+        <div class="prf-plan-price">
+          <span class="currency">USD </span><span class="amount">150</span>
+          <span class="period">por sesión de 60 min</span>
+        </div>
+        <ul class="prf-plan-includes">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Diagnóstico inicial del desafío</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Plan de acción personalizado</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Recursos y herramientas</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Seguimiento por WhatsApp (48h)</li>
+        </ul>
+        <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="prf-plan-cta">Agendar sesión</a>
+      </div>
+
+      <!-- Plan 2: Mensual (featured) -->
+      <div class="prf-plan featured reveal">
+        <div class="prf-plan-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="prf-plan-name">Consultoría Mensual</div>
+        <div class="prf-plan-desc">Acompañamiento continuo con sesiones semanales y soporte permanente.</div>
+        <div class="prf-plan-price">
+          <span class="currency">USD </span><span class="amount">600</span>
+          <span class="period">por mes · 4 sesiones incluidas</span>
+        </div>
+        <ul class="prf-plan-includes">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>4 sesiones de 60 min/mes</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Plan estratégico personalizado</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Diagnóstico 360PathFinder®</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Soporte WhatsApp ilimitado</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Acceso a comunidad IBC</li>
+        </ul>
+        <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="prf-plan-cta">Iniciar ahora</a>
+      </div>
+
+      <!-- Plan 3: Proyecto -->
+      <div class="prf-plan reveal">
+        <div class="prf-plan-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="prf-plan-name">Programa de Transformación</div>
+        <div class="prf-plan-desc">Proceso intensivo de 3–6 meses para transformar equipos y resultados comerciales.</div>
+        <div class="prf-plan-price">
+          <span class="quote-text">A medida</span>
+          <span class="period">según alcance y equipo</span>
+        </div>
+        <ul class="prf-plan-includes">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Diagnóstico empresarial completo</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Método D.E.V.E.R.® aplicado</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Talleres y formación de equipos</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Implementación acompañada</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Informe de resultados y KPIs</li>
+        </ul>
+        <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener" class="prf-plan-cta">Solicitar propuesta</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="assets/logo-blanco.png" alt="Ana Isabel Assia — Líder de Transformación" class="foot-logo">
+        <p>CEO &amp; Fundadora de IBC Group. Consultora, estratega y mentora de liderazgo comercial.</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <b>Plataforma</b>
+          <a href="tumentorcomercial.html">Red de Expertos</a>
+          <a href="conexiones.html">Marketplace</a>
+          <a href="comunidad.html">Comunidad</a>
+        </div>
+        <div>
+          <b>Servicios</b>
+          <a href="servicios.html">Consultoría</a>
+          <a href="360pathfinder.html">360PathFinder®</a>
+          <a href="liderazgo-comercial.html">Liderazgo Comercial</a>
+        </div>
+        <div>
+          <b>Conectar</b>
+          <a href="https://www.instagram.com/anaisabelassia/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.linkedin.com/in/anaisabelassia/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://calendar.app.google/otVvbMFM6H71Xc3Z7" target="_blank" rel="noopener">Agendar sesión</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Ana Isabel Assia &middot; IBC Group SAS. Todos los derechos reservados.</span>
+      <div class="socials">
+        <a href="https://www.instagram.com/anaisabelassia/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/anaisabelassia/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
