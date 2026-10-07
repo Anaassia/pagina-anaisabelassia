@@ -143,6 +143,7 @@ function handleSubmit(e) {
 // ===== Newsletter band =====
 (function () {
   if (document.querySelector('.article')) return;
+  if (document.querySelector('.nl-band')) return;
   var footer = document.querySelector('footer');
   if (!footer) return;
 
@@ -152,13 +153,13 @@ function handleSubmit(e) {
   sec.className = 'nl-band';
   sec.innerHTML =
     '<style>' +
-    '.nl-band{background:#0B0B0B;padding:40px 0}' +
-    '.nl-inner{display:flex;align-items:center;gap:40px;flex-wrap:wrap}' +
-    '.nl-copy{flex:0 0 auto;max-width:400px}' +
-    '.nl-eyebrow{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:8px;display:block}' +
-    '.nl-title{font-family:"Jost",sans-serif;font-size:clamp(18px,2.2vw,24px);font-weight:700;color:#fff;line-height:1.2;white-space:nowrap}' +
-    '.nl-sub{font-size:13px;color:rgba(255,255,255,.4);margin-top:6px;line-height:1.5}' +
-    '.nl-form{flex:1;min-width:280px}' +
+    '.nl-band{background:#0B0B0B;padding:32px 0}' +
+    '.nl-inner{display:flex;align-items:center;gap:48px;flex-wrap:wrap}' +
+    '.nl-copy{flex:0 0 auto}' +
+    '.nl-eyebrow{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:6px;display:block}' +
+    '.nl-title{font-family:"Jost",sans-serif;font-size:clamp(16px,1.4vw,20px);font-weight:700;color:#fff;line-height:1.25;white-space:nowrap}' +
+    '.nl-sub{font-size:12px;color:rgba(255,255,255,.4);margin-top:5px;line-height:1.5;max-width:420px}' +
+    '.nl-form{flex:1;min-width:300px}' +
     '.nl-row{display:flex;gap:8px;align-items:stretch}' +
     '.nl-row input{flex:1;min-width:0;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:0 16px;height:46px;font-size:14px;color:#fff;font-family:inherit;transition:border-color .25s;outline:none}' +
     '.nl-row input::placeholder{color:rgba(255,255,255,.3)}' +
